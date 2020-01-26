@@ -8,3 +8,7 @@ __pycache__/
 
 # Pycharm settings folder
 .idea/
+
+# Bootstrap
+/bootstrap_css
+/bootstrap_js
