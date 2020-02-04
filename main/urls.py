@@ -4,6 +4,8 @@ from django.conf.urls.static import static
 from medicine_centre import settings
 from . import views
 
+app_name = 'main'
+
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name="index"),
 ]
