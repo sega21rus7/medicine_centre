@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class SignInView(TemplateView):
+    template_name = 'user_profile/sign_in.html'
+
+
+class SignUpView(TemplateView):
+    template_name = 'user_profile/sign_up.html'
