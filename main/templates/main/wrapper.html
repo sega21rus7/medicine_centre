@@ -6,9 +6,12 @@
         {% block title %}
         {% endblock %}
     </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}" type="text/css">
 </head>
 <body>
 {% block body %}
 {% endblock %}
+<script src="{% static 'main/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
