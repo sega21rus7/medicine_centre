@@ -1,5 +1,11 @@
 {% extends 'main/wrapper.html' %}
 {% block title %}Авторизация{% endblock %}
 {% block body %}
-
+    <form method="post" class="form-horizontal" action="">
+        {% csrf_token %}
+        {{ form }}
+        <div class="text-center">
+            <input type="submit" class="btn btn-success btn-sm" value="Войти">
+        </div>
+    </form>
 {% endblock %}
