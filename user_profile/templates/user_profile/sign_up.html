@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block body %}
     {#    <form method="post" class="form-horizontal" action="">#}
     {#        {% csrf_token %}#}
@@ -17,7 +18,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{ sign_up_form.as_p }}
+                    {{ sign_up_form|crispy}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success">Зарегистрироваться</button>

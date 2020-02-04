@@ -3,7 +3,10 @@ from django.contrib.auth import get_user_model
 
 
 class SignUpForm(forms.ModelForm):
-    password_confirmation = forms.CharField(widget=forms.PasswordInput())
+    email = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Введите email'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Введите пароль'}))
+    password_confirmation = \
+        forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Подтвердите пароль'}))
 
     class Meta:
         model = get_user_model()
@@ -11,6 +14,9 @@ class SignUpForm(forms.ModelForm):
 
 
 class SignInForm(forms.ModelForm):
+    email = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Введите email'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Введите пароль'}))
+
     class Meta:
         model = get_user_model()
         fields = ('email', 'password',)
