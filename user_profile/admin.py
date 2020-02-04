@@ -2,13 +2,10 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
-from user_profile.forms import CustomerUserCreationForm, CustomerUserChangeForm
 from user_profile.models import CustomerUser
 
 
 class CustomerUserAdmin(UserAdmin):
-    add_form = CustomerUserCreationForm
-    form = CustomerUserChangeForm
     model = CustomerUser
 
     list_display = ('email', 'first_name', 'last_name', 'is_staff')
