@@ -12,7 +12,9 @@
 <body>
 {% block body %}
 {% endblock %}
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+{% block js %}
+{% endblock %}
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="{% static 'main/bootstrap_js/bootstrap.min.js' %}"></script>
 </body>
 </html>
