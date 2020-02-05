@@ -35,7 +35,7 @@ class SignUpView(View):
                 login(request, user)
         else:
             data['errors'] = form.errors
-        return JsonResponse(data)  # в дальнейшем перенаправление в лк
+        return JsonResponse(data)
 
 
 class SignInView(View):
