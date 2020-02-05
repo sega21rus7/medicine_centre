@@ -11,10 +11,18 @@
     {% include 'main/jumbotron.html' %}
 
     <main role="main">
+        <div class="modal fade modal-sign-up" tabindex="-1" role="dialog" aria-labelledby="modal-sign-up"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
+
         {% include 'main/text_container.html' %}
         <div class="marketing-container container">
             {% include 'main/marketing-container.html' %}
-
             {% include 'main/first_featurette.html' %}
             {% include 'main/second_featurette.html' %}
             {% include 'main/third_featurette.html' %}
