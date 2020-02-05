@@ -19,7 +19,6 @@ class CustomerUser(AbstractUser):
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
         ordering = ('pk',)
-        # abstract = True - мб для врача и медсестры
 
     def __str__(self):
         return self.email
