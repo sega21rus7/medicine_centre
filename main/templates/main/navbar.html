@@ -7,11 +7,17 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link sign-up-link" href="#">Регистрация</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link sign-in-link" href="#">Авторизация</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sign-out-link" href="{% url 'user_profile:sign_out' %}">Выход</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link admin-panel-link" href="{% url 'admin:index' %}">Админка</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
