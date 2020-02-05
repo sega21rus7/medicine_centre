@@ -1,9 +1,8 @@
 $(function () {
-    var $signUpBtn = $('.sign-up');
+    var $signUpBtn = $('a.sign-up');
 
-    $signUpBtn.click(function () {
-        alert('Привет');
-
+    $signUpBtn.on("click", function (event) {
+        event.preventDefault();
         $.ajax({
             url: '/user_profile/sign_up',
             type: 'get',
@@ -12,7 +11,7 @@ $(function () {
                 $('.modal-sign-up').modal('show');
             },
             success: function (data) {
-                $('.modal-sign-up .modal-content').html(data.html_form);
+                $('.modal-sign-up .modal-content').html(data.html);
             }
         })
     })
