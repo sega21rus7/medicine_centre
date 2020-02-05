@@ -44,11 +44,11 @@ $(function () {
             type: form.attr('method'),
             datatype: 'json',
             success: function (data) {
-                if(data.form_is_valid){
-                    alert('valid');
+                if(data.errors){
+                    alert('not');
                 }
                 else {
-                    alert('not');
+                    alert('valid');
                 }
             }
         });
@@ -63,11 +63,11 @@ $(function () {
             type: form.attr('method'),
             datatype: 'json',
             success: function (data) {
-                if(data.form_is_valid){
-                    alert('valid');
+                if(data.errors){
+                    alert('not');
                 }
                 else {
-                    alert('not');
+                    alert('valid');
                 }
             }
         });
