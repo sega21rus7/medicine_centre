@@ -1,17 +1,10 @@
-{% load crispy_forms_tags %}
-<form method="post" data-url="{% url 'user_profile:sign_up' %}" class="form-horizontal"
-      action="">
-    {% csrf_token %}
-    <div class="modal-header">
-        <h5 class="modal-title">Регистрация</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        {{ form|crispy }}
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-success">Зарегистрироваться</button>
-    </div>
-</form>
+{% extends 'user_profile/base.html' %}
+{% block url %}
+    {% url 'user_profile:sign_up' %}
+{% endblock %}
+{% block title %}
+    Регистрация
+{% endblock %}
+{% block button_title %}
+    Зарегистрироваться
+{% endblock %}
