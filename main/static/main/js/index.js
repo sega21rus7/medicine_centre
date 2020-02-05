@@ -1,8 +1,21 @@
 $(function () {
     var $signUpBtn = $('a.sign-up-link'),
         $signInBtn = $('a.sign-in-link'),
+        $signOutBtn = $('a.sign-out-link'),
         $modalSignInForm = $('.sign-in-modal-form'),
         $modalSignUpForm = $('.sign-up-modal-form');
+
+    $signOutBtn.on('click', function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: '/user_profile/sign_out',
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                $('.jumbotron').html(data.jumbotron);
+            }
+        });
+    });
 
     $signUpBtn.on("click", function (event) {
         event.preventDefault();
@@ -10,14 +23,11 @@ $(function () {
             url: '/user_profile/sign_up',
             type: 'get',
             dataType: 'json',
-            beforeSend: function () {
-
-            },
             success: function (data) {
                 $('.sign-up-modal-form').modal('show');
                 $('.sign-up-modal-form .modal-content').html(data.html_form);
             }
-        })
+        });
     });
 
     $signInBtn.on("click", function (event) {
@@ -26,14 +36,11 @@ $(function () {
             url: '/user_profile/sign_in',
             type: 'get',
             dataType: 'json',
-            beforeSend: function () {
-
-            },
             success: function (data) {
                 $('.sign-in-modal-form').modal('show');
                 $('.sign-in-modal-form .modal-content').html(data.html_form);
             }
-        })
+        });
     });
 
     $modalSignInForm.on('submit', '.sign-in-form', function () {
