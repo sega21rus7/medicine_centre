@@ -7,19 +7,12 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}" type="text/css">
 {% endblock %}
 {% block body %}
+    {% include 'main/modal_sign_up.html' %}
+
     {% include 'main/navbar.html' %}
     {% include 'main/jumbotron.html' %}
 
     <main role="main">
-        <div class="modal fade modal-sign-up" tabindex="-1" role="dialog" aria-labelledby="modal-sign-up"
-             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-
-                </div>
-            </div>
-        </div>
-
         {% include 'main/text_container.html' %}
         <div class="marketing-container container">
             {% include 'main/marketing-container.html' %}
