@@ -1,9 +1,17 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
+from django.shortcuts import redirect
 from django.template.loader import render_to_string
+from django.urls import reverse
 from django.views.generic.base import View
 
 from .forms import SignUpForm, SignInForm
+
+
+class SignOutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect(reverse('main:index'))
 
 
 class SignUpView(View):
@@ -25,11 +33,9 @@ class SignUpView(View):
             if user:
                 authenticate(email=email, password=password)
                 login(request, user)
-                data['form_is_valid'] = True
         else:
-            data['form_is_valid'] = False
             data['errors'] = form.errors
-        return JsonResponse(data)
+        return JsonResponse(data)  # в дальнейшем перенаправление в лк
 
 
 class SignInView(View):
@@ -51,8 +57,6 @@ class SignInView(View):
             user = authenticate(email=email, password=password)
             if user and user.is_active:
                 login(request, user)
-                data['form_is_valid'] = True
         else:
-            data['form_is_valid'] = False
             data['errors'] = form.errors
         return JsonResponse(data)
