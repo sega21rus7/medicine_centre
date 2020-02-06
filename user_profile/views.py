@@ -12,7 +12,7 @@ class SignOutView(View):
     def get(self, request):
         logout(request)
         jumbotron = render_to_string(template_name=self.template_name)
-        return JsonResponse({'jumbotron': jumbotron}, safe=False)
+        return JsonResponse({'jumbotron': jumbotron})
 
 
 class SignUpView(View):

@@ -12,7 +12,7 @@ $(function () {
             type: 'get',
             dataType: 'json',
             success: function (data) {
-                $('.jumbotron').html(data.jumbotron);
+                $('.div.jumbotron').html(data.jumbotron);
             }
         });
     });
