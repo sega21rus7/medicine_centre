@@ -5,9 +5,8 @@
 {% endblock %}
 {% block body %}
     {% include 'main/navbar.html' %}
-    {% include 'main/jumbotron.html' %}
-
     <main role="main">
+        {% include 'main/carousel.html' %}
         {% include 'main/text_container.html' %}
         <div class="marketing-container container">
             {% include 'main/marketing-container.html' %}
