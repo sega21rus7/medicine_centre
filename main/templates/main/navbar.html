@@ -14,7 +14,7 @@
                 <a class="nav-link sign-in-link" href="#">Авторизация</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link sign-out-link" href="#">Выход</a>
+                <a class="nav-link" href="{% url 'user_profile:sign_out' %}">Выход</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link admin-panel-link" href="{% url 'admin:index' %}">Админка</a>

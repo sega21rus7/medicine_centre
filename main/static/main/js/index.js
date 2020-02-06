@@ -1,21 +1,8 @@
 $(function () {
     var $signUpBtn = $('a.sign-up-link'),
         $signInBtn = $('a.sign-in-link'),
-        $signOutBtn = $('a.sign-out-link'),
         $modalSignInForm = $('.sign-in-modal-form'),
         $modalSignUpForm = $('.sign-up-modal-form');
-
-    $signOutBtn.on('click', function (event) {
-        event.preventDefault();
-        $.ajax({
-            url: '/user_profile/sign_out',
-            type: 'get',
-            dataType: 'json',
-            success: function (data) {
-                $('.div.jumbotron').html(data.jumbotron);
-            }
-        });
-    });
 
     $signUpBtn.on("click", function (event) {
         event.preventDefault();

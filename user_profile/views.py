@@ -1,18 +1,17 @@
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
+from django.shortcuts import redirect
 from django.template.loader import render_to_string
+from django.urls import reverse
 from django.views.generic.base import View
 
 from .forms import SignUpForm, SignInForm
 
 
 class SignOutView(View):
-    template_name = 'main/jumbotron.html'
-
     def get(self, request):
         logout(request)
-        jumbotron = render_to_string(template_name=self.template_name)
-        return JsonResponse({'jumbotron': jumbotron})
+        return redirect(reverse('main:index'))
 
 
 class SignUpView(View):
