@@ -1,13 +1,16 @@
-{% extends 'user_profile/base.html' %}
-{% block url %}
-    {% url 'user_profile:sign_in' %}
-{% endblock %}
-{% block form_class %}
-    sign-in-form
-{% endblock %}
-{% block title %}
-    Авторизация
-{% endblock %}
-{% block button_title %}
-    Войти
-{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
+            <div class="shadowed-item auth-panel">
+                <div class="text-center logo-panel">
+                    <img src="/static/images/logo.png" alt="Лого">
+                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="btn btn-primary btn-block" type="submit">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
