@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link sign-up-link" href="#">Регистрация</a>
+                <a class="nav-link" href="{% url 'user_profile:sign_up' %}">Регистрация</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link sign-in-link" href="#">Авторизация</a>
+                <a class="nav-link" href="{% url 'user_profile:sign_in' %}">Авторизация</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'user_profile:sign_out' %}">Выход</a>
