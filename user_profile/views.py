@@ -1,10 +1,13 @@
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic.base import View
+from django.views.generic.base import View, TemplateView
 
 from .forms import SignUpForm, SignInForm
 
+
+class LoginView(TemplateView):
+    template_name = 'user_profile/login.html'
 
 class SignOutView(View):
     def get(self, request):

@@ -1,0 +1,8 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Вход - МедЦентр
+{% endblock %}
+{% block body %}
+    <a href="{% url 'user_profile:sign_in' %}">Войти с помощью сервиса авторизации</a>
+    <a href="{% url 'user_profile:sign_up' %}">Зарегистрироваться</a>
+{% endblock %}
