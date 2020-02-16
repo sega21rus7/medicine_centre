@@ -1,9 +1,21 @@
 {% extends 'user_profile/base_card.html' %}
 {% load crispy_forms_tags %}
 {% block card-body %}
-    <form action="" method="post">
+    <form action="" method="post" novalidate>
         {% csrf_token %}
-        {{ form|crispy }}
+        {% for field in form %}
+            <div>{{ field|as_crispy_field }}</div>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <span class="help-block">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
         <button class="btn btn-success btn-block" type="submit">{% block button_text %}{% endblock %}</button>
+        {% block already_or_not_yet %}
+        {% endblock %}
     </form>
 {% endblock %}
