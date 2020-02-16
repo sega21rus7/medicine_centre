@@ -1,0 +1,9 @@
+{% extends 'user_profile/base_card.html' %}
+{% load crispy_forms_tags %}
+{% block card-body %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-success btn-block" type="submit">{% block button_text %}{% endblock %}</button>
+    </form>
+{% endblock %}

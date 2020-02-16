@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Вход - МедЦентр
+{% endblock %}
+{% block body %}
+    <div class="card text-center col-sm-6 offset-sm-3">
+        <div class="card-header text-center logo-panel">
+            <a href="{% url 'main:index' %}">
+                <img src="/static/images/logo.png" alt="Лого">
+            </a>
+        </div>
+        <div class="card-body">
+            {% block card-body %}
+            {% endblock %}
+        </div>
+        <div class="card-footer text-muted">
+            &copy; 2020 ООО «МедЦентр». Все права защищены
+        </div>
+    </div>
+{% endblock %}

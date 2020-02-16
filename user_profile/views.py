@@ -7,7 +7,7 @@ from .forms import SignUpForm, SignInForm
 
 
 class LoginView(TemplateView):
-    template_name = 'user_profile/login.html'
+    template_name = 'user_profile/login_card.html'
 
 class SignOutView(View):
     def get(self, request):
@@ -17,7 +17,7 @@ class SignOutView(View):
 
 class SignUpView(View):
     form_class = SignUpForm
-    template_name = 'user_profile/sign_up.html'
+    template_name = 'user_profile/sign_up_form.html'
 
     def get(self, request):
         context = {'form': self.form_class}
@@ -40,7 +40,7 @@ class SignUpView(View):
 
 class SignInView(View):
     form_class = SignInForm
-    template_name = 'user_profile/sign_in.html'
+    template_name = 'user_profile/sign_in_form.html'
 
     def get(self, request):
         context = {'form': self.form_class}
