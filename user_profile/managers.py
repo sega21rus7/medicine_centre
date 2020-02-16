@@ -1,3 +1,5 @@
+from builtins import ValueError
+
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import ugettext_lazy as _
 
@@ -5,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 class CustomerUserManager(BaseUserManager):
     """
     Custom user model manager where email is the unique identifiers
-    for authentication instead of usernames.
+    for authentication instead of username.
     """
 
     def create_user(self, email, password, **extra_fields):

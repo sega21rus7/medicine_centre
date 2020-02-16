@@ -1,4 +1,5 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic.base import View, TemplateView
@@ -8,6 +9,7 @@ from .forms import SignUpForm, SignInForm
 
 class LoginView(TemplateView):
     template_name = 'user_profile/login_card.html'
+
 
 class SignOutView(View):
     def get(self, request):
@@ -23,19 +25,18 @@ class SignUpView(View):
         context = {'form': self.form_class}
         return render(request=request, template_name=self.template_name, context=context)
 
-    # def post(self, request):
-    #     data = {}
-    #     form = self.form_class(request.POST)
-    #     if form.is_valid():
-    #         email = request.POST.get('email')
-    #         password = request.POST.get('password')
-    #         user = form.save()
-    #         if user:
-    #             authenticate(email=email, password=password)
-    #             login(request, user)
-    #     else:
-    #         data['errors'] = form.errors
-    #     return JsonResponse(data)
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+            user = form.save()
+            if user:
+                authenticate(email=email, password=password)
+                login(request, user)
+        else:
+            return HttpResponse(form.errors)
+        return redirect(reverse('admin:index'))
 
 
 class SignInView(View):
@@ -46,15 +47,14 @@ class SignInView(View):
         context = {'form': self.form_class}
         return render(request=request, template_name=self.template_name, context=context)
 
-    # def post(self, request):
-    #     data = {}
-    #     form = self.form_class(request.POST)
-    #     if form.is_valid():
-    #         email = request.POST.get('email')
-    #         password = request.POST.get('password')
-    #         user = authenticate(email=email, password=password)
-    #         if user and user.is_active:
-    #             login(request, user)
-    #     else:
-    #         data['errors'] = form.errors
-    #     return JsonResponse(data)
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+            user = authenticate(email=email, password=password)
+            if user and user.is_active:
+                login(request, user)
+        else:
+            return HttpResponse(form.errors)
+        return redirect(reverse('admin:index'))
