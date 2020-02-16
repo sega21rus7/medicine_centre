@@ -1,25 +1,31 @@
-from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 User = get_user_model()
 
 
-class SignUpForm(forms.ModelForm):
-    email = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Введите email'}))
-    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Введите пароль'}))
-    password_confirmation = \
-        forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Подтвердите пароль'}))
-
-    class Meta:
+class SignUpForm(UserCreationForm):
+    class Meta():
         model = User
-        fields = ('email', 'password', 'password_confirmation',)
+        fields = ('username', 'password1', 'password2')
+
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['placeholder'] = 'Введите логин'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Придумайте пароль'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Подтвердите пароль'
+        self.fields['username'].label = ''
+        self.fields['password1'].label = ''
+        self.fields['password2'].label = ''
+        self.fields['username'].help_text = ''
+        self.fields['password1'].help_text = ''
+        self.fields['password2'].help_text = ''
 
 
 class SignInForm(AuthenticationForm):
-    email = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Введите email'}))
-    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Введите пароль'}))
-
-    class Meta:
-        model = User
-        fields = ('email', 'password',)
+    def __init__(self, *args, **kwargs):
+        super(SignInForm, self).__init__(self, *args, **kwargs)
+        self.fields['username'].widget.attrs['placeholder'] = 'Введите логин'
+        self.fields['password'].widget.attrs['placeholder'] = 'Введите пароль'
+        self.fields['username'].label = ''
+        self.fields['password'].label = ''

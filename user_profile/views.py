@@ -1,5 +1,5 @@
 from django.contrib.auth import logout, authenticate, login
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic.base import View, TemplateView
@@ -28,14 +28,15 @@ class SignUpView(View):
     def post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
-            email = request.POST.get('email')
+            username = request.POST.get('username')
             password = request.POST.get('password')
             user = form.save()
             if user:
-                authenticate(email=email, password=password)
+                authenticate(username=username, password=password)
                 login(request, user)
         else:
-            return HttpResponse(form.errors)
+            context = {'form': form}
+            return render(request=request, template_name=self.template_name, context=context)
         return redirect(reverse('admin:index'))
 
 
@@ -50,11 +51,12 @@ class SignInView(View):
     def post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
-            email = request.POST.get('email')
+            username = request.POST.get('username')
             password = request.POST.get('password')
-            user = authenticate(email=email, password=password)
+            user = authenticate(username=username, password=password)
             if user and user.is_active:
                 login(request, user)
         else:
-            return HttpResponse(form.errors)
+            context = {'form': form}
+            return render(request=request, template_name=self.template_name, context=context)
         return redirect(reverse('admin:index'))

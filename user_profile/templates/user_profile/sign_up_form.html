@@ -2,3 +2,6 @@
 {% block button_text %}
     Зарегистрироваться
 {% endblock %}
+{% block already_or_not_yet %}
+    Уже зарегистрированы? <a href="{% url 'user_profile:sign_in' %}">Войдите</a>
+{% endblock %}
