@@ -113,3 +113,4 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'user_profile.CustomerUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+GOOGLE_API_KEY = 'AIzaSyD--your-google-maps-key-SjQBE'
