@@ -6,10 +6,10 @@ from medicine_centre import settings
 class Employee(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                              on_delete=models.CASCADE)
-    post = models.CharField(verbose_name='Должность', null=True, blank=True)
+    post = models.CharField(verbose_name='Должность', max_length=100, null=True, blank=True)
 
     class Meta:
-        proxy = True
+        abstract = True
 
 
 class Doctor(Employee):
@@ -29,8 +29,8 @@ class Nurse(Employee):
 
 
 class Passport(models.Model):
-    series = models.IntegerField(verbose_name='Серия', max_length=4)
-    number = models.IntegerField(verbose_name='Номер', max_length=6)
+    series = models.CharField(verbose_name='Серия', max_length=4)
+    number = models.CharField(verbose_name='Номер', max_length=6)
 
     class Meta:
         verbose_name = 'Паспорт'
@@ -38,11 +38,12 @@ class Passport(models.Model):
 
 
 class InsurancePolicy(models.Model):
-    number = models.IntegerField(verbose_name='Номер', max_length=16)
+    number = models.CharField(verbose_name='Номер', max_length=16)
 
     class Meta:
         verbose_name = 'Полис ОМС'
         verbose_name_plural = 'Полисы ОМС'
+        ordering = ('pk',)
 
 
 class Patient(models.Model):
@@ -51,6 +52,14 @@ class Patient(models.Model):
     passport = models.OneToOneField(Passport, verbose_name='Паспорт', on_delete=models.CASCADE)
     insurance_policy = models.OneToOneField(InsurancePolicy, verbose_name='Полис ОМС',
                                             on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Пациент'
+        verbose_name_plural = 'Пациенты'
+        ordering = ('pk',)
+
+    def __str__(self):
+        return self.user
 
 
 class News(models.Model):
@@ -61,3 +70,7 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
+        ordering = ('pk',)
+
+    def __str__(self):
+        return self.title
