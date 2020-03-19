@@ -4,7 +4,9 @@ from medicine_centre import settings
 
 
 class Employee(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             on_delete=models.CASCADE)
+    post = models.CharField(verbose_name='Должность', null=True, blank=True)
 
     class Meta:
         proxy = True
@@ -16,6 +18,39 @@ class Doctor(Employee):
     class Meta:
         verbose_name = 'Врач'
         verbose_name_plural = 'Врачи'
+
+
+class Nurse(Employee):
+    image = models.ImageField(verbose_name='Фото', upload_to='main/images/nurse')
+
+    class Meta:
+        verbose_name = 'Медсестра'
+        verbose_name_plural = 'Медсестры'
+
+
+class Passport(models.Model):
+    series = models.IntegerField(verbose_name='Серия', max_length=4)
+    number = models.IntegerField(verbose_name='Номер', max_length=6)
+
+    class Meta:
+        verbose_name = 'Паспорт'
+        verbose_name_plural = 'Паспорта'
+
+
+class InsurancePolicy(models.Model):
+    number = models.IntegerField(verbose_name='Номер', max_length=16)
+
+    class Meta:
+        verbose_name = 'Полис ОМС'
+        verbose_name_plural = 'Полисы ОМС'
+
+
+class Patient(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             on_delete=models.CASCADE)
+    passport = models.OneToOneField(Passport, verbose_name='Паспорт', on_delete=models.CASCADE)
+    insurance_policy = models.OneToOneField(InsurancePolicy, verbose_name='Полис ОМС',
+                                            on_delete=models.CASCADE)
 
 
 class News(models.Model):
