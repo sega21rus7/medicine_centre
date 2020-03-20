@@ -65,7 +65,6 @@ class Patient(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     content = models.TextField(verbose_name='Содержание')
-    image = models.ImageField(verbose_name='Изображение', upload_to='main/images/news')
 
     class Meta:
         verbose_name = 'Новость'
@@ -77,6 +76,8 @@ class News(models.Model):
 
 
 class BigNews(News):
+    image = models.ImageField(verbose_name='Изображение', upload_to='main/images/big_news', null=True, blank=True)
+
     class Meta:
         verbose_name = 'Большая новость'
         verbose_name_plural = 'Большие новости'
