@@ -11,6 +11,9 @@ class Employee(models.Model):
     class Meta:
         abstract = True
 
+    def __str__(self):
+        return self.user.username
+
 
 class Doctor(Employee):
     image = models.ImageField(verbose_name='Фото', upload_to='main/images/doctor')
