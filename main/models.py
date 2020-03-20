@@ -74,3 +74,10 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class BigNews(News):
+    class Meta:
+        verbose_name = 'Большая новость'
+        verbose_name_plural = 'Большие новости'
+        ordering = ('pk',)
