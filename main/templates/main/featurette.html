@@ -1,0 +1,17 @@
+<hr class="featurette-divider">
+{% for big_new in big_news %}
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">{{ big_new.title }}</h2>
+            <p class="lead">{{ big_new.content }}</p>
+        </div>
+        <div class="col-md-5">
+            <img src="{{ big_new.image.url }}" alt="{{ big_new.title }}"/>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+
+
