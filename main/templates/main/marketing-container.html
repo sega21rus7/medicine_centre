@@ -1,16 +1,9 @@
 <div class="row">
     {% for doctor in doctors %}
         <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777"/>
-                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-            </svg>
+            <img src="{{ doctor.image.url }}" alt="{{ doctor.user.username }}"/>
             <h2>{{ doctor.user.username }}</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh
-                ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                Praesent commodo cursus magna.</p>
+            <p>{{ doctor.post }}</p>
         </div>
     {% endfor %}
 </div>
