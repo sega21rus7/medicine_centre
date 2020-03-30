@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from pytils.translit import slugify
 
 from medicine_centre import settings
 
@@ -20,13 +21,18 @@ class Employee(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                                 on_delete=models.CASCADE)
     post = models.ForeignKey(Post, verbose_name='Должность', on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=150, unique=True, blank=True)
 
     class Meta:
         abstract = True
 
     def __str__(self):
         return self.user.username
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.user.username)
+        super().save(self, *args, **kwargs)
 
 
 class Doctor(Employee):
@@ -83,7 +89,7 @@ class NewsBase(models.Model):
     title = models.CharField(max_length=150, verbose_name='Заголовок', unique=True, db_index=True)
     content = models.TextField(verbose_name='Содержание', db_index=True)
     pub_date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=150, unique=True, blank=True)
 
     class Meta:
         abstract = True
@@ -94,12 +100,17 @@ class NewsBase(models.Model):
     def get_absolute_url(self):
         return reverse("main:new_detail", kwargs={"slug": self.slug})
 
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+        super().save(self, *args, **kwargs)
+
 
 class News(NewsBase):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
-        ordering = ('pk',)
+        ordering = ('-pub_date',)
 
     def __str__(self):
         return self.title
@@ -111,4 +122,4 @@ class BigNews(NewsBase):
     class Meta:
         verbose_name = 'Большая новость'
         verbose_name_plural = 'Большие новости'
-        ordering = ('pk',)
+        ordering = ('-pub_date',)
