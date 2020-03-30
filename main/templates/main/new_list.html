@@ -7,9 +7,12 @@
                     {{ new.pub_date }}
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ new.title }}</h5>
-                    <p class="card-text">{{ new.content | truncatewords:15 }}</p>
-                    <a href="{{ new.get_absolute_url }}" class="btn btn-light">Подробнее...</a>
+                    <h5 class="card-title ">
+                        <a href="{{ new.get_absolute_url }}" class="btn btn-light">
+                            {{ new.title }}
+                        </a>
+                    </h5>
+                    <p class="card-text">{{ new.content }}</p> {# truncate #}
                 </div>
             </div>
         </div>
