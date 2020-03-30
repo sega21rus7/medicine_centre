@@ -1,10 +1,11 @@
 from django.db import models
+from django.urls import reverse
 
 from medicine_centre import settings
 
 
 class Post(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=100)
+    name = models.CharField(verbose_name='Название', max_length=150, db_index=True)
 
     class Meta:
         verbose_name = 'Должность'
@@ -17,8 +18,9 @@ class Post(models.Model):
 
 class Employee(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
-                             on_delete=models.CASCADE)
+                                on_delete=models.CASCADE)
     post = models.ForeignKey(Post, verbose_name='Должность', on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=150, unique=True)
 
     class Meta:
         abstract = True
@@ -44,8 +46,8 @@ class Nurse(Employee):
 
 
 class Passport(models.Model):
-    series = models.CharField(verbose_name='Серия', max_length=4)
-    number = models.CharField(verbose_name='Номер', max_length=6)
+    series = models.CharField(verbose_name='Серия', max_length=4, db_index=True)
+    number = models.CharField(verbose_name='Номер', max_length=6, db_index=True)
 
     class Meta:
         verbose_name = 'Паспорт'
@@ -53,7 +55,7 @@ class Passport(models.Model):
 
 
 class InsurancePolicy(models.Model):
-    number = models.CharField(verbose_name='Номер', max_length=16)
+    number = models.CharField(verbose_name='Номер', max_length=16, db_index=True)
 
     class Meta:
         verbose_name = 'Полис ОМС'
@@ -78,11 +80,19 @@ class Patient(models.Model):
 
 
 class NewsBase(models.Model):
-    title = models.CharField(max_length=100, verbose_name='Заголовок', unique=True)
-    content = models.TextField(verbose_name='Содержание')
+    title = models.CharField(max_length=150, verbose_name='Заголовок', unique=True, db_index=True)
+    content = models.TextField(verbose_name='Содержание', db_index=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=150, unique=True)
 
     class Meta:
         abstract = True
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse("main:new_detail", kwargs={"slug": self.slug})
 
 
 class News(NewsBase):

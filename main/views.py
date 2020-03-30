@@ -1,4 +1,5 @@
-from django.views.generic.base import TemplateView
+from django.views.generic import DetailView
+from django.views.generic.base import TemplateView, View
 
 from .models import News, Doctor, BigNews
 
@@ -12,3 +13,9 @@ class IndexView(TemplateView):
         context['doctors'] = Doctor.objects.all()
         context['big_news'] = BigNews.objects.all()
         return context
+
+
+class NewDetailView(DetailView):
+    model = News
+    template_name = 'main/new_detail.html'
+    context_object_name = 'new'

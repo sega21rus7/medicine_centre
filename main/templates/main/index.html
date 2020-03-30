@@ -1,13 +1,10 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block title %}
-    МедЦентр
-{% endblock %}
 {% block body %}
     {% include 'main/navbar.html' %}
     <main role="main">
         {% include 'main/carousel.html' %}
-        {% include 'main/text_container.html' %}
+        {% include 'main/new_list.html' %}
         <div class="marketing-container container">
             {% include 'main/marketing-container.html' %}
             {% include 'main/featurette.html' %}
