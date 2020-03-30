@@ -1,7 +1,8 @@
+<h3 class="text-center">Наши специалисты</h3>
 <div class="row">
     {% for doctor in doctors %}
         <div class="col-lg-4">
-            <img src="{{ doctor.image.url }}" alt="{{ doctor.user.username }}"/>
+            <img src="{{ doctor.image.url }}" alt="{{ doctor.user.username }}" class="img-thumbnail"/>
             <h2>{{ doctor.user.username }}</h2>
             <p>{{ doctor.post }}</p>
         </div>

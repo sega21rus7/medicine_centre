@@ -3,10 +3,22 @@ from django.db import models
 from medicine_centre import settings
 
 
+class Post(models.Model):
+    name = models.CharField(verbose_name='Название', max_length=100)
+
+    class Meta:
+        verbose_name = 'Должность'
+        verbose_name_plural = 'Должности'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+
 class Employee(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                              on_delete=models.CASCADE)
-    post = models.CharField(verbose_name='Должность', max_length=100, null=True, blank=True)
+    post = models.ForeignKey(Post, verbose_name='Должность', on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
@@ -51,7 +63,7 @@ class InsurancePolicy(models.Model):
 
 class Patient(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE, related_name='patients')
     passport = models.OneToOneField(Passport, verbose_name='Паспорт', on_delete=models.CASCADE)
     insurance_policy = models.OneToOneField(InsurancePolicy, verbose_name='Полис ОМС',
                                             on_delete=models.CASCADE)
@@ -65,10 +77,15 @@ class Patient(models.Model):
         return self.user
 
 
-class News(models.Model):
-    title = models.CharField(max_length=100, verbose_name='Заголовок')
+class NewsBase(models.Model):
+    title = models.CharField(max_length=100, verbose_name='Заголовок', unique=True)
     content = models.TextField(verbose_name='Содержание')
 
+    class Meta:
+        abstract = True
+
+
+class News(NewsBase):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
@@ -78,7 +95,7 @@ class News(models.Model):
         return self.title
 
 
-class BigNews(News):
+class BigNews(NewsBase):
     image = models.ImageField(verbose_name='Изображение', upload_to='main/images/big_news', null=True, blank=True)
 
     class Meta:
