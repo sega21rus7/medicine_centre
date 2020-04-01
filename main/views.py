@@ -1,7 +1,9 @@
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateView
 
 from .models import News, Doctor, BigNews
+
+PAGINATOR_PAGES_COUNT = 3
 
 
 class IndexView(TemplateView):
@@ -15,7 +17,15 @@ class IndexView(TemplateView):
         return context
 
 
-class NewDetailView(DetailView):
+class NewsView(ListView):
     model = News
-    template_name = 'main/new_detail.html'
+    queryset = model.objects.all()
+    template_name = 'main/news_list.html'
+    context_object_name = 'news'
+    paginate_by = 3
+
+
+class NewsDetailView(DetailView):
+    model = News
+    template_name = 'main/news_detail.html'
     context_object_name = 'new'
