@@ -1,14 +1,10 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block body %}
-    {% include 'main/navbar.html' %}
-    <main role="main">
-        {% include 'main/carousel.html' %}
-        {% include 'main/new_list.html' %}
-        <div class="marketing-container container">
-            {% include 'main/marketing-container.html' %}
-            {% include 'main/featurette.html' %}
-        </div>
-        {% include 'main/footer.html' %}
-    </main>
+    {% include 'main/carousel.html' %}
+    {% include 'main/news_short_list.html' %}
+    <div class="marketing-container container">
+        {% include 'main/doctor_list.html' %}
+        {% include 'main/big_news_list.html' %}
+    </div>
 {% endblock %}

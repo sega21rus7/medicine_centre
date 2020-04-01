@@ -99,7 +99,7 @@ class NewsBase(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("main:new_detail", kwargs={"slug": self.slug})
+        return reverse("main:news_detail", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

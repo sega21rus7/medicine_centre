@@ -1,0 +1,43 @@
+<h3 class="text-center">Новости</h3>
+<div class="row">
+    {% for new in news %}
+        <div class="col-md-4">
+            <div class="card text-center m-4">
+                <div class="card-header">
+                    {{ new.pub_date }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title ">
+                        <a href="{{ new.get_absolute_url }}" class="btn btn-light">
+                            {{ new.title }}
+                        </a>
+                    </h5>
+                    <p class="card-text">{{ new.content }}</p> {# truncate #}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+<div class="text-right mr-4">
+    <a href="#" class="btn btn-outline-secondary" role="button">Показать все</a>
+</div>
+
+
+{#<nav aria-label="Page navigation example">#}
+{#    <ul class="pagination justify-content-md-end mr-4">#}
+{#        <li class="page-item">#}
+{#            <a class="page-link" href="#" aria-label="Previous">#}
+{#                <span aria-hidden="true">&laquo;</span>#}
+{#            </a>#}
+{#        </li>#}
+{#        <li class="page-item active"><a class="page-link" href="#">1</a></li>#}
+{#        <li class="page-item"><a class="page-link" href="#">2</a></li>#}
+{#        <li class="page-item"><a class="page-link" href="#">3</a></li>#}
+{#        <li class="page-item">#}
+{#            <a class="page-link" href="#" aria-label="Next">#}
+{#                <span aria-hidden="true">&raquo;</span>#}
+{#            </a>#}
+{#        </li>#}
+{#    </ul>#}
+{#</nav>#}
