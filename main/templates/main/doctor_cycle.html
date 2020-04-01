@@ -6,7 +6,9 @@
                 <a href="{{ doctor.get_absolute_url }}">
                     <img src="{{ doctor.image.url }}" alt="{{ doctor.user.username }}" class="img-thumbnail"/>
                 </a>
-                <h2>{{ doctor.user.username }}</h2>
+                <a href="{{ doctor.get_absolute_url }}" class="btn btn-light">
+                    <h2>{{ doctor.user.username }}</h2>
+                </a>
                 <p> Должность: {{ doctor.post }}</p>
             </div>
         {% endfor %}
