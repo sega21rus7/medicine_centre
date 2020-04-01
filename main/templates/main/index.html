@@ -2,9 +2,9 @@
 {% load static %}
 {% block body %}
     {% include 'main/carousel.html' %}
-    {% include 'main/news_short_list.html' %}
     <div class="marketing-container container">
-        {% include 'main/doctor_list.html' %}
+        {% include 'main/news_short_list.html' %}
+        {% include 'main/doctor_short_list.html' %}
         {% include 'main/big_news_list.html' %}
     </div>
 {% endblock %}
