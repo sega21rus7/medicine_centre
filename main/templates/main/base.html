@@ -14,8 +14,10 @@
     {% endblock %}
 </head>
 <body>
+{% include 'main/navbar.html' %}
 {% block body %}
 {% endblock %}
+{% include 'main/footer.html' %}
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="{% static 'main/bootstrap_js/bootstrap.min.js' %}"></script>
 {% block js %}
