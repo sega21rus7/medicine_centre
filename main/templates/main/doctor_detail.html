@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    {{ doctor.user.username }} - {{ block.super }}
+{% endblock %}
+{% block body %}
+    <h1>
+        {{ doctor.user.username }}
+    </h1>
+    <p>
+        {{ doctor.post.name }}
+    </p>
+{% endblock %}

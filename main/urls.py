@@ -8,9 +8,11 @@ app_name = 'main'
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name="index"),
-    url(r'small_news/$', views.NewsView.as_view(), name='news_list'),
-    url(r'small_news/(?P<slug>[-\w]+)$', views.NewsDetailView.as_view(), name='news_detail')
+    url(r'news_list/$', views.NewsView.as_view(), name='news_list'),
+    url(r'doctor_list/$', views.DoctorView.as_view(), name='doctor_list'),
 
+    url(r'news_list/(?P<slug>[-\w]+)$', views.NewsDetailView.as_view(), name='news_detail'),
+    url(r'doctor_list/(?P<slug>[-\w]+)$', views.DoctorDetailView.as_view(), name='doctor_detail'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

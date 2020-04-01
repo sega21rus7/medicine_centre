@@ -25,14 +25,17 @@ class Employee(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ('pk',)
+        ordering = ('-pk',)
 
     def __str__(self):
         return self.user.username
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = slugify(self.user.username)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("main:doctor_detail", kwargs={"slug": self.slug})
 
 
 class Doctor(Employee):

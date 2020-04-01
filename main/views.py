@@ -12,16 +12,22 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['news'] = News.objects.all()[:3]
-        context['doctors'] = Doctor.objects.all()
+        context['doctors'] = Doctor.objects.all()[:3]
         context['big_news'] = BigNews.objects.all()
         return context
 
 
 class NewsView(ListView):
     model = News
-    queryset = model.objects.all()
     template_name = 'main/news_list.html'
     context_object_name = 'news'
+    paginate_by = 3
+
+
+class DoctorView(ListView):
+    model = Doctor
+    template_name = 'main/doctor_list.html'
+    context_object_name = 'doctors'
     paginate_by = 3
 
 
@@ -29,3 +35,9 @@ class NewsDetailView(DetailView):
     model = News
     template_name = 'main/news_detail.html'
     context_object_name = 'new'
+
+
+class DoctorDetailView(DetailView):
+    model = Doctor
+    template_name = 'main/doctor_detail.html'
+    context_object_name = 'doctor'
