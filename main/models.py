@@ -25,14 +25,14 @@ class Employee(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ('pk',)
 
     def __str__(self):
         return self.user.username
 
     def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.user.username)
-        super().save(self, *args, **kwargs)
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class Doctor(Employee):
@@ -66,7 +66,7 @@ class InsurancePolicy(models.Model):
     class Meta:
         verbose_name = 'Полис ОМС'
         verbose_name_plural = 'Полисы ОМС'
-        ordering = ('pk',)
+        ordering = ('-pk',)
 
 
 class Patient(models.Model):
@@ -79,7 +79,7 @@ class Patient(models.Model):
     class Meta:
         verbose_name = 'Пациент'
         verbose_name_plural = 'Пациенты'
-        ordering = ('pk',)
+        ordering = ('-pk',)
 
     def __str__(self):
         return self.user
@@ -93,6 +93,7 @@ class NewsBase(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ('-pub_date',)
 
     def __str__(self):
         return self.title
@@ -101,16 +102,14 @@ class NewsBase(models.Model):
         return reverse("main:new_detail", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.title)
-        super().save(self, *args, **kwargs)
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class News(NewsBase):
-    class Meta:
+    class Meta(NewsBase.Meta):
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
-        ordering = ('-pub_date',)
 
     def __str__(self):
         return self.title
@@ -119,7 +118,6 @@ class News(NewsBase):
 class BigNews(NewsBase):
     image = models.ImageField(verbose_name='Изображение', upload_to='main/images/big_news', null=True, blank=True)
 
-    class Meta:
+    class Meta(NewsBase.Meta):
         verbose_name = 'Большая новость'
         verbose_name_plural = 'Большие новости'
-        ordering = ('-pub_date',)
