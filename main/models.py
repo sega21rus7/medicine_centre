@@ -101,9 +101,6 @@ class NewsBase(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse("main:news_detail", kwargs={"slug": self.slug})
-
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
@@ -114,8 +111,8 @@ class News(NewsBase):
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
 
-    def __str__(self):
-        return self.title
+    def get_absolute_url(self):
+        return reverse("main:news_detail", kwargs={"slug": self.slug})
 
 
 class BigNews(NewsBase):
@@ -124,3 +121,6 @@ class BigNews(NewsBase):
     class Meta(NewsBase.Meta):
         verbose_name = 'Большая новость'
         verbose_name_plural = 'Большие новости'
+
+    def get_absolute_url(self):
+        return reverse("main:big_news_detail", kwargs={"slug": self.slug})

@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    {{ big_new.title }} - {{ block.super }}
+{% endblock %}
+{% block body %}
+    <h1>
+        {{ big_new.title }}
+    </h1>
+    <p>
+        {{ big_new.content }}
+    </p>
+    <img src="{{ big_new.image.url }}" alt="{{ big_new.title }}" class="img-thumbnail"/>
+{% endblock %}
