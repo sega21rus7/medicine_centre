@@ -3,10 +3,8 @@
     {{ new.title }} - {{ block.super }}
 {% endblock %}
 {% block body %}
-    <h1>
-        {{ new.title }}
-    </h1>
-    <p>
-        {{ new.content }}
-    </p>
+    <div class="container">
+        <h3 class="text-center mt-4">{{ new.title }}</h3>
+        <p>{{ new.content }}</p>
+    </div>
 {% endblock %}
