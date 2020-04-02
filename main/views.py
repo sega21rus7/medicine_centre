@@ -3,8 +3,6 @@ from django.views.generic.base import TemplateView
 
 from .models import News, Doctor, BigNews
 
-PAGINATOR_PAGES_COUNT = 3
-
 
 class IndexView(TemplateView):
     template_name = 'main/index.html'
@@ -21,7 +19,7 @@ class NewsView(ListView):
     model = News
     template_name = 'main/news_list.html'
     context_object_name = 'news'
-    paginate_by = 3
+    paginate_by = 6
 
 
 class BigNewsView(ListView):
