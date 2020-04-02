@@ -3,11 +3,17 @@
     {{ big_new.title }} - {{ block.super }}
 {% endblock %}
 {% block body %}
-    <h1>
-        {{ big_new.title }}
-    </h1>
-    <p>
-        {{ big_new.content }}
-    </p>
-    <img src="{{ big_new.image.url }}" alt="{{ big_new.title }}" class="img-thumbnail"/>
+    <div class="container m-4">
+        <div class="row">
+            <div class="col-md">
+                <h3 class="text-center">{{ big_new.title }}</h3>
+                <p>{{ big_new.content }}</p>
+            </div>
+            <div class="col-md">
+                <a href="{{ doctor.get_absolute_url }}">
+                    <img src="{{ big_new.image.url }}" alt="{{ big_new.title }}" class="img-thumbnail"/>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
