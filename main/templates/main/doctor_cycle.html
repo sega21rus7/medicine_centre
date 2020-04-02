@@ -2,7 +2,7 @@
     <h3 class="text-center mt-4">Наши специалисты</h3>
     <div class="row">
         {% for doctor in doctors %}
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <a href="{{ doctor.get_absolute_url }}">
                     <img src="{{ doctor.image.url }}" alt="{{ doctor.user.username }}" class="img-thumbnail"/>
                 </a>
