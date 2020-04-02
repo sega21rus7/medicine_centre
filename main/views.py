@@ -15,6 +15,14 @@ class IndexView(TemplateView):
         return context
 
 
+class AboutUsView(TemplateView):
+    template_name = 'main/about_us.html'
+
+
+class ContactsView(TemplateView):
+    template_name = 'main/contacts.html'
+
+
 class NewsView(ListView):
     model = News
     template_name = 'main/news_list.html'
