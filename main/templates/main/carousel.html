@@ -14,8 +14,17 @@
                     <h1>У вас всё под рукой.</h1>
                     <p>Запись на прием, быстрый доступ к лабораторным исследованиям и их результатам, медицинской карте,
                         актуальным новостям и отзывам.</p>
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'user_profile:sign_up' %}" role="button">Попробовать
-                        бесплатно</a></p>
+                    <p>
+                        {% if request.user.is_authenticated %}
+                            <a class="btn btn-lg btn-primary" href="{% url 'lk:index' %}" role="button">
+                                Перейти в личный кабинет
+                            </a>
+                        {% else %}
+                            <a class="btn btn-lg btn-primary" href="{% url 'user_profile:sign_up' %}" role="button">
+                                Попробовать бесплатно
+                            </a>
+                        {% endif %}
+                    </p>
                 </div>
             </div>
         </div>
@@ -27,7 +36,8 @@
                 <div class="carousel-caption">
                     <h1>Доступ к актуальным обновлениям.</h1>
                     <p>Архив всех событий всегда можно просмотреть.</p>
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'news:big_news_list' %}" role="button">Подробнее</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'news:big_news_list' %}"
+                          role="button">Подробнее</a></p>
                 </div>
             </div>
         </div>
@@ -40,7 +50,8 @@
                     <h1>Наши специалисты.</h1>
                     <p>Информация о работниках центра, фото, подробная информация об образовании и пройденных
                         курсах повышения квалификации.</p>
-                    <p><a class="btn btn-lg btn-primary" href="{% url 'staff:doctor_list' %}" role="button">Просмотреть галерею</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="{% url 'staff:doctor_list' %}" role="button">Просмотреть
+                        галерею</a></p>
                 </div>
             </div>
         </div>
