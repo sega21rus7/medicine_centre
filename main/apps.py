@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class SpaceConfig(AppConfig):
+class MainConfig(AppConfig):
     name = 'main'
+    verbose_name = 'Главное'
