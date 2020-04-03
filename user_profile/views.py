@@ -6,10 +6,6 @@ from django.views.generic.base import View, TemplateView
 from .forms import SignUpForm, SignInForm
 
 
-class LoginView(TemplateView):
-    template_name = 'user_profile/login_card.html'
-
-
 class SignOutView(View):
     def get(self, request):
         logout(request)
@@ -18,7 +14,7 @@ class SignOutView(View):
 
 class SignUpView(View):
     form_class = SignUpForm
-    template_name = 'user_profile/sign_up_form.html'
+    template_name = 'user_profile/sign_up.html'
 
     def get(self, request):
         context = {'form': self.form_class}
@@ -41,7 +37,7 @@ class SignUpView(View):
 
 class SignInView(View):
     form_class = SignInForm
-    template_name = 'user_profile/sign_in_form.html'
+    template_name = 'user_profile/sign_in.html'
 
     def get(self, request):
         context = {'form': self.form_class}
