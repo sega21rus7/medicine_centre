@@ -3,17 +3,15 @@
     Вход - {{ block.super }}
 {% endblock %}
 {% block body %}
-    <div class="container m-4">
-        <div class="card text-center col-md-6 offset-md-3">
-            <div class="card-header text-center logo-panel">
-                <a href="{% url 'main:index' %}">
-                    <img src="/static/images/logo.png" alt="Лого">
-                </a>
-            </div>
-            <div class="card-body">
-                {% block card-body %}
-                {% endblock %}
-            </div>
+    <div class="card text-center col-md-6 offset-md-3">
+        <div class="card-header text-center logo-panel">
+            <a href="{% url 'main:index' %}">
+                <img src="/static/images/logo.png" alt="Лого">
+            </a>
+        </div>
+        <div class="card-body">
+            {% block card-body %}
+            {% endblock %}
         </div>
     </div>
 {% endblock %}
