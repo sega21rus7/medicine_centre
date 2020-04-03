@@ -9,4 +9,4 @@ __pycache__/
 # Pycharm settings folder
 .idea/
 
-# Bootstrap
+/static
