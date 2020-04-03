@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'news',
     'staff',
     'client',
+    'lk',
     'crispy_forms',
     'phonenumber_field',
     'address',
