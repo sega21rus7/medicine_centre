@@ -1,7 +1,7 @@
-from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateView
 
-from .models import News, Doctor, BigNews
+from news.models import News, BigNews
+from staff.models import Doctor
 
 
 class IndexView(TemplateView):
@@ -21,42 +21,3 @@ class AboutUsView(TemplateView):
 
 class ContactsView(TemplateView):
     template_name = 'main/contacts.html'
-
-
-class NewsView(ListView):
-    model = News
-    template_name = 'main/news_list.html'
-    context_object_name = 'news'
-    paginate_by = 6
-
-
-class BigNewsView(ListView):
-    model = BigNews
-    template_name = 'main/big_news_list.html'
-    context_object_name = 'big_news'
-    paginate_by = 3
-
-
-class DoctorView(ListView):
-    model = Doctor
-    template_name = 'main/doctor_list.html'
-    context_object_name = 'doctors'
-    paginate_by = 3
-
-
-class NewsDetailView(DetailView):
-    model = News
-    template_name = 'main/news_detail.html'
-    context_object_name = 'new'
-
-
-class BigNewsDetailView(DetailView):
-    model = BigNews
-    template_name = 'main/big_news_detail.html'
-    context_object_name = 'big_new'
-
-
-class DoctorDetailView(DetailView):
-    model = Doctor
-    template_name = 'main/doctor_detail.html'
-    context_object_name = 'doctor'
