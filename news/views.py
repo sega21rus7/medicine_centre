@@ -5,14 +5,15 @@ from .models import News, BigNews
 
 
 class SearchListView(ListView):
-    def get_queryset(self):
-        search = self.request.GET.get('search', '')
-        if search:
-            news = self.model.objects.filter(Q(title__icontains=search) |
-                                             Q(content__contains=search))
-        else:
-            news = self.model.objects.all()
-        return news
+    pass
+    # def get_queryset(self):
+    #     search = self.request.GET.get('search', '')
+    #     if search:
+    #         news = self.model.objects.filter(Q(title__icontains=search) |
+    #                                          Q(content__contains=search))
+    #     else:
+    #         news = self.model.objects.all()
+    #     return news
 
 
 class NewsView(SearchListView):
