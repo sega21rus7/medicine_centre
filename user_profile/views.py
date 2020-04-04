@@ -32,7 +32,7 @@ class SignUpView(View):
         else:
             context = {'form': form}
             return render(request=request, template_name=self.template_name, context=context)
-        return redirect(reverse('admin:index'))
+        return redirect(reverse('lk:index'))
 
 
 class SignInView(View):
@@ -54,4 +54,4 @@ class SignInView(View):
         else:
             context = {'form': form}
             return render(request=request, template_name=self.template_name, context=context)
-        return redirect(reverse('admin:index'))
+        return redirect(reverse('lk:index'))
