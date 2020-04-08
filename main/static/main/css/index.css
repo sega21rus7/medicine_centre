@@ -92,3 +92,7 @@ body {
         margin-top: 7rem;
     }
 }
+
+.errorlist{
+    color: red;
+}
