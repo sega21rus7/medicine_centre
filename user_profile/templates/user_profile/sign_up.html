@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
     Регистрация - {{ block.super }}
@@ -10,7 +11,10 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                        <img src="{% static 'user_profile/images/sign_up.jpg' %}"
+                                     alt="Sign In" width="465" height="472">
+                    </div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
