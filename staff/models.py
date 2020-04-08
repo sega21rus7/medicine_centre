@@ -39,16 +39,12 @@ class Employee(models.Model):
 
 
 class Doctor(Employee):
-    image = models.ImageField(verbose_name='Фото', upload_to='staff/images/doctor')
-
     class Meta:
         verbose_name = 'Врач'
         verbose_name_plural = 'Врачи'
 
 
 class Nurse(Employee):
-    image = models.ImageField(verbose_name='Фото', upload_to='staff/images/nurse')
-
     class Meta:
         verbose_name = 'Медсестра'
         verbose_name_plural = 'Медсестры'

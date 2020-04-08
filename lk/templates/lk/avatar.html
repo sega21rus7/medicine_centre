@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<div class="dropdown no-arrow">
+    <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ request.user.username }}</span>
+        {% if request.user.avatar %}
+            <img class="img-profile rounded-circle"
+                 src="{{ request.user.avatar.url }}"
+                 alt="avatar">
+        {% else %}
+            <img class="img-profile rounded-circle"
+                 src="{% static 'lk/images/avatar_template.jpg' %}"
+                 alt="avatar">
+        {% endif %}
+    </a>
+    <!-- Dropdown - User Information -->
+    <div class="dropdown-menu shadow"
+         aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="#">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Профиль
+        </a>
+        <a class="dropdown-item" href="#">
+            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+            Настройки
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{% url 'user_profile:sign_out' %}">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Выйти
+        </a>
+    </div>
+</div>

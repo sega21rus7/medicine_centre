@@ -11,6 +11,7 @@ class CustomerUser(AbstractUser):
     middle_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True, null=True)
     phone_number = PhoneNumberField(verbose_name='Номер телефона', blank=True, null=True)
     address = AddressField(verbose_name='Адрес', blank=True, null=True, on_delete=models.CASCADE)
+    avatar = models.ImageField(verbose_name='Аватар', upload_to='user_profile/images', blank=True, null=True)
 
     class Meta:
         verbose_name = 'пользователь'
