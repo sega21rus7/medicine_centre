@@ -1,5 +1,10 @@
 {% extends 'main/base.html' %}
 
+
+{% block title %}
+    События - {{ block.super }}
+{% endblock %}
+
 {#{% block navbar_search %}#}
 {#    <form class="form-inline my-2 my-lg-0" action={% url 'news:big_news_list' %}>#}
 {#        <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск" name="search">#}
