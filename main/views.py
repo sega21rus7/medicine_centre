@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateView
 
+from main.models import CarouselItem
 from news.models import News, BigNews
 from staff.models import Doctor
 
@@ -9,6 +10,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
+        context['carousel_items'] = CarouselItem.objects.all()
         context['news'] = News.objects.all()[:3]
         context['doctors'] = Doctor.objects.all()[:3]
         context['big_news'] = BigNews.objects.all()[:3]
