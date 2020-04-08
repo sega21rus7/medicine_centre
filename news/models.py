@@ -31,7 +31,7 @@ class News(NewsBase):
 
 
 class BigNews(NewsBase):
-    image = models.ImageField(verbose_name='Изображение', upload_to='news/images/big_news', null=True, blank=True)
+    image = models.ImageField(verbose_name='Изображение', upload_to='news/images/big_news')
 
     class Meta(NewsBase.Meta):
         verbose_name = 'Большая новость'
