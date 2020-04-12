@@ -10,7 +10,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['news'] = News.objects.all()[:2]
-        context['doctors'] = Doctor.objects.all()[:3]
+        context['doctors'] = Doctor.objects.all()[:4]
         context['articles'] = Article.objects.all()[:3]
         return context
 
