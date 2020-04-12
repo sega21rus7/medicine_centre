@@ -12,8 +12,10 @@
 {#{% endblock %}#}
 
 {% block body %}
-    {% include 'news/news_cycle.html' %}
-    {% include 'main/pagination.html' %}
+    {% if news %}
+        {% include 'news/news_cycle.html' %}
+        {% include 'main/pagination.html' %}
+    {% endif %}
 {% endblock %}
 
 

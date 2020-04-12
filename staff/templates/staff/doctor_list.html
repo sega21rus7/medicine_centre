@@ -1,7 +1,9 @@
 {% extends 'main/base.html' %}
 {% block body %}
-    {% include 'staff/doctor_cycle.html' %}
-    {% include 'main/pagination.html' %}
+    {% if doctors %}
+        {% include 'staff/doctor_cycle.html' %}
+        {% include 'main/pagination.html' %}
+    {% endif %}
 {% endblock %}
 
 

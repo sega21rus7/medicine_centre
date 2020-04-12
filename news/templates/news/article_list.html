@@ -13,8 +13,10 @@
 {#{% endblock %}#}
 
 {% block body %}
-    {% include 'news/article_cycle.html' %}
-    {% include 'main/pagination.html' %}
+    {% if articles %}
+        {% include 'news/article_cycle.html' %}
+        {% include 'main/pagination.html' %}
+    {% endif %}
 {% endblock %}
 
 

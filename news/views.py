@@ -26,7 +26,7 @@ class NewsView(SearchListView):
 class ArticleView(SearchListView):
     model = Article
     template_name = 'news/article_list.html'
-    context_object_name = 'article_list'
+    context_object_name = 'articles'
     paginate_by = 4
 
 
@@ -36,7 +36,7 @@ class NewsDetailView(DetailView):
     context_object_name = 'new'
 
 
-class BigNewsDetailView(DetailView):
+class ArticleDetailView(DetailView):
     model = Article
     template_name = 'news/article_detail.html'
     context_object_name = 'article'
