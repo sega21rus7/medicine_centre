@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.urls import reverse
 from pytils.translit import slugify
@@ -5,7 +6,7 @@ from pytils.translit import slugify
 
 class NewsBase(models.Model):
     title = models.CharField(max_length=150, verbose_name='Заголовок', unique=True, db_index=True)
-    content = models.TextField(verbose_name='Содержание', db_index=True)
+    content = RichTextField(verbose_name='Содержание', db_index=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
 
