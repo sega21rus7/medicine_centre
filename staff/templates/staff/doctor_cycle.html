@@ -2,12 +2,15 @@
     <h3 class="text-left text-main mt-4">Наши специалисты</h3>
     <div class="row">
         {% for doctor in doctors %}
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <a href="{{ doctor.get_absolute_url }}">
-                    <img src="{{ doctor.image.url }}" alt="{{ doctor.user.username }}" class="img-thumbnail"/>
+                    <img src="{{ doctor.user.avatar.url }}" alt="{{ doctor.user.username }}" class="img-thumbnail"/>
                 </a>
-                <h2>{{ doctor.user.username }}</h2>
-                <p> Должность: {{ doctor.post }}</p>
+                <h4 class="text-center">
+                    <a class="black-link" href="{{ doctor.get_absolute_url }}">
+                        {{ doctor.user.username }}
+                    </a>
+                </h4>
             </div>
         {% endfor %}
     </div>
