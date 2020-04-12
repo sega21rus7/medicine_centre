@@ -7,8 +7,8 @@
                     <img src="{{ doctor.user.avatar.url }}" alt="{{ doctor.user.username }}" class="img-fluid rounded-circle"/>
                 </a>
                 <h4 class="text-center">
-                    <a class="black-color" href="{{ doctor.get_absolute_url }}">
-                        {{ doctor.user.get_fio }}
+                    <a class="black-color font-weight-light" href="{{ doctor.get_absolute_url }}">
+                        {{ doctor.user.get_fio_with_line_break | safe }}
                     </a>
                 </h4>
             </div>

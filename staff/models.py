@@ -28,10 +28,10 @@ class Employee(models.Model):
         ordering = ('-pk',)
 
     def __str__(self):
-        return self.user.username
+        return self.user.get_fio()
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.user.username)
+        self.slug = slugify(self.user.get_fio())
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):

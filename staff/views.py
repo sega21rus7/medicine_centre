@@ -7,7 +7,7 @@ class DoctorView(ListView):
     model = Doctor
     template_name = 'staff/doctor_list.html'
     context_object_name = 'doctors'
-    paginate_by = 3
+    paginate_by = 4
 
 
 class DoctorDetailView(DetailView):
