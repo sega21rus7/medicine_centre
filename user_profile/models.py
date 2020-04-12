@@ -17,3 +17,6 @@ class CustomerUser(AbstractUser):
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
         ordering = ('pk',)
+
+    def get_fio(self):
+        return '%s %s %s' % (self.last_name, self.first_name, self.middle_name)
