@@ -1,18 +1,26 @@
 <div class="container">
     <h3 class="text-left text-main mt-4">Статьи</h3>
-    {% for article in articles %}
-        <div class="row featurette m-4">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">
-                    {{ article.title }}
-                </h2>
-                <p class="lead">{{ article.content }}</p>
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-md-4">
+                <div class="card text-center mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            <a class="black-link" href="{{ article.get_absolute_url }}">
+                                {{ article.title }}
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ article.get_absolute_url }}">
+                            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid"/>
+                        </a>
+                    </div>
+                    <div class="card-footer">
+                        {{ article.pub_date }}
+                    </div>
+                </div>
             </div>
-            <div class="col-md-5">
-                <a href="{{ article.get_absolute_url }}">
-                    <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-thumbnail"/>
-                </a>
-            </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
