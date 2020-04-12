@@ -110,6 +110,10 @@ body {
     color: red;
 }
 
-.black-link {
+.black-color {
     color: #000000 !important;
+}
+
+.white-color {
+    color: #fff !important;
 }
