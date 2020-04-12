@@ -30,4 +30,5 @@ class SignUpForm(SignForm, UserCreationForm):
 class SignInForm(SignForm, AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(SignInForm, self).__init__(self, *args, **kwargs)
+        self.fields['username'].widget.attrs['placeholder'] = 'Логин/Email'
         self.fields['password'].widget.attrs['placeholder'] = 'Пароль'
