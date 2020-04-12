@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.views.generic import ListView, DetailView
 
-from .models import News, BigNews
+from .models import News, Article
 
 
 class SearchListView(ListView):
@@ -24,9 +24,9 @@ class NewsView(SearchListView):
 
 
 class BigNewsView(SearchListView):
-    model = BigNews
-    template_name = 'news/big_news_list.html'
-    context_object_name = 'big_news'
+    model = Article
+    template_name = 'news/article_list.html'
+    context_object_name = 'article_list'
     paginate_by = 3
 
 
@@ -37,6 +37,6 @@ class NewsDetailView(DetailView):
 
 
 class BigNewsDetailView(DetailView):
-    model = BigNews
-    template_name = 'news/big_news_detail.html'
-    context_object_name = 'big_new'
+    model = Article
+    template_name = 'news/article_detail.html'
+    context_object_name = 'article'

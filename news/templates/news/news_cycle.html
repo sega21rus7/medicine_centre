@@ -1,19 +1,21 @@
 <div class="container">
-    <h3 class="text-center mt-4">Новости</h3>
+    <h3 class="text-left text-main mt-4">Новости</h3>
     <div class="row">
         {% for new in news %}
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card text-center m-4">
                     <div class="card-header">
                         {{ new.pub_date }}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title ">
-                            <a href="{{ new.get_absolute_url }}" class="btn btn-light">
+                            <a class="black-link" href="{{ new.get_absolute_url }}">
                                 {{ new.title }}
                             </a>
                         </h5>
-                        <p class="card-text">{{ new.content }}</p> {# truncate #}
+                        <p class="card-text">
+                            <img src="{{ new.image.url }}" alt="{{ new.title }}" class="img-thumbnail"/>
+                        </p> {# truncate #}
                     </div>
                 </div>
             </div>

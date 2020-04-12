@@ -10740,6 +10740,10 @@ a:focus {
     font-size: 1.2rem;
 }
 
+.text-main {
+    color: #ff7c50 !important;
+}
+
 .text-gray-100 {
     color: #f8f9fc !important;
 }

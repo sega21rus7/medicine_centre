@@ -96,3 +96,7 @@ body {
 .errorlist{
     color: red;
 }
+
+.black-link{
+    color: #000000 !important;
+}

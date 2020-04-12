@@ -22,6 +22,8 @@ class NewsBase(models.Model):
 
 
 class News(NewsBase):
+    image = models.ImageField(verbose_name='Изображение', upload_to='news/images/news')
+
     class Meta(NewsBase.Meta):
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
@@ -30,12 +32,12 @@ class News(NewsBase):
         return reverse("news:news_detail", kwargs={"slug": self.slug})
 
 
-class BigNews(NewsBase):
-    image = models.ImageField(verbose_name='Изображение', upload_to='news/images/big_news')
+class Article(NewsBase):
+    image = models.ImageField(verbose_name='Изображение', upload_to='news/images/articles')
 
     class Meta(NewsBase.Meta):
-        verbose_name = 'Большая новость'
-        verbose_name_plural = 'Большие новости'
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
 
     def get_absolute_url(self):
-        return reverse("news:big_news_detail", kwargs={"slug": self.slug})
+        return reverse("news:article_detail", kwargs={"slug": self.slug})

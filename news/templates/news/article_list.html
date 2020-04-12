@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    События - {{ block.super }}
+    Статьи - {{ block.super }}
 {% endblock %}
 
 {#{% block navbar_search %}#}
@@ -13,7 +13,7 @@
 {#{% endblock %}#}
 
 {% block body %}
-    {% include 'news/big_news_cycle.html' %}
+    {% include 'news/article_cycle.html' %}
     {% include 'main/pagination.html' %}
 {% endblock %}
 
