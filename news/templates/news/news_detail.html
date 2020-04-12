@@ -3,8 +3,15 @@
     {{ new.title }} - {{ block.super }}
 {% endblock %}
 {% block body %}
-    <div class="container">
-        <h3 class="text-center mt-4 text-main">{{ new.title }}</h3>
-        <p>{{ new.content | safe }}</p>
+    <div class="container m-4">
+        <div class="row">
+            <div class="col-md-5">
+                <h3 class="text-center text-main">{{ new.title }}</h3>
+                <img src="{{ new.image.url }}" alt="{{ new.title }}" class="img-thumbnail"/>
+            </div>
+            <div class="col-md-7">
+                <p>{{ new.content | safe }}</p>
+            </div>
+        </div>
     </div>
 {% endblock %}
