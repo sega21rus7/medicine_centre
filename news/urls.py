@@ -7,7 +7,7 @@ from . import views
 app_name = 'news'
 
 urlpatterns = [
-    url(r'article_list/$', views.BigNewsView.as_view(), name='article_list'),
+    url(r'article_list/$', views.ArticleView.as_view(), name='article_list'),
     url(r'news_list/$', views.NewsView.as_view(), name='news_list'),
 
     url(r'article_list/(?P<slug>[-\w]+)$', views.BigNewsDetailView.as_view(), name='article_detail'),

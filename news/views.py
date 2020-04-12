@@ -23,11 +23,11 @@ class NewsView(SearchListView):
     paginate_by = 6
 
 
-class BigNewsView(SearchListView):
+class ArticleView(SearchListView):
     model = Article
     template_name = 'news/article_list.html'
     context_object_name = 'article_list'
-    paginate_by = 3
+    paginate_by = 4
 
 
 class NewsDetailView(DetailView):
