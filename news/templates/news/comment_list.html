@@ -1,0 +1,42 @@
+{% load mptt_tags staticfiles %}
+<div class="container">
+    <div class="comments">
+        <h3 class="comment-title">Комментарии ({{ comments.count }})</h3>
+        <ul class="media-list">
+            {% recursetree comments %}
+                <li class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            {% if node.user.avatar %}
+                                <img class="media-object" src="{{ node.user.avatar.url }}" alt="">
+                            {% else %}
+                                <img class="media-object" src="{% static 'lk/images/avatar_template.jpg' %}"
+                                     alt="">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="media-heading">
+                            <div class="comment-author">{{ node.user.get_fio }}</div>
+                            <div class="metadata">
+                                <span class="date">{{ node.pub_date }}</span>
+                            </div>
+                        </div>
+                        <div class="media-text text-justify">
+                            {{ node.content | safe }}
+                        </div>
+                        <div class="comment-footer">
+                            <a class="btn btn-default" href="#">Ответить</a>
+                        </div>
+                        {% if not node.is_leaf_node %}
+                            <hr>
+                            <ul class="children">
+                                {{ children }}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endrecursetree %}
+        </ul>
+    </div>
+</div>

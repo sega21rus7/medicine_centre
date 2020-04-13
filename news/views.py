@@ -40,6 +40,11 @@ class ArticleDetailView(DetailView):
     template_name = 'news/article_detail.html'
     context_object_name = 'article'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = self.object.comments.all()
+        return context
+
 
 class TagDetailView(DetailView):
     model = Tag

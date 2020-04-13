@@ -1,7 +1,12 @@
 from ckeditor.fields import RichTextField
 from django.db import models
 from django.urls import reverse
+from django.utils.html import strip_tags
+from mptt.fields import TreeForeignKey
+from mptt.models import MPTTModel
 from pytils.translit import slugify
+
+from medicine_centre import settings
 
 
 class NewsBase(models.Model):
@@ -63,3 +68,29 @@ class Tag(models.Model):
 
     def get_absolute_url(self):
         return reverse("news:tag_detail", kwargs={"slug": self.slug})
+
+
+class ArticleComment(MPTTModel):
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children',
+                            on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             on_delete=models.CASCADE)
+    article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,
+                                related_name='comments')
+    pub_date = models.DateTimeField(auto_now_add=True)
+    content = RichTextField(verbose_name='Содержание', db_index=True)
+
+    class MPTTMeta:
+        order_insertion_by = ['content']
+
+    class Meta:
+        ordering = ('pub_date',)
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
+    def __str__(self):
+        if len(self.content) > 40:
+            content = '%s...' % self.content[:40]
+        else:
+            content = self.content
+        return strip_tags(content)
