@@ -35,6 +35,7 @@ class News(NewsBase):
 
 class Article(NewsBase):
     image = models.ImageField(verbose_name='Изображение', upload_to='news/images/articles')
+    tags = models.ManyToManyField('Tag', verbose_name='Теги', blank=True, related_name='articles')
 
     class Meta(NewsBase.Meta):
         verbose_name = 'Статья'
@@ -42,3 +43,23 @@ class Article(NewsBase):
 
     def get_absolute_url(self):
         return reverse("news:article_detail", kwargs={"slug": self.slug})
+
+
+class Tag(models.Model):
+    title = models.CharField(max_length=50, verbose_name='Заголовок', unique=True, db_index=True)
+    slug = models.SlugField(max_length=50, unique=True, blank=True)
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("news:tag_detail", kwargs={"slug": self.slug})

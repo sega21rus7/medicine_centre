@@ -1,7 +1,6 @@
-from django.db.models import Q
 from django.views.generic import ListView, DetailView
 
-from .models import News, Article
+from .models import News, Article, Tag
 
 
 class SearchListView(ListView):
@@ -40,3 +39,9 @@ class ArticleDetailView(DetailView):
     model = Article
     template_name = 'news/article_detail.html'
     context_object_name = 'article'
+
+
+class TagDetailView(DetailView):
+    model = Tag
+    template_name = 'news/tag_detail.html'
+    context_object_name = 'tag'
