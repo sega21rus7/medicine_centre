@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'phonenumber_field',
     'address',
-    'ckeditor'
+    'ckeditor',
+    'mptt',
+    'django_mptt_admin'
 ]
 
 MIDDLEWARE = [
