@@ -1,9 +1,11 @@
 Babel==2.8.0
 Django==2.2.2
 django-address==0.2.1
-django-ckeditor==5.9.0 #textfielduploading для add через crud в дальнейшем
+django-ckeditor==5.9.0
 django-crispy-forms==1.9.0
 django-js-asset==1.2.2
+django-mptt==0.11.0
+django-mptt-admin==1.0.1
 django-phonenumber-field==4.0.0
 phonenumbers==8.11.5
 Pillow==7.0.0
