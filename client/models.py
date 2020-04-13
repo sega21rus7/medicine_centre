@@ -22,8 +22,8 @@ class InsurancePolicy(models.Model):
 
 
 class Patient(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
-                             on_delete=models.CASCADE, related_name='patients')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             on_delete=models.CASCADE,)
     passport = models.OneToOneField(Passport, verbose_name='Паспорт', on_delete=models.CASCADE)
     insurance_policy = models.OneToOneField(InsurancePolicy, verbose_name='Полис ОМС',
                                             on_delete=models.CASCADE)
@@ -31,7 +31,7 @@ class Patient(models.Model):
     class Meta:
         verbose_name = 'Пациент'
         verbose_name_plural = 'Пациенты'
-        ordering = ('-pk',)
+        ordering = ('-user',)
 
     def __str__(self):
-        return self.user
+        return self.user.get_fio()
