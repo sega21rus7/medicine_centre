@@ -4,7 +4,7 @@
         {% for doctor in doctors %}
             <div class="col-md-3 mb-3">
                 <a href="{{ doctor.get_absolute_url }}">
-                    <img src="{{ doctor.user.avatar.url }}" alt="{{ doctor.user.username }}" class="img-fluid rounded-circle"/>
+                    <img src="{{ doctor.user.avatar.url }}" alt="" class="img-fluid rounded-circle"/>
                 </a>
                 <h4 class="text-center">
                     <a class="black-color font-weight-light" href="{{ doctor.get_absolute_url }}">
