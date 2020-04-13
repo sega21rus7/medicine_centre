@@ -3,9 +3,9 @@
 {% if request.user.avatar %}
     <img class="img-profile rounded-circle"
          src="{{ request.user.avatar.url }}"
-         alt="avatar">
+         alt="">
 {% else %}
     <img class="img-profile rounded-circle"
          src="{% static 'lk/images/avatar_template.jpg' %}"
-         alt="avatar">
+         alt="">
 {% endif %}
