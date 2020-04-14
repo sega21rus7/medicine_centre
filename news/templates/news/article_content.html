@@ -4,10 +4,10 @@
             <div class="container">
                 <h3 class="text-center text-main">{{ article.title }}</h3>
                 <img src="{{ article.image.url }}" alt="" class="img-thumbnail"/>
-                <p><span class="text-primary">Теги:</span>
+                <p><span>Теги:</span>
                     {% for tag in article.tags.all %}
                         <a href="{{ tag.get_absolute_url }}">
-                            <span class="black-color">{{ tag.title }}</span>
+                            <span>{{ tag.tag_title }}</span>
                         </a>
                     {% endfor %}
                 </p>

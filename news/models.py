@@ -59,6 +59,10 @@ class Tag(models.Model):
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
 
+    @property
+    def tag_title(self):
+        return '#%s' % self.title
+
     def __str__(self):
         return self.title
 
