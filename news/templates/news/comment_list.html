@@ -29,8 +29,8 @@
                             <a class="btn btn-default" href="#">Ответить</a>
                         </div>
                         {% if not node.is_leaf_node %}
-                            <hr>
                             <ul class="children">
+                                <hr>
                                 {{ children }}
                             </ul>
                         {% endif %}

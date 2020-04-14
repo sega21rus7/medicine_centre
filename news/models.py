@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from ckeditor.fields import RichTextField
 from django.db import models
 from django.urls import reverse
@@ -81,14 +83,14 @@ class ArticleComment(MPTTModel):
                              on_delete=models.CASCADE)
     article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,
                                 related_name='comments')
-    pub_date = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
     content = RichTextField(verbose_name='Содержание', db_index=True)
 
     class MPTTMeta:
-        order_insertion_by = ['content']
+        order_insertion_by = ['-pub_date']
 
     class Meta:
-        ordering = ('pub_date',)
+        # ordering = ('-pub_date',)
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
 
@@ -98,3 +100,8 @@ class ArticleComment(MPTTModel):
         else:
             content = self.content
         return strip_tags(content)
+
+    def save(self, *args, **kwargs):
+        if not self.pub_date:
+            self.pub_date = datetime.now()
+        super().save(*args, **kwargs)
