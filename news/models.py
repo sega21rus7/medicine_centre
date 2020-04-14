@@ -104,7 +104,9 @@ class ArticleComment(MPTTModel):
         if not self.pub_date:
             self.pub_date = datetime.now()
         max_indent = 2
-        lvl = self.parent.level if self.parent.level else 0
+        lvl = 0
+        if self.parent and self.parent.level:
+            lvl = self.parent.level
         if lvl >= max_indent - 1:
             raise ValueError("Максимальная вложенность: %i" % max_indent)
 
