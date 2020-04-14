@@ -25,7 +25,7 @@
                         <div class="media-text text-justify">
                             {{ node.content | safe }}
                         </div>
-                        {% if node.get_descendants %}
+                        {% if node.level == 0 %}
                             <div class="comment-footer">
                                 <a class="btn btn-default" href="#">Ответить</a>
                             </div>
