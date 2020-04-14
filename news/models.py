@@ -90,7 +90,6 @@ class ArticleComment(MPTTModel):
         order_insertion_by = ['-pub_date']
 
     class Meta:
-        # ordering = ('-pub_date',)
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
 
@@ -104,4 +103,9 @@ class ArticleComment(MPTTModel):
     def save(self, *args, **kwargs):
         if not self.pub_date:
             self.pub_date = datetime.now()
+        max_indent = 2
+        lvl = self.parent.level if self.parent.level else 0
+        if lvl >= max_indent - 1:
+            raise ValueError("Максимальная вложенность: %i" % max_indent)
+
         super().save(*args, **kwargs)

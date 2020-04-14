@@ -25,9 +25,11 @@
                         <div class="media-text text-justify">
                             {{ node.content | safe }}
                         </div>
-                        <div class="comment-footer">
-                            <a class="btn btn-default" href="#">Ответить</a>
-                        </div>
+                        {% if node.get_descendants %}
+                            <div class="comment-footer">
+                                <a class="btn btn-default" href="#">Ответить</a>
+                            </div>
+                        {% endif %}
                         {% if not node.is_leaf_node %}
                             <ul class="children">
                                 <hr>
