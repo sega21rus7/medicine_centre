@@ -6,26 +6,14 @@ from .forms import AddCommentForm
 from .models import News, Article, Tag
 
 
-class SearchListView(ListView):
-    pass
-    # def get_queryset(self):
-    #     search = self.request.GET.get('search', '')
-    #     if search:
-    #         news = self.model.objects.filter(Q(title__icontains=search) |
-    #                                          Q(content__contains=search))
-    #     else:
-    #         news = self.model.objects.all()
-    #     return news
-
-
-class NewsView(SearchListView):
+class NewsView(ListView):
     model = News
     template_name = 'news/news_list.html'
     context_object_name = 'news'
     paginate_by = 2
 
 
-class ArticleView(SearchListView):
+class ArticleView(ListView):
     model = Article
     template_name = 'news/article_list.html'
     context_object_name = 'articles'
@@ -55,19 +43,19 @@ class ArticleDetailView(FormMixin, DetailView):
 
     def form_valid(self, form):
         comment = form.save(commit=False)
-        comment.article = self.get_object()
+        comment.article = self.object
         comment.user = self.request.user
         comment.save()
         return super().form_valid(form)
 
     def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        form = self.get_form()
+            self.object = self.get_object()
+            form = self.form_class(request.POST)
 
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+            if form.is_valid():
+                return self.form_valid(form)
+            else:
+                return self.form_invalid(form)
 
 
 class TagDetailView(DetailView):
