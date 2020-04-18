@@ -1,8 +1,7 @@
-from datetime import datetime
-
 from ckeditor.fields import RichTextField
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.html import strip_tags
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
@@ -102,7 +101,7 @@ class ArticleComment(MPTTModel):
 
     def save(self, *args, **kwargs):
         if not self.pub_date:
-            self.pub_date = datetime.now()
+            self.pub_date = timezone.now()
         max_indent = 2
         lvl = 0
         if self.parent and self.parent.level:
