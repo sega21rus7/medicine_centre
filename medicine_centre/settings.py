@@ -69,6 +69,10 @@ TEMPLATES = [
     },
 ]
 
+ACCOUNT_FORMS = {
+    'login': 'user_profile.forms.SignInForm'
+}
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
