@@ -109,6 +109,9 @@ body {
 .errorlist {
     color: red;
 }
+.help-block {
+    color: red;
+}
 
 .black-color {
     color: #5a5a5a;
