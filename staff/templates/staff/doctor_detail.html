@@ -1,8 +1,8 @@
-{% extends 'main/base.html' %}
-{% block title %}
+{% extends 'base.html' %}
+{% block head_title %}
     {{ doctor.user.username }} - {{ block.super }}
 {% endblock %}
-{% block body %}
+{% block content %}
     <div class="container m-4">
         <div class="row">
             <div class="col-md-5">

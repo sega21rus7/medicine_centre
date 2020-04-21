@@ -1,37 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>{% block head_title %}{% endblock %}</title>
-    {% block extra_head %}
+    <meta charset="UTF-8">
+    <title>
+        {% block head_title %}
+            Медцентр
+        {% endblock %}
+        {% block extra_head %}
+        {% endblock %}
+    </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/bootstrap_css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/sb-admin-2.css' %}" type="text/css">
+    {% block css %}
     {% endblock %}
 </head>
-<body>
+<body class="bg-gradient-light">
 {% block body %}
+    <div class="wrapper">
+        {% if messages %}
+            <div>
+                <strong>Messages:</strong>
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
 
-    {% if messages %}
-        <div>
-            <strong>Messages:</strong>
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
+{#        <div>#}
+{#            <strong>Menu:</strong>#}
+{#            <ul>#}
+{#                {% if user.is_authenticated %}#}
+{#                    <li><a href="{% url 'account_email' %}">Change E-mail</a></li>#}
+{#                    <li><a href="{% url 'account_logout' %}">Sign Out</a></li>#}
+{#                {% else %}#}
+{#                    <li><a href="{% url 'account_login' %}">Sign In fasf</a></li>#}
+{#                    <li><a href="{% url 'account_signup' %}">Sign Up fa</a></li>#}
+{#                {% endif %}#}
+{#            </ul>#}
+{#        </div>#}
+
+        <div class="content">
+            {% include 'main/navbar.html' %}
+            {% block content %}
+            {% endblock %}
+            {% include 'main/footer.html' %}
         </div>
-    {% endif %}
 
-    <div>
-        <strong>Menu:</strong>
-        <ul>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-                <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-            {% else %}
-                <li><a href="{% url 'account_login' %}">Sign In</a></li>
-                <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-            {% endif %}
-        </ul>
     </div>
-    {% block content %}
-    {% endblock %}
 {% endblock %}
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="{% static 'main/bootstrap_js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'main/js/sb-admin-2.js' %}"></script>
 {% block extra_body %}
 {% endblock %}
 </body>
+</html>

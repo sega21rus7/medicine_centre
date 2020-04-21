@@ -1,6 +1,6 @@
-{% extends 'main/base.html' %}
+{% extends 'base.html' %}
 
-{% block title %}
+{% block head_title %}
     Новости - {{ block.super }}
 {% endblock %}
 
@@ -11,7 +11,7 @@
 {#    </form>#}
 {#{% endblock %}#}
 
-{% block body %}
+{% block content %}
     {% if news %}
         {% include 'news/news_cycle.html' %}
         {% include 'main/pagination.html' %}

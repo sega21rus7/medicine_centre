@@ -135,4 +135,4 @@ GOOGLE_API_KEY = 'AIzaSyD--your-google-maps-key-SjQBE'
 SITE_ID = 1
 LOGIN_REDIRECT_URL = 'lk/'
 LOGIN_URL = '/accounts/login'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackends'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
