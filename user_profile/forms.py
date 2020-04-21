@@ -1,6 +1,7 @@
 from allauth.account.forms import \
     LoginForm as AllauthLoginForm, \
-    SignupForm as AllauthSignUpForm
+    SignupForm as AllauthSignUpForm, \
+    ResetPasswordForm as AllauthResetPasswordForm
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -30,3 +31,10 @@ class SignInForm(SignForm, AllauthLoginForm):
         super(SignInForm, self).__init__(*args, **kwargs)
         self.fields['login'].widget.attrs['placeholder'] = 'Логин/Email'
         self.fields['password'].widget.attrs['placeholder'] = 'Пароль'
+
+
+class ResetPasswordForm(AllauthResetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(ResetPasswordForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'
+        self.fields['email'].widget.attrs['class'] = 'form-control form-control-user'
