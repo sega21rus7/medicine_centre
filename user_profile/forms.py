@@ -17,10 +17,6 @@ class SignForm(forms.Form):
 
 
 class SignUpForm(SignForm, AllauthSignUpForm):
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
-
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
