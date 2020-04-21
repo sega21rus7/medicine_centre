@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'staff/', include('staff.urls')),
     url(r'client/', include('client.urls')),
     url(r'lk/', include('lk.urls')),
+    url(r'accounts/', include('allauth.urls')),
     url(r'admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

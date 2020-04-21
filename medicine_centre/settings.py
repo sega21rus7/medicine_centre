@@ -19,6 +19,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -34,7 +35,10 @@ INSTALLED_APPS = [
     'address',
     'ckeditor',
     'mptt',
-    'django_mptt_admin'
+    'django_mptt_admin',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -52,8 +56,7 @@ ROOT_URLCONF = 'medicine_centre.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +68,11 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'medicine_centre.wsgi.application'
 
@@ -123,3 +131,8 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'user_profile.CustomerUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 GOOGLE_API_KEY = 'AIzaSyD--your-google-maps-key-SjQBE'
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = 'lk/'
+LOGIN_URL = '/accounts/login'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackends'
