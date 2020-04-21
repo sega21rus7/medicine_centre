@@ -70,7 +70,8 @@ TEMPLATES = [
 ]
 
 ACCOUNT_FORMS = {
-    'login': 'user_profile.forms.SignInForm'
+    'login': 'user_profile.forms.SignInForm',
+    'signup': 'user_profile.forms.SignUpForm'
 }
 
 AUTHENTICATION_BACKENDS = (
