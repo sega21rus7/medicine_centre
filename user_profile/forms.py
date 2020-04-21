@@ -9,7 +9,6 @@ User = get_user_model()
 class SignForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(SignForm, self).__init__(*args, **kwargs)
-        self.fields['login'].widget.attrs['placeholder'] = 'Логин'
         for field in self.fields.values():
             field.label = ''
             field.help_text = ''
@@ -31,5 +30,6 @@ class SignUpForm(SignForm, UserCreationForm):
 class SignInForm(SignForm, LoginForm):
     def __init__(self, *args, **kwargs):
         super(SignInForm, self).__init__(*args, **kwargs)
+        self.fields['login'].widget.attrs['placeholder'] = 'Логин'
         self.fields['login'].widget.attrs['placeholder'] = 'Логин/Email'
         self.fields['password'].widget.attrs['placeholder'] = 'Пароль'
