@@ -28,20 +28,6 @@
                 </ul>
             </div>
         {% endif %}
-
-        {#        <div>#}
-        {#            <strong>Menu:</strong>#}
-        {#            <ul>#}
-        {#                {% if user.is_authenticated %}#}
-        {#                    <li><a href="{% url 'account_email' %}">Change E-mail</a></li>#}
-        {#                    <li><a href="{% url 'account_logout' %}">Sign Out</a></li>#}
-        {#                {% else %}#}
-        {#                    <li><a href="{% url 'account_login' %}">Sign In fasf</a></li>#}
-        {#                    <li><a href="{% url 'account_signup' %}">Sign Up fa</a></li>#}
-        {#                {% endif %}#}
-        {#            </ul>#}
-        {#        </div>#}
-
         <div class="content">
             {% include 'main/navbar.html' %}
             {% block content %}
