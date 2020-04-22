@@ -142,3 +142,5 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = 'lk/'
 LOGIN_URL = '/accounts/login'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
