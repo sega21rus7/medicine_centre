@@ -1,4 +1,5 @@
 from ckeditor.fields import RichTextField
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -7,7 +8,7 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 from pytils.translit import slugify
 
-from django.conf import settings
+from .managers import ArticleQuerySet, NewsQuerySet
 
 
 class NewsBase(models.Model):
@@ -29,6 +30,8 @@ class NewsBase(models.Model):
 
 
 class News(NewsBase):
+    objects = NewsQuerySet.as_manager()
+
     image = models.ImageField(verbose_name='Изображение', upload_to='news/images/news')
 
     class Meta(NewsBase.Meta):
@@ -38,8 +41,14 @@ class News(NewsBase):
     def get_absolute_url(self):
         return reverse("news:news_detail", kwargs={"slug": self.slug})
 
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=True)
+        super(News, self).delete(*args, **kwargs)
+
 
 class Article(NewsBase):
+    objects = ArticleQuerySet.as_manager()
+
     image = models.ImageField(verbose_name='Изображение', upload_to='news/images/articles')
     tags = models.ManyToManyField('Tag', verbose_name='Теги', blank=True, related_name='articles')
 
@@ -49,6 +58,10 @@ class Article(NewsBase):
 
     def get_absolute_url(self):
         return reverse("news:article_detail", kwargs={"slug": self.slug})
+
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=True)
+        super(Article, self).delete(*args, **kwargs)
 
 
 class Tag(models.Model):

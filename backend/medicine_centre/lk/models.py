@@ -32,3 +32,7 @@ class CustomerUser(AbstractUser):
         if fio:
             res += ' - %s' % fio
         return res
+
+    def delete(self, *args, **kwargs):
+        self.avatar.delete(save=True)
+        super(CustomerUser, self).delete(*args, **kwargs)
