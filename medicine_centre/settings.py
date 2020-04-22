@@ -73,6 +73,7 @@ ACCOUNT_FORMS = {
     'login': 'user_profile.forms.SignInForm',
     'signup': 'user_profile.forms.SignUpForm',
     'reset_password': 'user_profile.forms.ResetPasswordForm',
+    'reset_password_from_key': 'user_profile.forms.ResetPasswordKeyForm',
 }
 
 AUTHENTICATION_BACKENDS = (

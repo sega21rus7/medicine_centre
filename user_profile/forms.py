@@ -1,7 +1,8 @@
 from allauth.account.forms import \
     LoginForm as AllauthLoginForm, \
     SignupForm as AllauthSignUpForm, \
-    ResetPasswordForm as AllauthResetPasswordForm
+    ResetPasswordForm as AllauthResetPasswordForm, \
+    ResetPasswordKeyForm as AllauthResetPasswordKeyForm
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -38,3 +39,10 @@ class ResetPasswordForm(AllauthResetPasswordForm):
         super(ResetPasswordForm, self).__init__(*args, **kwargs)
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
         self.fields['email'].widget.attrs['class'] = 'form-control form-control-user'
+
+
+class ResetPasswordKeyForm(AllauthResetPasswordKeyForm):
+    def __init__(self, *args, **kwargs):
+        super(ResetPasswordKeyForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control form-control-user'
