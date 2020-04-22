@@ -1,17 +1,17 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib import admin
 
 from django.conf import settings
 
 urlpatterns = [
-    url(r'', include('main.urls')),
-    url(r'lk/', include('lk.urls')),
-    url(r'news/', include('news.urls')),
-    url(r'staff/', include('staff.urls')),
-    url(r'client/', include('client.urls')),
-    url(r'accounts/', include('allauth.urls')),
-    url(r'admin/', admin.site.urls),
+    path('', include('main.urls')),
+    path('lk/', include('lk.urls')),
+    path('news/', include('news.urls')),
+    path('staff/', include('staff.urls')),
+    path('client/', include('client.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
