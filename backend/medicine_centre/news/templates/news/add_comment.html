@@ -1,0 +1,10 @@
+<div class="container">
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form }}
+        <div class="text-left">
+            <input type="submit" value="Опубликовать комментарий" class="btn btn-primary btn-sm">
+        </div>
+    </form>
+</div>

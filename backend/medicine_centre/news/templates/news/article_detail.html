@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block head_title %}
+    {{ article.title }} - {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        {% include 'news/article_content.html' %}
+        {% include 'news/comment_list.html' %}
+        {% include 'news/add_comment.html' %}
+    </div>
+{% endblock %}
