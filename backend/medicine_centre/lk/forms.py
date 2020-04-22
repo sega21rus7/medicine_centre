@@ -3,23 +3,24 @@ from allauth.account.forms import \
     SignupForm as AllauthSignUpForm, \
     ResetPasswordForm as AllauthResetPasswordForm, \
     ResetPasswordKeyForm as AllauthResetPasswordKeyForm, \
-    ChangePasswordForm as AllauthChangePasswordForm
+    ChangePasswordForm as AllauthChangePasswordForm, \
+    AddEmailForm as AllauthAddEmailForm
 from django import forms
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 
-class SignForm(forms.Form):
+class BaseWidgetForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        super(SignForm, self).__init__(*args, **kwargs)
+        super(BaseWidgetForm, self).__init__(*args, **kwargs)
         for field in self.fields.values():
             field.label = ''
             field.help_text = ''
             field.widget.attrs['class'] = 'form-control form-control-user'
 
 
-class SignUpForm(SignForm, AllauthSignUpForm):
+class SignUpForm(BaseWidgetForm, AllauthSignUpForm):
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
@@ -28,7 +29,7 @@ class SignUpForm(SignForm, AllauthSignUpForm):
         self.fields['password2'].widget.attrs['placeholder'] = 'Подтвердите пароль'
 
 
-class SignInForm(SignForm, AllauthLoginForm):
+class SignInForm(BaseWidgetForm, AllauthLoginForm):
     def __init__(self, *args, **kwargs):
         super(SignInForm, self).__init__(*args, **kwargs)
         self.fields['login'].widget.attrs['placeholder'] = 'Логин/Email'
@@ -42,19 +43,11 @@ class ResetPasswordForm(AllauthResetPasswordForm):
         self.fields['email'].widget.attrs['class'] = 'form-control form-control-user'
 
 
-class ResetPasswordKeyForm(AllauthResetPasswordKeyForm):
-    def __init__(self, *args, **kwargs):
-        super(ResetPasswordKeyForm, self).__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control form-control-user'
+class ResetPasswordKeyForm(BaseWidgetForm, AllauthResetPasswordKeyForm):
+    pass
 
 
-class ChangePasswordForm(AllauthChangePasswordForm):
-    def __init__(self, *args, **kwargs):
-        super(ChangePasswordForm, self).__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control form-control-user'
-
+class ChangePasswordForm(BaseWidgetForm, AllauthChangePasswordForm):
     def clean(self):
         cleaned_data = super(ChangePasswordForm, self).clean()
         oldpassword = cleaned_data.get('oldpassword')
@@ -65,3 +58,7 @@ class ChangePasswordForm(AllauthChangePasswordForm):
                 'password1', 'Новый пароль не должен совпадать со старым.',
             )
         return cleaned_data
+
+
+class AddEmailForm(BaseWidgetForm, AllauthAddEmailForm):
+    pass

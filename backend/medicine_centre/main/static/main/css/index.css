@@ -109,6 +109,7 @@ body {
 .errorlist {
     color: red;
 }
+
 .help-block {
     color: red;
 }
@@ -152,4 +153,8 @@ body {
 .media-left img {
     width: 50px;
     margin-right: 0.5rem;
+}
+
+.unverified {
+    color: red;
 }
