@@ -1,6 +1,6 @@
 from django.db import models
 
-from medicine_centre import settings
+from django.conf import settings
 
 
 class Passport(models.Model):

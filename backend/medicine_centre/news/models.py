@@ -7,7 +7,7 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 from pytils.translit import slugify
 
-from backend.medicine_centre.medicine_centre import settings
+from django.conf import settings
 
 
 class NewsBase(models.Model):

@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from pytils.translit import slugify
 
-from medicine_centre import settings
+from django.conf import settings
 
 
 class Post(models.Model):

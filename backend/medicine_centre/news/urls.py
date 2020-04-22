@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.conf.urls.static import static
 
-from medicine_centre import settings
+from django.conf import settings
 from . import views
 
 app_name = 'news'
