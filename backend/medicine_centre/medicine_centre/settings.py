@@ -73,6 +73,7 @@ ACCOUNT_FORMS = {
     'signup': 'lk.forms.SignUpForm',
     'reset_password': 'lk.forms.ResetPasswordForm',
     'reset_password_from_key': 'lk.forms.ResetPasswordKeyForm',
+    'change_password': 'lk.forms.ChangePasswordForm',
 }
 
 AUTHENTICATION_BACKENDS = (

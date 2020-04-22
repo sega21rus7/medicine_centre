@@ -2,7 +2,8 @@ from allauth.account.forms import \
     LoginForm as AllauthLoginForm, \
     SignupForm as AllauthSignUpForm, \
     ResetPasswordForm as AllauthResetPasswordForm, \
-    ResetPasswordKeyForm as AllauthResetPasswordKeyForm
+    ResetPasswordKeyForm as AllauthResetPasswordKeyForm, \
+    ChangePasswordForm as AllauthChangePasswordForm
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -46,3 +47,21 @@ class ResetPasswordKeyForm(AllauthResetPasswordKeyForm):
         super(ResetPasswordKeyForm, self).__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control form-control-user'
+
+
+class ChangePasswordForm(AllauthChangePasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(ChangePasswordForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control form-control-user'
+
+    def clean(self):
+        cleaned_data = super(ChangePasswordForm, self).clean()
+        oldpassword = cleaned_data.get('oldpassword')
+        password1 = cleaned_data.get('password1')
+        password2 = cleaned_data.get('password2')
+        if (oldpassword and password1 and password2) and oldpassword == password1:
+            self.add_error(
+                'password1', 'Новый пароль не должен совпадать со старым.',
+            )
+        return cleaned_data
