@@ -6,11 +6,10 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'', include('main.urls')),
-    url(r'user_profile/', include('user_profile.urls')),
+    url(r'lk/', include('lk.urls')),
     url(r'news/', include('news.urls')),
     url(r'staff/', include('staff.urls')),
     url(r'client/', include('client.urls')),
-    url(r'lk/', include('lk.urls')),
     url(r'accounts/', include('allauth.urls')),
     url(r'admin/', admin.site.urls),
 ]

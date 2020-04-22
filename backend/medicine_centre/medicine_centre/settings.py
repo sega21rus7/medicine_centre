@@ -25,7 +25,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'user_profile.apps.UserProfileConfig',
     'news.apps.NewsConfig',
     'staff.apps.StaffConfig',
     'client.apps.ClientConfig',
@@ -70,10 +69,10 @@ TEMPLATES = [
 ]
 
 ACCOUNT_FORMS = {
-    'login': 'user_profile.forms.SignInForm',
-    'signup': 'user_profile.forms.SignUpForm',
-    'reset_password': 'user_profile.forms.ResetPasswordForm',
-    'reset_password_from_key': 'user_profile.forms.ResetPasswordKeyForm',
+    'login': 'lk.forms.SignInForm',
+    'signup': 'lk.forms.SignUpForm',
+    'reset_password': 'lk.forms.ResetPasswordForm',
+    'reset_password_from_key': 'lk.forms.ResetPasswordKeyForm',
 }
 
 AUTHENTICATION_BACKENDS = (
@@ -135,7 +134,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-AUTH_USER_MODEL = 'user_profile.CustomerUser'
+AUTH_USER_MODEL = 'lk.CustomerUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 GOOGLE_API_KEY = 'AIzaSyD--your-google-maps-key-SjQBE'
 
