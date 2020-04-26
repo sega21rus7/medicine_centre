@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +79,20 @@ ACCOUNT_FORMS = {
     'reset_password_from_key': 'lk.forms.ResetPasswordKeyForm',
     'change_password': 'lk.forms.ChangePasswordForm',
     'add_email': 'lk.forms.AddEmailForm',
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'lk.api.serializers.UserProfileSerializer',
 }
 
 AUTHENTICATION_BACKENDS = (

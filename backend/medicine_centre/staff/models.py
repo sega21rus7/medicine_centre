@@ -28,7 +28,7 @@ class Employee(models.Model):
         ordering = ('-pk',)
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.user.get_fio())
