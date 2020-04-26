@@ -10,7 +10,7 @@ backend/venv[0-9]*
 .idea/
 
 # Django static files
-medicine_centre/static
+backend/medicine_centre/static
 
 # React
 frontend/node_modules
