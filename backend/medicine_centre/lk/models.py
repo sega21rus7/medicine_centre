@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
+from smartfields import fields as smart_fields
 
 
 class CustomerUser(AbstractUser):
@@ -11,7 +12,7 @@ class CustomerUser(AbstractUser):
     middle_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True)
     phone_number = PhoneNumberField(verbose_name='Номер телефона', blank=True)
     address = AddressField(verbose_name='Адрес', blank=True, null=True, on_delete=models.CASCADE)
-    avatar = models.ImageField(verbose_name='Аватар', upload_to='lk/images', blank=True, null=True)
+    avatar = smart_fields.ImageField(verbose_name='Аватар', upload_to='lk/images', blank=True, null=True)
 
     class Meta:
         verbose_name = 'пользователь'
@@ -32,7 +33,3 @@ class CustomerUser(AbstractUser):
         if fio:
             res += ' - %s' % fio
         return res
-
-    def delete(self, *args, **kwargs):
-        self.avatar.delete(save=True)
-        super(CustomerUser, self).delete(*args, **kwargs)
