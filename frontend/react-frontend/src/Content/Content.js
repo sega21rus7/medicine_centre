@@ -1,5 +1,6 @@
 import React from 'react';
 import './Content.css';
+import {Carousel, Container} from "react-bootstrap";
 
 
 class Content extends React.Component {
