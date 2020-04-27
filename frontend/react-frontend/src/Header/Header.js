@@ -19,6 +19,7 @@ class Header extends React.Component {
   render() {
     let nav = this.props.nav;
     let site_name = this.props.site_name;
+    let phone = this.props.phone;
 
     return (
       <div className="Header">
@@ -29,9 +30,15 @@ class Header extends React.Component {
             <Navbar.Collapse className="justify-content-end">
               <Nav className="mr-auto">
                 {Object.keys(nav).map(item => {
-                  return <Nav.Link key={item} as={Link} to={nav[item]}>{item}
+                  return <Nav.Link
+                    key={item} as={Link} to={nav[item]}>{item}
                   </Nav.Link>
                 })}
+              </Nav>
+              <Nav pullRight>
+                <Nav.Link key={phone.number} href={phone.to}>
+                  {phone.number}
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>

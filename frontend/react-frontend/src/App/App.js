@@ -18,13 +18,17 @@ class App extends React.Component {
         'О нас': '/about_us',
       },
       site_name: 'Медцентр',
+      phone: {
+        number: '8 800 111-22-33',
+        to: 'tel:88001112233',
+      }
     }
   }
 
   render() {
     return (
       <div className="App">
-        <Header nav={this.state.nav} site_name={this.state.site_name}/>
+        <Header nav={this.state.nav} site_name={this.state.site_name} phone={this.state.phone}/>
         <Content/>
         <Footer/>
       </div>
