@@ -7,8 +7,17 @@ import {BrowserRouter as Router, Link} from "react-router-dom";
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      nav: {},
+    this.nav = {
+      'Кабинет': '/lk',
+      'Новости': '/news',
+      'Статьи': '/articles',
+      'Контакты': '/contacts',
+      'О нас': '/about_us',
+    };
+    this.site_name = 'Медцентр';
+    this.phone = {
+      text: '8 800 111-22-33',
+      to: 'tel:88001112233',
     }
   }
 
@@ -17,27 +26,23 @@ class Header extends React.Component {
   // }
 
   render() {
-    let nav = this.props.nav;
-    let site_name = this.props.site_name;
-    let phone = this.props.phone;
-
     return (
       <div className="Header">
         <Router>
           <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top">
-            <Navbar.Brand as={Link} to="/">{site_name}</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/">{this.site_name}</Navbar.Brand>
             <Navbar.Toggle/>
             <Navbar.Collapse className="justify-content-end">
               <Nav className="mr-auto">
-                {Object.keys(nav).map(item => {
+                {Object.keys(this.nav).map(item => {
                   return <Nav.Link
-                    key={item} as={Link} to={nav[item]}>{item}
+                    key={item} as={Link} to={this.nav[item]}>{item}
                   </Nav.Link>
                 })}
               </Nav>
               <Nav pullright="true">
-                <Nav.Link key={phone.number} href={phone.to}>
-                  {phone.number}
+                <Nav.Link key={this.phone.text} href={this.phone.to}>
+                  {this.phone.text}
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
