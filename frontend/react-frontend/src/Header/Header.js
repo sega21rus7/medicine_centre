@@ -35,7 +35,7 @@ class Header extends React.Component {
                   </Nav.Link>
                 })}
               </Nav>
-              <Nav pullRight>
+              <Nav pullright="true">
                 <Nav.Link key={phone.number} href={phone.to}>
                   {phone.number}
                 </Nav.Link>
