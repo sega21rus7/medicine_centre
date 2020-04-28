@@ -9,14 +9,32 @@ import {BrowserRouter as Router, Link} from "react-router-dom";
 class CarouselComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.doctors = {
-      text: 'Просмотреть галерею',
-      to: '/doctors'
-    };
-    this.lk = {
-      text: 'Перейти в личный кабинет',
-      to: '/lk'
-    }
+    this.items = [
+      {
+        title: 'У вас всё под рукой.',
+        content: 'Запись на прием, быстрый доступ к лабораторным исследованиям и их результатам,' +
+          ' медицинской карте, актуальным новостям.',
+        image: image1,
+        button: {
+          text: 'Просмотреть галерею',
+          to: '/doctors',
+          variant: 'outline-success'
+        },
+        caption: 'text-left',
+      },
+      {
+        title: 'Наши специалисты.',
+        content: 'Информация о работниках центра, фото, подробная информация ' +
+          'об образовании и пройденных курсах повышения квалификации.',
+        image: image2,
+        button: {
+          text: 'Перейти в личный кабинет',
+          to: '/lk',
+          variant: 'primary'
+        },
+        caption: 'text-right',
+      }
+    ]
   }
 
   render() {
@@ -24,48 +42,31 @@ class CarouselComponent extends React.Component {
       <div className="Carousel">
         <Router>
           <Carousel>
-
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src={image1}
-                alt=""
-              />
-              <Carousel.Caption className="text-left">
-                <h1>У вас всё под рукой.</h1>
-                <p>Запись на прием, быстрый доступ к лабораторным исследованиям и их результатам, медицинской карте,
-                  актуальным новостям.</p>
-                <Link to={this.lk.to}>
-                  <Button variant="outline-success" size="lg">
-                    {this.lk.text}
-                  </Button>
-                </Link>
-              </Carousel.Caption>
-            </Carousel.Item>
-
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src={image2}
-                alt=""
-              />
-              <Carousel.Caption className="text-right">
-                <h1>Наши специалисты.</h1>
-                <p>Информация о работниках центра, фото, подробная информация об образовании и пройденных
-                  курсах повышения квалификации.</p>
-                <Link to={this.doctors.to}>
-                  <Button variant="primary" size="lg">
-                    {this.doctors.text}
-                  </Button>
-                </Link>
-              </Carousel.Caption>
-            </Carousel.Item>
-
+            {this.items.map((item, index) => (
+              <Carousel.Item key={index}>
+                <img
+                  className="d-block w-100"
+                  src={item.image}
+                  alt={item.title}
+                />
+                <Carousel.Caption className={item.caption}>
+                  <h1>{item.title}</h1>
+                  <p>{item.content}</p>
+                  <Link to={item.button.to}>
+                    <Button variant={item.button.variant} size="lg">
+                      {item.button.text}
+                    </Button>
+                  </Link>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
           </Carousel>
         </Router>
       </div>
     )
-  };
+  }
 }
 
 export default CarouselComponent;
+
+
