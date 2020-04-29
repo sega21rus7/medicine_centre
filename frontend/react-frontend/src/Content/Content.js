@@ -19,6 +19,7 @@ class Content extends React.Component {
           <NewsShortList/>
           <hr/>
           <ArticleShortList/>
+          <hr/>
         </Container>
       </div>
     )
