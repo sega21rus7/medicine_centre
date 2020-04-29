@@ -2,7 +2,6 @@ import React from 'react';
 import './NewsShortList.css';
 import {Container, Row} from "react-bootstrap";
 import ViewAllLink from "../ViewAllLink/ViewAllLink";
-import {BrowserRouter as Router} from "react-router-dom";
 import axios from 'axios';
 import NewsShortItem from './NewsShortItem/NewsShortItem'
 
@@ -31,16 +30,14 @@ class NewsShortList extends React.Component {
     return (
       <div className="NewsShortList">
         <Container>
-          <Router>
-            <h3 className="text-left">Новости</h3>
-            <Row>
-              {this.state.news.map((item, index) => (
-                  <NewsShortItem key={index} item={item} index={index}/>
-                )
-              )}
-            </Row>
-            <ViewAllLink button={this.button}/>
-          </Router>
+          <h3 className="text-left">Новости</h3>
+          <Row>
+            {this.state.news.map((item, index) => (
+                <NewsShortItem key={index} item={item} index={index}/>
+              )
+            )}
+          </Row>
+          <ViewAllLink button={this.button}/>
         </Container>
       </div>
     )

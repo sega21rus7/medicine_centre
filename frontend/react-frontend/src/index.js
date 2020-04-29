@@ -7,14 +7,24 @@ import Header from "./Header/Header";
 import Lk from "./Lk/Lk";
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
+import NewsList from "./NewsList/NewsList";
+import ArticleList from "./ArticleList/ArticleList";
+import AboutUs from "./AboutUs/AboutUs";
+import Contacts from "./Contacts/Contacts";
+import DoctorList from "./DoctorList/DoctorList";
 
 ReactDOM.render(
   <Router>
-    <Header/>    {/*<Route component={Header}/>*/}
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/lk" component={Lk}/>
-      </Switch>
+    <Header/> {/*<Route component={Header}/>*/}
+    <Switch>
+      <Route exact path="/" component={Home}/>
+      <Route path="/lk" component={Lk}/>
+      <Route path="/news" component={NewsList}/>
+      <Route path="/doctors" component={DoctorList}/>
+      <Route path="/articles" component={ArticleList}/>
+      <Route path="/contacts" component={Contacts}/>
+      <Route path="/about_us" component={AboutUs}/>
+    </Switch>
     <Footer/>
   </Router>,
   document.getElementById('root')
