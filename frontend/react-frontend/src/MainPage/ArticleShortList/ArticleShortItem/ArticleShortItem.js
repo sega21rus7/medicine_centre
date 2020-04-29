@@ -14,21 +14,36 @@ class ArticleShortItem extends React.Component {
 
     return (
       <Col md={4} sm={6} key={index}>
-        <Link to="/" style={{color: 'inherit'}}>
-          <Card>
+
+        <Card>
+          <Link to="/fass" style={{color: 'inherit'}}>
             <Card.Img
               variant="top"
               src={item.image}
               alt={item.title}
               className="img-fluid"
             />
-            <Card.Body>
-              <Card.Text className="text-center">
+          </Link>
+          <Card.Body>
+            <Card.Text className="text-center">
+              <Link to="/fas" style={{color: 'inherit'}}>
                 {item.title}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Link>
+              </Link>
+              <p>
+                Теги:
+                &nbsp;
+                {item.tags.map((tag, tag_index) => (
+                  <span key={tag_index}>
+                    <Link to="/tagdafnb">
+                      #{tag.title}
+                    </Link>
+                    &nbsp;</span>
+                ))}
+              </p>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+
       </Col>
     )
   };
