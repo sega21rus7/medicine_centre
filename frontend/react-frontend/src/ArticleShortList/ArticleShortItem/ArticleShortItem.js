@@ -1,6 +1,6 @@
 import React from 'react';
 import './ArticleShortItem.css';
-import {Card, Col, Image} from "react-bootstrap";
+import {Card, Col} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 class ArticleShortItem extends React.Component {
