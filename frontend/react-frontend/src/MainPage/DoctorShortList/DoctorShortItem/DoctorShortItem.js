@@ -9,8 +9,7 @@ class DoctorShortItem extends React.Component {
   }
 
   render() {
-    let item = this.props.item;
-    let index = this.props.index;
+    const { item, index } = this.props;
 
     return (
       <Col md="auto" key={index}>
