@@ -10,12 +10,6 @@ class ArticleListView(ListAPIView):
     queryset = Article.objects.all()
 
 
-class ArticleShortListView(ArticleListView):
-    def get_queryset(self):
-        qs = super(ArticleShortListView, self).get_queryset()
-        return qs[:3]
-
-
 class ArticleDetailView(RetrieveAPIView):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
@@ -25,12 +19,6 @@ class ArticleDetailView(RetrieveAPIView):
 class NewsListView(ListAPIView):
     serializer_class = NewsSerializer
     queryset = News.objects.all()
-
-
-class NewsShortListView(NewsListView):
-    def get_queryset(self):
-        qs = super(NewsShortListView, self).get_queryset()
-        return qs[:3]
 
 
 class NewsDetailView(RetrieveAPIView):

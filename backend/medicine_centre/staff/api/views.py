@@ -9,12 +9,6 @@ class DoctorListView(ListAPIView):
     queryset = Doctor.objects.all()
 
 
-class DoctorShortListView(DoctorListView):
-    def get_queryset(self):
-        qs = super(DoctorShortListView, self).get_queryset()
-        return qs[:3]
-
-
 class DoctorDetailView(RetrieveAPIView):
     serializer_class = DoctorSerializer
     queryset = Doctor.objects.all()
