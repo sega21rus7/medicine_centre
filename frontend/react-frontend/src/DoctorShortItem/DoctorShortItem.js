@@ -1,9 +1,9 @@
 import React from 'react';
-import './DoctorShort.css';
+import './DoctorShortItem.css';
 import {Col, Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-class DoctorShort extends React.Component {
+class DoctorShortItem extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -36,4 +36,4 @@ class DoctorShort extends React.Component {
   };
 }
 
-export default DoctorShort;
+export default DoctorShortItem;

@@ -4,7 +4,7 @@ import {Container, Row} from "react-bootstrap";
 import ViewAllButton from "../ViewAllButton/ViewAllButton";
 import {BrowserRouter as Router} from "react-router-dom";
 import axios from 'axios';
-import DoctorShort from "../DoctorShort/DoctorShort";
+import DoctorShortItem from "../DoctorShortItem/DoctorShortItem";
 
 class DoctorShortList extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class DoctorShortList extends React.Component {
             <Row>
               <Router>
                 {this.state.doctors.map((item, index) => (
-                    <DoctorShort key={index} item={item} index={index}/>
+                    <DoctorShortItem key={index} item={item} index={index}/>
                   )
                 )}
               </Router>
