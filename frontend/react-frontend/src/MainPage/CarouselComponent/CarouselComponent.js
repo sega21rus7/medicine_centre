@@ -3,7 +3,7 @@ import './CarouselComponent.css';
 import {Button, Carousel} from "react-bootstrap";
 import image1 from './images/1.jpg'
 import image2 from './images/2.jpg'
-import {BrowserRouter as Router, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 class CarouselComponent extends React.Component {
@@ -40,28 +40,26 @@ class CarouselComponent extends React.Component {
   render() {
     return (
       <div className="Carousel">
-        <Router>
-          <Carousel>
-            {this.items.map((item, index) => (
-              <Carousel.Item key={index}>
-                <img
-                  className="d-block w-100"
-                  src={item.image}
-                  alt={item.title}
-                />
-                <Carousel.Caption className={item.caption}>
-                  <h1>{item.title}</h1>
-                  <p>{item.content}</p>
-                  <Link to={item.button.to}>
-                    <Button variant={item.button.variant} size="lg">
-                      {item.button.text}
-                    </Button>
-                  </Link>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </Router>
+        <Carousel>
+          {this.items.map((item, index) => (
+            <Carousel.Item key={index}>
+              <img
+                className="d-block w-100"
+                src={item.image}
+                alt={item.title}
+              />
+              <Carousel.Caption className={item.caption}>
+                <h1>{item.title}</h1>
+                <p>{item.content}</p>
+                <Link to={item.button.to}>
+                  <Button variant={item.button.variant} size="lg">
+                    {item.button.text}
+                  </Button>
+                </Link>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </div>
     )
   }
