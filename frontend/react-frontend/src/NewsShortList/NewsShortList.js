@@ -1,41 +1,41 @@
 import React from 'react';
-import './DoctorShortList.css';
+import './NewsShortList.css';
 import {Container, Row} from "react-bootstrap";
 import ViewAllLink from "../ViewAllLink/ViewAllLink";
 import {BrowserRouter as Router} from "react-router-dom";
 import axios from 'axios';
-import DoctorShortItem from "./DoctorShortItem/DoctorShortItem";
+import NewsShortItem from './NewsShortItem/NewsShortItem'
 
-class DoctorShortList extends React.Component {
+class NewsShortList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      doctors: [],
+      news: [],
     };
     this.button = {
-      text: 'Показать всех врачей',
-      to: '/doctors'
+      text: 'Показать все новости',
+      to: '/news'
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/staff/api/doctor_list/')
+    axios.get('http://localhost:8000/news/api/news_list/')
       .then(response => {
         this.setState({
-          doctors: response.data
+          news: response.data
         });
       })
   }
 
   render() {
     return (
-      <div className="DoctorShortList">
+      <div className="NewsShortList">
         <Container>
           <Router>
-            <h3 className="text-left">Наши специалисты</h3>
+            <h3 className="text-left">Новости</h3>
             <Row>
-              {this.state.doctors.map((item, index) => (
-                  <DoctorShortItem key={index} item={item} index={index}/>
+              {this.state.news.map((item, index) => (
+                  <NewsShortItem key={index} item={item} index={index}/>
                 )
               )}
             </Row>
@@ -47,4 +47,4 @@ class DoctorShortList extends React.Component {
   };
 }
 
-export default DoctorShortList;
+export default NewsShortList;

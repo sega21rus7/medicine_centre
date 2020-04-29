@@ -3,6 +3,8 @@ import './Content.css';
 import Carousel from "../CarouselComponent/CarouselComponent";
 import DoctorShortList from "../DoctorShortList/DoctorShortList";
 import {Container} from "react-bootstrap";
+import NewsShortList from "../NewsShortList/NewsShortList";
+import ArticleShortList from "../ArticleShortList/ArticleShortList";
 
 
 class Content extends React.Component {
@@ -13,6 +15,10 @@ class Content extends React.Component {
         <Container>
           <hr/>
           <DoctorShortList/>
+          <hr/>
+          <NewsShortList/>
+          <hr/>
+          <ArticleShortList/>
         </Container>
       </div>
     )
