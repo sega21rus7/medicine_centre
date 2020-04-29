@@ -18,7 +18,7 @@ class ArticleShortList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/news/api/article_list/')
+    axios.get('http://localhost:8000/news/api/article_short_list/')
       .then(response => {
         this.setState({
           articles: response.data
