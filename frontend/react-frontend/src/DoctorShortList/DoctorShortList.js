@@ -24,7 +24,6 @@ class DoctorShortList extends React.Component {
         this.setState({
           doctors: response.data
         });
-        console.log(response.data)
       })
   }
 
@@ -37,7 +36,7 @@ class DoctorShortList extends React.Component {
             <Row>
               <Router>
                 {this.state.doctors.map((item, index) => (
-                    <DoctorShort item={item} index={index}/>
+                    <DoctorShort key={index} item={item} index={index}/>
                   )
                 )}
               </Router>
