@@ -5,9 +5,13 @@ from .serializers import ArticleSerializer, NewsSerializer, \
 from ..models import Article, News, ArticleComment, Tag
 
 
-class ArticleListView(ListAPIView):
+class ArticleShortListView(ListAPIView):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
+
+    def get_queryset(self):
+        qs = super(ArticleShortListView, self).get_queryset()
+        return qs[:3]
 
 
 class ArticleDetailView(RetrieveAPIView):
@@ -16,9 +20,13 @@ class ArticleDetailView(RetrieveAPIView):
     lookup_field = 'slug'
 
 
-class NewsListView(ListAPIView):
+class NewsShortListView(ListAPIView):
     serializer_class = NewsSerializer
     queryset = News.objects.all()
+
+    def get_queryset(self):
+        qs = super(NewsShortListView, self).get_queryset()
+        return qs[:3]
 
 
 class NewsDetailView(RetrieveAPIView):
