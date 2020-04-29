@@ -1,6 +1,6 @@
 import React from 'react';
 import './Content.css';
-import Carousel from "../Carousel/Carousel";
+import Carousel from "../CarouselComponent/CarouselComponent";
 import DoctorShortList from "../DoctorShortList/DoctorShortList";
 
 
