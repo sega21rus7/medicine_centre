@@ -18,11 +18,12 @@ class DoctorShortList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/staff/api/doctor_short_list/')
+    axios.get('http://localhost:8000/staff/api/doctor_list/')
       .then(response => {
         this.setState({
-          doctors: response.data
+          doctors: response.data.results
         });
+        console.log(response.data);
       })
   }
 
