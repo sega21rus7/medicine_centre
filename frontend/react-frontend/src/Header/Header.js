@@ -1,13 +1,7 @@
 import React from 'react';
 import './Header.css';
 import {Nav, Navbar} from "react-bootstrap";
-import {BrowserRouter as Router, Link} from "react-router-dom";
-import {Route, Switch} from "react-router";
-import Lk from "../Lk/Lk";
-import ArticleList from "../ArticleList/ArticleList";
-import NewsList from "../NewsList/NewsList";
-import Contacts from "../Contacts/Contacts";
-import AboutUs from "../AboutUs/AboutUs";
+import {Link, Switch} from "react-router-dom";
 
 
 class Header extends React.Component {
@@ -34,11 +28,11 @@ class Header extends React.Component {
   render() {
     return (
       <div className="Header">
-        <Router>
-          <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top">
-            <Navbar.Brand as={Link} to="/">{this.site_name}</Navbar.Brand>
-            <Navbar.Toggle/>
-            <Navbar.Collapse className="justify-content-end">
+        <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top">
+          <Navbar.Brand as={Link} to="/">{this.site_name}</Navbar.Brand>
+          <Navbar.Toggle/>
+          <Navbar.Collapse className="justify-content-end">
+            <Switch>
               <Nav className="mr-auto">
                 {Object.keys(this.nav).map(item => {
                   return <Nav.Link
@@ -46,14 +40,14 @@ class Header extends React.Component {
                   </Nav.Link>
                 })}
               </Nav>
-              <Nav pullright="true">
-                <Nav.Link key={this.phone.text} href={this.phone.to}>
-                  {this.phone.text}
-                </Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </Router>
+            </Switch>
+            <Nav pullright="true">
+              <Nav.Link key={this.phone.text} href={this.phone.to}>
+                {this.phone.text}
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
     )
   };
