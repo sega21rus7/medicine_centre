@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Header from "./Header/Header";
+import Header from "./MainPage/Header/Header";
 import Lk from "./Lk/Lk";
-import Home from "./Home/Home";
-import Footer from "./Footer/Footer";
+import Home from "./MainPage/Home/Home";
+import Footer from "./MainPage/Footer/Footer";
 import NewsList from "./NewsList/NewsList";
 import ArticleList from "./ArticleList/ArticleList";
 import AboutUs from "./AboutUs/AboutUs";
