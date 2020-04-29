@@ -32,14 +32,12 @@ class DoctorShortList extends React.Component {
       <div className="DoctorShortList">
         <Container>
           <Router>
-            <h3 className="text-left text-main mt-4">Наши специалисты</h3>
+            <h3 className="text-left">Наши специалисты</h3>
             <Row>
-              <Router>
-                {this.state.doctors.map((item, index) => (
-                    <DoctorShortItem key={index} item={item} index={index}/>
-                  )
-                )}
-              </Router>
+              {this.state.doctors.map((item, index) => (
+                  <DoctorShortItem key={index} item={item} index={index}/>
+                )
+              )}
             </Row>
             <ViewAllButton button={this.button}/>
           </Router>
