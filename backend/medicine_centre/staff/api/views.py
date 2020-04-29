@@ -4,10 +4,12 @@ from .serializers import DoctorSerializer
 from ..models import Doctor
 
 
-class DoctorShortListView(ListAPIView):
+class DoctorListView(ListAPIView):
     serializer_class = DoctorSerializer
     queryset = Doctor.objects.all()
 
+
+class DoctorShortListView(DoctorListView):
     def get_queryset(self):
         qs = super(DoctorShortListView, self).get_queryset()
         return qs[:3]
