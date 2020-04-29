@@ -2,6 +2,12 @@ import React from 'react';
 import './Header.css';
 import {Nav, Navbar} from "react-bootstrap";
 import {BrowserRouter as Router, Link} from "react-router-dom";
+import {Route, Switch} from "react-router";
+import Lk from "../Lk/Lk";
+import ArticleList from "../ArticleList/ArticleList";
+import NewsList from "../NewsList/NewsList";
+import Contacts from "../Contacts/Contacts";
+import AboutUs from "../AboutUs/AboutUs";
 
 
 class Header extends React.Component {
