@@ -23,7 +23,6 @@ class ArticleShortList extends React.Component {
         this.setState({
           articles: response.data
         });
-        console.log(response.data);
       })
   }
 
