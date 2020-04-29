@@ -9,7 +9,7 @@ class NewsShortItem extends React.Component {
   }
 
   render() {
-    const { item, index } = this.props;
+    const {item, index} = this.props;
 
     return (
       <Col md={4} sm={6} key={index}>
