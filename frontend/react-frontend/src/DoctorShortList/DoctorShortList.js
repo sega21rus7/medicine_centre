@@ -1,9 +1,10 @@
 import React from 'react';
 import './DoctorShortList.css';
-import {Col, Container, Image, Row} from "react-bootstrap";
+import {Container, Row} from "react-bootstrap";
 import ViewAllButton from "../ViewAllButton/ViewAllButton";
-import {BrowserRouter as Router, Link} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import axios from 'axios';
+import DoctorShort from "../DoctorShort/DoctorShort";
 
 class DoctorShortList extends React.Component {
   constructor(props) {
@@ -36,25 +37,7 @@ class DoctorShortList extends React.Component {
             <Row>
               <Router>
                 {this.state.doctors.map((item, index) => (
-                    <Col md="auto" key={index}>
-                      <Link to="/" style={{ color: 'inherit' }}>
-                        <Image
-                          src={item.user.avatar}
-                          alt={item.user.username}
-                          width="300px"
-                          height="300px"
-                          roundedCircle
-                        >
-                        </Image>
-                        <h4 className="text-md-center">
-                          {item.user.last_name}
-                          &nbsp;
-                          {item.user.first_name}
-                          &nbsp;
-                          {item.user.middle_name}
-                        </h4>
-                      </Link>
-                    </Col>
+                    <DoctorShort item={item} index={index}/>
                   )
                 )}
               </Router>
