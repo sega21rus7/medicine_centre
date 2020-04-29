@@ -29,17 +29,16 @@ class ArticleShortItem extends React.Component {
               <Link to="/fas" style={{color: 'inherit'}}>
                 {item.title}
               </Link>
-              <p>
-                Теги:
-                &nbsp;
-                {item.tags.map((tag, tag_index) => (
-                  <span key={tag_index}>
+              <br/>
+              Теги:
+              &nbsp;
+              {item.tags.map((tag, tag_index) => (
+                <span key={tag_index}>
                     <Link to="/tagdafnb">
                       #{tag.title}
                     </Link>
-                    &nbsp;</span>
-                ))}
-              </p>
+                  &nbsp;</span>
+              ))}
             </Card.Text>
           </Card.Body>
         </Card>
