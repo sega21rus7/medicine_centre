@@ -12,6 +12,7 @@ import AboutUs from "../AboutUs/AboutUs";
 import Footer from "../MainPage/Footer/Footer";
 import {BrowserRouter as Router} from "react-router-dom";
 import Content from "../MainPage/Content/Content";
+import Error404 from "../Error404/Error404";
 
 
 class App extends React.Component {
@@ -28,6 +29,7 @@ class App extends React.Component {
             <Route path="/articles" component={ArticleList}/>
             <Route path="/contacts" component={Contacts}/>
             <Route path="/about_us" component={AboutUs}/>
+            <Route component={Error404}/>
           </Switch>
           <Footer/>
         </Router>
