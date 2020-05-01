@@ -7,35 +7,19 @@ import CommonShortList from "../CommonShortList/CommonShortList";
 class NewsShortList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      news: [],
-    };
     this.button = {
       text: 'Показать все новости',
       to: '/news'
     }
   }
 
-  componentDidMount() {
-    axios.get('http://localhost:8000/news/api/news_list/')
-      .then(response => {
-        this.setState({
-          news: response.data.results
-        });
-      })
-  }
-
   render() {
-    const row = this.state.news.map((item, index) => (
-        <NewsShortItem key={index} item={item} index={index}/>
-      )
-    );
-
     return (
       <div className="NewsShortList">
         <CommonShortList button={this.button}
                          title={'Новости'}
-                         row={row}/>
+                         url='http://localhost:8000/news/api/news_list/'
+        />
       </div>
     )
   };
