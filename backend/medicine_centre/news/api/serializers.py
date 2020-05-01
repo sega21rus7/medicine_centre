@@ -23,14 +23,6 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields = ('title', 'content', 'pub_date', 'slug', 'image', 'tags',)
 
 
-class TagDetailSerializer(serializers.ModelSerializer):
-    articles = ArticleSerializer(read_only=True, many=True)
-
-    class Meta:
-        model = Tag
-        fields = ('title', 'slug', 'articles')
-
-
 class ArticleCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArticleComment

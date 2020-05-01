@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import ArticleDetailView, NewsDetailView, \
-    ArticleCommentListView, TagDetailView, \
+    ArticleCommentListView, ArticleWithTagView, \
     ArticleListView, NewsListView, TagListView
 
 urlpatterns = [
@@ -14,5 +14,5 @@ urlpatterns = [
     path('comment_list/', ArticleCommentListView.as_view(), name='comment_list_api'),
 
     path('tag_list/', TagListView.as_view(), name='tag_list_api'),
-    path('tag_detail/<slug>/', TagDetailView.as_view(), name='tag_detail_api'),
+    path('tag_detail/<slug>/', ArticleWithTagView.as_view(), name='tag_detail_api'),
 ]
