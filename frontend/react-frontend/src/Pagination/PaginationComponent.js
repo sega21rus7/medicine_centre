@@ -9,8 +9,8 @@ class PaginationComponent extends React.Component {
     this.state = {
       paginateCount: 0,
       getData: null,
+      activePage: 1,
     };
-    this.paginate_by = 3;
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -32,7 +32,7 @@ class PaginationComponent extends React.Component {
     // console.log(event.target.getAttribute('value'));
     const page = event.target.getAttribute('value') ||
       event.target.parentElement.getAttribute('value');
-    this.setState({activePage: page}, () => {
+    this.setState({activePage: Number(page)}, () => {
       this.state.getData(page);
     });
   };
@@ -47,13 +47,16 @@ class PaginationComponent extends React.Component {
           onClick={this.paginate}
           value={1}
         />
-        {pagination.map((item, index) => (
-            <Pagination.Item onClick={this.paginate}
-                             key={index} value={item}
-                             active={item === this.state.activePage}>
-              {item}
-            </Pagination.Item>
-          )
+        {pagination.map((item, index) => {
+            const isActive = item === this.state.activePage;
+            return (
+              <Pagination.Item onClick={this.paginate}
+                               key={index} value={item}
+                               active={isActive}>
+                {item}
+              </Pagination.Item>
+            )
+          }
         )}
         <Pagination.Last onClick={this.paginate}
                          value={pagination.length}

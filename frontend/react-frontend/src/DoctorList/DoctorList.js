@@ -15,7 +15,6 @@ class DoctorList extends React.Component {
       count: 0,
       doctors: [],
       paginateCount: 0,
-      activePage: 1,
     };
     this.paginate_by = 3;
   }
