@@ -59,6 +59,11 @@ class CommonList extends React.Component {
       }
     );
 
+    const pagination = <PaginationComponent items={items}
+                                            getData={this.getData}
+                                            paginateCount={paginateCount}
+                                            next={next}
+                                            previous={previous}/>;
 
     return (
       <Container>
@@ -66,12 +71,7 @@ class CommonList extends React.Component {
         <Row>
           {row}
         </Row>
-
-        <PaginationComponent items={items}
-                             getData={this.getData}
-                             paginateCount={paginateCount}
-                             next={next}
-                             previous={previous}/>
+        {this.state.paginateCount > 1 ? pagination : ''}
 
       </Container>
     )
