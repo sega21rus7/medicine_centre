@@ -34,11 +34,9 @@ class TagList extends React.Component {
 
     return (
       <div className="TagList">
-        <Container>
+        <Container className="ml-3">
           <Row>
-            <span>
-              Список всех тегов: {tags}
-            </span>
+            Список всех тегов: {tags}
           </Row>
         </Container>
       </div>
