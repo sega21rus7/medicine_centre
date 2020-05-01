@@ -1,8 +1,9 @@
 import React from 'react';
 import './DoctorList.css';
 import axios from "axios";
-import {Container, Pagination, Row} from "react-bootstrap";
+import {Container, Row} from "react-bootstrap";
 import DoctorShortItem from "../MainPage/DoctorShortList/DoctorShortItem/DoctorShortItem";
+import PaginationComponent from "../Pagination/PaginationComponent";
 
 
 class DoctorList extends React.Component {
@@ -13,18 +14,18 @@ class DoctorList extends React.Component {
       previous: null,
       count: 0,
       doctors: [],
-      activePage: 1,
       paginateCount: 0,
+      activePage: 1,
     };
     this.paginate_by = 3;
   }
 
   componentDidMount() {
-    this.getData();
+    this.getData(1);
   }
 
-  getData = () => {
-    const url = `http://localhost:8000/staff/api/doctor_list/?page=${this.state.activePage}`;
+  getData = (page) => {
+    const url = `http://localhost:8000/staff/api/doctor_list/?page=${page}`;
     axios.get(url)
       .then(response => {
         this.setState({
@@ -42,26 +43,8 @@ class DoctorList extends React.Component {
       })
   };
 
-  getPaginationPages = () => {
-    let pagination = [];
-    for (let i = 0; i < this.state.paginateCount; i++) {
-      pagination[i] = i + 1;
-    }
-    return pagination;
-  };
-
-  paginate = event => {
-    // console.log(event.target.getAttribute('value'));
-    const page = event.target.getAttribute('value') ||
-      event.target.parentElement.getAttribute('value');
-    this.setState({activePage: page}, () => {
-      this.getData();
-    });
-  };
-
   render() {
-    const {doctors, next, previous, count} = this.state;
-    const pagination = this.getPaginationPages();
+    const {doctors, paginateCount} = this.state;
 
     return (
       <div className="DoctorList">
@@ -74,23 +57,7 @@ class DoctorList extends React.Component {
             )}
           </Row>
 
-          <Pagination>
-            <Pagination.First
-              onClick={this.paginate}
-              value={1}
-            />
-            {pagination.map((item, index) => (
-                <Pagination.Item onClick={this.paginate}
-                                 key={index} value={item}
-                                 active={item === this.state.activePage}>
-                  {item}
-                </Pagination.Item>
-              )
-            )}
-            <Pagination.Last onClick={this.paginate}
-                             value={pagination.length}
-            />
-          </Pagination>
+          <PaginationComponent items={doctors} getData={this.getData} paginateCount={paginateCount}/>
 
         </Container>
       </div>
