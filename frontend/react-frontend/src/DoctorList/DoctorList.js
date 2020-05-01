@@ -43,7 +43,7 @@ class DoctorList extends React.Component {
   };
 
   render() {
-    const {doctors, paginateCount} = this.state;
+    const {next, previous, doctors, paginateCount} = this.state;
 
     return (
       <div className="DoctorList">
@@ -56,7 +56,11 @@ class DoctorList extends React.Component {
             )}
           </Row>
 
-          <PaginationComponent items={doctors} getData={this.getData} paginateCount={paginateCount}/>
+          <PaginationComponent items={doctors}
+                               getData={this.getData}
+                               paginateCount={paginateCount}
+                               next={next}
+                               previous={previous}/>
 
         </Container>
       </div>
