@@ -16,6 +16,7 @@ import Error404 from "../Error404/Error404";
 import NewsDetail from "../ListDetails/NewsDetail/NewsDetail";
 import ArticleDetail from "../ListDetails/ArticleDetail/ArticleDetail";
 import DoctorDetail from "../ListDetails/DoctorDetail/DoctorDetail";
+import TagDetail from "../ListDetails/TagDetail/TagDetail";
 
 
 class App extends React.Component {
@@ -26,15 +27,16 @@ class App extends React.Component {
           <Header/>
           <Switch>
             <Route exact path="/" component={Content}/>
-            <Route path="/lk" component={Lk}/>
-            <Route path="/news" component={NewsList}/>
-            <Route path='/new/:slug' component={NewsDetail}/>
-            <Route path="/doctors" component={DoctorList}/>
-            <Route path="/doctor/:slug" component={DoctorDetail}/>
-            <Route path="/articles" component={ArticleList}/>
-            <Route path="/article/:slug" component={ArticleDetail}/>
-            <Route path="/contacts" component={Contacts}/>
-            <Route path="/about_us" component={AboutUs}/>
+            <Route exact path="/lk" component={Lk}/>
+            <Route exact path="/news" component={NewsList}/>
+            <Route exact path='/new/:slug' component={NewsDetail}/>
+            <Route exact path="/doctors" component={DoctorList}/>
+            <Route exact path="/doctor/:slug" component={DoctorDetail}/>
+            <Route exact path="/articles" component={ArticleList}/>
+            <Route exact path="/article/:slug" component={ArticleDetail}/>
+            <Route exact path="/tag/:slug" component={TagDetail}/>
+            <Route exact path="/contacts" component={Contacts}/>
+            <Route exact path="/about_us" component={AboutUs}/>
             <Route component={Error404}/>
           </Switch>
           <Footer/>
