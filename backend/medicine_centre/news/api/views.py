@@ -2,7 +2,7 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 
 from .serializers import ArticleSerializer, NewsSerializer, \
-    ArticleCommentSerializer, TagSerializer
+    ArticleCommentSerializer, TagSerializer, TagDetailSerializer
 from ..models import Article, News, ArticleComment, Tag
 
 
@@ -46,6 +46,6 @@ class TagListView(ListAPIView):
 
 
 class TagDetailView(RetrieveAPIView):
-    serializer_class = TagSerializer
+    serializer_class = TagDetailSerializer
     queryset = Tag.objects.all()
     lookup_field = 'slug'

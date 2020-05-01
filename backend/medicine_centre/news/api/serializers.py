@@ -15,15 +15,23 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ('title', 'slug',)
 
 
-class ArticleCommentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ArticleComment
-        fields = ('parent', 'user', 'article', 'pub_date', 'content',)
-
-
 class ArticleSerializer(serializers.ModelSerializer):
     tags = TagSerializer(read_only=True, many=True)
 
     class Meta:
         model = Article
         fields = ('title', 'content', 'pub_date', 'slug', 'image', 'tags',)
+
+
+class TagDetailSerializer(serializers.ModelSerializer):
+    articles = ArticleSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Tag
+        fields = ('title', 'slug', 'articles')
+
+
+class ArticleCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArticleComment
+        fields = ('parent', 'user', 'article', 'pub_date', 'content',)
