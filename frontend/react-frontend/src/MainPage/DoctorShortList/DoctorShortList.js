@@ -4,7 +4,7 @@ import {Container, Row} from "react-bootstrap";
 import ViewAllLink from "../ViewAllLink/ViewAllLink";
 import axios from 'axios';
 import DoctorShortItem from "./DoctorShortItem/DoctorShortItem";
-import ItemsShortList from "../ItemsShortList/ItemsShortList";
+import CommonShortList from "../CommonShortList/CommonShortList";
 
 class DoctorShortList extends React.Component {
   constructor(props) {
@@ -35,9 +35,9 @@ class DoctorShortList extends React.Component {
     );
     return (
       <div className="DoctorShortList">
-        <ItemsShortList button={this.button}
-                        title={'Наши специалисты'}
-                        row={row}/>
+        <CommonShortList button={this.button}
+                         title={'Наши специалисты'}
+                         row={row}/>
       </div>
     )
   };

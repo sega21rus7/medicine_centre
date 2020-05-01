@@ -1,10 +1,10 @@
 import React from 'react';
-import './ItemsShortList.css';
+import './CommonShortList.css';
 import {Container, Row} from "react-bootstrap";
 import ViewAllLink from "../ViewAllLink/ViewAllLink";
 import axios from 'axios';
 
-class ItemsShortList extends React.Component {
+class CommonShortList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -22,4 +22,4 @@ class ItemsShortList extends React.Component {
   };
 }
 
-export default ItemsShortList;
+export default CommonShortList;

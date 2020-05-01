@@ -2,7 +2,7 @@ import React from 'react';
 import './NewsShortList.css';
 import axios from 'axios';
 import NewsShortItem from './NewsShortItem/NewsShortItem'
-import ItemsShortList from "../ItemsShortList/ItemsShortList";
+import CommonShortList from "../CommonShortList/CommonShortList";
 
 class NewsShortList extends React.Component {
   constructor(props) {
@@ -33,9 +33,9 @@ class NewsShortList extends React.Component {
 
     return (
       <div className="NewsShortList">
-        <ItemsShortList button={this.button}
-                        title={'Новости'}
-                        row={row}/>
+        <CommonShortList button={this.button}
+                         title={'Новости'}
+                         row={row}/>
       </div>
     )
   };
