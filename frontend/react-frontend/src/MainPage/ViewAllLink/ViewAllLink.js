@@ -11,7 +11,7 @@ class ViewAllLink extends React.Component {
   render() {
     return (
       <div className="ViewAllButton text-left">
-        <Link to={this.props.button.to} style={{color: 'inherit'}}>
+        <Link to={this.props.button.to} className="view-all">
             {this.props.button.text}
         </Link>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import Header from "../MainPage/Header/Header";
 import {Route, Switch} from "react-router";
 import Lk from "../Lk/Lk";

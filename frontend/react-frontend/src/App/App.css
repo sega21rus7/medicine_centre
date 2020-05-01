@@ -6,4 +6,15 @@ html {
 body {
   padding-top: 3rem;
   padding-bottom: 4.5rem;
+  background-color: #f8f9fc;
+  background-image: linear-gradient(180deg, #f8f9fc 10%, #c2cbe5 100%);
+  background-size: cover;
+  color: #666874;
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.bg-gradient-secondary {
+    background-color: #858796;
+    background-image: linear-gradient(180deg, #858796 10%, #60616f 100%);
+    background-size: cover;
 }

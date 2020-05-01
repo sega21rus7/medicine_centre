@@ -28,7 +28,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="Header">
-        <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top">
+        <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top" className="bg-gradient-secondary">
           <Navbar.Brand as={Link} to="/">{this.site_name}</Navbar.Brand>
           <Navbar.Toggle/>
           <Navbar.Collapse className="justify-content-end">

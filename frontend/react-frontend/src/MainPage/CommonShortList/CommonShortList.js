@@ -41,7 +41,7 @@ class CommonShortList extends React.Component {
 
     return (
       <Container>
-        <h3 className="text-left">{title}</h3>
+        <h3 className="caption">{title}</h3>
         <Row>
           {row}
         </Row>
