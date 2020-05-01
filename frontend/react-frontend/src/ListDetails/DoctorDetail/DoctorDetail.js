@@ -4,7 +4,7 @@ import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
 
 
-class Content extends React.Component {
+class DoctorDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,4 +62,4 @@ class Content extends React.Component {
   };
 }
 
-export default Content;
+export default DoctorDetail;

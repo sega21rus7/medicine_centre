@@ -5,7 +5,7 @@ import {Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 
-class Content extends React.Component {
+class ArticleDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,4 +71,4 @@ class Content extends React.Component {
   };
 }
 
-export default Content;
+export default ArticleDetail;
