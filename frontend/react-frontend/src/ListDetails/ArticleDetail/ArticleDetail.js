@@ -29,7 +29,7 @@ class ArticleDetail extends React.Component {
     if(article.tags) {
       tags = article.tags.map((tag, index) => (
         <span key={index}>
-        <Link to="/tagdafnb">
+        <Link to={'tag/' + tag.slug}>
           #{tag.title}
         </Link>
           &nbsp;

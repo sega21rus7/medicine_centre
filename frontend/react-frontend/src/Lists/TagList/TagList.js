@@ -26,7 +26,7 @@ class TagList extends React.Component {
   render() {
     const tags = this.state.tags.map((tag, tag_index) => (
       <span key={tag_index}>
-        <Link to="/tagdafnb">
+        <Link to={'tag/' + tag.slug}>
           #{tag.title}
         </Link>
         &nbsp;</span>
@@ -34,9 +34,9 @@ class TagList extends React.Component {
 
     return (
       <div className="TagList">
-        <Container className="ml-3">
+        <Container className="ml-3 mt-3">
           <Row>
-            Список всех тегов: {tags}
+            Список всех тегов:&nbsp;{tags}
           </Row>
         </Container>
       </div>

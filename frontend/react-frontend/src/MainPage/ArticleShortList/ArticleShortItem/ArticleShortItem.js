@@ -14,7 +14,7 @@ class ArticleShortItem extends React.Component {
     if (item.tags) {
       tags = item.tags.map((tag, tag_index) => (
         <span key={tag_index}>
-        <Link to="/tagdafnb">
+        <Link to={'tag/' + tag.slug}>
           #{tag.title}
         </Link>
           &nbsp;</span>
