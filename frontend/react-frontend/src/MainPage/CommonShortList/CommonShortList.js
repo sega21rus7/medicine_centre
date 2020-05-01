@@ -26,14 +26,14 @@ class CommonShortList extends React.Component {
   }
 
   render() {
-    const {button, title} = this.props;
+    const {button, title, kind} = this.props;
     const row = this.state.items.map((item, index) => {
         let res = '';
-        if (button.to === '/doctors')
+        if (kind === 'doctors')
           res = <DoctorShortItem key={index} item={item} index={index}/>;
-        else if (button.to === '/news')
+        else if (kind === 'news')
           res = <NewsShortItem key={index} item={item} index={index}/>;
-        else if (button.to === '/articles')
+        else if (kind === 'articles')
           res = <ArticleShortItem key={index} item={item} index={index}/>;
         return res;
       }
