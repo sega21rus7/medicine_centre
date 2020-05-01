@@ -4,6 +4,7 @@ import {Container, Row} from "react-bootstrap";
 import ViewAllLink from "../ViewAllLink/ViewAllLink";
 import axios from 'axios';
 import DoctorShortItem from "./DoctorShortItem/DoctorShortItem";
+import ItemsShortList from "../ItemsShortList/ItemsShortList";
 
 class DoctorShortList extends React.Component {
   constructor(props) {
@@ -28,18 +29,15 @@ class DoctorShortList extends React.Component {
   }
 
   render() {
+    const row = this.state.doctors.map((item, index) => (
+        <DoctorShortItem key={index} item={item} index={index}/>
+      )
+    );
     return (
       <div className="DoctorShortList">
-        <Container>
-          <h3 className="text-left">Наши специалисты</h3>
-          <Row>
-            {this.state.doctors.map((item, index) => (
-                <DoctorShortItem key={index} item={item} index={index}/>
-              )
-            )}
-          </Row>
-          <ViewAllLink button={this.button}/>
-        </Container>
+        <ItemsShortList button={this.button}
+                        title={'Наши специалисты'}
+                        row={row}/>
       </div>
     )
   };

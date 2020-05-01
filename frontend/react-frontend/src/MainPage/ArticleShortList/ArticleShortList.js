@@ -1,9 +1,8 @@
 import React from 'react';
 import './ArticleShortList.css';
-import {Container, Row} from "react-bootstrap";
-import ViewAllLink from "../ViewAllLink/ViewAllLink";
 import axios from 'axios';
 import ArticleShortItem from "./ArticleShortItem/ArticleShortItem";
+import ItemsShortList from "../ItemsShortList/ItemsShortList";
 
 class ArticleShortList extends React.Component {
   constructor(props) {
@@ -27,18 +26,16 @@ class ArticleShortList extends React.Component {
   }
 
   render() {
+    const row = this.state.articles.map((item, index) => (
+        <ArticleShortItem key={index} item={item} index={index}/>
+      )
+    );
+
     return (
-      <div className="DoctorShortList">
-        <Container>
-          <h3 className="text-left">Статьи</h3>
-          <Row>
-            {this.state.articles.map((item, index) => (
-                <ArticleShortItem key={index} item={item} index={index}/>
-              )
-            )}
-          </Row>
-          <ViewAllLink button={this.button}/>
-        </Container>
+      <div className="ArticleShortList">
+        <ItemsShortList button={this.button}
+                        title={'Статьи'}
+                        row={row}/>
       </div>
     )
   };
