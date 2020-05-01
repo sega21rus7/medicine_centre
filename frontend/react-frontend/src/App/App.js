@@ -15,6 +15,7 @@ import Content from "../MainPage/Content/Content";
 import Error404 from "../Error404/Error404";
 import NewsDetail from "../ListDetails/NewsDetail/NewsDetail";
 import ArticleDetail from "../ListDetails/ArticleDetail/ArticleDetail";
+import DoctorDetail from "../ListDetails/DoctorDetail/DoctorDetail";
 
 
 class App extends React.Component {
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route path="/news" component={NewsList}/>
             <Route path='/new/:slug' component={NewsDetail}/>
             <Route path="/doctors" component={DoctorList}/>
+            <Route path="/doctor/:slug" component={DoctorDetail}/>
             <Route path="/articles" component={ArticleList}/>
             <Route path="/article/:slug" component={ArticleDetail}/>
             <Route path="/contacts" component={Contacts}/>

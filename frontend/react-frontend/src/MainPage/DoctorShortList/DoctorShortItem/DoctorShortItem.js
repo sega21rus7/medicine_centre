@@ -13,7 +13,7 @@ class DoctorShortItem extends React.Component {
 
     return (
       <Col md="auto" key={index}>
-        <Link to="/" style={{color: 'inherit'}}>
+        <Link to={'doctor/' + item.slug} style={{color: 'inherit'}}>
           <Image
             src={item.user.avatar}
             alt={item.user.username}
