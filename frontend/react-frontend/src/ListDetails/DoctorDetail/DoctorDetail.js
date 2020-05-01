@@ -24,30 +24,36 @@ class Content extends React.Component {
 
   render() {
     const {doctor} = this.state;
+    if (doctor.post) {
+      var post = doctor.post.name
+    }
+    if (doctor.user) {
+      var {avatar, last_name, first_name, middle_name, phone_number} = doctor.user;
+    }
+    const caption =
+      <h3 className="caption-center">
+        {last_name}&nbsp;{first_name}&nbsp;{middle_name}
+      </h3>;
+
 
     return (
-      <div className="NewDetail">
+      <div className="DoctorDetail">
         <Container className="mt-4">
           <Row>
             <Col md={5}>
-              <h3 className="caption-center">
-                {doctor.user.last_name}
-                &nbsp;
-                {doctor.user.first_name}
-                &nbsp;
-                {doctor.user.middle_name}
-              </h3>
+              {caption}
               <Card>
                 <Card.Img
                   variant="top"
-                  src={doctor.image}
-                  alt={doctor.user.username}
+                  src={avatar}
                   className="img-fluid"
                 />
               </Card>
             </Col>
             <Col md={7}>
-              {doctor.post}
+              {post}
+              <br/>
+              {phone_number}
             </Col>
           </Row>
         </Container>

@@ -10,13 +10,16 @@ class ArticleShortItem extends React.Component {
 
   render() {
     const {item, index} = this.props;
-    const tags = item.tags.map((tag, tag_index) => (
-      <span key={tag_index}>
+    let tags = '-';
+    if (item.tags) {
+      tags = item.tags.map((tag, tag_index) => (
+        <span key={tag_index}>
         <Link to="/tagdafnb">
           #{tag.title}
         </Link>
-        &nbsp;</span>
-    ));
+          &nbsp;</span>
+      ));
+    }
 
     return (
       <Col md={4} sm={6} key={index}>
@@ -42,7 +45,6 @@ class ArticleShortItem extends React.Component {
             </Card.Text>
           </Card.Body>
         </Card>
-
       </Col>
     )
   };

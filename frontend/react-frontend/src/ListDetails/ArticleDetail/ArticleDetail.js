@@ -10,7 +10,7 @@ class Content extends React.Component {
     super(props);
     this.state = {
       article: {},
-    }
+    };
   }
 
   componentDidMount() {
@@ -25,17 +25,20 @@ class Content extends React.Component {
 
   render() {
     const {article} = this.state;
-    // const tags = article.tags.map((tag, index) => (
-    //   <span key={index}>
-    //     <Link to="/tagdafnb">
-    //       #{tag.title}
-    //     </Link>
-    //     &nbsp;
-    //   </span>
-    // ));
+    let tags = '-';
+    if(article.tags) {
+      tags = article.tags.map((tag, index) => (
+        <span key={index}>
+        <Link to="/tagdafnb">
+          #{tag.title}
+        </Link>
+          &nbsp;
+      </span>
+      ));
+    }
 
     return (
-      <div className="NewDetail">
+      <div className="ArticleDetail">
         <Container className="mt-4">
           <Row>
             <Col md={5}>
@@ -53,7 +56,7 @@ class Content extends React.Component {
                     <br/>
                     Теги:
                     &nbsp;
-                    {/*{tags}*/}
+                    {tags}
                   </Card.Text>
                 </Card.Body>
               </Card>
