@@ -7,22 +7,13 @@ class PaginationComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      paginateCount: 0,
-      getData: null,
       activePage: 1,
     };
   }
 
-  static getDerivedStateFromProps(props, state) {
-    return {
-      getData: props.getData,
-      paginateCount: props.paginateCount,
-    }
-  };
-
   getPaginationPages = () => {
     let pagination = [];
-    for (let i = 0; i < this.state.paginateCount; i++) {
+    for (let i = 0; i < this.props.paginateCount; i++) {
       pagination[i] = i + 1;
     }
     return pagination;
@@ -33,12 +24,13 @@ class PaginationComponent extends React.Component {
     const page = event.target.getAttribute('value') ||
       event.target.parentElement.getAttribute('value');
     this.setState({activePage: Number(page)}, () => {
-      this.state.getData(page);
+      this.props.getData(page);
     });
   };
 
   render() {
-    const {activePage, paginateCount} = this.state;
+    const {activePage} = this.state;
+    const {paginateCount} = this.props;
     const pagination = this.getPaginationPages();
 
     return (
