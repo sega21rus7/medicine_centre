@@ -2,8 +2,8 @@ import React from 'react';
 import './DoctorList.css';
 import axios from "axios";
 import {Container, Row} from "react-bootstrap";
-import DoctorShortItem from "../MainPage/DoctorShortList/DoctorShortItem/DoctorShortItem";
 import PaginationComponent from "../Pagination/PaginationComponent";
+import DoctorShortItem from "../../MainPage/DoctorShortList/DoctorShortItem/DoctorShortItem";
 
 
 class DoctorList extends React.Component {
