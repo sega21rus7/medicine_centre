@@ -10,12 +10,19 @@ class ArticleShortItem extends React.Component {
 
   render() {
     const {item, index} = this.props;
+    const tags = item.tags.map((tag, tag_index) => (
+      <span key={tag_index}>
+        <Link to="/tagdafnb">
+          #{tag.title}
+        </Link>
+        &nbsp;</span>
+    ));
 
     return (
       <Col md={4} sm={6} key={index}>
 
         <Card>
-          <Link to="/fass" style={{color: 'inherit'}}>
+          <Link to={'article/' + item.slug} style={{color: 'inherit'}}>
             <Card.Img
               variant="top"
               src={item.image}
@@ -25,19 +32,13 @@ class ArticleShortItem extends React.Component {
           </Link>
           <Card.Body>
             <Card.Text className="text-center">
-              <Link to="/fas" style={{color: 'inherit'}}>
+              <Link to={'article/' + item.slug} style={{color: 'inherit'}}>
                 {item.title}
               </Link>
               <br/>
               Теги:
               &nbsp;
-              {item.tags.map((tag, tag_index) => (
-                <span key={tag_index}>
-                    <Link to="/tagdafnb">
-                      #{tag.title}
-                    </Link>
-                  &nbsp;</span>
-              ))}
+              {tags}
             </Card.Text>
           </Card.Body>
         </Card>

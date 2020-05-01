@@ -14,6 +14,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import Content from "../MainPage/Content/Content";
 import Error404 from "../Error404/Error404";
 import NewsDetail from "../ListDetails/NewsDetail/NewsDetail";
+import ArticleDetail from "../ListDetails/ArticleDetail/ArticleDetail";
 
 
 class App extends React.Component {
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route path='/new/:slug' component={NewsDetail}/>
             <Route path="/doctors" component={DoctorList}/>
             <Route path="/articles" component={ArticleList}/>
+            <Route path="/article/:slug" component={ArticleDetail}/>
             <Route path="/contacts" component={Contacts}/>
             <Route path="/about_us" component={AboutUs}/>
             <Route component={Error404}/>

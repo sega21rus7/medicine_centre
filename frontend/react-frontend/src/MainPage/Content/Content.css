@@ -1,4 +1,8 @@
-.caption {
+.caption-left {
     color: #ff7c50;
     text-align: left;
+}
+.caption-center {
+    color: #ff7c50;
+    text-align: center;
 }
