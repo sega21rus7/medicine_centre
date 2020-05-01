@@ -1,8 +1,7 @@
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from pytils.translit import slugify
-
-from django.conf import settings
 
 
 class Post(models.Model):
@@ -25,7 +24,6 @@ class Employee(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ('-pk',)
 
     def __str__(self):
         return str(self.user)
@@ -42,9 +40,11 @@ class Doctor(Employee):
     class Meta:
         verbose_name = 'Врач'
         verbose_name_plural = 'Врачи'
+        ordering = ('-pk',)
 
 
 class Nurse(Employee):
     class Meta:
         verbose_name = 'Медсестра'
         verbose_name_plural = 'Медсестры'
+        ordering = ('-pk',)
