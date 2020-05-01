@@ -16,6 +16,7 @@ class DoctorList extends React.Component {
       activePage: 1,
       paginateCount: 0,
     };
+    this.paginate_by = 3;
   }
 
   componentDidMount() {
@@ -36,12 +37,12 @@ class DoctorList extends React.Component {
       })
       .then(() => {
         this.setState({
-          paginateCount: Math.ceil(this.state.count / 3)
+          paginateCount: Math.ceil(this.state.count / this.paginate_by)
         });
       })
   };
 
-  getPagination = () => {
+  getPaginationPages = () => {
     let pagination = [];
     for (let i = 0; i < this.state.paginateCount; i++) {
       pagination[i] = i + 1;
@@ -49,7 +50,7 @@ class DoctorList extends React.Component {
     return pagination;
   };
 
-  clickPagination = event => {
+  paginate = event => {
     // console.log(event.target.getAttribute('value'));
     const page = event.target.getAttribute('value') ||
       event.target.parentElement.getAttribute('value');
@@ -60,7 +61,7 @@ class DoctorList extends React.Component {
 
   render() {
     const {doctors, next, previous, count} = this.state;
-    const pagination = this.getPagination();
+    const pagination = this.getPaginationPages();
 
     return (
       <div className="DoctorList">
@@ -75,18 +76,18 @@ class DoctorList extends React.Component {
 
           <Pagination>
             <Pagination.First
-              onClick={this.clickPagination}
+              onClick={this.paginate}
               value={1}
             />
             {pagination.map((item, index) => (
-                <Pagination.Item onClick={this.clickPagination}
+                <Pagination.Item onClick={this.paginate}
                                  key={index} value={item}
                                  active={item === this.state.activePage}>
                   {item}
                 </Pagination.Item>
               )
             )}
-            <Pagination.Last onClick={this.clickPagination}
+            <Pagination.Last onClick={this.paginate}
                              value={pagination.length}
             />
           </Pagination>
