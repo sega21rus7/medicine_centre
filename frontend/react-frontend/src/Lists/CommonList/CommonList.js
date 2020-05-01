@@ -66,8 +66,8 @@ class CommonList extends React.Component {
                                             previous={previous}/>;
 
     return (
-      <Container>
-        <h3 className="caption mt-4">{title}</h3>
+      <Container className="mt-4">
+        <h3 className="caption">{title}</h3>
         <Row>
           {row}
         </Row>

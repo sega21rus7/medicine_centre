@@ -13,7 +13,7 @@ class NewsShortItem extends React.Component {
 
     return (
       <Col md={4} sm={6} key={index}>
-        <Link to="/" style={{color: 'inherit'}}>
+        <Link to={'new/' + item.slug} style={{color: 'inherit'}}>
           <Card>
             <Card.Img
               variant="top"

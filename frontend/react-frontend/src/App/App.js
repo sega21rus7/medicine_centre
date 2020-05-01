@@ -13,6 +13,7 @@ import Footer from "../MainPage/Footer/Footer";
 import {BrowserRouter as Router} from "react-router-dom";
 import Content from "../MainPage/Content/Content";
 import Error404 from "../Error404/Error404";
+import NewsDetail from "../ListDetails/NewsDetail/NewsDetail";
 
 
 class App extends React.Component {
@@ -25,6 +26,7 @@ class App extends React.Component {
             <Route exact path="/" component={Content}/>
             <Route path="/lk" component={Lk}/>
             <Route path="/news" component={NewsList}/>
+            <Route path='/new/:slug' component={NewsDetail}/>
             <Route path="/doctors" component={DoctorList}/>
             <Route path="/articles" component={ArticleList}/>
             <Route path="/contacts" component={Contacts}/>
