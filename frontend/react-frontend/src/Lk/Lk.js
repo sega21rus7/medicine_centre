@@ -5,20 +5,11 @@ import Error404 from "../Error404/Error404";
 
 
 class Lk extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: null,
-    }
-  }
-
   componentDidMount() {
     let token = localStorage.getItem('token') || '';
-    console.log(token);
     if (!token) return <Error404/>;
     else {
       token = JSON.parse(token);
-      this.setState({token: token});
       console.log(token);
       axios.get('http://localhost:8000/api/rest-auth/user/',
         {headers: {'Authorization': `Token ${token}`}})
