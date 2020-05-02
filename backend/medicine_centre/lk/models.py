@@ -5,11 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 from smartfields import fields as smart_fields
 
-from .managers import CustomerUserQuerySet
-
 
 class CustomerUser(AbstractUser):
-    objects = CustomerUserQuerySet.as_manager()
     # user = models.ForeignKey(settings.AUTH_USER_MODEL) - в дальнейшем используем так
     email = models.EmailField(_('Email address'), unique=True)
     middle_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True)
