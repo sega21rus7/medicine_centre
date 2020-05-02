@@ -17,6 +17,7 @@ class SignIn extends React.Component {
       password: null,
       isEmailInput: false,
       redirect: false,
+      errors: null,
     }
   }
 
@@ -51,11 +52,15 @@ class SignIn extends React.Component {
         localStorage.setItem('token', token);
         console.log(response.data);
       })
+      .catch(error => {
+        console.log(error.response.data);
+        this.setState({errors: error.response.data});
+      });
   };
 
   render() {
     if (localStorage.getItem('token')) return <Error404/>;
-    const {redirect, isEmailInput} = this.state;
+    const {redirect, isEmailInput, errors} = this.state;
 
     if (redirect) {
       return <Redirect to='/lk'/>;
@@ -68,6 +73,13 @@ class SignIn extends React.Component {
     const loginInput = <Form.Control className="form-control-user" type="text" name="login"
                                      placeholder="Логин" onChange={this.handleInput}/>;
     const emailOrLoginInput = isEmailInput ? emailInput : loginInput;
+    if (errors) {
+      var emailOrLoginError = isEmailInput ? errors.email : errors.username;
+      emailOrLoginError = <div className="help-block">{emailOrLoginError}</div>;
+      var passwordError = <div className="help-block">{errors.password}</div>;
+      var nonFieldErrors = <div className="help-block mb-3">{errors.non_field_errors}</div>;
+    }
+
 
     return (
       <Container className="SignIn">
@@ -101,10 +113,13 @@ class SignIn extends React.Component {
                   <Form className="user" onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formGroupLoginOrEmail">
                       {emailOrLoginInput}
+                      {emailOrLoginError || ''}
                     </Form.Group>
                     <Form.Group controlId="formGroupPassword">
                       {passwordInput}
+                      {passwordError || ''}
                     </Form.Group>
+                    {nonFieldErrors || ''}
                     <Button type="submit" variant="outline-primary" className="btn-user" block>
                       Войти
                     </Button>
