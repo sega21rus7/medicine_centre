@@ -5,7 +5,7 @@ import image from './sign_in.jpg'
 import {Link} from "react-router-dom";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import axios from "axios";
-import {Redirect} from "react-router";
+import {Redirect} from "react-router-dom";
 import Error404 from "../../Error404/Error404";
 
 class SignIn extends React.Component {
