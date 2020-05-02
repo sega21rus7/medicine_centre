@@ -13,14 +13,23 @@
   border-color: #4e73df;
 }
 
+.dropdown .btn{
+  border: 0;
+}
+
 .btn-outline-primary:hover {
   color: #fff;
   background-color: #4e73df;
   border-color: #4e73df;
 }
 
-.small-text {
+.text-small {
   font-size: 80%;
+  color: #4e73df;
+  font-weight: 400;
+}
+
+.text-middle {
   color: #4e73df;
   font-weight: 400;
 }
@@ -62,4 +71,7 @@ form.user .btn-user {
   font-size: 0.8rem;
   border-radius: 10rem;
   padding: 0.75rem 1rem;
+}
+.btn-dropdown {
+  border: 0;
 }

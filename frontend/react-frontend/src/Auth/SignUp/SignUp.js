@@ -48,12 +48,12 @@ class SignUp extends React.Component {
                   </Form>
                   <hr/>
                   <div className="text-center">
-                    <a className="small-text" href="#">
+                    <a className="text-small" href="#">
                       Забыли пароль?
                     </a>
                   </div>
                   <div className="text-center">
-                    <Link className="small-text" to="sign_in/">
+                    <Link className="text-small" to="sign_in/">
                       Уже есть аккаунт? Войдите!
                     </Link>
                   </div>
