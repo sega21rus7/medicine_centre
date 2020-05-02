@@ -15,7 +15,6 @@ class SignIn extends React.Component {
       email: null,
       password: null,
       isEmailInput: false,
-      token: null,
       redirect: false,
     }
   }
@@ -44,10 +43,10 @@ class SignIn extends React.Component {
     }
     axios.post('http://localhost:8000/api/rest-auth/login/', data)
       .then(response => {
-         this.setState({
-           token: response.data,
-           redirect: true,
-         });
+        this.setState({
+          redirect: true,
+        });
+        localStorage.setItem('token', JSON.stringify(response.data.key));
         console.log(response.data);
       })
   };
@@ -55,8 +54,8 @@ class SignIn extends React.Component {
   render() {
     const {redirect, isEmailInput} = this.state;
     if (redirect) {
-       return <Redirect to='lk/'/>;
-     }
+      return <Redirect to='lk/'/>;
+    }
 
     const passwordInput = <Form.Control className="form-control-user" type="password" name="password"
                                         placeholder="Пароль" onChange={this.handleInput}/>;
