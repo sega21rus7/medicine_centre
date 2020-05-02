@@ -16,7 +16,7 @@ class TagDetail extends React.Component {
   render() {
     return (
       <Container className="TagDetail">
-        <CommonList title={`Статьи с тегом #${this.props.match.params.slug}`}
+        <CommonList title={'Статьи'}
                     url={this.url}
                     kind={'articles'}
         />
