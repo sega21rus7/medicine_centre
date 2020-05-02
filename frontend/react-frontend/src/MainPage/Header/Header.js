@@ -7,8 +7,12 @@ import {Link, Switch} from "react-router-dom";
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      changable_nav: {
+        'Войти': '/sign_in',
+      }
+    };
     this.nav = {
-      'Войти': '/sign_in',
       'Новости': '/news',
       'Статьи': '/articles',
       'Контакты': '/contacts',
@@ -21,11 +25,28 @@ class Header extends React.Component {
     }
   }
 
-  // static getDerivedStateFromProps(props, state) {
-  //   return {nav: props.nav};
-  // }
+  componentDidMount() {
+    let token = localStorage.getItem('token');
+    if (token) {
+      console.log(token);
+      this.setState({changable_nav: {'Кабинет': '/lk'}});
+    }
+  }
 
   render() {
+    const nav =
+      Object.keys(this.nav).map(item => {
+        return <Nav.Link
+          key={item} as={Link} to={this.nav[item]}>{item}
+        </Nav.Link>
+      });
+    const changable_nav =
+      Object.keys(this.state.changable_nav).map(item => {
+        return <Nav.Link
+          key={item} as={Link} to={this.state.changable_nav[item]}>{item}
+        </Nav.Link>
+      });
+
     return (
       <div className="Header">
         <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top" className="bg-gradient-secondary">
@@ -34,11 +55,8 @@ class Header extends React.Component {
           <Navbar.Collapse className="justify-content-end">
             <Switch>
               <Nav className="mr-auto">
-                {Object.keys(this.nav).map(item => {
-                  return <Nav.Link
-                    key={item} as={Link} to={this.nav[item]}>{item}
-                  </Nav.Link>
-                })}
+                {changable_nav}
+                {nav}
               </Nav>
             </Switch>
             <Nav pullright="true">
