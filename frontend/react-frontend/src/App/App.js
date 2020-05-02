@@ -17,6 +17,8 @@ import NewsDetail from "../ListDetails/NewsDetail/NewsDetail";
 import ArticleDetail from "../ListDetails/ArticleDetail/ArticleDetail";
 import DoctorDetail from "../ListDetails/DoctorDetail/DoctorDetail";
 import TagDetail from "../ListDetails/TagDetail/TagDetail";
+import SignUp from "../Auth/SignUp/SignUp";
+import SignIn from "../Auth/SignIn/SignIn";
 
 
 class App extends React.Component {
@@ -37,6 +39,8 @@ class App extends React.Component {
             <Route exact path="/tag/:slug" component={TagDetail}/>
             <Route exact path="/contacts" component={Contacts}/>
             <Route exact path="/about_us" component={AboutUs}/>
+            <Route exact path="/sign_up" component={SignUp}/>
+            <Route exact path="/sign_in" component={SignIn}/>
             <Route component={Error404}/>
           </Switch>
           <Footer/>

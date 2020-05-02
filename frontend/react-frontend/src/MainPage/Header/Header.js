@@ -8,7 +8,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.nav = {
-      'Кабинет': '/lk',
+      'Войти': '/sign_in',
       'Новости': '/news',
       'Статьи': '/articles',
       'Контакты': '/contacts',
