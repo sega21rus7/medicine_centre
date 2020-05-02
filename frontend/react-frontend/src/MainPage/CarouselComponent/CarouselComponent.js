@@ -52,7 +52,7 @@ class CarouselComponent extends React.Component {
                 <h1>{item.title}</h1>
                 <p>{item.content}</p>
                 <Link to={item.button.to}>
-                  <Button variant={item.button.variant} size="lg">
+                  <Button variant={item.button.variant} size="md">
                     {item.button.text}
                   </Button>
                 </Link>
