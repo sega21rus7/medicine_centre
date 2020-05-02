@@ -54,11 +54,11 @@ class SignIn extends React.Component {
   };
 
   render() {
-    if(localStorage.getItem('token')) return <Error404/>;
+    if (localStorage.getItem('token')) return <Error404/>;
     const {redirect, isEmailInput} = this.state;
 
     if (redirect) {
-      return <Redirect to='lk/'/>;
+      return <Redirect to='/lk'/>;
     }
 
     const passwordInput = <Form.Control className="form-control-user" type="password" name="password"

@@ -38,6 +38,8 @@ class CarouselComponent extends React.Component {
   }
 
   render() {
+    let token = localStorage.getItem('token') || '';
+
     return (
       <div className="Carousel">
         <Carousel>
@@ -51,7 +53,7 @@ class CarouselComponent extends React.Component {
               <Carousel.Caption className={item.caption}>
                 <h1>{item.title}</h1>
                 <p>{item.content}</p>
-                <Link to={item.button.to}>
+                <Link to={!token && item.button.to === '/lk' ? '/sign_in' : item.button.to}>
                   <Button variant={item.button.variant} size="md">
                     {item.button.text}
                   </Button>
