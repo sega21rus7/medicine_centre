@@ -16,8 +16,8 @@ class CarouselComponent extends React.Component {
           ' медицинской карте, актуальным новостям.',
         image: image1,
         button: {
-          text: 'Просмотреть галерею',
-          to: '/doctors',
+          text: 'Перейти в личный кабинет',
+          to: '/lk',
           variant: 'outline-success'
         },
         caption: 'text-left',
@@ -28,8 +28,8 @@ class CarouselComponent extends React.Component {
           'об образовании и пройденных курсах повышения квалификации.',
         image: image2,
         button: {
-          text: 'Перейти в личный кабинет',
-          to: '/lk',
+          text: 'Просмотреть галерею',
+          to: '/doctors',
           variant: 'primary'
         },
         caption: 'text-right',
