@@ -23,13 +23,19 @@ import SignIn from "../Auth/SignIn/SignIn";
 
 class App extends React.Component {
   render() {
+    let token = localStorage.getItem('token') || '';
+    if(token){
+      token = JSON.parse(token);
+      var lkPath = <Route exact path="/lk" component={Lk}/>;
+    }
+
     return (
       <div className="App">
         <Router>
           <Header/>
           <Switch>
             <Route exact path="/" component={Content}/>
-            <Route exact path="/lk" component={Lk}/>
+            {lkPath}
             <Route exact path="/news" component={NewsList}/>
             <Route exact path='/new/:slug' component={NewsDetail}/>
             <Route exact path="/doctors" component={DoctorList}/>
