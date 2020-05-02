@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import axios from "axios";
 import {Redirect} from "react-router";
+import Error404 from "../../Error404/Error404";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -46,13 +47,16 @@ class SignIn extends React.Component {
         this.setState({
           redirect: true,
         });
-        localStorage.setItem('token', JSON.stringify(response.data.key));
+        const token = JSON.stringify(response.data.key);
+        localStorage.setItem('token', token);
         console.log(response.data);
       })
   };
 
   render() {
+    if(localStorage.getItem('token')) return <Error404/>;
     const {redirect, isEmailInput} = this.state;
+
     if (redirect) {
       return <Redirect to='lk/'/>;
     }
