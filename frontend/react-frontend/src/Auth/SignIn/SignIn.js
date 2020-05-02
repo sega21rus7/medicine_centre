@@ -42,7 +42,7 @@ class SignIn extends React.Component {
         password: this.state.password,
       }
     }
-    axios.post('http://localhost:8000/rest-auth/login/', data)
+    axios.post('http://localhost:8000/api/rest-auth/login/', data)
       .then(response => {
          this.setState({
            token: response.data,
