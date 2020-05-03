@@ -4,6 +4,7 @@ import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 import image from './sign_up.jpg'
 import {Link, Redirect} from "react-router-dom";
 import axios from "axios";
+import BottomPanel from "../BottomPanel/BottomPanel";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -87,17 +88,8 @@ class SignUp extends React.Component {
                       Зарегистрироваться
                     </Button>
                   </Form>
-                  <hr/>
-                  <div className="text-center">
-                    <a className="text-small" href="#">
-                      Забыли пароль?
-                    </a>
-                  </div>
-                  <div className="text-center">
-                    <Link className="text-small" to="sign_in/">
-                      Уже есть аккаунт? Войдите!
-                    </Link>
-                  </div>
+
+                  <BottomPanel/>
                 </div>
               </Col>
             </Row>

@@ -6,6 +6,7 @@ import {Link, Redirect} from "react-router-dom";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import axios from "axios";
 import Error404 from "../../Error404/Error404";
+import BottomPanel from "../BottomPanel/BottomPanel";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -124,17 +125,7 @@ class SignIn extends React.Component {
                     </Button>
                   </Form>
 
-                  <hr/>
-                  <div className="text-center">
-                    <a className="text-small" href="#">
-                      Забыли пароль?
-                    </a>
-                  </div>
-                  <div className="text-center">
-                    <Link className="text-small" to="sign_up/">
-                      Еще не зарегистрированы? Вам сюда!
-                    </Link>
-                  </div>
+                  <BottomPanel/>
                 </div>
               </Col>
             </Row>
