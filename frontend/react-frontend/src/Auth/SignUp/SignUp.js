@@ -2,7 +2,7 @@ import React from 'react';
 import './SignUp.css';
 import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 import image from './sign_up.jpg'
-import {Link, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import axios from "axios";
 import BottomPanel from "../BottomPanel/BottomPanel";
 
@@ -15,6 +15,7 @@ class SignUp extends React.Component {
       password1: null,
       password2: null,
       redirect: false,
+      errors: null,
     }
   }
 
@@ -33,6 +34,10 @@ class SignUp extends React.Component {
         });
         console.log(response.data);
       })
+      .catch(error => {
+        console.log(error.response.data);
+        this.setState({errors: error.response.data});
+      });
   };
 
   handleInput = (event) => {
@@ -40,8 +45,16 @@ class SignUp extends React.Component {
   };
 
   render() {
-    if (this.state.redirect) {
+    const {redirect, errors} = this.state;
+    if (redirect) {
       return <Redirect to='/sign_in'/>;
+    }
+    if (errors) {
+      var loginError = <div className="help-block">{errors.username}</div>;
+      var emailError = <div className="help-block">{errors.email}</div>;
+      var password1Error = <div className="help-block">{errors.password1}</div>;
+      var password2Error = <div className="help-block">{errors.password2}</div>;
+      var nonFieldErrors = <div className="help-block mb-3">{errors.non_field_errors}</div>;
     }
 
     return (
@@ -66,24 +79,29 @@ class SignUp extends React.Component {
                     <Form.Group controlId="formGroupLogin">
                       <Form.Control className="form-control-user" type="text" name="login"
                                     placeholder="Логин" onChange={this.handleInput}/>
+                      {loginError}
                     </Form.Group>
                     <Form.Group controlId="formGroupEmail">
                       <Form.Control className="form-control-user" type="email" name="email"
                                     placeholder="Email" onChange={this.handleInput}/>
+                      {emailError}
                     </Form.Group>
                     <Form.Group controlId="formGroupPassword">
                       <Row>
                         <Col sm={6}>
                           <Form.Control className="form-control-user mb-3 mb-sm-0" type="password"
                                         name="password1" placeholder="Пароль" onChange={this.handleInput}/>
+                          {password1Error}
                         </Col>
                         <Col sm={6}>
                           <Form.Control className="form-control-user" type="password"
                                         name="password2" placeholder="Подтвердите пароль"
                                         onChange={this.handleInput}/>
+                          {password2Error}
                         </Col>
                       </Row>
                     </Form.Group>
+                    {nonFieldErrors}
                     <Button type="submit" variant="outline-primary" className="btn-user" block>
                       Зарегистрироваться
                     </Button>
