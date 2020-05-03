@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 
-from backend.staff.serializers import DoctorSerializer
+from .serializers import DoctorSerializer
 from .models import Doctor
 
 

@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 
-from backend.news.serializers import ArticleSerializer, NewsSerializer, \
+from .serializers import ArticleSerializer, NewsSerializer, \
     ArticleCommentSerializer, TagSerializer
 from .models import Article, News, ArticleComment, Tag
 

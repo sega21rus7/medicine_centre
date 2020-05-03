@@ -94,7 +94,7 @@ REST_FRAMEWORK = {
 }
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'lk.api.serializers.CustomerUserSerializer',
+    'USER_DETAILS_SERIALIZER': 'lk.serializers.CustomerUserSerializer',
 }
 
 AUTHENTICATION_BACKENDS = (
