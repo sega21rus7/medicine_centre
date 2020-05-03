@@ -6,7 +6,6 @@ from rest_auth.registration.views import VerifyEmailView
 from rest_auth.views import PasswordResetView, PasswordResetConfirmView
 
 urlpatterns = [
-    path('', include('main.urls')),
     path('lk/', include('lk.urls')),
     path('news/', include('news.urls')),
     path('staff/', include('staff.urls')),
