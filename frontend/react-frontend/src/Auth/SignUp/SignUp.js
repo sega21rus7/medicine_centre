@@ -89,7 +89,7 @@ class SignUp extends React.Component {
                     </Button>
                   </Form>
 
-                  <BottomPanel/>
+                  <BottomPanel isSignUpLink={false}/>
                 </div>
               </Col>
             </Row>

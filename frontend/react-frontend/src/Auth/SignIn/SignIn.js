@@ -125,7 +125,7 @@ class SignIn extends React.Component {
                     </Button>
                   </Form>
 
-                  <BottomPanel/>
+                  <BottomPanel isSignUpLink={true}/>
                 </div>
               </Col>
             </Row>

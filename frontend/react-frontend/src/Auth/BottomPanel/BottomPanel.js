@@ -4,7 +4,23 @@ import {Link} from "react-router-dom";
 
 
 class BottomPanel extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const {isSignUpLink} = this.props;
+    let signUpOrInLink =
+      <Link className="text-small" to="sign_up/">
+        Еще не зарегистрированы? Вам сюда!
+      </Link>;
+    if (!isSignUpLink) {
+      signUpOrInLink =
+        <Link className="text-small" to="sign_in/">
+          Уже есть аккаунт? Войдите!
+        </Link>;
+    }
+
     return (
       <div className="BottomPanel">
         <hr/>
@@ -14,9 +30,7 @@ class BottomPanel extends React.Component {
           </Link>
         </div>
         <div className="text-center">
-          <Link className="text-small" to="sign_up/">
-            Еще не зарегистрированы? Вам сюда!
-          </Link>
+          {signUpOrInLink}
         </div>
       </div>
     )
