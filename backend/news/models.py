@@ -4,7 +4,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
-from mptt.models import MPTTModel
 from pytils.translit import slugify
 from smartfields import fields as smart_fields
 
@@ -80,7 +79,7 @@ class Tag(models.Model):
         return reverse("news:tag_detail", kwargs={"slug": self.slug})
 
 
-class ArticleComment(MPTTModel):
+class ArticleComment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                              on_delete=models.CASCADE)
     article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,

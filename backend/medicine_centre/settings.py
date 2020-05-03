@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'address',
     'ckeditor',
-    'django_mptt_admin',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
