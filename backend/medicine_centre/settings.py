@@ -156,3 +156,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
 ]
+ACCOUNT_ADAPTER = 'lk.adapters.DefaultAccountAdapterCustom'
+URL_FRONT = 'http://localhost:3000/'
