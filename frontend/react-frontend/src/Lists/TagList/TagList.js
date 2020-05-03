@@ -14,7 +14,7 @@ class TagList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/news/api/tag_list/')
+    axios.get('http://localhost:8000/news/tag_list/')
       .then(response => {
         this.setState({
           tags: response.data

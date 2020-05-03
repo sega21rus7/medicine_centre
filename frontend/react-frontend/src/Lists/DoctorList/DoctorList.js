@@ -8,7 +8,7 @@ class DoctorList extends React.Component {
     return (
       <div className="DoctorList">
         <CommonList title={'Наши специалисты'}
-                    url='http://localhost:8000/staff/api/doctor_list/'
+                    url='http://localhost:8000/staff/doctor_list/'
                     kind={'doctors'}
         />
       </div>

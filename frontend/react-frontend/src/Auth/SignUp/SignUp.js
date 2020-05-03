@@ -25,7 +25,7 @@ class SignUp extends React.Component {
       password1: this.state.password1,
       password2: this.state.password2,
     };
-    axios.post('http://localhost:8000/api/rest-auth/registration/', data)
+    axios.post('http://localhost:8000/rest-auth/registration/', data)
       .then(response => {
         this.setState({
           redirect: true,

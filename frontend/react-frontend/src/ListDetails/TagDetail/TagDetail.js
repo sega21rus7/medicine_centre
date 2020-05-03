@@ -10,7 +10,7 @@ class TagDetail extends React.Component {
     this.state = {
       tag: props.location.state ? props.location.state.tag : null,
     };
-    this.url = `http://localhost:8000/news/api/tag_detail/${this.props.match.params.slug}`;
+    this.url = `http://localhost:8000/news/tag_detail/${this.props.match.params.slug}`;
   }
 
   render() {

@@ -9,7 +9,7 @@ class Lk extends React.Component {
     if (token) {
       token = JSON.parse(token);
       console.log(token);
-      axios.get('http://localhost:8000/api/rest-auth/user/',
+      axios.get('http://localhost:8000/rest-auth/user/',
         {headers: {'Authorization': `Token ${token}`}})
         .then(response => {
           console.log(response.data);

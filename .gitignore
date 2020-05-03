@@ -9,8 +9,5 @@ backend/venv[0-9]*
 # Pycharm settings folder
 .idea/
 
-# Django static files
-backend/medicine_centre/static
-
 # React
 frontend/node_modules
