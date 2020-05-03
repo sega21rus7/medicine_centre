@@ -4,7 +4,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
-from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 from pytils.translit import slugify
 from smartfields import fields as smart_fields
