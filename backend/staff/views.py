@@ -1,16 +1,22 @@
-from django.views.generic import ListView, DetailView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.pagination import PageNumberPagination
 
+from backend.staff.serializers import DoctorSerializer
 from .models import Doctor
 
 
-class DoctorView(ListView):
-    model = Doctor
-    template_name = 'staff/doctor_list.html'
-    context_object_name = 'doctors'
-    paginate_by = 4
+class StandardPagination(PageNumberPagination):
+    page_size = 3
+    page_size_query_param = 'page_size'
 
 
-class DoctorDetailView(DetailView):
-    model = Doctor
-    template_name = 'staff/doctor_detail.html'
-    context_object_name = 'doctor'
+class DoctorListView(ListAPIView):
+    serializer_class = DoctorSerializer
+    queryset = Doctor.objects.all()
+    pagination_class = StandardPagination
+
+
+class DoctorDetailView(RetrieveAPIView):
+    serializer_class = DoctorSerializer
+    queryset = Doctor.objects.all()
+    lookup_field = 'slug'

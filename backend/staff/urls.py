@@ -1,11 +1,10 @@
-from django.urls import path, include
-from . import views
+from django.urls import path
+
+from .views import DoctorListView, DoctorDetailView
 
 app_name = 'staff'
 
 urlpatterns = [
-    path('doctor_list', views.DoctorView.as_view(), name='doctor_list'),
-    path('doctor_list/<str:slug>/', views.DoctorDetailView.as_view(), name='doctor_detail'),
-
-    path('api/', include('staff.api.urls'))
+    path('doctor_list/', DoctorListView.as_view(), name='doctor_list'),
+    path('doctor_detail/<slug>/', DoctorDetailView.as_view(), name='doctor_detail'),
 ]

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from ..models import Doctor, Post
+from lk.serializers import CustomerUserSerializer
+from .models import Doctor, Post
 
 
 class PostSerializer(serializers.ModelSerializer):
