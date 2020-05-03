@@ -1,6 +1,8 @@
 import React from 'react';
 import './Lk.css';
 import axios from "axios";
+import SignIn from "../Auth/SignIn/SignIn";
+import {Redirect} from "react-router";
 
 
 class Lk extends React.Component {
@@ -22,6 +24,10 @@ class Lk extends React.Component {
   }
 
   render() {
+    if (!localStorage.getItem('token')) {
+      return <Redirect to='/sign_in'/>
+    }
+
     return (
       <div className="Lk">
         Lk
