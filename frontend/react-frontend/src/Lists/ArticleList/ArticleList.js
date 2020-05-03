@@ -10,7 +10,7 @@ class ArticleList extends React.Component {
     return (
       <Container className="ArticleList">
         <CommonList title={'Статьи'}
-                    url='http://localhost:8000/news/api/article_list/'
+                    url='http://localhost:8000/news/article_list/'
                     kind={'articles'}
         />
         <TagList/>

@@ -16,7 +16,7 @@ class NewsShortList extends React.Component {
       <div className="NewsShortList">
         <CommonShortList button={this.button}
                          title={'Новости'}
-                         url='http://localhost:8000/news/api/news_list/'
+                         url='http://localhost:8000/news/news_list/'
                          kind={'news'}
         />
       </div>

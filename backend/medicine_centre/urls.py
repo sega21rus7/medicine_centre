@@ -13,13 +13,13 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 
-    path('api/rest-auth/', include('rest_auth.urls')),
-    path('api/rest-auth/registration/', include('rest_auth.registration.urls')),
-    path('api/rest-auth/registration/account-confirm-email/<key>/', VerifyEmailView.as_view(),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('rest-auth/registration/account-confirm-email/<key>/', VerifyEmailView.as_view(),
          name='account_confirm_email'),
-    path('api/rest-auth/password/reset/', PasswordResetView.as_view(),
+    path('rest-auth/password/reset/', PasswordResetView.as_view(),
          name='password_reset'),
-    path('api/rest-auth/password/reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(),
+    path('rest-auth/password/reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(),
          name='password_reset_confirm'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
