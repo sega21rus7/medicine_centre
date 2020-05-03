@@ -113,13 +113,13 @@ class SignIn extends React.Component {
                   <Form className="user" onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formGroupLoginOrEmail">
                       {emailOrLoginInput}
-                      {emailOrLoginError || ''}
+                      {emailOrLoginError}
                     </Form.Group>
                     <Form.Group controlId="formGroupPassword">
                       {passwordInput}
-                      {passwordError || ''}
+                      {passwordError}
                     </Form.Group>
-                    {nonFieldErrors || ''}
+                    {nonFieldErrors}
                     <Button type="submit" variant="outline-primary" className="btn-user" block>
                       Войти
                     </Button>
