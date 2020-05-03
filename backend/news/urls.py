@@ -1,18 +1,20 @@
-from django.urls import path, include
-from django.conf.urls.static import static
+from django.urls import path
 
-from django.conf import settings
-from . import views
+from .views import ArticleListView, ArticleDetailView, NewsListView, \
+    NewsDetailView, ArticleCommentListView, \
+    TagListView, ArticleWithTagView
 
 app_name = 'news'
 
 urlpatterns = [
-    path('article_list/', views.ArticleView.as_view(), name='article_list'),
-    path('news_list/', views.NewsView.as_view(), name='news_list'),
+    path('article_list/', ArticleListView.as_view(), name='article_list'),
+    path('article_detail/<slug>/', ArticleDetailView.as_view(), name='article_detail'),
 
-    path('article/<str:slug>/', views.ArticleDetailView.as_view(), name='article_detail'),
-    path('new/<str:slug>/', views.NewsDetailView.as_view(), name='news_detail'),
-    path('tag/<str:slug>/', views.TagDetailView.as_view(), name='tag_detail'),
+    path('news_list/', NewsListView.as_view(), name='news_list'),
+    path('news_detail/<slug>/', NewsDetailView.as_view(), name='news_detail'),
 
-    path('api/', include('news.api.urls'))
+    path('comment_list/', ArticleCommentListView.as_view(), name='comment_list'),
+
+    path('tag_list/', TagListView.as_view(), name='tag_list'),
+    path('tag_detail/<slug>/', ArticleWithTagView.as_view(), name='tag_detail'),
 ]

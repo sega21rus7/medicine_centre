@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from ..models import Article, News, Tag, ArticleComment
+from .models import Article, News, Tag, ArticleComment
 
 
 class NewsSerializer(serializers.ModelSerializer):

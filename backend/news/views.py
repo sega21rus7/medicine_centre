@@ -1,9 +1,9 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 
-from .serializers import ArticleSerializer, NewsSerializer, \
+from backend.news.serializers import ArticleSerializer, NewsSerializer, \
     ArticleCommentSerializer, TagSerializer
-from ..models import Article, News, ArticleComment, Tag
+from .models import Article, News, ArticleComment, Tag
 
 
 class StandardPagination(PageNumberPagination):
@@ -44,12 +44,6 @@ class TagListView(ListAPIView):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
 
-
-#
-# class ArticleListView(ListAPIView):
-#     serializer_class = ArticleSerializer
-#     queryset = Article.objects.all()
-#     pagination_class = StandardPagination
 
 class ArticleWithTagView(ArticleListView):
     def get_queryset(self):
