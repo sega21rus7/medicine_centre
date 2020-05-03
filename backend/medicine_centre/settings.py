@@ -57,7 +57,7 @@ ROOT_URLCONF = 'medicine_centre.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,15 +69,6 @@ TEMPLATES = [
         },
     },
 ]
-
-ACCOUNT_FORMS = {
-    'login': 'lk.forms.SignInForm',
-    'signup': 'lk.forms.SignUpForm',
-    'reset_password': 'lk.forms.ResetPasswordForm',
-    'reset_password_from_key': 'lk.forms.ResetPasswordKeyForm',
-    'change_password': 'lk.forms.ChangePasswordForm',
-    'add_email': 'lk.forms.AddEmailForm',
-}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -154,12 +145,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'lk.CustomerUser'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 GOOGLE_API_KEY = 'AIzaSyD--your-google-maps-key-SjQBE'
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = 'lk/'
-LOGIN_URL = '/accounts/login'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
