@@ -1,5 +1,5 @@
 from allauth.account.models import EmailConfirmationHMAC, EmailConfirmation
-from django.http import HttpResponseRedirect
+from django.http import Http404
 from django.shortcuts import redirect
 from django.urls import reverse
 from rest_framework.views import APIView
@@ -20,8 +20,7 @@ class ConfirmEmailView(APIView):
             try:
                 email_confirmation = queryset.get(key=key.lower())
             except EmailConfirmation.DoesNotExist:
-                # A React Router Route will handle the failure scenario
-                return HttpResponseRedirect('/login/failure/')
+                raise Http404()
         return email_confirmation
 
     def get_queryset(self):
