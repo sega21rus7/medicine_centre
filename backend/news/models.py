@@ -82,8 +82,6 @@ class Tag(models.Model):
 
 
 class ArticleComment(MPTTModel):
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children',
-                            on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                              on_delete=models.CASCADE)
     article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,

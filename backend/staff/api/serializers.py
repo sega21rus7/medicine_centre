@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from backend.medicine_centre.lk.api.serializers import CustomerUserSerializer
 from ..models import Doctor, Post
 
 

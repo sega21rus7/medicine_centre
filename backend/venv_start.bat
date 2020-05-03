@@ -1,5 +1,5 @@
 echo off
-pushd %~dp0..\
+pushd %~dp0
 if not exist venv c:\python368\python.exe -m venv venv
 if errorlevel 1 goto ending
 call venv\Scripts\activate
