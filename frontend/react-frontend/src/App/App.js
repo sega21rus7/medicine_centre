@@ -19,6 +19,7 @@ import TagDetail from "../ListDetails/TagDetail/TagDetail";
 import SignUp from "../Auth/SignUp/SignUp";
 import SignIn from "../Auth/SignIn/SignIn";
 import VerifyEmail from "../Auth/VerifyEmail/VerifyEmail";
+import SignOut from "../Auth/SignOut/SignOut";
 
 
 class App extends React.Component {
@@ -41,6 +42,7 @@ class App extends React.Component {
             <Route exact path="/about_us" component={AboutUs}/>
             <Route exact path="/sign_up" component={SignUp}/>
             <Route exact path="/sign_in" component={SignIn}/>
+            <Route exact path="/sign_out" component={SignOut}/>
             <Route exact path="/verify-email/:key" component={VerifyEmail}/>
             <Route component={Error404}/>
           </Switch>
