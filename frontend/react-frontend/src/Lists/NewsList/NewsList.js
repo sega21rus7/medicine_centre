@@ -8,7 +8,7 @@ class NewsList extends React.Component {
     return (
       <div className="NewsList">
         <CommonList title={'Новости'}
-                    url='http://localhost:8000/news/news_list/'
+                    url='http://localhost:8000/news/api/news'
                     kind={'news'}
         />
       </div>
