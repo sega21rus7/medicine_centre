@@ -10,10 +10,6 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: null,
-      email: null,
-      password1: null,
-      password2: null,
       redirect: false,
       errors: null,
     }
@@ -21,13 +17,12 @@ class SignUp extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const data = {
-      username: this.state.login,
-      email: this.state.email,
-      password1: this.state.password1,
-      password2: this.state.password2,
-    };
-    axios.post('http://localhost:8000/rest-auth/registration/', data)
+    axios.post('http://localhost:8000/rest-auth/registration/', {
+      username: event.target.elements.username.value,
+      email: event.target.elements.email.value,
+      password1: event.target.elements.password1.value,
+      password2: event.target.elements.password2.value,
+    })
       .then(response => {
         this.setState({
           redirect: true,
@@ -38,10 +33,6 @@ class SignUp extends React.Component {
         console.log(error.response.data);
         this.setState({errors: error.response.data});
       });
-  };
-
-  handleInput = (event) => {
-    this.setState({[event.target.name]: event.target.value});
   };
 
   render() {
@@ -77,26 +68,25 @@ class SignUp extends React.Component {
                   </div>
                   <Form className="user" onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formGroupLogin">
-                      <Form.Control className="form-control-user" type="text" name="login"
-                                    placeholder="Логин" onChange={this.handleInput}/>
+                      <Form.Control className="form-control-user" type="text" name="username"
+                                    placeholder="Логин"/>
                       {loginError}
                     </Form.Group>
                     <Form.Group controlId="formGroupEmail">
                       <Form.Control className="form-control-user" type="email" name="email"
-                                    placeholder="Email" onChange={this.handleInput}/>
+                                    placeholder="Email"/>
                       {emailError}
                     </Form.Group>
                     <Form.Group controlId="formGroupPassword">
                       <Row>
                         <Col sm={6}>
                           <Form.Control className="form-control-user mb-3 mb-sm-0" type="password"
-                                        name="password1" placeholder="Пароль" onChange={this.handleInput}/>
+                                        name="password1" placeholder="Пароль"/>
                           {password1Error}
                         </Col>
                         <Col sm={6}>
                           <Form.Control className="form-control-user" type="password"
-                                        name="password2" placeholder="Подтвердите пароль"
-                                        onChange={this.handleInput}/>
+                                        name="password2" placeholder="Подтвердите пароль"/>
                           {password2Error}
                         </Col>
                       </Row>
@@ -106,7 +96,6 @@ class SignUp extends React.Component {
                       Зарегистрироваться
                     </Button>
                   </Form>
-
                   <BottomPanel isSignUpLink={false}/>
                 </div>
               </Col>
