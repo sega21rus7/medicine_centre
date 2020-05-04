@@ -87,9 +87,6 @@ class ArticleComment(models.Model):
     pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
     content = RichTextField(verbose_name='Содержание', db_index=True)
 
-    class MPTTMeta:
-        order_insertion_by = ['-pub_date']
-
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
@@ -104,11 +101,4 @@ class ArticleComment(models.Model):
     def save(self, *args, **kwargs):
         if not self.pub_date:
             self.pub_date = timezone.now()
-        max_indent = 2
-        lvl = 0
-        if self.parent and self.parent.level:
-            lvl = self.parent.level
-        if lvl >= max_indent - 1:
-            raise ValueError("Максимальная вложенность: %i" % max_indent)
-
         super().save(*args, **kwargs)
