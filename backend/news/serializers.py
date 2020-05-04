@@ -34,4 +34,4 @@ class ArticleCommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ArticleComment
-        fields = ('user', 'article', 'pub_date', 'content',)
+        fields = ('pk', 'user', 'article', 'pub_date', 'content',)

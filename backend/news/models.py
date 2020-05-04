@@ -85,6 +85,7 @@ class ArticleComment(models.Model):
     article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,
                                 related_name='comments')
     pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
+    last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения', blank=True, null=True)
     content = RichTextField(verbose_name='Содержание', db_index=True)
 
     class Meta:
@@ -101,4 +102,7 @@ class ArticleComment(models.Model):
     def save(self, *args, **kwargs):
         if not self.pub_date:
             self.pub_date = timezone.now()
+        else:
+            self.last_change_date = timezone.now()
+
         super().save(*args, **kwargs)
