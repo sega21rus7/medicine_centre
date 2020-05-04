@@ -13,7 +13,7 @@ class DoctorDetail extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/staff/doctor_detail/${this.props.match.params.slug}`)
+    axios.get(`http://localhost:8000/staff/api/doctors/${this.props.match.params.slug}`)
       .then(response => {
         this.setState({
           doctor: response.data

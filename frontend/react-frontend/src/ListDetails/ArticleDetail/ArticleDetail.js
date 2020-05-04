@@ -14,7 +14,7 @@ class ArticleDetail extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/news/article_detail/${this.props.match.params.slug}`)
+    axios.get(`http://localhost:8000/news/api/articles/${this.props.match.params.slug}`)
       .then(response => {
         this.setState({
           article: response.data
