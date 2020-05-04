@@ -1,7 +1,7 @@
 import React from 'react';
 import './SignUp.css';
 import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
-import image from './sign_up.jpg'
+import image from '../sign_image.jpg'
 import {Redirect} from "react-router-dom";
 import axios from "axios";
 import BottomPanel from "../BottomPanel/BottomPanel";
@@ -56,15 +56,15 @@ class SignUp extends React.Component {
         <Card className="o-hidden border-0 shadow-lg mt-4">
           <Card.Body className="p-0">
             <Row>
-              <Col lg={5} className="d-none d-lg-block bg-image">
+              <Col lg={6} className="d-none d-lg-block bg-image">
                 <Image
                   src={image}
                   alt={'Регистрация'}
-                  height="500"
+                  className="img-fluid"
                 >
                 </Image>
               </Col>
-              <Col lg={7}>
+              <Col lg={6}>
                 <div className="p-lg-5 p-3">
                   <div className="text-center">
                     <h1 className="h4 mb-4">Создайте аккаунт!</h1>
