@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import {Nav, Navbar} from "react-bootstrap";
-import {Link, Switch} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 class Header extends React.Component {
@@ -67,12 +67,10 @@ class Header extends React.Component {
           <Navbar.Brand as={Link} to="/">{this.site_name}</Navbar.Brand>
           <Navbar.Toggle/>
           <Navbar.Collapse className="justify-content-end">
-            <Switch>
-              <Nav className="mr-auto">
-                {login_nav}
-                {nav}
-              </Nav>
-            </Switch>
+            <Nav className="mr-auto">
+              {login_nav}
+              {nav}
+            </Nav>
             <Nav pullright="true">
               {logout_nav}
               {phone_nav}
