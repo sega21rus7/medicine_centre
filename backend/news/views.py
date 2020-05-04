@@ -1,14 +1,9 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.pagination import PageNumberPagination
 
+from medicine_centre.paginators import StandardPagination
+from .models import Article, News, ArticleComment, Tag
 from .serializers import ArticleSerializer, NewsSerializer, \
     ArticleCommentSerializer, TagSerializer
-from .models import Article, News, ArticleComment, Tag
-
-
-class StandardPagination(PageNumberPagination):
-    page_size = 3
-    page_size_query_param = 'page_size'
 
 
 class ArticleListView(ListAPIView):
