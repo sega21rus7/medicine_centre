@@ -148,6 +148,7 @@ AUTH_USER_MODEL = 'lk.CustomerUser'
 GOOGLE_API_KEY = 'AIzaSyD--your-google-maps-key-SjQBE'
 
 SITE_ID = 1
+ACCOUNT_LOGOUT_ON_GET = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
