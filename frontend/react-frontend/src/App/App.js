@@ -9,7 +9,7 @@ import ArticleList from "../Lists/ArticleList/ArticleList";
 import Contacts from "../Contacts/Contacts";
 import AboutUs from "../AboutUs/AboutUs";
 import Footer from "../MainPage/Footer/Footer";
-import {Route, Switch, BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Content from "../MainPage/Content/Content";
 import Error404 from "../Error404/Error404";
 import NewsDetail from "../ListDetails/NewsDetail/NewsDetail";
@@ -18,6 +18,7 @@ import DoctorDetail from "../ListDetails/DoctorDetail/DoctorDetail";
 import TagDetail from "../ListDetails/TagDetail/TagDetail";
 import SignUp from "../Auth/SignUp/SignUp";
 import SignIn from "../Auth/SignIn/SignIn";
+import VerifyEmail from "../Auth/VerifyEmail/VerifyEmail";
 
 
 class App extends React.Component {
@@ -40,6 +41,7 @@ class App extends React.Component {
             <Route exact path="/about_us" component={AboutUs}/>
             <Route exact path="/sign_up" component={SignUp}/>
             <Route exact path="/sign_in" component={SignIn}/>
+            <Route exact path="/verify-email/:key" component={VerifyEmail}/>
             <Route component={Error404}/>
           </Switch>
           <Footer/>
