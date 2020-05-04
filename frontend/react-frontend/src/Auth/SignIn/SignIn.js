@@ -12,9 +12,6 @@ class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: null,
-      email: null,
-      password: null,
       isEmailInput: false,
       redirect: false,
       errors: null,
@@ -26,24 +23,18 @@ class SignIn extends React.Component {
     this.setState({isEmailInput: byEmail});
   };
 
-  handleInput = (event) => {
-    this.setState({[event.target.name]: event.target.value});
-  };
-
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.isEmailInput) {
-      var data = {
-        email: this.state.email,
-        password: this.state.password,
-      }
-    } else {
-      data = {
-        username: this.state.login,
-        password: this.state.password,
-      }
-    }
-    axios.post('http://localhost:8000/rest-auth/login/', data)
+    const email = event.target.elements.email;
+    const username = event.target.elements.username;
+    const password = event.target.elements.password;
+    const isEmailInput = this.state.isEmailInput;
+
+    axios.post('http://localhost:8000/rest-auth/login/', {
+      email: isEmailInput ? email.value : '',
+      username: !isEmailInput ? username.value : '',
+      password: password.value,
+    })
       .then(response => {
         this.setState({
           redirect: true,
@@ -67,11 +58,11 @@ class SignIn extends React.Component {
     }
 
     const passwordInput = <Form.Control className="form-control-user" type="password" name="password"
-                                        placeholder="Пароль" onChange={this.handleInput}/>;
+                                        placeholder="Пароль"/>;
     const emailInput = <Form.Control className="form-control-user" type="email" name="email"
-                                     placeholder="Email" onChange={this.handleInput}/>;
-    const loginInput = <Form.Control className="form-control-user" type="text" name="login"
-                                     placeholder="Логин" onChange={this.handleInput}/>;
+                                     placeholder="Email"/>;
+    const loginInput = <Form.Control className="form-control-user" type="text" name="username"
+                                     placeholder="Логин"/>;
     const emailOrLoginInput = isEmailInput ? emailInput : loginInput;
     if (errors) {
       var emailOrLoginError = isEmailInput ? errors.email : errors.username;
