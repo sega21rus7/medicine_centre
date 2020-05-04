@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Article, News, Tag, ArticleComment
+from .models import News, Tag, Article, ArticleComment
 
 
 class NewsSerializer(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ('title', 'slug',)
 
 
-class ArticleSerializer(serializers.ModelSerializer):
+class ArticleListSerializer(serializers.ModelSerializer):
     tags = TagSerializer(read_only=True, many=True)
 
     class Meta:
@@ -23,7 +23,13 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields = ('title', 'content', 'pub_date', 'slug', 'image', 'tags',)
 
 
-class ArticleCommentSerializer(serializers.ModelSerializer):
+class ArticleCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
-        model = ArticleComment
-        fields = ('parent', 'user', 'article', 'pub_date', 'content',)
+        model = Article
+        fields = ('title', 'content', 'pub_date', 'slug', 'image', 'tags',)
+
+
+# class ArticleCommentSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ArticleComment
+#         fields = ('user', 'article', 'pub_date', 'content',)

@@ -1,38 +1,31 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework import viewsets
+from rest_framework.generics import ListAPIView
 
 from medicine_centre.paginators import StandardPagination
-from .models import Article, News, ArticleComment, Tag
-from .serializers import ArticleSerializer, NewsSerializer, \
-    ArticleCommentSerializer, TagSerializer
+from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
+from .models import News, Article, Tag
+from .serializers import NewsSerializer, ArticleListSerializer, \
+    ArticleCreateUpdateDestroySerializer, TagSerializer
 
 
-class ArticleListView(ListAPIView):
-    serializer_class = ArticleSerializer
-    queryset = Article.objects.all()
+class NewsViewSet(viewsets.ModelViewSet):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+    lookup_field = 'slug'
     pagination_class = StandardPagination
 
 
-class ArticleDetailView(RetrieveAPIView):
-    serializer_class = ArticleSerializer
+class ArticleViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     queryset = Article.objects.all()
     lookup_field = 'slug'
-
-
-class NewsListView(ListAPIView):
-    serializer_class = NewsSerializer
-    queryset = News.objects.all()
+    serializer_class = ArticleListSerializer
+    serializer_action_classes = {
+        'list': ArticleListSerializer,
+        'create': ArticleCreateUpdateDestroySerializer,
+        'update': ArticleCreateUpdateDestroySerializer,
+        'destroy': ArticleCreateUpdateDestroySerializer,
+    }
     pagination_class = StandardPagination
-
-
-class NewsDetailView(RetrieveAPIView):
-    serializer_class = NewsSerializer
-    queryset = News.objects.all()
-    lookup_field = 'slug'
-
-
-class ArticleCommentListView(ListAPIView):
-    serializer_class = ArticleCommentSerializer
-    queryset = ArticleComment.objects.all()
 
 
 class TagListView(ListAPIView):
@@ -40,8 +33,15 @@ class TagListView(ListAPIView):
     queryset = Tag.objects.all()
 
 
-class ArticleWithTagView(ArticleListView):
+class ArticleWithTagView(ListAPIView):
+    serializer_class = ArticleListSerializer
+    pagination_class = StandardPagination
+
     def get_queryset(self):
         slug = self.kwargs['slug']
         qs = Article.objects.filter(tags__slug=slug).all()
         return qs
+
+# class ArticleCommentListView(ListAPIView):
+#     serializer_class = ArticleCommentSerializer
+#     queryset = ArticleComment.objects.all()
