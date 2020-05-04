@@ -5,6 +5,7 @@ import image from './sign_up.jpg'
 import {Redirect} from "react-router-dom";
 import axios from "axios";
 import BottomPanel from "../BottomPanel/BottomPanel";
+import Error404 from "../../Error404/Error404";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class SignUp extends React.Component {
   };
 
   render() {
+    if (localStorage.getItem('token')) return <Error404/>;
     const {redirect, errors} = this.state;
     if (redirect) {
       return <Redirect to='/sign_in'/>;
