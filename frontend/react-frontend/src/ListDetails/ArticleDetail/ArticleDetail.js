@@ -37,6 +37,7 @@ class ArticleDetail extends React.Component {
       </span>
       ));
     }
+    const comments = article.comments ? <CommentList comments={article.comments}/> : null;
 
     return (
       <div className="ArticleDetail">
@@ -67,7 +68,7 @@ class ArticleDetail extends React.Component {
             </Col>
           </Row>
         </Container>
-        <CommentList/>
+        {comments}
       </div>
     )
   };

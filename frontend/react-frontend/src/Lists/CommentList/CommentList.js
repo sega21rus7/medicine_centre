@@ -5,27 +5,9 @@ import axios from "axios";
 
 
 class CommentList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comments: [],
-      count: 0,
-    }
-  }
-
-  componentDidMount() {
-    axios.get('http://localhost:8000/news/api/comments/')
-      .then(response => {
-        this.setState({
-          comments: response.data,
-          count: Object.keys(response.data).length
-        });
-        console.log(response.data);
-      })
-  }
-
   render() {
-    const {comments, count} = this.state;
+    const {comments} = this.props;
+    const count = Object.keys(comments).length;
     return (
       <Container className="CommentList">
         <h3 className="comment-title">Комментарии ({count})</h3>
