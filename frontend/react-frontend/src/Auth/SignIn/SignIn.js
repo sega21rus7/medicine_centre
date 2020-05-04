@@ -7,6 +7,7 @@ import DropdownItem from "react-bootstrap/DropdownItem";
 import axios from "axios";
 import Error404 from "../../Error404/Error404";
 import BottomPanel from "../BottomPanel/BottomPanel";
+import ErrorValidateBlock from "../ErrorValidateBlock/ErrorValidateBlock";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -66,9 +67,9 @@ class SignIn extends React.Component {
     const emailOrLoginInput = isEmailInput ? emailInput : loginInput;
     if (errors) {
       var emailOrLoginError = isEmailInput ? errors.email : errors.username;
-      emailOrLoginError = <div className="help-block">{emailOrLoginError}</div>;
-      var passwordError = <div className="help-block">{errors.password}</div>;
-      var nonFieldErrors = <div className="help-block mb-3">{errors.non_field_errors}</div>;
+      emailOrLoginError = <ErrorValidateBlock text={emailOrLoginError}/>;
+      var passwordError = <ErrorValidateBlock text={errors.password}/>;
+      var nonFieldErrors = <ErrorValidateBlock text={errors.non_field_errors}/>;
     }
 
 

@@ -6,6 +6,7 @@ import {Redirect} from "react-router-dom";
 import axios from "axios";
 import BottomPanel from "../BottomPanel/BottomPanel";
 import Error404 from "../../Error404/Error404";
+import ErrorValidateBlock from "../ErrorValidateBlock/ErrorValidateBlock";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -43,11 +44,11 @@ class SignUp extends React.Component {
       return <Redirect to='/sign_in'/>;
     }
     if (errors) {
-      var loginError = <div className="help-block">{errors.username}</div>;
-      var emailError = <div className="help-block">{errors.email}</div>;
-      var password1Error = <div className="help-block">{errors.password1}</div>;
-      var password2Error = <div className="help-block">{errors.password2}</div>;
-      var nonFieldErrors = <div className="help-block mb-3">{errors.non_field_errors}</div>;
+      var loginError = <ErrorValidateBlock text={errors.username}/>;
+      var emailError = <ErrorValidateBlock text={errors.email}/>;
+      var password1Error = <ErrorValidateBlock text={errors.password1}/>;
+      var password2Error = <ErrorValidateBlock text={errors.password2}/>;
+      var nonFieldErrors = <ErrorValidateBlock text={errors.non_field_errors}/>;
     }
 
     return (
@@ -84,6 +85,7 @@ class SignUp extends React.Component {
                         <Col sm={6}>
                           <Form.Control className="form-control-user mb-3 mb-sm-0" type="password"
                                         name="password1" placeholder="Пароль"/>
+                          {password1Error}
                           {password1Error}
                         </Col>
                         <Col sm={6}>
