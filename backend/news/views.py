@@ -1,11 +1,12 @@
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from medicine_centre.paginators import StandardPagination
 from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
-from .models import News, Article, Tag
+from .models import News, Article, Tag, ArticleComment
 from .serializers import NewsSerializer, ArticleListSerializer, \
-    ArticleCreateUpdateDestroySerializer, TagSerializer
+    ArticleCreateUpdateDestroySerializer, TagSerializer, ArticleCommentSerializer
 
 
 class NewsViewSet(viewsets.ModelViewSet):
@@ -42,6 +43,14 @@ class ArticleWithTagView(ListAPIView):
         qs = Article.objects.filter(tags__slug=slug).all()
         return qs
 
-# class ArticleCommentListView(ListAPIView):
-#     serializer_class = ArticleCommentSerializer
-#     queryset = ArticleComment.objects.all()
+
+class ArticleCommentListView(ListAPIView):
+    serializer_class = ArticleCommentSerializer
+    queryset = ArticleComment.objects.all()
+
+
+class ArticleCommentViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+
+    queryset = ArticleComment.objects.all()
+    serializer_class = ArticleCommentSerializer

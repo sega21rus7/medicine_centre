@@ -29,7 +29,9 @@ class ArticleCreateUpdateDestroySerializer(serializers.ModelSerializer):
         fields = ('title', 'content', 'pub_date', 'slug', 'image', 'tags',)
 
 
-# class ArticleCommentSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = ArticleComment
-#         fields = ('user', 'article', 'pub_date', 'content',)
+class ArticleCommentSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = ArticleComment
+        fields = ('user', 'article', 'pub_date', 'content',)
