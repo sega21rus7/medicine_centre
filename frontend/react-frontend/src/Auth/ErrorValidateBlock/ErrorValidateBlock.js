@@ -2,7 +2,7 @@ import React from 'react';
 import './ErrorValidateBlock.css';
 
 
-class Content extends React.Component {
+class ErrorValidateBlock extends React.Component {
   render() {
     return (
       <div className="error-block">
@@ -12,4 +12,4 @@ class Content extends React.Component {
   };
 }
 
-export default Content;
+export default ErrorValidateBlock;
