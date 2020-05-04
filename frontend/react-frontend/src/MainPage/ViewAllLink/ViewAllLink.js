@@ -4,10 +4,6 @@ import {Link} from "react-router-dom";
 
 
 class ViewAllLink extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="ViewAllButton text-left">

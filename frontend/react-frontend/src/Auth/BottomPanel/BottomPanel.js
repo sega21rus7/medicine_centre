@@ -4,10 +4,6 @@ import {Link} from "react-router-dom";
 
 
 class BottomPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {isSignUpLink} = this.props;
     let signUpOrInLink =

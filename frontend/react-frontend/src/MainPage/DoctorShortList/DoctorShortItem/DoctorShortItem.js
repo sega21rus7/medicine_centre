@@ -4,10 +4,6 @@ import {Col, Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 class DoctorShortItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { item, index } = this.props;
 

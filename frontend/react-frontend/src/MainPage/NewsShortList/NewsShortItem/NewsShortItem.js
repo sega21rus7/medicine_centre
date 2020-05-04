@@ -4,10 +4,6 @@ import {Card, Col} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 class NewsShortItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {item, index} = this.props;
 

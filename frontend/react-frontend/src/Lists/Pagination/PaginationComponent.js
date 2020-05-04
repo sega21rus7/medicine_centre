@@ -30,7 +30,7 @@ class PaginationComponent extends React.Component {
 
   render() {
     const {activePage} = this.state;
-    const {paginateCount, next, previous} = this.props;
+    const {next, previous} = this.props;
     const pagination = this.getPaginationPages();
 
     return (
@@ -41,7 +41,7 @@ class PaginationComponent extends React.Component {
           disabled={!previous}
         />
         {pagination.map((item, index) => {
-            const isActive = item === this.state.activePage;
+            const isActive = item === activePage;
             return (
               <Pagination.Item onClick={this.paginate}
                                key={index} value={item}
