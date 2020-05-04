@@ -2,10 +2,8 @@ import React from 'react';
 import './SignIn.css';
 import {Button, Card, Col, Container, Dropdown, Form, Image, Row} from "react-bootstrap";
 import image from '../sign_image.jpg'
-import {Redirect} from "react-router-dom";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import axios from "axios";
-import Error404 from "../../Error404/Error404";
 import BottomPanel from "../BottomPanel/BottomPanel";
 import ErrorValidateBlock from "../ErrorValidateBlock/ErrorValidateBlock";
 
@@ -14,7 +12,6 @@ class SignIn extends React.Component {
     super(props);
     this.state = {
       isEmailInput: false,
-      redirect: false,
       errors: null,
     }
   }
@@ -37,9 +34,6 @@ class SignIn extends React.Component {
       password: password.value,
     })
       .then(response => {
-        this.setState({
-          redirect: true,
-        });
         const token = JSON.stringify(response.data.key);
         localStorage.setItem('token', token);
         console.log(response.data);
@@ -51,13 +45,8 @@ class SignIn extends React.Component {
   };
 
   render() {
-    if (localStorage.getItem('token')) return <Error404/>;
-    const {redirect, isEmailInput, errors} = this.state;
+    const {isEmailInput, errors} = this.state;
     const {message} = this.props;
-
-    if (redirect) {
-      return <Redirect to='/lk'/>;
-    }
 
     const passwordInput = <Form.Control className="form-control-user" type="password" name="password"
                                         placeholder="Пароль"/>;
@@ -126,8 +115,7 @@ class SignIn extends React.Component {
         </Card>
       </Container>
     )
-  }
-  ;
+  };
 }
 
 export default SignIn;

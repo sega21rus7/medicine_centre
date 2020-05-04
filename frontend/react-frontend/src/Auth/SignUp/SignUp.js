@@ -2,17 +2,14 @@ import React from 'react';
 import './SignUp.css';
 import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 import image from '../sign_image.jpg'
-import {Redirect} from "react-router-dom";
 import axios from "axios";
 import BottomPanel from "../BottomPanel/BottomPanel";
-import Error404 from "../../Error404/Error404";
 import ErrorValidateBlock from "../ErrorValidateBlock/ErrorValidateBlock";
 
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirect: false,
       errors: null,
     }
   }
@@ -26,9 +23,6 @@ class SignUp extends React.Component {
       password2: event.target.elements.password2.value,
     })
       .then(response => {
-        this.setState({
-          redirect: true,
-        });
         console.log(response.data);
       })
       .catch(error => {
@@ -38,11 +32,8 @@ class SignUp extends React.Component {
   };
 
   render() {
-    if (localStorage.getItem('token')) return <Error404/>;
-    const {redirect, errors} = this.state;
-    if (redirect) {
-      return <Redirect to='/sign_in'/>;
-    }
+    const {errors} = this.state;
+
     if (errors) {
       var loginError = <ErrorValidateBlock text={errors.username}/>;
       var emailError = <ErrorValidateBlock text={errors.email}/>;
