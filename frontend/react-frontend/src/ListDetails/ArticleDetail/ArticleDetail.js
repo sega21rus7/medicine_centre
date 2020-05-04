@@ -3,6 +3,7 @@ import './ArticleDetail.css';
 import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import CommentList from "../../Lists/CommentList/CommentList";
 
 
 class ArticleDetail extends React.Component {
@@ -26,7 +27,7 @@ class ArticleDetail extends React.Component {
   render() {
     const {article} = this.state;
     let tags = '-';
-    if(article.tags) {
+    if (article.tags) {
       tags = article.tags.map((tag, index) => (
         <span key={index}>
         <Link to={'tag/' + tag.slug}>
@@ -66,6 +67,7 @@ class ArticleDetail extends React.Component {
             </Col>
           </Row>
         </Container>
+        <CommentList/>
       </div>
     )
   };

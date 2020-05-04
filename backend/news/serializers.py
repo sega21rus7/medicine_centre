@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from lk.serializers import CustomerUserSerializer
 from .models import News, Tag, Article, ArticleComment
 
 
@@ -29,9 +30,17 @@ class ArticleCreateUpdateDestroySerializer(serializers.ModelSerializer):
         fields = ('title', 'content', 'pub_date', 'slug', 'image', 'tags',)
 
 
-class ArticleCommentSerializer(serializers.ModelSerializer):
+class CommentCreateUpdateDestroySerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = ArticleComment
-        fields = ('pk', 'user', 'article', 'pub_date', 'content',)
+        fields = ('user', 'article', 'pub_date', 'content',)
+
+
+class CommentListSerializer(serializers.ModelSerializer):
+    user = CustomerUserSerializer(read_only=True)
+
+    class Meta:
+        model = ArticleComment
+        fields = ('user', 'pub_date', 'content',)
