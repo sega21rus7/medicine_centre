@@ -53,6 +53,7 @@ class SignIn extends React.Component {
   render() {
     if (localStorage.getItem('token')) return <Error404/>;
     const {redirect, isEmailInput, errors} = this.state;
+    const {message} = this.props;
 
     if (redirect) {
       return <Redirect to='/lk'/>;
@@ -89,6 +90,7 @@ class SignIn extends React.Component {
               <Col lg={6}>
                 <div className="p-lg-5 p-3">
                   <div className="text-center mb-4">
+                    {message}
                     <Dropdown>
                       <span className="text-middle">Вход в систему</span>
                       <Dropdown.Toggle split variant="outline-primary" id="enter-dropdown"/>
