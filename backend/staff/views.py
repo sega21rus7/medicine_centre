@@ -1,22 +1,17 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.pagination import PageNumberPagination
+from rest_framework import viewsets
 
-from .serializers import DoctorSerializer
+from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
 from .models import Doctor
+from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializer
 
 
-class StandardPagination(PageNumberPagination):
-    page_size = 3
-    page_size_query_param = 'page_size'
-
-
-class DoctorListView(ListAPIView):
-    serializer_class = DoctorSerializer
+class DoctorViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     queryset = Doctor.objects.all()
-    pagination_class = StandardPagination
-
-
-class DoctorDetailView(RetrieveAPIView):
-    serializer_class = DoctorSerializer
-    queryset = Doctor.objects.all()
+    serializer_class = DoctorListSerializer
     lookup_field = 'slug'
+    serializer_action_classes = {
+        'list': DoctorListSerializer,
+        'create': DoctorCreateUpdateDestroySerializer,
+        'update': DoctorCreateUpdateDestroySerializer,
+        'destroy': DoctorCreateUpdateDestroySerializer,
+    }

@@ -10,10 +10,16 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('name',)
 
 
-class DoctorSerializer(serializers.ModelSerializer):
-    user = CustomerUserSerializer()
+class DoctorListSerializer(serializers.ModelSerializer):
+    user = CustomerUserSerializer(read_only=True)
     post = PostSerializer(read_only=True)
 
     class Meta:
         model = Doctor
         fields = ('user', 'post', 'slug',)
+
+
+class DoctorCreateUpdateDestroySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Doctor
+        fields = ('user', 'post',)
