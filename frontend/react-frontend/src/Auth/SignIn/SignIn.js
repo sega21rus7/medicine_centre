@@ -6,6 +6,7 @@ import DropdownItem from "react-bootstrap/DropdownItem";
 import axios from "axios";
 import BottomPanel from "../BottomPanel/BottomPanel";
 import ErrorValidateBlock from "../ErrorValidateBlock/ErrorValidateBlock";
+import {Redirect} from "react-router";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class SignIn extends React.Component {
         const token = JSON.stringify(response.data.key);
         localStorage.setItem('token', token);
         console.log(response.data);
+        return <Redirect to={'/lk'}/>
       })
       .catch(error => {
         console.log(error.response.data);

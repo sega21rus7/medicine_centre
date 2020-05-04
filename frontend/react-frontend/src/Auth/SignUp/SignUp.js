@@ -5,6 +5,7 @@ import image from '../sign_image.jpg'
 import axios from "axios";
 import BottomPanel from "../BottomPanel/BottomPanel";
 import ErrorValidateBlock from "../ErrorValidateBlock/ErrorValidateBlock";
+import {Redirect} from "react-router";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -24,6 +25,10 @@ class SignUp extends React.Component {
     })
       .then(response => {
         console.log(response.data);
+        return <Redirect to={{
+          pathname: '/sign_in',
+          state: {message: 'Вы успешно зарегистрировались!'}
+        }}/>
       })
       .catch(error => {
         console.log(error.response.data);

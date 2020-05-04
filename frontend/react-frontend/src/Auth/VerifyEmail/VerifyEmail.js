@@ -1,7 +1,7 @@
 import React from 'react';
 import './VerifyEmail.css';
 import axios from "axios";
-import SignIn from "../SignIn/SignIn";
+import {Redirect} from "react-router";
 
 
 class VerifyEmail extends React.Component {
@@ -23,10 +23,16 @@ class VerifyEmail extends React.Component {
   }
 
   render() {
+    const {success} = this.state;
+    let message = 'Ваш email был успешно подтвержден!';
+    if (!success) {
+      message = 'При подтверждении email произошла ошибка!';
+    }
     return (
-      <div className="ConfirmEmail">
-        <SignIn message='Ваш email был успешно подтвержден!'/>;
-      </div>
+      <Redirect to={{
+        pathname: '/sign_in',
+        state: {message: message}
+      }}/>
     )
   };
 }
