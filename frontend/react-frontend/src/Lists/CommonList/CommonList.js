@@ -3,9 +3,9 @@ import './CommonList.css';
 import axios from "axios";
 import {Container, Row} from "react-bootstrap";
 import PaginationComponent from "../Pagination/PaginationComponent";
-import DoctorShortItem from "../../MainPage/DoctorShortList/DoctorShortItem/DoctorShortItem";
-import NewsShortItem from "../../MainPage/NewsShortList/NewsShortItem/NewsShortItem";
-import ArticleShortItem from "../../MainPage/ArticleShortList/ArticleShortItem/ArticleShortItem";
+import DoctorShortItem from "../DoctorShortList/DoctorShortItem/DoctorShortItem";
+import NewsShortItem from "../NewsShortList/NewsShortItem/NewsShortItem";
+import ArticleShortItem from "../ArticleShortList/ArticleShortItem/ArticleShortItem";
 
 
 class CommonList extends React.Component {

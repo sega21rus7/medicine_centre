@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewsShortList.css';
-import CommonShortList from "../CommonShortList/CommonShortList";
+import CommonShortList from "../../Lists/CommonShortList/CommonShortList";
 
 class NewsShortList extends React.Component {
   constructor(props) {

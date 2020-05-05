@@ -1,6 +1,6 @@
 import React from 'react';
 import './DoctorShortList.css';
-import CommonShortList from "../CommonShortList/CommonShortList";
+import CommonShortList from "../../Lists/CommonShortList/CommonShortList";
 
 class DoctorShortList extends React.Component {
   constructor(props) {

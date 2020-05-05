@@ -5,7 +5,7 @@ import ViewAllLink from "../ViewAllLink/ViewAllLink";
 import axios from 'axios';
 import DoctorShortItem from "../DoctorShortList/DoctorShortItem/DoctorShortItem";
 import NewsShortItem from "../NewsShortList/NewsShortItem/NewsShortItem";
-import ArticleShortItem from "../ArticleShortList/ArticleShortItem/ArticleShortItem";
+import ArticleShortItem from "../../Lists/ArticleShortList/ArticleShortItem/ArticleShortItem";
 
 class CommonShortList extends React.Component {
   constructor(props) {
