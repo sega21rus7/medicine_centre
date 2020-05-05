@@ -2,7 +2,7 @@ import React from 'react';
 import './ArticleShortItem.css';
 import {Card, Col} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import ArticleTagList from "../../../Lists/ArticleTagList/ArticleTagList";
+import ArticleTagList from "../../Tags/ArticleTagList";
 
 class ArticleShortItem extends React.Component {
   render() {

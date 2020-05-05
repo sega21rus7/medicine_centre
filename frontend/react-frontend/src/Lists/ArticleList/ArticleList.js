@@ -1,7 +1,7 @@
 import React from 'react';
 import './ArticleList.css';
 import CommonList from "../CommonList/CommonList";
-import AllTagList from "../AllTagList/AllTagList";
+import AllTagList from "../Tags/AllTagList";
 import {Container} from "react-bootstrap";
 
 

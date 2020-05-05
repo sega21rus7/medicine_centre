@@ -1,8 +1,7 @@
 import React from 'react';
-import './AllTagList.css';
 import axios from "axios";
 import {Container, Row} from "react-bootstrap";
-import ArticleTagList from "../ArticleTagList/ArticleTagList";
+import ArticleTagList from "./ArticleTagList";
 
 
 class AllTagList extends React.Component {

@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import CommentList from "../../Lists/CommentList/CommentList";
 import AddComment from "../../Forms/AddComment/AddComment";
 import ReactHtmlParser from "react-html-parser";
-import ArticleTagList from "../../Lists/ArticleTagList/ArticleTagList";
+import ArticleTagList from "../../Lists/Tags/ArticleTagList";
 
 class ArticleDetail extends React.Component {
   constructor(props) {
