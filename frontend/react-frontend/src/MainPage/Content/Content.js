@@ -13,13 +13,13 @@ class Content extends React.Component {
       <div className="Content">
         <Carousel/>
         <Container>
-          <hr/>
-          <DoctorShortList/>
-          <hr/>
-          <NewsShortList/>
-          <hr/>
-          <ArticleShortList/>
-          <hr/>
+          {/*<hr/>*/}
+          {/*<DoctorShortList/>*/}
+          {/*<hr/>*/}
+          {/*<NewsShortList/>*/}
+          {/*<hr/>*/}
+          {/*<ArticleShortList/>*/}
+          {/*<hr/>*/}
         </Container>
       </div>
     )

@@ -31,11 +31,11 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Content}/>
             <Route exact path="/lk" component={Lk}/>
-            <Route exact path="/news" component={NewsList}/>
+            {/*<Route exact path="/news" component={NewsList}/>*/}
             <Route exact path='/new/:slug' component={NewsDetail}/>
-            <Route exact path="/doctors" component={DoctorList}/>
+            {/*<Route exact path="/doctors" component={DoctorList}/>*/}
             <Route exact path="/doctor/:slug" component={DoctorDetail}/>
-            <Route exact path="/articles" component={ArticleList}/>
+            {/*<Route exact path="/articles" component={ArticleList}/>*/}
             <Route exact path="/article/:slug" component={ArticleDetail}/>
             <Route exact path="/tag/:slug" component={TagDetail}/>
             <Route exact path="/contacts" component={Contacts}/>
