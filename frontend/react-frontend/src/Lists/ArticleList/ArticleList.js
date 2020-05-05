@@ -1,7 +1,7 @@
 import React from 'react';
 import './ArticleList.css';
 import CommonList from "../CommonList/CommonList";
-import TagList from "../TagList/TagList";
+import AllTagList from "../AllTagList/AllTagList";
 import {Container} from "react-bootstrap";
 
 
@@ -13,7 +13,7 @@ class ArticleList extends React.Component {
                     url='http://localhost:8000/news/api/articles/'
                     kind={'articles'}
         />
-        <TagList/>
+        <AllTagList/>
       </Container>
     )
   };

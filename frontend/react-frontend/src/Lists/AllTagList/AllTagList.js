@@ -1,11 +1,12 @@
 import React from 'react';
-import './TagList.css';
+import './AllTagList.css';
 import axios from "axios";
 import {Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import ArticleTagList from "../ArticleTagList/ArticleTagList";
 
 
-class TagList extends React.Component {
+class AllTagList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,13 +25,7 @@ class TagList extends React.Component {
   }
 
   render() {
-    const tags = this.state.tags.map((tag, tag_index) => (
-      <span key={tag_index}>
-        <Link to={'tag/' + tag.slug}>
-          #{tag.title}
-        </Link>
-        &nbsp;</span>
-    ));
+    const tags = <ArticleTagList tags={this.state.tags}/>;
 
     return (
       <div className="TagList">
@@ -44,4 +39,4 @@ class TagList extends React.Component {
   };
 }
 
-export default TagList;
+export default AllTagList;

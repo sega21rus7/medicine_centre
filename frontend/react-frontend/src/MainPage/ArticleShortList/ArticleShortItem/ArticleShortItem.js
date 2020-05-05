@@ -2,19 +2,14 @@ import React from 'react';
 import './ArticleShortItem.css';
 import {Card, Col} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import ArticleTagList from "../../../Lists/ArticleTagList/ArticleTagList";
 
 class ArticleShortItem extends React.Component {
   render() {
     const {item, index} = this.props;
     let tags = '-';
     if (item.tags) {
-      tags = item.tags.map((tag, tag_index) => (
-        <span key={tag_index}>
-        <Link to={'tag/' + tag.slug}>
-          #{tag.title}
-        </Link>
-          &nbsp;</span>
-      ));
+      tags = <ArticleTagList tags={item.tags}/>;
     }
 
     return (
@@ -36,7 +31,6 @@ class ArticleShortItem extends React.Component {
               </Link>
               <br/>
               Теги:
-              &nbsp;
               {tags}
             </Card.Text>
           </Card.Body>

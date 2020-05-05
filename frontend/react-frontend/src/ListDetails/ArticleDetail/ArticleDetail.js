@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import CommentList from "../../Lists/CommentList/CommentList";
 import AddComment from "../../Forms/AddComment/AddComment";
 import ReactHtmlParser from "react-html-parser";
+import ArticleTagList from "../../Lists/ArticleTagList/ArticleTagList";
 
 class ArticleDetail extends React.Component {
   constructor(props) {
@@ -33,14 +34,7 @@ class ArticleDetail extends React.Component {
     const {article} = this.state;
     let tags = '-';
     if (article.tags) {
-      tags = article.tags.map((tag, index) => (
-        <span key={index}>
-        <Link to={'tag/' + tag.slug}>
-          #{tag.title}
-        </Link>
-          &nbsp;
-      </span>
-      ));
+      tags = <ArticleTagList tags={article.tags}/>;
     }
     const comments = article.comments ? <CommentList comments={article.comments}/> : null;
 
@@ -62,7 +56,6 @@ class ArticleDetail extends React.Component {
                     Дата публикации: {article.pub_date}
                     <br/>
                     Теги:
-                    &nbsp;
                     {tags}
                   </Card.Text>
                 </Card.Body>
