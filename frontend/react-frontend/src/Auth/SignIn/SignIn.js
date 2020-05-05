@@ -35,8 +35,7 @@ class SignIn extends React.Component {
       password: password.value,
     })
       .then(response => {
-        const token = JSON.stringify(response.data.key);
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', response.data.key);
         console.log(response.data);
         return <Redirect to={'/lk'}/>
       })

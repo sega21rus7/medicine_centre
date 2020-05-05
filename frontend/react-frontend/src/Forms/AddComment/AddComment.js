@@ -15,9 +15,9 @@ class AddComment extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let token = localStorage.getItem('token') || '';
+    let token = localStorage.getItem('token');
     if (token) {
-      token = JSON.parse(token);
+      console.log(token);
       axios.post('http://localhost:8000/news/api/comments/',
         {
           headers: {'Authorization': `Token ${token}`},

@@ -6,7 +6,6 @@ class Lk extends React.Component {
   componentDidMount() {
     let token = localStorage.getItem('token') || '';
     if (token) {
-      token = JSON.parse(token);
       console.log(token);
     }
   }
