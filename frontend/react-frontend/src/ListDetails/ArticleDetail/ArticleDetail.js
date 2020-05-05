@@ -4,6 +4,7 @@ import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import CommentList from "../../Lists/CommentList/CommentList";
+import AddComment from "../../Forms/AddComment/AddComment";
 
 
 class ArticleDetail extends React.Component {
@@ -69,6 +70,7 @@ class ArticleDetail extends React.Component {
           </Row>
         </Container>
         {comments}
+        <AddComment articleSlug={this.props.match.params.slug}/>
       </div>
     )
   };

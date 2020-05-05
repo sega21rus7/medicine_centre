@@ -46,6 +46,6 @@ class ArticleWithTagView(ListAPIView):
 
 
 class ArticleCommentViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = (IsAuthenticated,)
     queryset = ArticleComment.objects.all()
     serializer_class = CommentCreateUpdateDestroySerializer
