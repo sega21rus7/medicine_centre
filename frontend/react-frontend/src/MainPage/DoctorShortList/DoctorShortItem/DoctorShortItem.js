@@ -5,16 +5,15 @@ import {Link} from "react-router-dom";
 
 class DoctorShortItem extends React.Component {
   render() {
-    const { item, index } = this.props;
+    const {item, index} = this.props;
 
     return (
-      <Col md="auto" className="text-md-center" key={index}>
+      <Col md={4} className="text-md-center" key={index}>
         <Link to={'doctor/' + item.slug} style={{color: 'inherit'}}>
           <Image
             src={item.user.avatar}
             alt={item.user.username}
-            width="300px"
-            height="300px"
+            className="img-fluid"
             roundedCircle
           >
           </Image>
