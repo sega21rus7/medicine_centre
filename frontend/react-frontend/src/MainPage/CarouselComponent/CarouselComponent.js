@@ -16,8 +16,8 @@ class CarouselComponent extends React.Component {
           ' медицинской карте, актуальным новостям.',
         image: image1,
         button: {
-          text: 'Перейти в личный кабинет',
-          to: '/lk',
+          text: 'Попробовать бесплатно',
+          to: '/sign_up',
           variant: 'outline-success'
         },
         caption: 'text-left',
@@ -38,8 +38,6 @@ class CarouselComponent extends React.Component {
   }
 
   render() {
-    let token = localStorage.getItem('token') || '';
-
     return (
       <div className="Carousel">
         <Carousel>
@@ -53,7 +51,7 @@ class CarouselComponent extends React.Component {
               <Carousel.Caption className={item.caption}>
                 <h1>{item.title}</h1>
                 <p>{item.content}</p>
-                <Link to={!token && item.button.to === '/lk' ? '/sign_in' : item.button.to}>
+                <Link to={item.button.to}>
                   <Button variant={item.button.variant} size="md">
                     {item.button.text}
                   </Button>
