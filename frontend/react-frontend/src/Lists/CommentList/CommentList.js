@@ -1,7 +1,7 @@
 import React from 'react';
 import './CommentList.css';
 import {Container} from "react-bootstrap";
-
+import ReactHtmlParser from "react-html-parser";
 
 class CommentList extends React.Component {
   render() {
@@ -24,7 +24,9 @@ class CommentList extends React.Component {
                     <span className="date">{item.pub_date}</span>
                   </div>
                 </div>
-                <div dangerouslySetInnerHTML={{__html: item.content}} className="media-text text-justify"/>
+                <div className="media-text text-justify">
+                  {ReactHtmlParser(item.content)}
+                </div>
               </div>
             </li>
           ))}

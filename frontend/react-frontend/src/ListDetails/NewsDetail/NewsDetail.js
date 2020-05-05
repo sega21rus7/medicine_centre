@@ -2,7 +2,7 @@ import React from 'react';
 import './NewsDetail.css';
 import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
-
+import ReactHtmlParser from "react-html-parser";
 
 class NewsDetail extends React.Component {
   constructor(props) {
@@ -46,7 +46,9 @@ class NewsDetail extends React.Component {
               </Card>
             </Col>
             <Col md={7}>
-              <div dangerouslySetInnerHTML={{__html: newItem.content}}/>
+              <div>
+                {ReactHtmlParser(newItem.content)}
+              </div>
             </Col>
           </Row>
         </Container>

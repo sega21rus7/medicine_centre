@@ -5,7 +5,7 @@ import {Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import CommentList from "../../Lists/CommentList/CommentList";
 import AddComment from "../../Forms/AddComment/AddComment";
-
+import ReactHtmlParser from "react-html-parser";
 
 class ArticleDetail extends React.Component {
   constructor(props) {
@@ -69,7 +69,9 @@ class ArticleDetail extends React.Component {
               </Card>
             </Col>
             <Col md={7}>
-              <div dangerouslySetInnerHTML={{__html: article.content}}/>
+              <div>
+                {ReactHtmlParser(article.content)}
+              </div>
             </Col>
           </Row>
         </Container>
