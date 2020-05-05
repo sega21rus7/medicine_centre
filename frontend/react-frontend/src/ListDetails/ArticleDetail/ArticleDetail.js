@@ -2,7 +2,6 @@ import React from 'react';
 import './ArticleDetail.css';
 import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
-import {Link} from "react-router-dom";
 import CommentList from "../../Lists/Comments/CommentList";
 import AddComment from "../../Forms/AddComment/AddComment";
 import ReactHtmlParser from "react-html-parser";
