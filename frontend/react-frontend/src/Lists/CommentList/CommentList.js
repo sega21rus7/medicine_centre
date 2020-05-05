@@ -8,7 +8,7 @@ class CommentList extends React.Component {
     const {comments} = this.props;
     const count = Object.keys(comments).length;
     return (
-      <Container className="CommentList">
+      <Container className="CommentList mt-2">
         <h3 className="comment-title">Комментарии ({count})</h3>
         <ul className="media-list">
           {comments.map((item, index) => (
