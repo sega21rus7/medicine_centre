@@ -8,7 +8,7 @@ class DoctorShortItem extends React.Component {
     const {item, index} = this.props;
 
     return (
-      <Col md={4} className="text-md-center" key={index}>
+      <Col md={4} className="text-center" key={index}>
         <Link to={'doctor/' + item.slug} style={{color: 'inherit'}}>
           <Image
             src={item.user.avatar}
@@ -21,7 +21,7 @@ class DoctorShortItem extends React.Component {
             {item.user.last_name}
             &nbsp;
             {item.user.first_name}
-            &nbsp;
+            <br/>
             {item.user.middle_name}
           </h4>
         </Link>
