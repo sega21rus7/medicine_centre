@@ -4,7 +4,7 @@ import Carousel from "../CarouselComponent/CarouselComponent";
 import DoctorShortList from "../../Lists/DoctorShortList/DoctorShortList";
 import {Container} from "react-bootstrap";
 import NewsShortList from "../../Lists/News/NewsShortList";
-import ArticleShortList from "../../Lists/ArticleShortList/ArticleShortList";
+import ArticleShortList from "../../Lists/Articles/ArticleShortList";
 
 
 class Content extends React.Component {
@@ -18,8 +18,8 @@ class Content extends React.Component {
           {/*<hr/>*/}
           <NewsShortList/>
           <hr/>
-          {/*<ArticleShortList/>*/}
-          {/*<hr/>*/}
+          <ArticleShortList/>
+          <hr/>
         </Container>
       </div>
     )

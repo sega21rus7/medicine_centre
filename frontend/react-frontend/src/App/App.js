@@ -3,9 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from "../MainPage/Header/Header";
 import Lk from "../Lk/Lk";
-import NewsLongList from "../Lists/News/NewsLongList";
-import DoctorList from "../Lists/DoctorList/DoctorList";
-import ArticleList from "../Lists/ArticleList/ArticleList";
 import Contacts from "../Contacts/Contacts";
 import AboutUs from "../AboutUs/AboutUs";
 import Footer from "../MainPage/Footer/Footer";
@@ -21,6 +18,8 @@ import SignIn from "../Auth/SignIn/SignIn";
 import VerifyEmail from "../Auth/VerifyEmail/VerifyEmail";
 import SignOut from "../Auth/SignOut/SignOut";
 import NewsList from "../Lists/News/NewsList";
+import DoctorList from "../Lists/DoctorList/DoctorList";
+import ArticleList from "../Lists/Articles/ArticleList";
 
 
 class App extends React.Component {
@@ -34,9 +33,9 @@ class App extends React.Component {
             <Route exact path="/lk" component={Lk}/>
             <Route exact path="/news" component={NewsList}/>
             <Route exact path='/new/:slug' component={NewsDetail}/>
-            {/*<Route exact path="/doctors" component={DoctorList}/>*/}
+            <Route exact path="/doctors" component={DoctorList}/>
             <Route exact path="/doctor/:slug" component={DoctorDetail}/>
-            {/*<Route exact path="/articles" component={ArticleList}/>*/}
+            <Route exact path="/articles" component={ArticleList}/>
             <Route exact path="/article/:slug" component={ArticleDetail}/>
             <Route exact path="/tag/:slug" component={TagDetail}/>
             <Route exact path="/contacts" component={Contacts}/>

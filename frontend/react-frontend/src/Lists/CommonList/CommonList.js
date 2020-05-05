@@ -5,7 +5,7 @@ import {Container, Row} from "react-bootstrap";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import DoctorShortItem from "../DoctorShortList/DoctorShortItem/DoctorShortItem";
 import NewsItem from "../News/NewsItem";
-import ArticleShortItem from "../ArticleShortList/ArticleShortItem/ArticleShortItem";
+import ArticleItem from "../Articles/ArticleItem";
 
 
 class CommonList extends React.Component {
@@ -54,7 +54,7 @@ class CommonList extends React.Component {
         else if (kind === 'news')
           res = <NewsItem key={index} item={item} index={index}/>;
         else if (kind === 'articles')
-          res = <ArticleShortItem key={index} item={item} index={index}/>;
+          res = <ArticleItem key={index} item={item} index={index}/>;
         return res;
       }
     );

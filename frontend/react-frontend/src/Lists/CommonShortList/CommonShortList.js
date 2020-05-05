@@ -4,7 +4,7 @@ import {Container, Row} from "react-bootstrap";
 import axios from 'axios';
 import DoctorShortItem from "../DoctorShortList/DoctorShortItem/DoctorShortItem";
 import NewsItem from "../News/NewsItem";
-import ArticleShortItem from "../../Lists/ArticleShortList/ArticleShortItem/ArticleShortItem";
+import ArticleItem from "../Articles/ArticleItem";
 import ViewAllLink from "../../MainPage/ViewAllLink/ViewAllLink";
 
 class CommonShortList extends React.Component {
@@ -34,7 +34,7 @@ class CommonShortList extends React.Component {
         else if (kind === 'news')
           res = <NewsItem key={index} item={item} index={index}/>;
         else if (kind === 'articles')
-          res = <ArticleShortItem key={index} item={item} index={index}/>;
+          res = <ArticleItem key={index} item={item} index={index}/>;
         return res;
       }
     );

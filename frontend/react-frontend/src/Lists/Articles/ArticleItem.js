@@ -1,10 +1,9 @@
 import React from 'react';
-import './ArticleShortItem.css';
 import {Card, Col} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import ArticleTagList from "../../Tags/ArticleTagList";
+import ArticleTagList from "../Tags/ArticleTagList";
 
-class ArticleShortItem extends React.Component {
+class ArticleItem extends React.Component {
   render() {
     const {item, index} = this.props;
     let tags = '-';
@@ -40,4 +39,4 @@ class ArticleShortItem extends React.Component {
   };
 }
 
-export default ArticleShortItem;
+export default ArticleItem;
