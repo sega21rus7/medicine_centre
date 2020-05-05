@@ -19,7 +19,9 @@ class CommentList extends React.Component {
               </div>
               <div className="media-body">
                 <div className="media-heading">
-                  <div className="comment-author">{item.user ? item.user.username : ''}</div>
+                  <div className="comment-author">
+                    {item.user ? `${item.user.last_name} ${item.user.first_name} ${item.user.middle_name}` : ''}
+                  </div>
                   <div className="metadata">
                     <span className="date">{item.pub_date}</span>
                   </div>
