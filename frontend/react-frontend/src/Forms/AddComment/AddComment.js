@@ -17,17 +17,19 @@ class AddComment extends React.Component {
     event.preventDefault();
     let token = localStorage.getItem('token');
     if (token) {
-      console.log(token);
-      axios.post('http://localhost:8000/news/api/comments/',
-        {
-          headers: {'Authorization': `Token ${token}`},
-          data: {
-            article: this.props.articleSlug,
-            content: this.state.comment,
-          }
-        })
+      const options = {
+        method: 'POST',
+        url: 'http://localhost:8000/news/api/comments/',
+        data: {
+          article: this.props.articleID,
+          content: this.state.comment,
+        },
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
         .then(response => {
           console.log(response.data);
+          this.props.getArticle();
         })
         .catch(error => {
           console.log(error.response.data);

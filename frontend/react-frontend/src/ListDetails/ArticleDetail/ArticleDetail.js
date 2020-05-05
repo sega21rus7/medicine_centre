@@ -15,7 +15,7 @@ class ArticleDetail extends React.Component {
     };
   }
 
-  componentDidMount() {
+  getData = () => {
     axios.get(`http://localhost:8000/news/api/articles/${this.props.match.params.slug}`)
       .then(response => {
         this.setState({
@@ -23,6 +23,10 @@ class ArticleDetail extends React.Component {
         });
         console.log(response.data);
       })
+  };
+
+  componentDidMount() {
+    this.getData();
   }
 
   render() {
@@ -70,7 +74,7 @@ class ArticleDetail extends React.Component {
           </Row>
         </Container>
         {comments}
-        <AddComment articleSlug={this.props.match.params.slug}/>
+        <AddComment articleID={article.pk} getArticle={this.getData}/>
       </div>
     )
   };

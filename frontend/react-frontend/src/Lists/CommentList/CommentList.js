@@ -24,9 +24,7 @@ class CommentList extends React.Component {
                     <span className="date">{item.pub_date}</span>
                   </div>
                 </div>
-                <div className="media-text text-justify">
-                  {item.content}
-                </div>
+                <div dangerouslySetInnerHTML={{__html: item.content}} className="media-text text-justify"/>
               </div>
             </li>
           ))}
