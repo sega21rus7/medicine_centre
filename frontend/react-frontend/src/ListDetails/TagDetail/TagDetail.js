@@ -1,25 +1,16 @@
 import React from 'react';
 import './TagDetail.css';
 import {Container} from "react-bootstrap";
-import CommonList from "../../Lists/CommonList/CommonList";
+import ArticleLongList from "../../Lists/Articles/ArticleLongList";
 
 
 class TagDetail extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      tag: props.location.state ? props.location.state.tag : null,
-    };
-    this.url = `http://localhost:8000/news/api/tags/${this.props.match.params.slug}`;
-  }
-
   render() {
+    const url = `http://localhost:8000/news/api/articles_with_tag/${this.props.match.params.slug}/`;
+
     return (
       <Container className="TagDetail">
-        <CommonList title={'Статьи'}
-                    url={this.url}
-                    kind={'articles'}
-        />
+        <ArticleLongList isPaginated={true} special_url={url}/>
       </Container>
     )
   };

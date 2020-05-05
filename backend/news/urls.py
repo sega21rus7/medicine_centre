@@ -8,7 +8,7 @@ app_name = 'news'
 
 urlpatterns = [
     path('api/tags/', TagListView.as_view(), name='tag_list'),
-    path('api/tags/<slug>/', ArticleWithTagView.as_view(), name='tag_detail'),
+    path('api/articles_with_tag/<slug>/', ArticleWithTagView.as_view(), name='tag_detail'),
 ]
 
 router = DefaultRouter()

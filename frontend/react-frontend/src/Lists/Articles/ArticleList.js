@@ -16,14 +16,18 @@ class ArticleList extends React.Component {
       paginateCount: 0,
     };
     this.paginate_by = 3;
+    this.button = {
+      text: 'Посмотреть все статьи',
+      to: '/articles'
+    }
   }
 
   componentDidMount() {
-    this.getData(1);
+    this.getData(1, this.props.special_url);
   }
 
-  getData = (page) => {
-    const url = `http://localhost:8000/news/api/articles/?page=${page}`;
+  getData = (page, initialUrl = 'http://localhost:8000/news/api/articles/') => {
+    const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {
         this.setState({
@@ -43,15 +47,17 @@ class ArticleList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    let {button} = this.props;
+    const {isPaginated} = this.props;
+    console.log(this.props);
+
 
     const row = this.state.items.map((item, index) => {
         return <ArticleItem key={index} item={item} index={index}/>;
       }
     );
 
-    if (!button) {
-      if (this.state.paginateCount > 1) {
+    if (isPaginated) {
+      if (paginateCount > 1) {
         var pagination = <PaginationComponent items={items}
                                               getData={this.getData}
                                               paginateCount={paginateCount}
@@ -59,7 +65,7 @@ class ArticleList extends React.Component {
                                               previous={previous}/>;
       }
     } else {
-      button = <ViewAllLink button={button}/>;
+      var button = <ViewAllLink button={this.button}/>;
     }
 
     return (

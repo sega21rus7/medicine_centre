@@ -18,8 +18,8 @@ import SignIn from "../Auth/SignIn/SignIn";
 import VerifyEmail from "../Auth/VerifyEmail/VerifyEmail";
 import SignOut from "../Auth/SignOut/SignOut";
 import NewsList from "../Lists/News/NewsList";
-import ArticleList from "../Lists/Articles/ArticleList";
 import DoctorList from "../Lists/Doctors/DoctorList";
+import ArticleLongList from "../Lists/Articles/ArticleLongList";
 
 
 class App extends React.Component {
@@ -35,7 +35,7 @@ class App extends React.Component {
             <Route exact path='/new/:slug' component={NewsDetail}/>
             <Route exact path="/doctors" component={DoctorList}/>
             <Route exact path="/doctor/:slug" component={DoctorDetail}/>
-            <Route exact path="/articles" component={ArticleList}/>
+            <Route exact path="/articles" component={ArticleLongList}/>
             <Route exact path="/article/:slug" component={ArticleDetail}/>
             <Route exact path="/tag/:slug" component={TagDetail}/>
             <Route exact path="/contacts" component={Contacts}/>
