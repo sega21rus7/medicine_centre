@@ -1,10 +1,10 @@
 import React from 'react';
 import './Content.css';
 import Carousel from "../CarouselComponent/CarouselComponent";
-import DoctorShortList from "../../Lists/DoctorShortList/DoctorShortList";
 import {Container} from "react-bootstrap";
 import NewsShortList from "../../Lists/News/NewsShortList";
 import ArticleShortList from "../../Lists/Articles/ArticleShortList";
+import DoctorShortList from "../../Lists/Doctors/DoctorShortList";
 
 
 class Content extends React.Component {
@@ -13,9 +13,9 @@ class Content extends React.Component {
       <div className="Content">
         <Carousel/>
         <Container>
-          {/*<hr/>*/}
-          {/*<DoctorShortList/>*/}
-          {/*<hr/>*/}
+          <hr/>
+          <DoctorShortList/>
+          <hr/>
           <NewsShortList/>
           <hr/>
           <ArticleShortList/>

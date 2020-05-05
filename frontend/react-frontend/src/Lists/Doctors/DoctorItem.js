@@ -1,9 +1,8 @@
 import React from 'react';
-import './DoctorShortItem.css';
 import {Col, Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-class DoctorShortItem extends React.Component {
+class DoctorItem extends React.Component {
   render() {
     const {item, index} = this.props;
 
@@ -30,4 +29,4 @@ class DoctorShortItem extends React.Component {
   };
 }
 
-export default DoctorShortItem;
+export default DoctorItem;

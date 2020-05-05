@@ -3,7 +3,7 @@ import './CommonList.css';
 import axios from "axios";
 import {Container, Row} from "react-bootstrap";
 import PaginationComponent from "../Pagination/PaginationComponent";
-import DoctorShortItem from "../DoctorShortList/DoctorShortItem/DoctorShortItem";
+import DoctorItem from "../Doctors/DoctorItem";
 import NewsItem from "../News/NewsItem";
 import ArticleItem from "../Articles/ArticleItem";
 
@@ -50,7 +50,7 @@ class CommonList extends React.Component {
     const row = this.state.items.map((item, index) => {
         let res = '';
         if (kind === 'doctors')
-          res = <DoctorShortItem key={index} item={item} index={index}/>;
+          res = <DoctorItem key={index} item={item} index={index}/>;
         else if (kind === 'news')
           res = <NewsItem key={index} item={item} index={index}/>;
         else if (kind === 'articles')

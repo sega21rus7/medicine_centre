@@ -2,7 +2,7 @@ import React from 'react';
 import './CommonShortList.css';
 import {Container, Row} from "react-bootstrap";
 import axios from 'axios';
-import DoctorShortItem from "../DoctorShortList/DoctorShortItem/DoctorShortItem";
+import DoctorItem from "../Doctors/DoctorItem";
 import NewsItem from "../News/NewsItem";
 import ArticleItem from "../Articles/ArticleItem";
 import ViewAllLink from "../../MainPage/ViewAllLink/ViewAllLink";
@@ -30,7 +30,7 @@ class CommonShortList extends React.Component {
     const row = this.state.items.map((item, index) => {
         let res = '';
         if (kind === 'doctors')
-          res = <DoctorShortItem key={index} item={item} index={index}/>;
+          res = <DoctorItem key={index} item={item} index={index}/>;
         else if (kind === 'news')
           res = <NewsItem key={index} item={item} index={index}/>;
         else if (kind === 'articles')

@@ -18,8 +18,8 @@ import SignIn from "../Auth/SignIn/SignIn";
 import VerifyEmail from "../Auth/VerifyEmail/VerifyEmail";
 import SignOut from "../Auth/SignOut/SignOut";
 import NewsList from "../Lists/News/NewsList";
-import DoctorList from "../Lists/DoctorList/DoctorList";
 import ArticleList from "../Lists/Articles/ArticleList";
+import DoctorList from "../Lists/Doctors/DoctorList";
 
 
 class App extends React.Component {
