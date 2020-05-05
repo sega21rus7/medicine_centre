@@ -48,8 +48,6 @@ class ArticleList extends React.Component {
   render() {
     const {next, previous, items, paginateCount} = this.state;
     const {isPaginated} = this.props;
-    console.log(this.props);
-
 
     const row = this.state.items.map((item, index) => {
         return <ArticleItem key={index} item={item} index={index}/>;

@@ -17,9 +17,9 @@ import SignUp from "../Auth/SignUp/SignUp";
 import SignIn from "../Auth/SignIn/SignIn";
 import VerifyEmail from "../Auth/VerifyEmail/VerifyEmail";
 import SignOut from "../Auth/SignOut/SignOut";
-import NewsList from "../Lists/News/NewsList";
-import DoctorList from "../Lists/Doctors/DoctorList";
 import ArticleLongList from "../Lists/Articles/ArticleLongList";
+import DoctorLongList from "../Lists/Doctors/DoctorLongList";
+import NewsLongList from "../Lists/News/NewsLongList";
 
 
 class App extends React.Component {
@@ -31,9 +31,9 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Content}/>
             <Route exact path="/lk" component={Lk}/>
-            <Route exact path="/news" component={NewsList}/>
+            <Route exact path="/news" component={NewsLongList}/>
             <Route exact path='/new/:slug' component={NewsDetail}/>
-            <Route exact path="/doctors" component={DoctorList}/>
+            <Route exact path="/doctors" component={DoctorLongList}/>
             <Route exact path="/doctor/:slug" component={DoctorDetail}/>
             <Route exact path="/articles" component={ArticleLongList}/>
             <Route exact path="/article/:slug" component={ArticleDetail}/>

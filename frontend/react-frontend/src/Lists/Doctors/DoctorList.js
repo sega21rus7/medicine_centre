@@ -16,6 +16,10 @@ class DoctorList extends React.Component {
       paginateCount: 0,
     };
     this.paginate_by = 3;
+    this.button = {
+      text: 'Показать всех врачей',
+      to: '/doctors'
+    }
   }
 
   componentDidMount() {
@@ -43,15 +47,15 @@ class DoctorList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    let {button} = this.props;
+    const {isPaginated} = this.props;
 
     const row = this.state.items.map((item, index) => {
         return <DoctorItem key={index} item={item} index={index}/>;
       }
     );
 
-    if (!button) {
-      if (this.state.paginateCount > 1) {
+    if (isPaginated) {
+      if (paginateCount > 1) {
         var pagination = <PaginationComponent items={items}
                                               getData={this.getData}
                                               paginateCount={paginateCount}
@@ -59,7 +63,7 @@ class DoctorList extends React.Component {
                                               previous={previous}/>;
       }
     } else {
-      button = <ViewAllLink button={button}/>;
+      var button = <ViewAllLink button={this.button}/>;
     }
 
     return (

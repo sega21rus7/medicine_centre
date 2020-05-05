@@ -5,8 +5,8 @@ import NewsList from "./NewsList";
 class NewsLongList extends React.Component {
   render() {
     return (
-      <div className="NewsList">
-        <NewsList button={null}/>
+      <div className="NewsLongList">
+        <NewsList isPaginated={true}/>
       </div>
     )
   };

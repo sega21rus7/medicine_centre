@@ -5,8 +5,8 @@ import DoctorList from "./DoctorList";
 class DoctorLongList extends React.Component {
   render() {
     return (
-      <div className="DoctorList">
-        <DoctorList button={null}/>
+      <div className="DoctorLongList">
+        <DoctorList isPaginated={true}/>
       </div>
     )
   };
