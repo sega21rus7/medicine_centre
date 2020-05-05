@@ -91,6 +91,7 @@ class ArticleComment(models.Model):
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
+        ordering = ('-pub_date',)
 
     def __str__(self):
         if len(self.content) > 40:
