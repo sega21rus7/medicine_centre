@@ -1,6 +1,5 @@
 import React from 'react';
-import './NewsShortList.css';
-import CommonShortList from "../../Lists/CommonShortList/CommonShortList";
+import NewsList from "./NewsList";
 
 class NewsShortList extends React.Component {
   constructor(props) {
@@ -14,11 +13,7 @@ class NewsShortList extends React.Component {
   render() {
     return (
       <div className="NewsShortList">
-        <CommonShortList button={this.button}
-                         title={'Новости'}
-                         url='http://localhost:8000/news/api/news'
-                         kind={'news'}
-        />
+        <NewsList button={this.button}/>
       </div>
     )
   };

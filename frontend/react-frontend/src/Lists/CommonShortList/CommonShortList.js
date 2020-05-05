@@ -3,7 +3,7 @@ import './CommonShortList.css';
 import {Container, Row} from "react-bootstrap";
 import axios from 'axios';
 import DoctorShortItem from "../DoctorShortList/DoctorShortItem/DoctorShortItem";
-import NewsShortItem from "../NewsShortList/NewsShortItem/NewsShortItem";
+import NewsItem from "../News/NewsItem";
 import ArticleShortItem from "../../Lists/ArticleShortList/ArticleShortItem/ArticleShortItem";
 import ViewAllLink from "../../MainPage/ViewAllLink/ViewAllLink";
 
@@ -32,7 +32,7 @@ class CommonShortList extends React.Component {
         if (kind === 'doctors')
           res = <DoctorShortItem key={index} item={item} index={index}/>;
         else if (kind === 'news')
-          res = <NewsShortItem key={index} item={item} index={index}/>;
+          res = <NewsItem key={index} item={item} index={index}/>;
         else if (kind === 'articles')
           res = <ArticleShortItem key={index} item={item} index={index}/>;
         return res;

@@ -1,9 +1,8 @@
 import React from 'react';
-import './NewsShortItem.css';
 import {Card, Col} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-class NewsShortItem extends React.Component {
+class NewsItem extends React.Component {
   render() {
     const {item, index} = this.props;
 
@@ -29,4 +28,4 @@ class NewsShortItem extends React.Component {
   };
 }
 
-export default NewsShortItem;
+export default NewsItem;

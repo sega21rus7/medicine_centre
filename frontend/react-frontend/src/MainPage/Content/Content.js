@@ -3,7 +3,7 @@ import './Content.css';
 import Carousel from "../CarouselComponent/CarouselComponent";
 import DoctorShortList from "../../Lists/DoctorShortList/DoctorShortList";
 import {Container} from "react-bootstrap";
-import NewsShortList from "../../Lists/NewsShortList/NewsShortList";
+import NewsShortList from "../../Lists/News/NewsShortList";
 import ArticleShortList from "../../Lists/ArticleShortList/ArticleShortList";
 
 
@@ -16,8 +16,8 @@ class Content extends React.Component {
           {/*<hr/>*/}
           {/*<DoctorShortList/>*/}
           {/*<hr/>*/}
-          {/*<NewsShortList/>*/}
-          {/*<hr/>*/}
+          <NewsShortList/>
+          <hr/>
           {/*<ArticleShortList/>*/}
           {/*<hr/>*/}
         </Container>

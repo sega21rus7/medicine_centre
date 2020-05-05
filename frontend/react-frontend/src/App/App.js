@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from "../MainPage/Header/Header";
 import Lk from "../Lk/Lk";
-import NewsList from "../Lists/NewsList/NewsList";
+import NewsLongList from "../Lists/News/NewsLongList";
 import DoctorList from "../Lists/DoctorList/DoctorList";
 import ArticleList from "../Lists/ArticleList/ArticleList";
 import Contacts from "../Contacts/Contacts";
@@ -20,6 +20,7 @@ import SignUp from "../Auth/SignUp/SignUp";
 import SignIn from "../Auth/SignIn/SignIn";
 import VerifyEmail from "../Auth/VerifyEmail/VerifyEmail";
 import SignOut from "../Auth/SignOut/SignOut";
+import NewsList from "../Lists/News/NewsList";
 
 
 class App extends React.Component {
@@ -31,7 +32,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Content}/>
             <Route exact path="/lk" component={Lk}/>
-            {/*<Route exact path="/news" component={NewsList}/>*/}
+            <Route exact path="/news" component={NewsList}/>
             <Route exact path='/new/:slug' component={NewsDetail}/>
             {/*<Route exact path="/doctors" component={DoctorList}/>*/}
             <Route exact path="/doctor/:slug" component={DoctorDetail}/>
