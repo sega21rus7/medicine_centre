@@ -32,9 +32,8 @@ class ArticleDetail extends React.Component {
 
   render() {
     const {article} = this.state;
-    let tags = '-';
     if (article.tags) {
-      tags = <ArticleTagList tags={article.tags}/>;
+      var tags = <ArticleTagList tags={article.tags}/>;
     }
     const comments = article.comments ? <CommentList comments={article.comments}/> : null;
 
