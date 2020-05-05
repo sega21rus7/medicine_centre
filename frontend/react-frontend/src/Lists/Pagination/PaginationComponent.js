@@ -34,7 +34,7 @@ class PaginationComponent extends React.Component {
     const pagination = this.getPaginationPages();
 
     return (
-      <Pagination>
+      <Pagination className="mt-2">
         <Pagination.First
           onClick={this.paginate}
           value={1}
