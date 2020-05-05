@@ -1,11 +1,11 @@
 import React from 'react';
 import './CommonShortList.css';
 import {Container, Row} from "react-bootstrap";
-import ViewAllLink from "../ViewAllLink/ViewAllLink";
 import axios from 'axios';
 import DoctorShortItem from "../DoctorShortList/DoctorShortItem/DoctorShortItem";
 import NewsShortItem from "../NewsShortList/NewsShortItem/NewsShortItem";
 import ArticleShortItem from "../../Lists/ArticleShortList/ArticleShortItem/ArticleShortItem";
+import ViewAllLink from "../../MainPage/ViewAllLink/ViewAllLink";
 
 class CommonShortList extends React.Component {
   constructor(props) {
