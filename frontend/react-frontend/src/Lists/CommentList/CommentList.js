@@ -1,7 +1,6 @@
 import React from 'react';
 import './CommentList.css';
 import {Container} from "react-bootstrap";
-import axios from "axios";
 
 
 class CommentList extends React.Component {
