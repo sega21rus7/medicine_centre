@@ -38,6 +38,8 @@ class AddComment extends React.Component {
           console.log(error.response.data);
           this.setState({errors: error.response.data});
         });
+    } else {
+      this.setState({errors: 'Войдите в систему, чтобы оставить комментарий!'});
     }
   };
 
@@ -48,7 +50,7 @@ class AddComment extends React.Component {
   render() {
     const {errors} = this.state;
     if(errors){
-      var contentError = <ErrorValidateBlock text={errors.content}/>
+      var error = <ErrorValidateBlock text={errors.content || errors}/>;
     }
 
     return (
@@ -57,7 +59,7 @@ class AddComment extends React.Component {
           <Form.Group controlId="formGroupComment">
             <CKEditor editor={ClassicEditor} name="comment" onChange={this.handleChange}/>
           </Form.Group>
-          {contentError}
+          {error}
           <Button type="submit" variant="primary">
             Опубликовать комментарий
           </Button>
