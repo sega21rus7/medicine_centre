@@ -82,7 +82,6 @@ class SignUp extends React.Component {
                           <Form.Control className="form-control-user mb-3 mb-sm-0" type="password"
                                         name="password1" placeholder="Пароль"/>
                           {password1Error}
-                          {password1Error}
                         </Col>
                         <Col sm={6}>
                           <Form.Control className="form-control-user" type="password"
