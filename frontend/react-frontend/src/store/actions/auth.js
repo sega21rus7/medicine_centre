@@ -14,6 +14,13 @@ export const authSuccess = token => {
     }
 };
 
+export const regSuccess = () => {
+    return {
+        type: actionTypes.AUTH_SUCCESS,
+    }
+};
+
+
 export const authFail = error => {
     return {
         type: actionTypes.AUTH_FAIL,
@@ -69,12 +76,7 @@ export const authSignUp = (username, email, password1, password2) => {
             password2: password2
         })
         .then(res => {
-            const token = res.data.key;
-            const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
-            localStorage.setItem('token', token);
-            localStorage.setItem('expirationDate', expirationDate);
-            dispatch(authSuccess(token));
-            dispatch(checkAuthTimeout(3600));
+            dispatch(regSuccess());
         })
         .catch(err => {
             dispatch(authFail(err))
