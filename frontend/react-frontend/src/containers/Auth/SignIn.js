@@ -29,13 +29,13 @@ class SignIn extends React.Component {
     const email = isEmailInput ? elements.email.value : '';
     const password = elements.password.value;
     this.props.onAuth(username, email, password);
-    this.props.history.push('/lk');
+    // if(!this.props.error) this.props.history.push('/lk');
   };
 
   render() {
     const {isEmailInput} = this.state;
     if (this.props.error) {
-      var errors = this.props.error;
+      var errors = this.props.error.data;
     }
 
     const passwordInput = <Form.Control className="form-control-user" type="password" name="password"

@@ -62,8 +62,8 @@ export const authSignIn = (username = '', email = '', password) => {
         dispatch(checkAuthTimeout(3600));
       })
       .catch(err => {
-        dispatch(authFail(err))
-      })
+        dispatch(authFail(err.response));
+      });
   }
 };
 
@@ -80,7 +80,7 @@ export const authSignUp = (username, email, password1, password2) => {
         dispatch(regSuccess());
       })
       .catch(err => {
-        dispatch(authFail(err))
+        dispatch(authFail(err.response))
       })
   }
 };

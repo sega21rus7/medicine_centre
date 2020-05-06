@@ -16,12 +16,12 @@ class SignUp extends React.Component {
       elements.password1.value,
       elements.password2.value
     );
-    this.props.history.push('/sign_in');
+    // if(!this.props.error) this.props.history.push('/sign_in');
   };
 
   render() {
     if (this.props.error) {
-      var errors = this.props.error;
+      var errors = this.props.error.data;
     }
 
     if (errors) {
