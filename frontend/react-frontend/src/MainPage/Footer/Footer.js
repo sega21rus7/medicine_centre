@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 class Footer extends React.Component {
   render() {
     return (
-      <footer className="site-footer bg-gradient-secondary">
+      <footer className="footer bg-gradient-secondary">
         <Row className="footer-widgets">
           <Container>
             <Row>

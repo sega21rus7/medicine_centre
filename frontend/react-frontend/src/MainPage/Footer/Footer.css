@@ -1,13 +1,4 @@
-/*.Footer {*/
-/*  position: absolute;*/
-/*  bottom: 0;*/
-/*  width: 100%;*/
-/*  height: 3.5rem;*/
-/*  line-height: 3.5rem;*/
-/*  font-size: 80%;*/
-/*  color: #fff;*/
-/*}*/
-.site-footer {
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
