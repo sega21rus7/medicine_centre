@@ -31,8 +31,6 @@ export const authFail = error => {
 export const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('expirationDate');
-  const errorData = ['email','password','username','password1','password2'];
-  errorData.forEach(item => localStorage.removeItem(`${item}Validate`));
 
   return {
     type: actionTypes.AUTH_LOGOUT
@@ -64,10 +62,6 @@ export const authSignIn = (username = '', email = '', password) => {
         dispatch(checkAuthTimeout(3600));
       })
       .catch(err => {
-        const data = err.response.data;
-        Object.keys(data).forEach(function (key, index) {
-          localStorage.setItem(`${key}Validate`, data[key]);
-        });
         dispatch(authFail(err))
       })
   }
