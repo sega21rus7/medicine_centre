@@ -1,42 +1,28 @@
 import React from 'react';
 import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 import image from './sign_image.jpg'
-import axios from "axios";
 import AuthBottomPanel from "../../components/AuthBottomPanel";
 import ErrorValidateBlock from "../../components/ErrorValidateBlock/ErrorValidateBlock";
-import {Redirect} from "react-router";
+import {connect} from 'react-redux';
+import * as actions from '../../store/actions/auth';
 
 class SignUp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      errors: null,
-    }
-  }
-
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8000/rest-auth/registration/', {
-      username: event.target.elements.username.value,
-      email: event.target.elements.email.value,
-      password1: event.target.elements.password1.value,
-      password2: event.target.elements.password2.value,
-    })
-      .then(response => {
-        console.log(response.data);
-        return <Redirect to={{
-          pathname: '/sign_in',
-          state: {message: 'Вы успешно зарегистрировались!'}
-        }}/>
-      })
-      .catch(error => {
-        console.log(error.response.data);
-        this.setState({errors: error.response.data});
-      });
+    const elements = event.target.elements;
+    this.props.onAuth(
+      elements.username.value,
+      elements.email.value,
+      elements.password1.value,
+      elements.password2.value
+    );
+    this.props.history.push('/sign_in');
   };
 
   render() {
-    const {errors} = this.state;
+    if (this.props.error) {
+      var errors = this.props.error;
+    }
 
     if (errors) {
       var loginError = <ErrorValidateBlock text={errors.username}/>;
@@ -105,4 +91,17 @@ class SignUp extends React.Component {
   };
 }
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return {
+    error: state.error
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: (username, email, password1, password2) => dispatch(actions.authSignUp(username, email, password1, password2))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+

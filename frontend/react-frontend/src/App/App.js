@@ -8,6 +8,10 @@ import {connect} from 'react-redux';
 import * as actions from '../store/actions/auth'
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.onTryAutoSignUp();
+  }
+
   render() {
     return (
       <div className="App">

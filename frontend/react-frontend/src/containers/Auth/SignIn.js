@@ -2,10 +2,10 @@ import React from 'react';
 import {Button, Card, Col, Container, Dropdown, Form, Image, Row} from "react-bootstrap";
 import image from './sign_image.jpg'
 import DropdownItem from "react-bootstrap/DropdownItem";
-import axios from "axios";
 import AuthBottomPanel from "../../components/AuthBottomPanel";
 import ErrorValidateBlock from "../../components/ErrorValidateBlock/ErrorValidateBlock";
-import {Redirect} from "react-router";
+import * as actions from '../../store/actions/auth';
+import {connect} from 'react-redux';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -23,30 +23,20 @@ class SignIn extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const email = event.target.elements.email;
-    const username = event.target.elements.username;
-    const password = event.target.elements.password;
     const isEmailInput = this.state.isEmailInput;
-
-    axios.post('http://localhost:8000/rest-auth/login/', {
-      email: isEmailInput ? email.value : '',
-      username: !isEmailInput ? username.value : '',
-      password: password.value,
-    })
-      .then(response => {
-        localStorage.setItem('token', response.data.key);
-        console.log(response.data);
-        return <Redirect to={'/lk'}/>
-      })
-      .catch(error => {
-        console.log(error.response.data);
-        this.setState({errors: error.response.data});
-      });
+    const elements = event.target.elements;
+    const username = isEmailInput ? '' : elements.username.value;
+    const email = isEmailInput ? elements.email.value : '';
+    const password = elements.password.value;
+    this.props.onAuth(username, email, password);
+    this.props.history.push('/lk');
   };
 
   render() {
-    const {isEmailInput, errors} = this.state;
-    const {message} = this.props;
+    const {isEmailInput} = this.state;
+    if (this.props.error) {
+      var errors = this.props.error;
+    }
 
     const passwordInput = <Form.Control className="form-control-user" type="password" name="password"
                                         placeholder="Пароль"/>;
@@ -79,7 +69,6 @@ class SignIn extends React.Component {
               <Col lg={6}>
                 <div className="p-lg-5 p-3">
                   <div className="text-center mb-4">
-                    {message}
                     <Dropdown>
                       <span className="text-middle">Вход в систему</span>
                       <Dropdown.Toggle split variant="outline-primary" id="enter-dropdown"/>
@@ -106,7 +95,6 @@ class SignIn extends React.Component {
                       Войти
                     </Button>
                   </Form>
-
                   <AuthBottomPanel isSignUpLink={true}/>
                 </div>
               </Col>
@@ -118,4 +106,20 @@ class SignIn extends React.Component {
   };
 }
 
-export default SignIn;
+const mapStateToProps = (state) => {
+  return {
+    error: state.error
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: (username, email, password) =>
+    {
+      dispatch(actions.authSignIn(username, email, password))
+
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

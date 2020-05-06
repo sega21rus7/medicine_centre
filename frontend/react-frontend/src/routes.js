@@ -12,7 +12,6 @@ import Contacts from "./containers/Contacts";
 import AboutUs from "./containers/AboutUs";
 import SignUp from "./containers/Auth/SignUp";
 import SignIn from "./containers/Auth/SignIn";
-import SignOut from "./containers/Auth/SignOut";
 import VerifyEmail from "./containers/Auth/VerifyEmail";
 import Error404 from "./containers/Error404";
 import Content from "./containers/Content/Content";
@@ -33,7 +32,6 @@ const BaseRouter = () => (
       <Route exact path="/about_us" component={AboutUs}/>
       <Route exact path="/sign_up" component={SignUp}/>
       <Route exact path="/sign_in" component={SignIn}/>
-      <Route exact path="/sign_out" component={SignOut}/>
       <Route exact path="/verify-email/:key" component={VerifyEmail}/>
       <Route component={Error404}/>
     </Switch>

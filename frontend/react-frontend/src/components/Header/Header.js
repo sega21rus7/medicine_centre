@@ -2,7 +2,9 @@ import React from 'react';
 import './Header.css';
 import {Nav, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
-
+import {withRouter} from "react-router";
+import {connect} from "react-redux";
+import * as actions from '../../store/actions/auth';
 
 class Header extends React.Component {
   constructor(props) {
@@ -14,6 +16,11 @@ class Header extends React.Component {
       'О нас': '/about_us',
     };
   }
+
+  handleLogout = () => {
+    this.props.logout();
+    this.props.history.push('/');
+  };
 
   render() {
     const {isAuthenticated} = this.props;
@@ -48,11 +55,11 @@ class Header extends React.Component {
               {
                 isAuthenticated
                   ?
-                  <Nav.Link as={Link} to="/sign_out">
+                  <Nav.Link onClick={this.handleLogout}>
                     Выйти
                   </Nav.Link>
                   :
-                  null
+                  ''
               }
               <Nav.Link href="tel:88001112233">
                 8 800 111-22-33
@@ -65,4 +72,10 @@ class Header extends React.Component {
   };
 }
 
-export default Header;
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(actions.logout)
+  }
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(Header));
