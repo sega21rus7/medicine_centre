@@ -16,6 +16,7 @@ class Header extends React.Component {
   }
 
   render() {
+    const {isAuthenticated} = this.props;
     const custom_nav =
       Object.keys(this.custom_nav).map(item => {
         return <Nav.Link
@@ -30,15 +31,29 @@ class Header extends React.Component {
           <Navbar.Toggle/>
           <Navbar.Collapse className="justify-content-end">
             <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/sign_in">
-                Войти
-              </Nav.Link>
+              {
+                isAuthenticated
+                  ?
+                  <Nav.Link as={Link} to="/lk">
+                    Кабинет
+                  </Nav.Link>
+                  :
+                  <Nav.Link as={Link} to="/sign_in">
+                    Войти
+                  </Nav.Link>
+              }
               {custom_nav}
             </Nav>
             <Nav pullright="true">
-              <Nav.Link as={Link} to="/sign_out">
-                Выйти
-              </Nav.Link>;
+              {
+                isAuthenticated
+                  ?
+                  <Nav.Link as={Link} to="/sign_out">
+                    Выйти
+                  </Nav.Link>
+                  :
+                  null
+              }
               <Nav.Link href="tel:88001112233">
                 8 800 111-22-33
               </Nav.Link>

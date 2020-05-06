@@ -7,7 +7,7 @@ class CustomLayout extends Component {
   render() {
     return (
       <div>
-        <Header/>
+        <Header isAuthenticated={this.props.isAuthenticated}/>
         <div className="Content">
           {this.props.children}
         </div>
