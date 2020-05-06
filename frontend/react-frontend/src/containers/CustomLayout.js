@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Header from "../MainPage/Header/Header";
-import Footer from "../MainPage/Footer/Footer";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 import {withRouter} from "react-router-dom";
 
 class CustomLayout extends Component {

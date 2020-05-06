@@ -1,21 +1,21 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import Lk from "./Lk/Lk";
-import NewsLongList from "./Lists/News/NewsLongList";
-import NewsDetail from "./ListDetails/NewsDetail/NewsDetail";
-import DoctorLongList from "./Lists/Doctors/DoctorLongList";
-import DoctorDetail from "./ListDetails/DoctorDetail/DoctorDetail";
-import ArticleLongList from "./Lists/Articles/ArticleLongList";
-import ArticleDetail from "./ListDetails/ArticleDetail/ArticleDetail";
-import TagDetail from "./ListDetails/TagDetail/TagDetail";
-import Contacts from "./Contacts/Contacts";
-import AboutUs from "./AboutUs/AboutUs";
-import SignUp from "./Auth/SignUp/SignUp";
-import SignIn from "./Auth/SignIn/SignIn";
-import SignOut from "./Auth/SignOut/SignOut";
-import VerifyEmail from "./Auth/VerifyEmail/VerifyEmail";
-import Error404 from "./Error404/Error404";
-import Content from "./MainPage/Content/Content";
+import Lk from "./containers/Lk";
+import NewsLongList from "./containers/News/NewsLongList";
+import NewsDetail from "./components/NewsDetail";
+import DoctorLongList from "./containers/Doctors/DoctorLongList";
+import DoctorDetail from "./components/DoctorDetail";
+import ArticleLongList from "./containers/Articles/ArticleLongList";
+import ArticleDetail from "./components/ArticleDetail";
+import TagDetail from "./components/TagDetail";
+import Contacts from "./containers/Contacts";
+import AboutUs from "./containers/AboutUs";
+import SignUp from "./containers/Auth/SignUp";
+import SignIn from "./containers/Auth/SignIn";
+import SignOut from "./containers/Auth/SignOut";
+import VerifyEmail from "./containers/Auth/VerifyEmail";
+import Error404 from "./containers/Error404";
+import Content from "./containers/Content/Content";
 
 const BaseRouter = () => (
   <div>
