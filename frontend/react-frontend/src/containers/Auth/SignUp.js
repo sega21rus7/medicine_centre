@@ -61,21 +61,23 @@ class SignUp extends React.Component {
                                     placeholder="Email"/>
                       {emailError}
                     </Form.Group>
-                    <Form.Group controlId="formGroupPassword">
-                      <Row>
-                        <Col sm={6}>
+                    <Row>
+                      <Col sm={6}>
+                        <Form.Group controlId="formGroupPassword1">
                           <Form.Control className="form-control-user mb-3 mb-sm-0" type="password"
                                         name="password1" placeholder="Пароль" autoComplete="on"/>
                           {password1Error}
-                        </Col>
-                        <Col sm={6}>
+                        </Form.Group>
+                      </Col>
+                      <Col sm={6}>
+                        <Form.Group controlId="formGroupPassword2">
                           <Form.Control className="form-control-user" type="password"
                                         name="password2" placeholder="Подтвердите пароль"
                                         autoComplete="on"/>
                           {password2Error}
-                        </Col>
-                      </Row>
-                    </Form.Group>
+                        </Form.Group>
+                      </Col>
+                    </Row>
                     {nonFieldErrors}
                     <Button type="submit" variant="outline-primary" className="btn-user" block>
                       Зарегистрироваться
