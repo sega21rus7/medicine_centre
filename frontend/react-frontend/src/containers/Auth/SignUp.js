@@ -65,12 +65,12 @@ class SignUp extends React.Component {
                       <Row>
                         <Col sm={6}>
                           <Form.Control className="form-control-user mb-3 mb-sm-0" type="password"
-                                        name="password1" placeholder="Пароль"/>
+                                        name="password1" placeholder="Пароль" autocomplete="on"/>
                           {password1Error}
                         </Col>
                         <Col sm={6}>
                           <Form.Control className="form-control-user" type="password"
-                                        name="password2" placeholder="Подтвердите пароль"/>
+                                        name="password2" placeholder="Подтвердите пароль" autocomplete="on"/>
                           {password2Error}
                         </Col>
                       </Row>
