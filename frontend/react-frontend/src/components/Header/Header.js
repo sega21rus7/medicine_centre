@@ -7,53 +7,41 @@ import {Link} from "react-router-dom";
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.nav = {
-      'Войти': '/sign_in',
+    this.custom_nav = {
       'Новости': '/news',
       'Статьи': '/articles',
       'Контакты': '/contacts',
       'О нас': '/about_us',
     };
-    this.site_name = 'Медцентр';
-    this.phone_nav = {
-      text: '8 800 111-22-33',
-      to: 'tel:88001112233',
-    };
-    this.logout_nav = {
-      text: 'Выйти',
-      to: '/sign_out',
-    };
   }
 
   render() {
-    const nav =
-      Object.keys(this.nav).map(item => {
+    const custom_nav =
+      Object.keys(this.custom_nav).map(item => {
         return <Nav.Link
-          key={item} as={Link} to={this.nav[item]}>{item}
+          key={item} as={Link} to={this.custom_nav[item]}>{item}
         </Nav.Link>
       });
-    const phone_nav =
-      <Nav.Link key={this.phone_nav.text} href={this.phone_nav.to}>
-        {this.phone_nav.text}
-      </Nav.Link>;
-
-    const logout_nav =
-      <Nav.Link key={this.logout_nav.text} as={Link} to={this.logout_nav.to}>
-        {this.logout_nav.text}
-      </Nav.Link>;
 
     return (
       <div className="Header">
         <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top" className="bg-gradient-secondary">
-          <Navbar.Brand as={Link} to="/">{this.site_name}</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">Медцентр</Navbar.Brand>
           <Navbar.Toggle/>
           <Navbar.Collapse className="justify-content-end">
             <Nav className="mr-auto">
-              {nav}
+              <Nav.Link as={Link} to="/sign_in">
+                Войти
+              </Nav.Link>
+              {custom_nav}
             </Nav>
             <Nav pullright="true">
-              {logout_nav}
-              {phone_nav}
+              <Nav.Link as={Link} to="/sign_out">
+                Выйти
+              </Nav.Link>;
+              <Nav.Link href="tel:88001112233">
+                8 800 111-22-33
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
