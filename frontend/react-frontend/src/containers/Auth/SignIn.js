@@ -39,7 +39,7 @@ class SignIn extends React.Component {
     }
 
     const passwordInput = <Form.Control className="form-control-user" type="password" name="password"
-                                        placeholder="Пароль" autocomplete="on"/>;
+                                        placeholder="Пароль" autoComplete="on"/>;
     const emailInput = <Form.Control className="form-control-user" type="email" name="email"
                                      placeholder="Email"/>;
     const loginInput = <Form.Control className="form-control-user" type="text" name="username"
