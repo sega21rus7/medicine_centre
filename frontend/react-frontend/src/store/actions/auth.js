@@ -31,6 +31,9 @@ export const authFail = error => {
 export const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('expirationDate');
+  const errorData = ['email','password','username','password1','password2'];
+  errorData.forEach(item => localStorage.removeItem(`${item}Validate`));
+
   return {
     type: actionTypes.AUTH_LOGOUT
   };
