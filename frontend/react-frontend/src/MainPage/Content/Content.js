@@ -10,7 +10,7 @@ import DoctorShortList from "../../Lists/Doctors/DoctorShortList";
 class Content extends React.Component {
   render() {
     return (
-      <div className="Content">
+      <div className="MainPageContent">
         <Carousel/>
         <Container>
           <hr/>
