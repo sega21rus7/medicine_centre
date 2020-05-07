@@ -17,13 +17,10 @@ class Header extends React.Component {
     };
   }
 
-  handleLogout = () => {
-    this.props.logout();
-    this.props.history.push('/');
-  };
-
   render() {
     const {isAuthenticated} = this.props;
+    console.log('header ' + isAuthenticated);
+
     const custom_nav =
       Object.keys(this.custom_nav).map(item => {
         return <Nav.Link
@@ -55,7 +52,7 @@ class Header extends React.Component {
               {
                 isAuthenticated
                   ?
-                  <Nav.Link onClick={this.handleLogout}>
+                  <Nav.Link onClick={this.props.logout}>
                     Выйти
                   </Nav.Link>
                   :
@@ -72,10 +69,16 @@ class Header extends React.Component {
   };
 }
 
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated,
+  }
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(actions.logout)
   }
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(Header));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

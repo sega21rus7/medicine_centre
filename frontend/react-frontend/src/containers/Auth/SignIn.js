@@ -6,6 +6,7 @@ import AuthBottomPanel from "../../components/AuthBottomPanel";
 import ErrorValidateBlock from "../../components/ErrorValidateBlock/ErrorValidateBlock";
 import * as actions from '../../store/actions/auth';
 import {connect} from 'react-redux';
+import {Redirect} from "react-router";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -29,13 +30,17 @@ class SignIn extends React.Component {
     const email = isEmailInput ? elements.email.value : '';
     const password = elements.password.value;
     this.props.onAuth(username, email, password);
-    // if(!this.props.error) this.props.history.push('/lk');
   };
 
   render() {
+    const {isAuthenticated, error} = this.props;
     const {isEmailInput} = this.state;
-    if (this.props.error) {
-      var errors = this.props.error.data;
+
+    if(isAuthenticated){
+      return <Redirect to='/lk'/>;
+    }
+    if (error) {
+      var errors = error.data;
     }
 
     const passwordInput = <Form.Control className="form-control-user" type="password" name="password"
@@ -108,7 +113,8 @@ class SignIn extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    error: state.error
+    error: state.error,
+    isAuthenticated: state.isAuthenticated,
   }
 };
 

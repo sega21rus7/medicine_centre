@@ -16,7 +16,6 @@ class SignUp extends React.Component {
       elements.password1.value,
       elements.password2.value
     );
-    // if(!this.props.error) this.props.history.push('/sign_in');
   };
 
   render() {
@@ -96,7 +95,8 @@ class SignUp extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    error: state.error
+    error: state.error,
+    isAuthenticated: state.isAuthenticated,
   }
 };
 
