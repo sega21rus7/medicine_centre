@@ -58,7 +58,7 @@ class Lk extends React.Component {
               <Tab.Content>
                 {
                   this.patient_nav.map((item, index) => (
-                      <Tab.Pane eventKey={index}>
+                      <Tab.Pane key={index} eventKey={index}>
                         <p>{item}</p>
                       </Tab.Pane>
                     )
