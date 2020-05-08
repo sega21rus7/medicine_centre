@@ -41,9 +41,11 @@ class Footer extends React.Component {
                   <li><Link to="/">Главная</Link></li>
                   <li><Link to="/lk">Кабинет</Link></li>
                   <li><Link to="/about_us">О нас</Link></li>
+                  <li><Link to="/news">Новости</Link></li>
+                  <li><Link to="/articles">Статьи</Link></li>
+                  <li><Link to="/doctors">Врачи</Link></li>
                   <li><Link to="/departments">Отделения</Link></li>
                   <li><Link to="/contacts">Контакты</Link></li>
-                  <li><Link to="/faq">FAQ</Link></li>
                 </ul>
               </div>
             </Col>
