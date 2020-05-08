@@ -5,6 +5,7 @@ import {Container} from "react-bootstrap";
 import NewsShortList from "../News/NewsShortList";
 import ArticleShortList from "../Articles/ArticleShortList";
 import DoctorShortList from "../Doctors/DoctorShortList";
+import Feedback from "../Feedback";
 
 
 class Content extends React.Component {
@@ -20,6 +21,7 @@ class Content extends React.Component {
           <hr/>
           <ArticleShortList/>
           <hr/>
+          <Feedback/>
         </Container>
       </div>
     )
