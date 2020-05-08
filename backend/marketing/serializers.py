@@ -23,7 +23,7 @@ class CommentCreateUpdateDestroySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ArticleComment
-        fields = ('user', 'article', 'pub_date', 'content',)
+        fields = ('user', 'article', 'content',)
 
 
 class CommentListSerializer(serializers.ModelSerializer):
@@ -46,7 +46,7 @@ class ArticleListSerializer(serializers.ModelSerializer):
 class ArticleCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ('title', 'content', 'pub_date', 'slug', 'image', 'tags',)
+        fields = ('title', 'content', 'image', 'tags',)
 
 
 class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
