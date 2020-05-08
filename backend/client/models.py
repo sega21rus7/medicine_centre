@@ -28,7 +28,7 @@ class InsurancePolicy(models.Model):
 
 class Patient(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
-                                on_delete=models.CASCADE, )
+                                on_delete=models.CASCADE)
     passport = models.OneToOneField(Passport, verbose_name='Паспорт', on_delete=models.CASCADE)
     insurance_policy = models.OneToOneField(InsurancePolicy, verbose_name='Полис ОМС',
                                             on_delete=models.CASCADE)

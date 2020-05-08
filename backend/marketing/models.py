@@ -102,7 +102,7 @@ class ArticleComment(BaseFeedback):
 
 
 class Review(BaseFeedback):  # отзыв
-    user = models.ForeignKey('client.Patient', verbose_name='Клиент',
+    patient = models.ForeignKey('client.Patient', verbose_name='Клиент',
                              on_delete=models.CASCADE)
     doctors = models.ManyToManyField('staff.Doctor', verbose_name='Врачи', blank=True,
                                      related_name='reviews')
