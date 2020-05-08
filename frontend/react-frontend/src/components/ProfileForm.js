@@ -3,6 +3,7 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import ErrorBlock from "./ErrorBlock/ErrorBlock";
 import axios from 'axios';
+import avatar from '../images/custom_avatar.png'
 
 class ProfileForm extends React.Component {
   constructor(props) {
@@ -106,16 +107,11 @@ class ProfileForm extends React.Component {
           <Col sm={4}>
             <Form.Group controlId="formGroupAvatar">
               <Form.Label column="name">Аватар</Form.Label>
-              {
-                user.avatar ?
-                  <Image
-                    src={user.avatar}
-                    alt="Аватар"
-                    className="img-fluid">
-                  </Image>
-                  :
-                  null
-              }
+              <Image
+                src={user.avatar ? user.avatar : avatar}
+                alt="Аватар"
+                className="img-fluid">
+              </Image>
               <Form.Control className="form-control-user" type="file" name="avatar"/>
               {avatarError}
             </Form.Group>
