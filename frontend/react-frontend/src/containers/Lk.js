@@ -3,6 +3,7 @@ import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
 import {connect} from "react-redux";
 import axios from "axios";
 import ProfileForm from '../components/ProfileForm'
+import ChangePasswordForm from "../components/ChangePasswordForm";
 
 class Lk extends React.Component {
   constructor(props) {
@@ -76,11 +77,12 @@ class Lk extends React.Component {
             </Col>
             <Col sm={9}>
               <Tab.Content>
-                {
-                  <Tab.Pane key="0" eventKey="0">
-                    <ProfileForm user={userData}/>
-                  </Tab.Pane>
-                }
+                <Tab.Pane key="0" eventKey="0">
+                  <ProfileForm user={userData}/>
+                </Tab.Pane>
+                <Tab.Pane key="1" eventKey="1">
+                  <ChangePasswordForm/>
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
