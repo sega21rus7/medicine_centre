@@ -96,3 +96,21 @@ class ArticleComment(models.Model):
             self.last_change_date = timezone.now()
 
         super().save(*args, **kwargs)
+
+
+class Review(models.Model):  # отзыв
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             on_delete=models.CASCADE)
+    content = RichTextField(verbose_name='Содержание', db_index=True)
+    pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
+    last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения', blank=True, null=True)
+    doctors = models.ManyToManyField('staff.Doctor', verbose_name='Врачи', blank=True, null=True,
+                                     related_name='reviews')
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+        ordering = ('-pub_date',)
+
+    def __str__(self):
+        return self.pub_date
