@@ -1,8 +1,8 @@
 from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.db import models
-from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
 from pytils.translit import slugify
 from smartfields import fields as smart_fields
 
@@ -68,22 +68,13 @@ class Tag(models.Model):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        return reverse("news:tag_detail", kwargs={"slug": self.slug})
 
-
-class ArticleComment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
-                             on_delete=models.CASCADE)
-    article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,
-                                related_name='comments')
+class BaseFeedback(models.Model):
     pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
     last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения', blank=True, null=True)
     content = RichTextField(verbose_name='Содержание', db_index=True)
 
     class Meta:
-        verbose_name = 'Комментарий'
-        verbose_name_plural = 'Комментарии'
         ordering = ('-pub_date',)
 
     def __str__(self):
@@ -98,19 +89,33 @@ class ArticleComment(models.Model):
         super().save(*args, **kwargs)
 
 
-class Review(models.Model):  # отзыв
+class ArticleComment(BaseFeedback):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                              on_delete=models.CASCADE)
-    content = RichTextField(verbose_name='Содержание', db_index=True)
-    pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
-    last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения', blank=True, null=True)
+    article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,
+                                related_name='comments')
+
+    class Meta(BaseFeedback.Meta):
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
+
+class Review(BaseFeedback):  # отзыв
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             on_delete=models.CASCADE)
     doctors = models.ManyToManyField('staff.Doctor', verbose_name='Врачи', blank=True, null=True,
                                      related_name='reviews')
 
-    class Meta:
+    class Meta(BaseFeedback.Meta):
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
-        ordering = ('-pub_date',)
 
-    def __str__(self):
-        return self.pub_date
+
+class Feedback(BaseFeedback):  # обратная связь
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             on_delete=models.CASCADE, blank=True, null=True)
+    email = models.EmailField(_('Email address'), db_index=True)
+
+    class Meta(BaseFeedback.Meta):
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'
