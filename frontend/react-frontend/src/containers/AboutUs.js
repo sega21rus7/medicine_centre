@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
+import Feedback from "./Feedback";
 
 
 class AboutUs extends React.Component {
@@ -34,12 +35,9 @@ class AboutUs extends React.Component {
             <Col sm={9}>
               <Tab.Content>
                 {
-                  this.nav.map((item, index) => (
-                      <Tab.Pane eventKey={index}>
-                        <p>{item}</p>
-                      </Tab.Pane>
-                    )
-                  )
+                  <Tab.Pane eventKey="4">
+                    <Feedback/>
+                  </Tab.Pane>
                 }
               </Tab.Content>
             </Col>
