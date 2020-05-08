@@ -3,7 +3,6 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-from django.utils.html import strip_tags
 from pytils.translit import slugify
 from smartfields import fields as smart_fields
 
@@ -88,11 +87,7 @@ class ArticleComment(models.Model):
         ordering = ('-pub_date',)
 
     def __str__(self):
-        if len(self.content) > 40:
-            content = '%s...' % self.content[:40]
-        else:
-            content = self.content
-        return strip_tags(content)
+        return self.pub_date
 
     def save(self, *args, **kwargs):
         if not self.pub_date:
