@@ -1,8 +1,9 @@
-# from django.conf.urls import url
-# from . import views
+from rest_framework.routers import DefaultRouter
+
+from .views import ClientViewSet
 
 app_name = 'client'
 
-urlpatterns = [
-
-]
+router = DefaultRouter()
+router.register(r'api/patients', ClientViewSet, basename='patients')
+urlpatterns = router.urls

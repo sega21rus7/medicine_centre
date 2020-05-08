@@ -1,3 +1,18 @@
-from django.shortcuts import render
+from rest_framework import viewsets
 
-# Create your views here.
+from medicine_centre.paginators import StandardPagination
+from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
+from .models import Patient
+from .serializers import PatientListSerializer, PatientCreateUpdateDestroySerializer
+
+
+class ClientViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+    queryset = Patient.objects.all()
+    serializer_class = PatientListSerializer
+    serializer_action_classes = {
+        'list': PatientListSerializer,
+        'create': PatientCreateUpdateDestroySerializer,
+        'update': PatientCreateUpdateDestroySerializer,
+        'destroy': PatientCreateUpdateDestroySerializer,
+    }
+    pagination_class = StandardPagination

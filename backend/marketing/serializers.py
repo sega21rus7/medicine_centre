@@ -1,7 +1,9 @@
 from rest_framework import serializers
 
+from client.serializers import PatientListSerializer
 from lk.serializers import CustomerUserSerializer
-from .models import News, Tag, Article, ArticleComment
+from staff.serializers import DoctorListSerializer
+from .models import News, Tag, Article, ArticleComment, Review, Feedback
 
 
 class NewsSerializer(serializers.ModelSerializer):
@@ -38,10 +40,27 @@ class ArticleListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('pk', 'title', 'content', 'pub_date', 'slug', 'image', 'tags', 'comments')
+        fields = ('pk', 'title', 'content', 'pub_date', 'slug', 'image', 'tags', 'comments',)
 
 
 class ArticleCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ('title', 'content', 'pub_date', 'slug', 'image', 'tags',)
+
+
+class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ('patient', 'pub_date', 'last_change_date', 'content', 'doctors',)
+
+
+class ReviewListSerializer(ReviewCreateUpdateDestroySerializer):
+    patient = PatientListSerializer(read_only=True)
+    doctors = DoctorListSerializer(read_only=True, many=True)
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = ('email', 'pub_date', 'last_change_date', 'content',)

@@ -4,10 +4,11 @@ from rest_framework.permissions import IsAuthenticated
 
 from medicine_centre.paginators import StandardPagination
 from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
-from .models import News, Article, Tag, ArticleComment
-from .serializers import NewsSerializer, ArticleListSerializer, \
-    ArticleCreateUpdateDestroySerializer, TagSerializer, \
-    CommentCreateUpdateDestroySerializer
+from .models import News, Article, Tag, ArticleComment, Review, Feedback, SupportQuestion
+from .serializers import (
+    NewsSerializer, ArticleListSerializer, ArticleCreateUpdateDestroySerializer,
+    TagSerializer, CommentCreateUpdateDestroySerializer, ReviewListSerializer,
+    ReviewCreateUpdateDestroySerializer, FeedbackSerializer)
 
 
 class NewsViewSet(viewsets.ModelViewSet):
@@ -49,3 +50,34 @@ class ArticleCommentViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = ArticleComment.objects.all()
     serializer_class = CommentCreateUpdateDestroySerializer
+
+
+class ReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    queryset = Review.objects.all()
+    serializer_class = ReviewListSerializer
+    serializer_action_classes = {
+        'list': ReviewListSerializer,
+        'create': ReviewCreateUpdateDestroySerializer,
+        'update': ReviewCreateUpdateDestroySerializer,
+        'destroy': ReviewCreateUpdateDestroySerializer,
+    }
+    pagination_class = StandardPagination
+
+
+class FeedbackViewSet(viewsets.ModelViewSet):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
+    pagination_class = StandardPagination
+
+
+# class SupportQuestionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+#     queryset = SupportQuestion.objects.all()
+#     serializer_class = SupportQuestionListSerializer
+#     serializer_action_classes = {
+#         'list': SupportQuestionListSerializer,
+#         'create': SupportQuestionCreateUpdateDestroySerializer,
+#         'update': SupportQuestionCreateUpdateDestroySerializer,
+#         'destroy': SupportQuestionCreateUpdateDestroySerializer,
+#     }
+#     pagination_class = StandardPagination
