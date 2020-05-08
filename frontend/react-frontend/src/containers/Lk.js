@@ -6,7 +6,7 @@ class Lk extends React.Component {
   constructor(props) {
     super(props);
     this.patient_nav = [
-      'Настройки профиля',
+      'Профиль',
       'Сменить пароль',
       'Мои отзывы',
       'Записаться на прием',
@@ -14,7 +14,7 @@ class Lk extends React.Component {
       'Задать вопрос',
     ];
     this.doctor_nav = [
-      'Настройки профиля',
+      'Профиль',
       'Сменить пароль',
       'Мои пациенты',
       'История записей',
@@ -22,7 +22,7 @@ class Lk extends React.Component {
       'Задать вопрос',
     ];
     this.admin_nav = [
-      'Настройки профиля',
+      'Профиль',
       'Сменить пароль',
       'Пациенты',
       'Врачи',
