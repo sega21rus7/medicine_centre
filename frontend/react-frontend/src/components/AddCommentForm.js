@@ -20,7 +20,7 @@ class AddCommentForm extends React.Component {
     if (token) {
       const options = {
         method: 'POST',
-        url: 'http://localhost:8000/news/api/comments/',
+        url: 'http://localhost:8000/marketing/api/comments/',
         data: {
           article: this.props.articleID,
           content: this.state.comment,

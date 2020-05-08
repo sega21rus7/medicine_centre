@@ -12,7 +12,7 @@ class NewsDetail extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/news/api/news/${this.props.match.params.slug}`)
+    axios.get(`http://localhost:8000/marketing/api/news/${this.props.match.params.slug}`)
       .then(response => {
         this.setState({
           newItem: response.data

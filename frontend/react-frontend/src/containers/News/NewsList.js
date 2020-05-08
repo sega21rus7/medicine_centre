@@ -27,7 +27,7 @@ class NewsList extends React.Component {
   }
 
   getData = (page) => {
-    const url = `http://localhost:8000/news/api/news/?page=${page}`;
+    const url = `http://localhost:8000/marketing/api/news/?page=${page}`;
     axios.get(url)
       .then(response => {
         this.setState({

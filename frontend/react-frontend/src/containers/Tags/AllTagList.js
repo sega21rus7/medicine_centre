@@ -13,7 +13,7 @@ class AllTagList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/news/api/tags/')
+    axios.get('http://localhost:8000/marketing/api/tags/')
       .then(response => {
         this.setState({
           tags: response.data

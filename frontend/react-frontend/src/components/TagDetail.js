@@ -5,7 +5,7 @@ import ArticleLongList from "../containers/Articles/ArticleLongList";
 
 class TagDetail extends React.Component {
   render() {
-    const url = `http://localhost:8000/news/api/articles_with_tag/${this.props.match.params.slug}/`;
+    const url = `http://localhost:8000/marketing/api/articles_with_tag/${this.props.match.params.slug}/`;
 
     return (
       <Container className="TagDetail">
