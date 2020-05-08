@@ -3,7 +3,7 @@ import {Button, Container, Form} from "react-bootstrap";
 import CKEditor from "@ckeditor/ckeditor5-react"
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic"
 import axios from "axios";
-import ErrorValidateBlock from "./ErrorValidateBlock/ErrorValidateBlock";
+import ErrorBlock from "./ErrorBlock/ErrorBlock";
 
 class AddCommentForm extends React.Component {
   constructor(props) {
@@ -49,7 +49,7 @@ class AddCommentForm extends React.Component {
   render() {
     const {errors} = this.state;
     if(errors){
-      var error = <ErrorValidateBlock text={errors.content || errors}/>;
+      var error = <ErrorBlock text={errors.content || errors}/>;
     }
 
     return (
