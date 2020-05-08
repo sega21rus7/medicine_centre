@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 import image from './sign_image.jpg'
 import AuthBottomPanel from "../../components/AuthBottomPanel";
-import ErrorValidateBlock from "../../components/ErrorValidateBlock/ErrorValidateBlock";
+import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/auth';
 
@@ -24,11 +24,11 @@ class SignUp extends React.Component {
     }
 
     if (errors) {
-      var loginError = <ErrorValidateBlock text={errors.username}/>;
-      var emailError = <ErrorValidateBlock text={errors.email}/>;
-      var password1Error = <ErrorValidateBlock text={errors.password1}/>;
-      var password2Error = <ErrorValidateBlock text={errors.password2}/>;
-      var nonFieldErrors = <ErrorValidateBlock text={errors.non_field_errors}/>;
+      var loginError = <ErrorBlock text={errors.username}/>;
+      var emailError = <ErrorBlock text={errors.email}/>;
+      var password1Error = <ErrorBlock text={errors.password1}/>;
+      var password2Error = <ErrorBlock text={errors.password2}/>;
+      var nonFieldErrors = <ErrorBlock text={errors.non_field_errors}/>;
     }
 
     return (

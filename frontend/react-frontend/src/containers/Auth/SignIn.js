@@ -3,7 +3,7 @@ import {Button, Card, Col, Container, Dropdown, Form, Image, Row} from "react-bo
 import image from './sign_image.jpg'
 import DropdownItem from "react-bootstrap/DropdownItem";
 import AuthBottomPanel from "../../components/AuthBottomPanel";
-import ErrorValidateBlock from "../../components/ErrorValidateBlock/ErrorValidateBlock";
+import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import * as actions from '../../store/actions/auth';
 import {connect} from 'react-redux';
 import {Redirect} from "react-router";
@@ -52,9 +52,9 @@ class SignIn extends React.Component {
     const emailOrLoginInput = isEmailInput ? emailInput : loginInput;
     if (errors) {
       var emailOrLoginError = isEmailInput ? errors.email : errors.username;
-      emailOrLoginError = <ErrorValidateBlock text={emailOrLoginError}/>;
-      var passwordError = <ErrorValidateBlock text={errors.password}/>;
-      var nonFieldErrors = <ErrorValidateBlock text={errors.non_field_errors}/>;
+      emailOrLoginError = <ErrorBlock text={emailOrLoginError}/>;
+      var passwordError = <ErrorBlock text={errors.password}/>;
+      var nonFieldErrors = <ErrorBlock text={errors.non_field_errors}/>;
     }
 
 
