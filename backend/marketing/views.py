@@ -73,6 +73,7 @@ class FeedbackViewSet(viewsets.ModelViewSet):
 
 
 class SupportQuestionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
     queryset = SupportQuestion.objects.all()
     serializer_class = SupportQuestionListSerializer
     serializer_action_classes = {
