@@ -8,7 +8,8 @@ from .models import News, Article, Tag, ArticleComment, Review, Feedback, Suppor
 from .serializers import (
     NewsSerializer, ArticleListSerializer, ArticleCreateUpdateDestroySerializer,
     TagSerializer, CommentCreateUpdateDestroySerializer, ReviewListSerializer,
-    ReviewCreateUpdateDestroySerializer, FeedbackSerializer)
+    ReviewCreateUpdateDestroySerializer, FeedbackSerializer, SupportQuestionListSerializer,
+    SupportQuestionCreateUpdateDestroySerializer)
 
 
 class NewsViewSet(viewsets.ModelViewSet):
@@ -71,13 +72,13 @@ class FeedbackViewSet(viewsets.ModelViewSet):
     pagination_class = StandardPagination
 
 
-# class SupportQuestionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
-#     queryset = SupportQuestion.objects.all()
-#     serializer_class = SupportQuestionListSerializer
-#     serializer_action_classes = {
-#         'list': SupportQuestionListSerializer,
-#         'create': SupportQuestionCreateUpdateDestroySerializer,
-#         'update': SupportQuestionCreateUpdateDestroySerializer,
-#         'destroy': SupportQuestionCreateUpdateDestroySerializer,
-#     }
-#     pagination_class = StandardPagination
+class SupportQuestionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+    queryset = SupportQuestion.objects.all()
+    serializer_class = SupportQuestionListSerializer
+    serializer_action_classes = {
+        'list': SupportQuestionListSerializer,
+        'create': SupportQuestionCreateUpdateDestroySerializer,
+        'update': SupportQuestionCreateUpdateDestroySerializer,
+        'destroy': SupportQuestionCreateUpdateDestroySerializer,
+    }
+    pagination_class = StandardPagination

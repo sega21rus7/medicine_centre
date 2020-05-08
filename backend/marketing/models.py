@@ -103,7 +103,7 @@ class ArticleComment(BaseFeedback):
 
 class Review(BaseFeedback):  # отзыв
     patient = models.ForeignKey('client.Patient', verbose_name='Клиент',
-                             on_delete=models.CASCADE)
+                                on_delete=models.CASCADE)
     doctors = models.ManyToManyField('staff.Doctor', verbose_name='Врачи', blank=True,
                                      related_name='reviews')
 
@@ -121,8 +121,8 @@ class Feedback(BaseFeedback):  # обратная связь
 
 
 class SupportQuestion(BaseFeedback):  # обращения в техподдержку
-    user = models.ForeignKey('client.Patient', verbose_name='Пользователь',
-                             on_delete=models.CASCADE, blank=True, null=True)
+    patient = models.ForeignKey('client.Patient', verbose_name='Пользователь',
+                                on_delete=models.CASCADE)
 
     class Meta(BaseFeedback.Meta):
         verbose_name = 'Вопрос в техподдержку'

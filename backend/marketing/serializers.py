@@ -3,7 +3,7 @@ from rest_framework import serializers
 from client.serializers import PatientListSerializer
 from lk.serializers import CustomerUserSerializer
 from staff.serializers import DoctorListSerializer
-from .models import News, Tag, Article, ArticleComment, Review, Feedback
+from .models import News, Tag, Article, ArticleComment, Review, Feedback, SupportQuestion
 
 
 class NewsSerializer(serializers.ModelSerializer):
@@ -64,3 +64,13 @@ class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
         fields = ('email', 'pub_date', 'last_change_date', 'content',)
+
+
+class SupportQuestionCreateUpdateDestroySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SupportQuestion
+        fields = ('patient', 'pub_date', 'last_change_date', 'content',)
+
+
+class SupportQuestionListSerializer(SupportQuestionCreateUpdateDestroySerializer):
+    patient = PatientListSerializer(read_only=True)
