@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
+import {connect} from "react-redux";
 
 
 class Lk extends React.Component {
@@ -72,4 +73,11 @@ class Lk extends React.Component {
   };
 }
 
-export default Lk;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated,
+  }
+};
+
+
+export default connect(mapStateToProps, null)(Lk);
