@@ -78,7 +78,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DATETIME_FORMAT': "%d-%m-%Y - %H:%M:%S"
+    'DATETIME_FORMAT': "%d.%m.%Y - %H:%M:%S"
 }
 
 REST_AUTH_SERIALIZERS = {
