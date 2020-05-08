@@ -75,6 +75,7 @@ class BaseFeedback(models.Model):
     content = RichTextField(verbose_name='Содержание', db_index=True)
 
     class Meta:
+        abstract = True
         ordering = ('-pub_date',)
 
     def __str__(self):
@@ -101,9 +102,9 @@ class ArticleComment(BaseFeedback):
 
 
 class Review(BaseFeedback):  # отзыв
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+    user = models.ForeignKey('client.Patient', verbose_name='Клиент',
                              on_delete=models.CASCADE)
-    doctors = models.ManyToManyField('staff.Doctor', verbose_name='Врачи', blank=True, null=True,
+    doctors = models.ManyToManyField('staff.Doctor', verbose_name='Врачи', blank=True,
                                      related_name='reviews')
 
     class Meta(BaseFeedback.Meta):
@@ -112,10 +113,17 @@ class Review(BaseFeedback):  # отзыв
 
 
 class Feedback(BaseFeedback):  # обратная связь
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
-                             on_delete=models.CASCADE, blank=True, null=True)
     email = models.EmailField(_('Email address'), db_index=True)
 
     class Meta(BaseFeedback.Meta):
         verbose_name = 'Обратная связь'
         verbose_name_plural = 'Обратная связь'
+
+
+class SupportQuestion(BaseFeedback):  # обращения в техподдержку
+    user = models.ForeignKey('client.Patient', verbose_name='Пользователь',
+                             on_delete=models.CASCADE, blank=True, null=True)
+
+    class Meta(BaseFeedback.Meta):
+        verbose_name = 'Вопрос в техподдержку'
+        verbose_name_plural = 'Вопросы в техподдержку'
