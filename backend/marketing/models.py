@@ -113,6 +113,7 @@ class Review(BaseFeedback):  # отзыв
 
 
 class Feedback(BaseFeedback):  # обратная связь
+    name = models.CharField(max_length=150, verbose_name='Имя', db_index=True)
     email = models.EmailField(_('Email address'), db_index=True)
 
     class Meta(BaseFeedback.Meta):
