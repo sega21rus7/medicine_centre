@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 from .views import NewsViewSet, ArticleViewSet, TagListView, ArticleWithTagView, \
     ArticleCommentViewSet
 
-app_name = 'news'
+app_name = 'marketing'
 
 urlpatterns = [
     path('api/tags/', TagListView.as_view(), name='tag_list'),

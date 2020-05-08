@@ -8,7 +8,7 @@ from lk.views import ConfirmEmailView
 
 urlpatterns = [
     path('lk/', include('lk.urls')),
-    path('news/', include('news.urls')),
+    path('marketing/', include('marketing.urls')),
     path('staff/', include('staff.urls')),
     path('client/', include('client.urls')),
     path('accounts/', include('allauth.urls')),
