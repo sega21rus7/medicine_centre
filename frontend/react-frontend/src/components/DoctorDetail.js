@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
-
+import customAvatar from '../images/custom_avatar.png'
 
 class DoctorDetail extends React.Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class DoctorDetail extends React.Component {
               <Card>
                 <Card.Img
                   variant="top"
-                  src={avatar}
+                  src={avatar || customAvatar}
                   className="img-fluid"
                 />
               </Card>
