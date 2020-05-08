@@ -3,13 +3,6 @@ import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
 
 
 class Lk extends React.Component {
-  componentDidMount() {
-    let token = localStorage.getItem('token') || '';
-    if (token) {
-      console.log(token);
-    }
-  }
-
   render() {
     return (
       <Container fluid className="Lk mt-4">

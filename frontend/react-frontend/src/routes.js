@@ -9,7 +9,7 @@ import ArticleLongList from "./containers/Articles/ArticleLongList";
 import ArticleDetail from "./components/ArticleDetail";
 import TagDetail from "./components/TagDetail";
 import Contacts from "./containers/Contacts";
-import AboutUs from "./containers/AboutUs/AboutUs";
+import AboutUs from "./containers/AboutUs";
 import SignUp from "./containers/Auth/SignUp";
 import SignIn from "./containers/Auth/SignIn";
 import VerifyEmail from "./containers/Auth/VerifyEmail";

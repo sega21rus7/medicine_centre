@@ -20,3 +20,8 @@ body {
     background-size: cover;
 }
 
+.nav-item-bg-info .active {
+  background-color: #36b9cc;
+  background-image: linear-gradient(180deg, #36b9cc 10%, #258391 100%);
+  background-size: cover;
+}

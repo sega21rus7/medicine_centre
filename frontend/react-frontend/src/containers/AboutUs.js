@@ -1,5 +1,4 @@
 import React from 'react';
-import './AboutUs.css';
 import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
 
 
@@ -24,7 +23,7 @@ class AboutUs extends React.Component {
               <Nav variant="pills" className="flex-column">
                 {
                   this.nav.map((item, index) => (
-                      <Nav.Item key={index}>
+                      <Nav.Item key={index} className="nav-item-bg-info">
                         <Nav.Link eventKey={index}>{item}</Nav.Link>
                       </Nav.Item>
                     )
