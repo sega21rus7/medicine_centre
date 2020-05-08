@@ -63,7 +63,7 @@ class ReviewListSerializer(ReviewCreateUpdateDestroySerializer):
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
-        fields = ('email', 'pub_date', 'last_change_date', 'content',)
+        fields = ('name', 'email', 'pub_date', 'last_change_date', 'content',)
 
 
 class SupportQuestionCreateUpdateDestroySerializer(serializers.ModelSerializer):
