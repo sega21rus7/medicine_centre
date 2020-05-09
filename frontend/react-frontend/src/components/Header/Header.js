@@ -4,7 +4,6 @@ import {Nav, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router";
 import {connect} from "react-redux";
-import * as actions from '../../store/actions/auth';
 
 class Header extends React.Component {
   constructor(props) {
@@ -49,15 +48,6 @@ class Header extends React.Component {
               {custom_nav}
             </Nav>
             <Nav pullright="true">
-              {
-                isAuthenticated
-                  ?
-                  <Nav.Link onClick={this.props.logout}>
-                    Выйти
-                  </Nav.Link>
-                  :
-                  ''
-              }
               <Nav.Link href="tel:88001112233">
                 8 800 111-22-33
               </Nav.Link>
@@ -75,10 +65,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    logout: () => dispatch(actions.logout)
-  }
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default withRouter(connect(mapStateToProps, null)(Header));

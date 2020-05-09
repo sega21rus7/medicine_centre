@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import axios from "axios";
 import ProfileForm from '../components/ProfileForm'
 import ChangePasswordForm from "../components/ChangePasswordForm";
+import * as actions from '../store/actions/auth';
 
 class Lk extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Lk extends React.Component {
       'Мои отзывы',
       'История записей',
       'Задать вопрос',
-
+      'Выйти',
     ];
     // 'Записаться на прием',
     //   'Мои пациенты',
@@ -83,6 +84,7 @@ class Lk extends React.Component {
                 <Tab.Pane key="1" eventKey="1">
                   <ChangePasswordForm/>
                 </Tab.Pane>
+                <Tab.Pane key="1" eventKey="1" onClick={this.props.logout}/>
               </Tab.Content>
             </Col>
           </Row>
@@ -98,5 +100,10 @@ const mapStateToProps = (state) => {
   }
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(actions.logout)
+  }
+};
 
-export default connect(mapStateToProps, null)(Lk);
+export default connect(mapStateToProps, mapDispatchToProps)(Lk);
