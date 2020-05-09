@@ -4,7 +4,7 @@ import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import axios from "axios";
 import SuccessBlock from "../SuccessBlock/SuccessBlock";
 
-class SignUpForm extends React.Component {
+class ResetPasswordForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,5 +51,5 @@ class SignUpForm extends React.Component {
   };
 }
 
-export default SignUpForm;
+export default ResetPasswordForm;
 
