@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from "axios";
 import {Card, Col, Container, Image, Row} from "react-bootstrap";
-import image from "./sign_image.jpg";
+import image from "../../components/Auth/left_image.jpg";
 import AlreadySignUpPanel from "../../components/Auth/AlreadySignUpPanel";
+import LeftImage from "../../components/Auth/LeftImage";
 
 
 class VerifyEmail extends React.Component {
@@ -35,12 +36,7 @@ class VerifyEmail extends React.Component {
           <Card.Body className="p-0">
             <Row>
               <Col lg={6} className="d-none d-lg-block bg-image">
-                <Image
-                  src={image}
-                  alt=""
-                  className="img-fluid"
-                >
-                </Image>
+                <LeftImage/>
               </Col>
               <Col lg={6}>
                 <div className="p-lg-5 p-3">

@@ -1,12 +1,12 @@
 import React from 'react';
-import {Button, Card, Col, Container, Dropdown, Form, Image, Row} from "react-bootstrap";
-import image from './sign_image.jpg'
+import {Button, Card, Col, Container, Dropdown, Form, Row} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import NotSignUpYetPanel from "../../components/Auth/NotSignUpYetPanel";
 import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import * as actions from '../../store/actions/auth';
 import {connect} from 'react-redux';
 import {Redirect} from "react-router";
+import LeftImage from "../../components/Auth/LeftImage";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -64,12 +64,7 @@ class SignIn extends React.Component {
           <Card.Body className="p-0">
             <Row>
               <Col lg={6} className="d-none d-lg-block bg-image">
-                <Image
-                  src={image}
-                  alt={'Авторизация'}
-                  className="img-fluid"
-                >
-                </Image>
+                <LeftImage/>
               </Col>
               <Col lg={6}>
                 <div className="p-lg-5 p-3">

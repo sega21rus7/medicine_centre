@@ -1,11 +1,11 @@
 import React from 'react';
-import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
-import image from './sign_image.jpg'
+import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import AlreadySignUpPanel from "../../components/Auth/AlreadySignUpPanel";
 import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/auth';
 import {Redirect} from "react-router";
+import LeftImage from "../../components/Auth/LeftImage";
 
 class SignUp extends React.Component {
   handleSubmit = (event) => {
@@ -42,12 +42,7 @@ class SignUp extends React.Component {
           <Card.Body className="p-0">
             <Row>
               <Col lg={6} className="d-none d-lg-block bg-image">
-                <Image
-                  src={image}
-                  alt={'Регистрация'}
-                  className="img-fluid"
-                >
-                </Image>
+                <LeftImage/>
               </Col>
               <Col lg={6}>
                 <div className="p-lg-5 p-3">
