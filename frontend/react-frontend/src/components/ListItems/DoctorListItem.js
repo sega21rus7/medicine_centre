@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import avatar from '../images/custom_avatar.png'
+import avatar from '../../images/custom_avatar.png'
 
 class DoctorListItem extends React.Component {
   render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
-import ArticleLongList from "../containers/Articles/ArticleLongList";
+import ArticleLongList from "../../containers/Articles/ArticleLongList";
 
 
 class TagDetail extends React.Component {

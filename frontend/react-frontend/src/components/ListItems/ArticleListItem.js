@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, Col} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import ArticleTagList from "../containers/Tags/ArticleTagList";
+import ArticleTagList from "../../containers/Tags/ArticleTagList";
 
 class ArticleListItem extends React.Component {
   render() {
