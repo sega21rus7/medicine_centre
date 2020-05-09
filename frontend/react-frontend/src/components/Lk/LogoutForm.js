@@ -11,10 +11,6 @@ class LogoutForm extends React.Component {
   };
 
   render() {
-    if(!this.props.isAuthenticated) {
-      return <Redirect to='/'/>;
-    }
-
     return (
       <Form className="user" onSubmit={this.handleSubmit}>
         <Row>
