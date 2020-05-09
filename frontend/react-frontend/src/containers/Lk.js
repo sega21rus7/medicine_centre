@@ -57,10 +57,6 @@ class Lk extends React.Component {
     }
   };
 
-  handleLogout = () => {
-    console.log('handle')
-  };
-
   render() {
     const {user} = this.state;
     let userData = user ? user : null;
