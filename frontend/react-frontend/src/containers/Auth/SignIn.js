@@ -1,19 +1,18 @@
 import React from 'react';
-import {Button, Card, Col, Container, Dropdown, Form, Row} from "react-bootstrap";
+import {Card, Col, Container, Dropdown, Row} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import NotSignUpYetPanel from "../../components/Auth/NotSignUpYetPanel";
-import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import * as actions from '../../store/actions/auth';
 import {connect} from 'react-redux';
 import {Redirect} from "react-router";
 import LeftImage from "../../components/Auth/LeftImage";
+import SignInForm from "../../components/Auth/SignInForm";
 
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isEmailInput: false,
-      errors: null,
     }
   }
 
@@ -22,41 +21,13 @@ class SignIn extends React.Component {
     this.setState({isEmailInput: byEmail});
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const isEmailInput = this.state.isEmailInput;
-    const elements = event.target.elements;
-    const username = isEmailInput ? '' : elements.username.value;
-    const email = isEmailInput ? elements.email.value : '';
-    const password = elements.password.value;
-    this.props.onAuth(username, email, password);
-  };
-
   render() {
-    const {isAuthenticated, error} = this.props;
+    const {isAuthenticated} = this.props;
     const {isEmailInput} = this.state;
 
     if (isAuthenticated) {
       return <Redirect to='/lk'/>;
     }
-    if (error) {
-      var errors = error.data;
-    }
-
-    const passwordInput = <Form.Control className="form-control-user" type="password" name="password"
-                                        placeholder="Пароль" autoComplete="on"/>;
-    const emailInput = <Form.Control className="form-control-user" type="email" name="email"
-                                     placeholder="Email"/>;
-    const loginInput = <Form.Control className="form-control-user" type="text" name="username"
-                                     placeholder="Логин"/>;
-    const emailOrLoginInput = isEmailInput ? emailInput : loginInput;
-    if (errors) {
-      var emailOrLoginError = isEmailInput ? errors.email : errors.username;
-      emailOrLoginError = <ErrorBlock text={emailOrLoginError}/>;
-      var passwordError = <ErrorBlock text={errors.password}/>;
-      var nonFieldErrors = <ErrorBlock text={errors.non_field_errors}/>;
-    }
-
 
     return (
       <Container className="SignIn">
@@ -81,20 +52,7 @@ class SignIn extends React.Component {
                     </Dropdown>
                   </div>
 
-                  <Form className="user" onSubmit={this.handleSubmit}>
-                    <Form.Group controlId="formGroupLoginOrEmail">
-                      {emailOrLoginInput}
-                      {emailOrLoginError}
-                    </Form.Group>
-                    <Form.Group controlId="formGroupPassword">
-                      {passwordInput}
-                      {passwordError}
-                    </Form.Group>
-                    {nonFieldErrors}
-                    <Button type="submit" variant="outline-primary" className="btn-user" block>
-                      Войти
-                    </Button>
-                  </Form>
+                  <SignInForm {...this.props}/>
                   <NotSignUpYetPanel/>
                 </div>
               </Col>
