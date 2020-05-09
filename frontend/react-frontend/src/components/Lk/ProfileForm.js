@@ -1,10 +1,10 @@
 import React from 'react';
 import {Button, Col, Form, Row} from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-import ErrorBlock from "./ErrorBlock/ErrorBlock";
+import ErrorBlock from "../ErrorBlock/ErrorBlock";
 import axios from 'axios';
-import avatar from '../images/custom_avatar.png'
-import SuccessBlock from "./SuccessBlock/SuccessBlock";
+import avatar from '../../images/custom_avatar.png'
+import SuccessBlock from "../SuccessBlock/SuccessBlock";
 
 class ProfileForm extends React.Component {
   constructor(props) {

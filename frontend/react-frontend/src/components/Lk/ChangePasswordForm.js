@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button, Col, Form, Row} from "react-bootstrap";
-import ErrorBlock from "./ErrorBlock/ErrorBlock";
+import ErrorBlock from "../ErrorBlock/ErrorBlock";
 import axios from 'axios';
-import SuccessBlock from "./SuccessBlock/SuccessBlock";
+import SuccessBlock from "../SuccessBlock/SuccessBlock";
 
 class ChangePasswordForm extends React.Component {
   constructor(props) {

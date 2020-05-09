@@ -2,9 +2,9 @@ import React from 'react';
 import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
 import {connect} from "react-redux";
 import axios from "axios";
-import ProfileForm from '../components/ProfileForm'
-import ChangePasswordForm from "../components/ChangePasswordForm";
-import LogoutForm from "../components/LogoutForm";
+import ProfileForm from '../components/Lk/ProfileForm'
+import ChangePasswordForm from "../components/Lk/ChangePasswordForm";
+import LogoutForm from "../components/Lk/LogoutForm";
 
 class Lk extends React.Component {
   constructor(props) {
