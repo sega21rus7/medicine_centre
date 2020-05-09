@@ -4,12 +4,14 @@ import Image from "react-bootstrap/Image";
 import ErrorBlock from "./ErrorBlock/ErrorBlock";
 import axios from 'axios';
 import avatar from '../images/custom_avatar.png'
+import SuccessBlock from "./SuccessBlock/SuccessBlock";
 
 class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       errors: null,
+      success: false,
     }
   }
 
@@ -36,6 +38,7 @@ class ProfileForm extends React.Component {
       axios(options)
         .then(res => {
           console.log(res);
+          this.setState({success: true});
         })
         .catch(err => {
           console.log(err.response);
@@ -46,7 +49,7 @@ class ProfileForm extends React.Component {
 
   render() {
     const {user} = this.props;
-    const {errors} = this.state;
+    const {errors, success} = this.state;
     if (errors) {
       var loginError = <ErrorBlock text={errors.login}/>;
       var emailError = <ErrorBlock text={errors.email}/>;
@@ -56,6 +59,9 @@ class ProfileForm extends React.Component {
       var middleNameError = <ErrorBlock text={errors.middle_name}/>;
       var avatarError = <ErrorBlock text={errors.avatar}/>;
       var nonFieldErrors = <ErrorBlock text={errors.non_field_errors}/>;
+    }
+    if (success) {
+      var successMes = <SuccessBlock text={'Изменения успешно внесены.'}/>
     }
 
 
@@ -117,7 +123,7 @@ class ProfileForm extends React.Component {
             </Form.Group>
           </Col>
         </Row>
-        {nonFieldErrors}
+        {nonFieldErrors || successMes}
         <div className="text-right">
           <Button type="submit" variant="outline-primary" className="btn-user">
             Внести изменения
