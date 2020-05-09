@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import {Card, Col, Container, Image, Row} from "react-bootstrap";
-import image from "../../components/Auth/left_image.jpg";
+import {Card, Col, Container, Row} from "react-bootstrap";
 import AlreadySignUpPanel from "../../components/Auth/AlreadySignUpPanel";
 import LeftImage from "../../components/Auth/LeftImage";
 
@@ -10,7 +9,7 @@ class VerifyEmail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      success: false,
+      status: false,
     }
   }
 
@@ -18,16 +17,16 @@ class VerifyEmail extends React.Component {
     const key = this.props.match.params.key;
     axios.get(`http://localhost:8000/rest-auth/registration/account-confirm-email/${key}`)
       .then(response => {
-        this.setState({
-          success: true,
-        });
+      })
+      .catch(err => {
+        this.setState({status: err.response.status});
       })
   }
 
   render() {
-    const {success} = this.state;
+    const {status} = this.state;
     let message = 'Ваш email был успешно подтвержден!';
-    if (!success) {
+    if (status === 404) {
       message = 'При подтверждении email произошла ошибка!';
     }
     return (
