@@ -15,6 +15,7 @@ import SignIn from "./containers/Auth/SignIn";
 import VerifyEmail from "./containers/Auth/VerifyEmail";
 import Error404 from "./containers/Error404";
 import Content from "./containers/Content/Content";
+import ForgotPassword from "./containers/Auth/ForgotPassword";
 
 const BaseRouter = () => (
   <div>
@@ -32,6 +33,7 @@ const BaseRouter = () => (
       <Route exact path="/about_us" component={AboutUs}/>
       <Route exact path="/sign_up" component={SignUp}/>
       <Route exact path="/sign_in" component={SignIn}/>
+      <Route exact path="/forgot_password" component={ForgotPassword}/>
       <Route exact path="/verify-email/:key" component={VerifyEmail}/>
       <Route component={Error404}/>
     </Switch>
