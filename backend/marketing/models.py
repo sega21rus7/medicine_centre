@@ -122,8 +122,8 @@ class Feedback(BaseFeedback):  # обратная связь
 
 
 class SupportQuestion(BaseFeedback):  # обращения в техподдержку
-    patient = models.ForeignKey('client.Patient', verbose_name='Пользователь',
-                                on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
+                             on_delete=models.CASCADE)
 
     class Meta(BaseFeedback.Meta):
         verbose_name = 'Вопрос в техподдержку'
