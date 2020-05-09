@@ -15,7 +15,7 @@ import SignIn from "./containers/Auth/SignIn";
 import VerifyEmail from "./containers/Auth/VerifyEmail";
 import Error404 from "./containers/Error404";
 import Content from "./containers/Content/Content";
-import ForgotPassword from "./containers/Auth/ForgotPassword";
+import ForgotPassword from "./containers/Auth/ResetPassword";
 
 const BaseRouter = () => (
   <div>

@@ -5,7 +5,7 @@ import {Redirect} from "react-router";
 import LeftImage from "../../components/Auth/LeftImage";
 import ForgotPasswordForm from "../../components/Auth/ForgotPasswordForm";
 
-class ForgotPassword extends React.Component {
+class ResetPassword extends React.Component {
   render() {
     const {isAuthenticated} = this.props;
     if (isAuthenticated) {
@@ -42,5 +42,5 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps, null)(ForgotPassword);
+export default connect(mapStateToProps, null)(ResetPassword);
 
