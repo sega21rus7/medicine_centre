@@ -5,6 +5,7 @@ import axios from "axios";
 import ProfileForm from '../components/Lk/ProfileForm'
 import ChangePasswordForm from "../components/Lk/ChangePasswordForm";
 import LogoutForm from "../components/Lk/LogoutForm";
+import AskQuestionForm from "../components/AskQuestionForm";
 
 class Lk extends React.Component {
   constructor(props) {
@@ -87,6 +88,9 @@ class Lk extends React.Component {
                 </Tab.Pane>
                 <Tab.Pane key="1" eventKey="1">
                   <ChangePasswordForm/>
+                </Tab.Pane>
+                <Tab.Pane key="4" eventKey="4">
+                  <AskQuestionForm/>
                 </Tab.Pane>
                 <Tab.Pane key="5" eventKey="5">
                   <LogoutForm/>
