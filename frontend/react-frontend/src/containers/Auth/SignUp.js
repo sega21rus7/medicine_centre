@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 import image from './sign_image.jpg'
-import AuthBottomPanel from "../../components/AuthBottomPanel";
+import AlreadySignUpPanel from "../../components/Auth/AlreadySignUpPanel";
 import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/auth';
@@ -87,7 +87,7 @@ class SignUp extends React.Component {
                       Зарегистрироваться
                     </Button>
                   </Form>
-                  <AuthBottomPanel isSignUpLink={false}/>
+                  <AlreadySignUpPanel/>
                 </div>
               </Col>
             </Row>

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import {Card, Col, Container, Image, Row} from "react-bootstrap";
 import image from "./sign_image.jpg";
-import {Link} from "react-router-dom";
+import AlreadySignUpPanel from "../../components/Auth/AlreadySignUpPanel";
 
 
 class VerifyEmail extends React.Component {
@@ -47,17 +47,7 @@ class VerifyEmail extends React.Component {
                   <div className="text-center">
                     <h1 className="caption-center">Подтверждение email</h1>
                     <p>{message}</p>
-                    <hr/>
-                    <div className="text-center">
-                      <Link className="text-small" to="/forgot_password">
-                        Забыли пароль?
-                      </Link>
-                    </div>
-                    <div className="text-center">
-                      <Link className="text-small" to="/sign_in">
-                        Уже есть аккаунт? Войдите
-                      </Link>
-                    </div>
+                    <AlreadySignUpPanel/>
                   </div>
                 </div>
               </Col>

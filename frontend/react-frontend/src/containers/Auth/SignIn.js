@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Card, Col, Container, Dropdown, Form, Image, Row} from "react-bootstrap";
 import image from './sign_image.jpg'
 import DropdownItem from "react-bootstrap/DropdownItem";
-import AuthBottomPanel from "../../components/AuthBottomPanel";
+import NotSignUpYetPanel from "../../components/Auth/NotSignUpYetPanel";
 import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import * as actions from '../../store/actions/auth';
 import {connect} from 'react-redux';
@@ -36,7 +36,7 @@ class SignIn extends React.Component {
     const {isAuthenticated, error} = this.props;
     const {isEmailInput} = this.state;
 
-    if(isAuthenticated){
+    if (isAuthenticated) {
       return <Redirect to='/lk'/>;
     }
     if (error) {
@@ -100,7 +100,7 @@ class SignIn extends React.Component {
                       Войти
                     </Button>
                   </Form>
-                  <AuthBottomPanel isSignUpLink={true}/>
+                  <NotSignUpYetPanel/>
                 </div>
               </Col>
             </Row>
