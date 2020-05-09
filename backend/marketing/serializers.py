@@ -67,10 +67,12 @@ class FeedbackSerializer(serializers.ModelSerializer):
 
 
 class SupportQuestionCreateUpdateDestroySerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = SupportQuestion
-        fields = ('patient', 'pub_date', 'last_change_date', 'content',)
+        fields = ('user', 'pub_date', 'last_change_date', 'content',)
 
 
 class SupportQuestionListSerializer(SupportQuestionCreateUpdateDestroySerializer):
-    patient = PatientListSerializer(read_only=True)
+    user = CustomerUserSerializer(read_only=True)
