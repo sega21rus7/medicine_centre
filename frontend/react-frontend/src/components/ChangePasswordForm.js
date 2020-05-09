@@ -53,7 +53,8 @@ class ChangePasswordForm extends React.Component {
           <Col sm={6}>
             <Form.Group controlId="formGroupPassword">
               <Form.Label column="name">Пароль</Form.Label>
-              <Form.Control className="form-control-user" type="password" name="password"/>
+              <Form.Control className="form-control-user" type="password" name="password"
+                            autoComplete="on"/>
               {passwordError}
             </Form.Group>
           </Col>
@@ -61,7 +62,8 @@ class ChangePasswordForm extends React.Component {
           <Col sm={6}>
             <Form.Group controlId="formGroupPasswordConfirm">
               <Form.Label column="name">Подтверждение пароля</Form.Label>
-              <Form.Control className="form-control-user" type="password" name="passwordConfirm"/>
+              <Form.Control className="form-control-user" type="password" name="passwordConfirm"
+                            autoComplete="on"/>
               {passwordConfirmError}
             </Form.Group>
           </Col>
