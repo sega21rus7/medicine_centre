@@ -6,7 +6,7 @@ import {Redirect} from "react-router";
 
 class LogoutForm extends React.Component {
   handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault(); с перехватом почему-то не работает
     this.props.logout();
   };
 
