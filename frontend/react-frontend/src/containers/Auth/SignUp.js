@@ -5,6 +5,7 @@ import AuthBottomPanel from "../../components/AuthBottomPanel";
 import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/auth';
+import {Redirect} from "react-router";
 
 class SignUp extends React.Component {
   handleSubmit = (event) => {
@@ -19,7 +20,11 @@ class SignUp extends React.Component {
   };
 
   render() {
-    if (this.props.error) {
+    const {isAuthenticated, error} = this.props;
+    if (isAuthenticated) {
+      return <Redirect to='/lk'/>;
+    }
+    if (error) {
       var errors = this.props.error.data;
     }
 
