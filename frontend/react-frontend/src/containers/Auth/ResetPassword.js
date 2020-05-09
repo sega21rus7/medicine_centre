@@ -3,7 +3,7 @@ import {Card, Col, Container, Row} from "react-bootstrap";
 import {connect} from 'react-redux';
 import {Redirect} from "react-router";
 import LeftImage from "../../components/Auth/LeftImage";
-import ForgotPasswordForm from "../../components/Auth/ForgotPasswordForm";
+import ForgotPasswordForm from "../../components/Auth/ResetPasswordForm";
 
 class ResetPassword extends React.Component {
   render() {
