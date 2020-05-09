@@ -8,7 +8,7 @@ class AlreadySignUpPanel extends React.Component {
       <div className="AlreadySignUpPanel">
         <hr/>
         <div className="text-center">
-          <Link className="text-small" to="/forgot_password">
+          <Link className="text-small" to="/reset_password">
             Забыли пароль?
           </Link>
         </div>
