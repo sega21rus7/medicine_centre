@@ -84,7 +84,7 @@ class Lk extends React.Component {
                 <Tab.Pane key="1" eventKey="1">
                   <ChangePasswordForm/>
                 </Tab.Pane>
-                <Tab.Pane key="1" eventKey="1" onClick={this.props.logout}/>
+                <Tab.Pane key="5" eventKey="5" onClick={this.props.logout}/>
               </Tab.Content>
             </Col>
           </Row>
