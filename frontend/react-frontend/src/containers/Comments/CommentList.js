@@ -27,7 +27,7 @@ class CommentList extends React.Component {
                   </div>
                 </div>
                 <div className="media-text text-justify">
-                  {ReactHtmlParser(item.content)}
+                  {item.content}
                 </div>
               </div>
             </li>
