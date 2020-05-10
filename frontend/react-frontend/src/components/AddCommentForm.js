@@ -1,9 +1,8 @@
 import React from 'react';
 import {Button, Container, Form} from "react-bootstrap";
-import CKEditor from "@ckeditor/ckeditor5-react"
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic"
 import axios from "axios";
 import ErrorBlock from "./ErrorBlock/ErrorBlock";
+import {connect} from "react-redux";
 
 class AddCommentForm extends React.Component {
   constructor(props) {
@@ -36,15 +35,17 @@ class AddCommentForm extends React.Component {
           console.log(error.response.data);
           this.setState({errors: error.response.data});
         });
-    } else {
-      this.setState({errors: 'Войдите в систему, чтобы оставить комментарий!'});
     }
   };
 
   render() {
+    if (!this.props.isAuthenticated) {
+      return <ErrorBlock text="Войдите в систему, чтобы оставить комментарий!"/>
+    }
+
     const {errors} = this.state;
-    if(errors){
-      var contentError = <ErrorBlock text={errors.content || errors}/>;
+    if (errors) {
+      var contentError = <ErrorBlock text={errors.content}/>;
     }
 
     return (
@@ -52,7 +53,7 @@ class AddCommentForm extends React.Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formGroupContent">
             <textarea name="content" placeholder="Сообщение"/>
-              {contentError}
+            {contentError}
           </Form.Group>
           <Button type="submit" variant="primary">
             Опубликовать комментарий
@@ -64,4 +65,10 @@ class AddCommentForm extends React.Component {
   };
 }
 
-export default AddCommentForm;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated,
+  }
+};
+
+export default connect(mapStateToProps, null)(AddCommentForm);
