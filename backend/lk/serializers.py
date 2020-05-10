@@ -3,6 +3,8 @@ from rest_auth import serializers
 from rest_auth.serializers import UserDetailsSerializer as RestCustomerUserSerializer, \
     PasswordResetSerializer as RestPasswordResetSerializer
 
+from medicine_centre import settings
+
 User = get_user_model()
 
 
@@ -19,3 +21,10 @@ class PasswordResetSerializer(RestPasswordResetSerializer):
         if not User.objects.filter(email__iexact=value, is_active=True).exists():
             raise serializers.ValidationError('Пользователя с таким email не существует')
         return value
+
+    def get_email_options(self):
+        data = {
+            'domain_override': settings.URL_FRONT,
+            'email_template_name': 'registration/password_reset_email.html',
+        }
+        return data
