@@ -6,6 +6,9 @@ __pycache__/
 backend/venv
 backend/venv[0-9]*
 
+# Local Sqlite DB
+backend/*.sqlite3
+
 # Pycharm settings folder
 .idea/
 
