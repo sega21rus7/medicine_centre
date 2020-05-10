@@ -116,14 +116,15 @@ class ProfileForm extends React.Component {
               <Image
                 src={user.avatar ? user.avatar : avatar}
                 alt="Аватар"
-                className="img-fluid">
+                height="150px">
               </Image>
               <Form.Control className="form-control-user" type="file" name="avatar"/>
               {avatarError}
             </Form.Group>
           </Col>
         </Row>
-        {nonFieldErrors || successMes}
+        {nonFieldErrors}
+        {successMes}
         <div className="text-right">
           <Button type="submit" variant="outline-primary" className="btn-user">
             Внести изменения
