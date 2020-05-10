@@ -4,6 +4,7 @@ from client.serializers import PatientListSerializer
 from lk.serializers import CustomerUserSerializer
 from staff.serializers import DoctorListSerializer
 from .models import News, Tag, Article, ArticleComment, Review, Feedback, SupportQuestion
+from .serializer_fields import CurrentPatientDefault
 
 
 class NewsSerializer(serializers.ModelSerializer):
@@ -50,6 +51,8 @@ class ArticleCreateUpdateDestroySerializer(serializers.ModelSerializer):
 
 
 class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
+    patient = serializers.HiddenField(default=CurrentPatientDefault())
+
     class Meta:
         model = Review
         fields = ('patient', 'pub_date', 'last_change_date', 'content', 'doctors',)
