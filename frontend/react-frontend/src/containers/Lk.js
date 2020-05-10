@@ -18,23 +18,9 @@ class Lk extends React.Component {
       'Профиль',
       'Сменить пароль',
       'Мои отзывы',
-      'Записаться на прием',
       'Задать вопрос',
       'Выйти',
     ];
-    // 'Записаться на прием',
-    //   'Мои пациенты',
-    // this.admin_nav = [
-    //   'Профиль',
-    //   'Сменить пароль',
-    //   'Пациенты',
-    //   'Врачи',
-    //   'История записей',
-    //   'Статьи',
-    //   'Новости',
-    //   'Обращения в ТП',
-    //   'Отзывы',
-    // ];
   }
 
   componentDidMount() {
@@ -67,11 +53,19 @@ class Lk extends React.Component {
         <Tab.Container id="left-tabs" defaultActiveKey="0">
           <Row>
             <Col sm={3}>
-
               <Nav variant="pills" className="flex-column">
+                <Nav.Item key="0" className="nav-item-bg-info">
+                  <Nav.Link eventKey="0">
+                    {
+                      userData.patient ?
+                        'Записаться на прием'
+                        : 'Мои пациенты'
+                    }
+                  </Nav.Link>
+                </Nav.Item>
                 {this.nav.map((item, index) => (
-                    <Nav.Item key={index} className="nav-item-bg-info">
-                      <Nav.Link eventKey={index}>{item}</Nav.Link>
+                    <Nav.Item key={index + 1} className="nav-item-bg-info">
+                      <Nav.Link eventKey={index + 1}>{item}</Nav.Link>
                     </Nav.Item>
                   )
                 )}
@@ -80,18 +74,17 @@ class Lk extends React.Component {
             </Col>
             <Col sm={9}>
               <Tab.Content>
-                <Tab.Pane key="0" eventKey="0">
+                <Tab.Pane key="1" eventKey="1">
                   <ProfileForm user={userData}/>
                 </Tab.Pane>
-                <Tab.Pane key="1" eventKey="1">
+                <Tab.Pane key="2" eventKey="2">
                   <ChangePasswordForm/>
                 </Tab.Pane>
-                <Tab.Pane key="2" eventKey="2">
+                <Tab.Pane key="3" eventKey="3">
                   {
                     userData.patient ?
                       <ReviewForm/>
-                      :
-                      null
+                      : null
                   }
                 </Tab.Pane>
                 <Tab.Pane key="4" eventKey="4">
