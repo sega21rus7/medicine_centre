@@ -8,7 +8,17 @@ class ReviewForm extends React.Component {
     super(props);
     this.state = {
       errors: null,
+      doctors: null,
     }
+  };
+
+  // getDoctors = () => {
+  //
+  // };
+
+  handleChange = (e) => {
+    let value = Array.from(e.target.selectedOptions, option => option.value);
+    this.setState({doctors: value});
   };
 
   handleSubmit = (event) => {
@@ -20,6 +30,7 @@ class ReviewForm extends React.Component {
         url: 'http://localhost:8000/marketing/api/reviews/',
         data: {
           content: event.target.elements.content.value,
+          doctors: this.state.doctors,
         },
         headers: {'Authorization': `Token ${token}`},
       };
@@ -48,6 +59,13 @@ class ReviewForm extends React.Component {
               <textarea name="content" placeholder="Текст отзыва"/>
               {contentError}
             </Form.Group>
+            {/*<Form.Group controlId="formGroupDoctors">*/}
+            {/*  <select multiple={true} value={this.props.arrayOfOptionValues} onChange={this.handleChange}>*/}
+            {/*    <option value={1}>First option</option>*/}
+            {/*    <option value={2}>Second option</option>*/}
+            {/*    <option value={3}>Third option</option>*/}
+            {/*  </select>*/}
+            {/*</Form.Group>*/}
           </Col>
         </Row>
         <Button type="submit" variant="outline-primary" className="btn-user">

@@ -83,3 +83,8 @@ textarea {
   border-radius: 1rem;
   font-size: 0.8rem;
 }
+select {
+   padding: 5px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+}
