@@ -1,7 +1,7 @@
 import React from 'react';
 import './CommentList.css';
 import {Container} from "react-bootstrap";
-import ReactHtmlParser from "react-html-parser";
+import avatar from '../../images/custom_avatar.png'
 
 class CommentList extends React.Component {
   render() {
@@ -14,8 +14,8 @@ class CommentList extends React.Component {
           {comments.map((item, index) => (
             <li key={index} className="media">
               <div className="media-left">
-                <img className="media-object" src={item.user ? item.user.avatar : ''}
-                     alt="Фото"/>
+                <img className="media-object" src={item.user ? item.user.avatar || avatar : ''}
+                     alt="Аватар"/>
               </div>
               <div className="media-body">
                 <div className="media-heading">
