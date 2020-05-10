@@ -38,6 +38,7 @@ class ResetPasswordDoneForm extends React.Component {
       var passwordError = <ErrorBlock text={errors.new_password1}/>;
       var passwordConfirmError = <ErrorBlock text={errors.new_password2}/>;
       var nonFieldErrors = <ErrorBlock text={errors.non_field_errors}/>;
+      var tokenError = errors.token ? <ErrorBlock text="Пароль уже был изменен"/> : null;
     }
 
     return (
@@ -53,7 +54,7 @@ class ResetPasswordDoneForm extends React.Component {
           {passwordConfirmError}
         </Form.Group>
         {nonFieldErrors}
-        <SuccessBlock text={success}/>
+        <SuccessBlock text={tokenError || success}/>
         <Button type="submit" variant="outline-primary" className="btn-user" block>
           Установить пароль
         </Button>
