@@ -38,5 +38,5 @@ class Patient(models.Model):
         verbose_name_plural = 'Пациенты'
         ordering = ('-user',)
 
-    # def __str__(self):
-    #     return self.user.get_fio()
+    def __str__(self):
+        return str(self.user)
