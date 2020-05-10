@@ -3,7 +3,7 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "./ErrorBlock/ErrorBlock";
 
-class AskQuestionForm extends React.Component {
+class SupportQuestionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,4 +58,4 @@ class AskQuestionForm extends React.Component {
   };
 }
 
-export default AskQuestionForm;
+export default SupportQuestionForm;
