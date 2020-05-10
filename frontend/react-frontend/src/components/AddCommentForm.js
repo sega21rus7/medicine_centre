@@ -9,7 +9,6 @@ class AddCommentForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: null,
       errors: null,
     }
   }
@@ -23,7 +22,7 @@ class AddCommentForm extends React.Component {
         url: 'http://localhost:8000/marketing/api/comments/',
         data: {
           article: this.props.articleID,
-          content: this.state.comment,
+          content: event.target.elements.content.value,
         },
         headers: {'Authorization': `Token ${token}`},
       };
@@ -42,23 +41,19 @@ class AddCommentForm extends React.Component {
     }
   };
 
-  handleChange = (event, editor) => {
-    this.setState({comment: editor.getData()});
-  };
-
   render() {
     const {errors} = this.state;
     if(errors){
-      var error = <ErrorBlock text={errors.content || errors}/>;
+      var contentError = <ErrorBlock text={errors.content || errors}/>;
     }
 
     return (
       <Container className="AddComment">
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="formGroupComment">
-            <CKEditor editor={ClassicEditor} name="comment" onChange={this.handleChange}/>
+          <Form.Group controlId="formGroupContent">
+            <textarea name="content" placeholder="Сообщение"/>
+              {contentError}
           </Form.Group>
-          {error}
           <Button type="submit" variant="primary">
             Опубликовать комментарий
           </Button>

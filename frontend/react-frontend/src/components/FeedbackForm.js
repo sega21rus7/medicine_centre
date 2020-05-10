@@ -1,7 +1,5 @@
 import React from 'react';
 import {Button, Col, Form, Row} from "react-bootstrap";
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
 import ErrorBlock from "./ErrorBlock/ErrorBlock";
 import SuccessBlock from "./SuccessBlock/SuccessBlock";
@@ -11,7 +9,6 @@ class FeedbackForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorContent: null,
       errors: null,
       success: false,
     }
@@ -23,7 +20,7 @@ class FeedbackForm extends React.Component {
     axios.post('http://localhost:8000/marketing/api/feedback/', {
       email: elements.email.value,
       name: elements.name.value,
-      content: this.state.editorContent
+      content: elements.content.value,
     })
       .then(res => {
         console.log(res);
@@ -33,10 +30,6 @@ class FeedbackForm extends React.Component {
         console.log(err.response);
         this.setState({errors: err.response.data});
       })
-  };
-
-  handleChange = (event, editor) => {
-    this.setState({editorContent: editor.getData()});
   };
 
   render() {
@@ -74,7 +67,7 @@ class FeedbackForm extends React.Component {
           </Col>
         </Row>
         <Form.Group controlId="formGroupComment">
-          <CKEditor editor={ClassicEditor} name="comment" onChange={this.handleChange}/>
+          <textarea name="content" placeholder="Сообщение"/>
           {contentError}
         </Form.Group>
         {nonFieldErrors}

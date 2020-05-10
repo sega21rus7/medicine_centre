@@ -72,7 +72,7 @@ class Tag(models.Model):
 class BaseFeedback(models.Model):
     pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
     last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения', blank=True, null=True)
-    content = RichTextField(verbose_name='Содержание', db_index=True)
+    content = models.TextField(verbose_name='Содержание', db_index=True)
 
     class Meta:
         abstract = True

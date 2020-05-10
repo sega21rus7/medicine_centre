@@ -75,3 +75,11 @@ form.user .btn-user {
 .btn-dropdown {
   border: 0;
 }
+textarea {
+  width: 100%;
+  height: 200px;
+  resize: none;
+  outline:none;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+}

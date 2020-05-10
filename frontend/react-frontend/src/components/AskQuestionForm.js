@@ -1,7 +1,5 @@
 import React from 'react';
-import {Button, Form, Row} from "react-bootstrap";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import CKEditor from "@ckeditor/ckeditor5-react";
+import {Button, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "./ErrorBlock/ErrorBlock";
 
@@ -10,12 +8,7 @@ class AskQuestionForm extends React.Component {
     super(props);
     this.state = {
       errors: null,
-      content: null,
     }
-  };
-
-  handleChange = (event, editor) => {
-    this.setState({content: editor.getData()});
   };
 
   handleSubmit = (event) => {
@@ -26,7 +19,7 @@ class AskQuestionForm extends React.Component {
         method: 'POST',
         url: 'http://localhost:8000/marketing/api/support_question/',
         data: {
-          content: this.state.content,
+          content: event.target.elements.content.value,
         },
         headers: {'Authorization': `Token ${token}`},
       };
@@ -44,16 +37,18 @@ class AskQuestionForm extends React.Component {
   render() {
     const {errors} = this.state;
     if (errors) {
-      var error = <ErrorBlock text={errors.content || errors}/>;
+      var contentError = <ErrorBlock text={errors.content || errors}/>;
     }
 
     return (
       <Form className="user" onSubmit={this.handleSubmit}>
         <Row>
-          <Form.Group controlId="formGroupText">
-            <CKEditor editor={ClassicEditor} onChange={this.handleChange}/>
-          </Form.Group>
-          {error}
+          <Col sm={12}>
+            <Form.Group controlId="formGroupContent">
+              <textarea name="content" placeholder="Сообщение"/>
+              {contentError}
+            </Form.Group>
+          </Col>
         </Row>
         <Button type="submit" variant="outline-primary" className="btn-user">
           Отправить обращение
