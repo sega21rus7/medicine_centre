@@ -16,24 +16,32 @@ class ProfileForm extends React.Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault(); пока не перехватываем
+    // не обновляется картинка
     let token = localStorage.getItem('token');
     if (token) {
       const elements = event.target.elements;
+      const form_data = new FormData();
+      form_data.append('username', elements.login.value);
+      form_data.append('email', elements.email.value);
+      form_data.append('phone_number', elements.phone.value);
+      form_data.append('first_name', elements.firstName.value);
+      form_data.append('last_name', elements.lastName.value);
+      form_data.append('middle_name', elements.middleName.value);
+      // avatar будет загружать в базу по новой, потом исправлю
+      const avatar = elements.avatar.files[0];
+      if(avatar){
+        form_data.append('avatar', avatar);
+      }
+
       const options = {
         method: 'PUT',
         url: 'http://localhost:8000/rest-auth/user/',
-        data: {
-          username: elements.login.value,
-          email: elements.email.value,
-          phone_number: elements.phone.value,
-          first_name: elements.firstName.value,
-          last_name: elements.lastName.value,
-          middle_name: elements.middleName.value,
-          // avatar будет загружать в базу по новой, потом исправлю
-          avatar: elements.avatar.value || this.props.user.avatar,
+        data: form_data,
+        headers: {
+          'Authorization': `Token ${token}`,
+          'Content-Type': 'multipart/form-data'
         },
-        headers: {'Authorization': `Token ${token}`},
       };
       axios(options)
         .then(res => {
@@ -63,7 +71,6 @@ class ProfileForm extends React.Component {
     if (success) {
       var successMes = <SuccessBlock text={'Изменения успешно внесены.'}/>
     }
-
 
     return (
       <Form className="user" onSubmit={this.handleSubmit}>
@@ -118,7 +125,8 @@ class ProfileForm extends React.Component {
                 alt="Аватар"
                 height="150px">
               </Image>
-              <Form.Control className="form-control-user" type="file" name="avatar"/>
+              <Form.Control className="form-control-user" type="file" name="avatar"
+                            accept="image/png, image/jpeg, image/jpg"/>
               {avatarError}
             </Form.Group>
           </Col>
@@ -132,8 +140,7 @@ class ProfileForm extends React.Component {
         </div>
       </Form>
     )
-  }
-  ;
+  };
 }
 
 export default ProfileForm;
