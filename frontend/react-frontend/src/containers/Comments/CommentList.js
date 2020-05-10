@@ -1,7 +1,8 @@
 import React from 'react';
 import './CommentList.css';
 import {Container} from "react-bootstrap";
-import avatar from '../../images/custom_avatar.png'
+import ReactHtmlParser from "react-html-parser";
+import avatar from '../../images/custom_avatar.png';
 
 class CommentList extends React.Component {
   render() {
@@ -27,7 +28,7 @@ class CommentList extends React.Component {
                   </div>
                 </div>
                 <div className="media-text text-justify">
-                  {item.content}
+                  {ReactHtmlParser(item.content)}
                 </div>
               </div>
             </li>

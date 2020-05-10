@@ -87,7 +87,7 @@ class BaseFeedback(models.Model):
         else:
             self.last_change_date = timezone.now()
 
-        super().save(*args, **kwargs)
+        super(BaseFeedback, self).save(*args, **kwargs)
 
 
 class ArticleComment(BaseFeedback):
@@ -95,10 +95,15 @@ class ArticleComment(BaseFeedback):
                              on_delete=models.CASCADE)
     article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,
                                 related_name='comments')
+    content = RichTextField(verbose_name='Содержание', db_index=True)
 
     class Meta(BaseFeedback.Meta):
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
+
+    def save(self, *args, **kwargs):
+        self.content = self.content.replace('\n', '<br>')
+        super(ArticleComment, self).save(*args, **kwargs)
 
 
 class Review(BaseFeedback):  # отзыв
