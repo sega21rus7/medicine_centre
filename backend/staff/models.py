@@ -29,7 +29,7 @@ class Employee(models.Model):
         return str(self.user)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.user.get_fio())
+        self.slug = slugify(self.user.get_fio() or self.user.username)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
