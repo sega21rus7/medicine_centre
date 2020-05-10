@@ -18,7 +18,6 @@ class Header extends React.Component {
 
   render() {
     const {isAuthenticated} = this.props;
-    console.log('header ' + isAuthenticated);
 
     const custom_nav =
       Object.keys(this.custom_nav).map(item => {
