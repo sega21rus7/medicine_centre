@@ -5,7 +5,7 @@ import axios from "axios";
 import ProfileForm from '../components/Lk/ProfileForm'
 import ChangePasswordForm from "../components/Lk/ChangePasswordForm";
 import LogoutForm from "../components/Lk/LogoutForm";
-import SupportQuestionForm from "../components/SupportQuestionForm";
+import AddSupportQuestionForm from "../components/AddSupportQuestionForm";
 import PatientReviewList from "./Reviews/PatientReviewList";
 
 class Lk extends React.Component {
@@ -88,7 +88,7 @@ class Lk extends React.Component {
                   }
                 </Tab.Pane>
                 <Tab.Pane key="4" eventKey="4">
-                  <SupportQuestionForm/>
+                  <AddSupportQuestionForm/>
                 </Tab.Pane>
                 <Tab.Pane key="5" eventKey="5">
                   <LogoutForm/>
