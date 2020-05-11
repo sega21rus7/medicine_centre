@@ -23,7 +23,7 @@ class ArticleList extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(1, this.props.special_url);
+    this.getData(1, this.props.specialUrl);
   }
 
   getData = (page, initialUrl = 'http://localhost:8000/marketing/api/articles/') => {
