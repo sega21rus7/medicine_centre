@@ -52,7 +52,7 @@ class SignIn extends React.Component {
                     </Dropdown>
                   </div>
 
-                  <SignInForm {...this.props}/>
+                  <SignInForm {...this.props} isEmailInput={isEmailInput}/>
                   <NotSignUpYetPanel/>
                 </div>
               </Col>

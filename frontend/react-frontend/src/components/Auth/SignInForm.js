@@ -12,7 +12,7 @@ class SignInForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const isEmailInput = this.state.isEmailInput;
+    const isEmailInput = this.props.isEmailInput;
     const elements = event.target.elements;
     const username = isEmailInput ? '' : elements.username.value;
     const email = isEmailInput ? elements.email.value : '';
