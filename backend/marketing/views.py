@@ -56,6 +56,7 @@ class ArticleCommentViewSet(viewsets.ModelViewSet):
 class ReviewListView(ListAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewListSerializer
+    pagination_class = StandardPagination
 
 
 class ReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
