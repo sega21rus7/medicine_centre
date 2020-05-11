@@ -4,7 +4,7 @@ import AddReviewForm from "../../components/AddReviewForm";
 import ReviewLongList from "./ReviewLongList";
 
 
-class PatientReviewList extends React.Component {
+class PatientReview extends React.Component {
   render() {
     return (
       <Container className="PatientReviewList">
@@ -22,4 +22,4 @@ class PatientReviewList extends React.Component {
   };
 }
 
-export default PatientReviewList;
+export default PatientReview;

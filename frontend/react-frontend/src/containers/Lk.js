@@ -5,7 +5,7 @@ import axios from "axios";
 import ProfileForm from '../components/Lk/ProfileForm'
 import ChangePasswordForm from "../components/Lk/ChangePasswordForm";
 import LogoutForm from "../components/Lk/LogoutForm";
-import PatientReviewList from "./Reviews/PatientReviewList";
+import PatientReview from "./Reviews/PatientReview";
 import UserSupportQuestion from "./SupportQuestions/UserSupportQuestion";
 
 class Lk extends React.Component {
@@ -83,7 +83,7 @@ class Lk extends React.Component {
                 <Tab.Pane key="3" eventKey="3">
                   {
                     userData.patient ?
-                      <PatientReviewList/>
+                      <PatientReview/>
                       : null
                   }
                 </Tab.Pane>
