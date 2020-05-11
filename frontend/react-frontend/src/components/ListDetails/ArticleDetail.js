@@ -51,8 +51,6 @@ class ArticleDetail extends React.Component {
                 <Card.Body>
                   <Card.Text className="text-center">
                     Дата публикации: {article.pub_date}
-                    <br/>
-                    Теги:
                     {tags}
                   </Card.Text>
                 </Card.Body>

@@ -28,8 +28,6 @@ class ArticleListItem extends React.Component {
               <Link to={'article/' + item.slug} style={{color: 'inherit'}}>
                 {item.title}
               </Link>
-              <br/>
-              Теги:
               {tags}
             </Card.Text>
           </Card.Body>

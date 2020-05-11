@@ -5,9 +5,14 @@ import {Link} from "react-router-dom";
 class ArticleTagList extends React.Component {
   render() {
     const {tags} = this.props;
+    if (tags.length === 0) {
+      return null;
+    }
 
     return (
-      <span>
+      <span className="ArticleTagList">
+        <br/>
+        Теги:
         &nbsp;
         {tags.map((tag, tag_index) => (
           <span key={tag_index}>
