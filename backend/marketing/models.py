@@ -134,6 +134,8 @@ class Feedback(BaseFeedback):  # обратная связь
 class SupportQuestion(BaseFeedback):  # обращения в техподдержку
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                              on_delete=models.CASCADE)
+    content = RichTextField(verbose_name='Ответ от администрации', db_index=True,
+                            blank=True, null=True)
 
     class Meta(BaseFeedback.Meta):
         verbose_name = 'Вопрос в техподдержку'
