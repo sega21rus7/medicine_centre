@@ -53,9 +53,13 @@ class ArticleCommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentCreateUpdateDestroySerializer
 
 
+class ReviewListView(ListAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewListSerializer
+
+
 class ReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    queryset = Review.objects.all()
     serializer_class = ReviewListSerializer
     serializer_action_classes = {
         'list': ReviewListSerializer,
@@ -64,6 +68,10 @@ class ReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
         'destroy': ReviewCreateUpdateDestroySerializer,
     }
     pagination_class = StandardPagination
+
+    def get_queryset(self):
+        qs = Review.objects.filter(patient__user_id=self.request.user.id).all()
+        return qs
 
 
 class FeedbackViewSet(viewsets.ModelViewSet):
