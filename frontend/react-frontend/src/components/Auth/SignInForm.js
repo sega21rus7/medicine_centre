@@ -26,12 +26,22 @@ class SignInForm extends React.Component {
       var errors = error.data;
     }
 
-    const passwordInput = <Form.Control className="form-control-user" type="password" name="password"
-                                        placeholder="Пароль" autoComplete="on"/>;
-    const emailInput = <Form.Control className="form-control-user" type="email" name="email"
-                                     placeholder="Email"/>;
-    const loginInput = <Form.Control className="form-control-user" type="text" name="username"
-                                     placeholder="Логин"/>;
+    const passwordInput = <Form.Control className="form-control-user"
+                                        type="password"
+                                        name="password"
+                                        placeholder="Пароль"
+                                        autoComplete="on"
+                                        required/>;
+    const emailInput = <Form.Control className="form-control-user"
+                                     type="email"
+                                     name="email"
+                                     placeholder="Email"
+                                     required/>;
+    const loginInput = <Form.Control className="form-control-user"
+                                     type="text"
+                                     name="username"
+                                     placeholder="Логин"
+                                     required/>;
     const emailOrLoginInput = isEmailInput ? emailInput : loginInput;
     if (errors) {
       var emailOrLoginError = isEmailInput ? errors.email : errors.username;

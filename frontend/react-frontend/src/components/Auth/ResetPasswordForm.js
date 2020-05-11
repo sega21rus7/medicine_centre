@@ -37,8 +37,11 @@ class ResetPasswordForm extends React.Component {
     return (
       <Form className="user" onSubmit={this.handleSubmit}>
         <Form.Group controlId="formGroupEmail">
-          <Form.Control className="form-control-user" type="email" name="email"
-                        placeholder="Email"/>
+          <Form.Control className="form-control-user"
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        required/>
           {emailError}
         </Form.Group>
         {nonFieldErrors}

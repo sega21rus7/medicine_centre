@@ -30,7 +30,7 @@ class ProfileForm extends React.Component {
       form_data.append('middle_name', elements.middleName.value);
       // avatar будет загружать в базу по новой, потом исправлю
       const avatar = elements.avatar.files[0];
-      if(avatar){
+      if (avatar) {
         form_data.append('avatar', avatar);
       }
 
@@ -78,14 +78,20 @@ class ProfileForm extends React.Component {
           <Col sm={4}>
             <Form.Group controlId="formGroupLogin">
               <Form.Label column="name">Логин</Form.Label>
-              <Form.Control className="form-control-user" type="text" name="login"
-                            defaultValue={user.username}/>
+              <Form.Control className="form-control-user"
+                            type="text"
+                            name="login"
+                            defaultValue={user.username}
+                            required/>
               {loginError}
             </Form.Group>
             <Form.Group controlId="formGroupEmail">
               <Form.Label column="name">Email</Form.Label>
-              <Form.Control className="form-control-user" type="email" name="email"
-                            defaultValue={user.email}/>
+              <Form.Control className="form-control-user"
+                            type="email"
+                            name="email"
+                            defaultValue={user.email}
+                            required/>
               {emailError}
             </Form.Group>
             <Form.Group controlId="formGroupPhone">

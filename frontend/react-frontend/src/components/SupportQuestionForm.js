@@ -45,7 +45,9 @@ class SupportQuestionForm extends React.Component {
         <Row>
           <Col sm={12}>
             <Form.Group controlId="formGroupContent">
-              <textarea name="content" placeholder="Сообщение"/>
+              <textarea name="content"
+                        placeholder="Сообщение"
+                        required/>
               {contentError}
             </Form.Group>
           </Col>

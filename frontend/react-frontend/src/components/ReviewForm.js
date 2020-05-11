@@ -56,7 +56,9 @@ class ReviewForm extends React.Component {
         <Row>
           <Col sm={12}>
             <Form.Group controlId="formGroupContent">
-              <textarea name="content" placeholder="Текст отзыва"/>
+              <textarea name="content"
+                        placeholder="Текст отзыва"
+                        required/>
               {contentError}
             </Form.Group>
             {/*<Form.Group controlId="formGroupDoctors">*/}

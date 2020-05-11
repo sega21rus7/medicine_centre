@@ -44,13 +44,21 @@ class ResetPasswordDoneForm extends React.Component {
     return (
       <Form className="user" onSubmit={this.handleSubmit}>
         <Form.Group controlId="formGroupPassword">
-          <Form.Control className="form-control-user" type="password" name="password"
-                        placeholder="Новый пароль" autoComplete="on"/>
+          <Form.Control className="form-control-user"
+                        type="password"
+                        name="password"
+                        placeholder="Новый пароль"
+                        autoComplete="on"
+                        required/>
           {passwordError}
         </Form.Group>
         <Form.Group controlId="formGroupPasswordConfirm">
-          <Form.Control className="form-control-user" type="password" name="passwordConfirm"
-                        placeholder="Подтвердите новый пароль" autoComplete="on"/>
+          <Form.Control className="form-control-user"
+                        type="password"
+                        name="passwordConfirm"
+                        placeholder="Подтвердите новый пароль"
+                        autoComplete="on"
+                        required/>
           {passwordConfirmError}
         </Form.Group>
         {nonFieldErrors}

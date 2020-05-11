@@ -32,28 +32,41 @@ class SignUpForm extends React.Component {
     return (
       <Form className="user" onSubmit={this.handleSubmit}>
         <Form.Group controlId="formGroupLogin">
-          <Form.Control className="form-control-user" type="text" name="username"
-                        placeholder="Логин"/>
+          <Form.Control className="form-control-user"
+                        type="text"
+                        name="username"
+                        placeholder="Логин"
+                        required/>
           {loginError}
         </Form.Group>
         <Form.Group controlId="formGroupEmail">
-          <Form.Control className="form-control-user" type="email" name="email"
-                        placeholder="Email"/>
+          <Form.Control className="form-control-user"
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        required/>
           {emailError}
         </Form.Group>
         <Row>
           <Col sm={6}>
             <Form.Group controlId="formGroupPassword1">
-              <Form.Control className="form-control-user mb-3 mb-sm-0" type="password"
-                            name="password1" placeholder="Пароль" autoComplete="on"/>
+              <Form.Control className="form-control-user mb-3 mb-sm-0"
+                            type="password"
+                            name="password1"
+                            placeholder="Пароль"
+                            autoComplete="on"
+                            required/>
               {password1Error}
             </Form.Group>
           </Col>
           <Col sm={6}>
             <Form.Group controlId="formGroupPassword2">
-              <Form.Control className="form-control-user" type="password"
-                            name="password2" placeholder="Подтвердите пароль"
-                            autoComplete="on"/>
+              <Form.Control className="form-control-user"
+                            type="password"
+                            name="password2"
+                            placeholder="Подтвердите пароль"
+                            autoComplete="on"
+                            required/>
               {password2Error}
             </Form.Group>
           </Col>

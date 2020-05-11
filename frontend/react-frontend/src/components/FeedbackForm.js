@@ -51,23 +51,31 @@ class FeedbackForm extends React.Component {
         <Row>
           <Col sm={6}>
             <Form.Group controlId="formGroupName">
-              <Form.Control className="form-control-user" type="text" name="name"
-                            placeholder="Имя"/>
+              <Form.Control className="form-control-user"
+                            type="text"
+                            name="name"
+                            placeholder="Имя"
+                            required/>
               {nameError}
             </Form.Group>
 
           </Col>
           <Col sm={6}>
             <Form.Group controlId="formGroupEmail">
-              <Form.Control className="form-control-user" type="email" name="email"
-                            placeholder="Email"/>
+              <Form.Control className="form-control-user"
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            required/>
               {emailError}
             </Form.Group>
 
           </Col>
         </Row>
-        <Form.Group controlId="formGroupComment">
-          <textarea name="content" placeholder="Сообщение"/>
+        <Form.Group controlId="formGroupContent">
+          <textarea name="content"
+                    placeholder="Сообщение"
+                    required/>
           {contentError}
         </Form.Group>
         {nonFieldErrors}
