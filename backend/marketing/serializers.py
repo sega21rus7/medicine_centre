@@ -2,7 +2,6 @@ from rest_framework import serializers
 
 from client.serializers import PatientListSerializer
 from lk.serializers import CustomerUserSerializer
-from staff.serializers import DoctorListSerializer
 from .models import News, Tag, Article, ArticleComment, Review, Feedback, SupportQuestion
 from .serializer_fields import CurrentPatientDefault
 
@@ -55,12 +54,12 @@ class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ('patient', 'pub_date', 'last_change_date', 'content',)
+        fields = ('patient', 'pub_date', 'last_change_date', 'positives', 'negatives', 'content',)
 
 
 class ReviewListSerializer(ReviewCreateUpdateDestroySerializer):
     patient = PatientListSerializer(read_only=True)
-    doctors = DoctorListSerializer(read_only=True, many=True)
+    # doctors = DoctorListSerializer(read_only=True, many=True)
 
 
 class FeedbackSerializer(serializers.ModelSerializer):

@@ -7,7 +7,7 @@ from .models import Patient
 class PatientCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ('user', 'passport', 'insurance_policy',)
+        fields = ('user',)
 
 
 class PatientListSerializer(PatientCreateUpdateDestroySerializer):

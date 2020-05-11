@@ -72,7 +72,7 @@ class Tag(models.Model):
 class BaseFeedback(models.Model):
     pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
     last_change_date = models.DateTimeField(verbose_name='Дата последнего изменения', blank=True, null=True)
-    content = models.TextField(verbose_name='Содержание', db_index=True)
+    content = RichTextField(verbose_name='Содержание', db_index=True)
 
     class Meta:
         abstract = True
@@ -86,6 +86,7 @@ class BaseFeedback(models.Model):
             self.pub_date = timezone.now()
         else:
             self.last_change_date = timezone.now()
+        self.content = self.content.replace('\n', '<br>')
 
         super(BaseFeedback, self).save(*args, **kwargs)
 
@@ -95,26 +96,30 @@ class ArticleComment(BaseFeedback):
                              on_delete=models.CASCADE)
     article = models.ForeignKey('Article', verbose_name='Статья', on_delete=models.CASCADE,
                                 related_name='comments')
-    content = RichTextField(verbose_name='Содержание', db_index=True)
 
     class Meta(BaseFeedback.Meta):
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
 
-    def save(self, *args, **kwargs):
-        self.content = self.content.replace('\n', '<br>')
-        super(ArticleComment, self).save(*args, **kwargs)
-
 
 class Review(BaseFeedback):  # отзыв
     patient = models.ForeignKey('client.Patient', verbose_name='Клиент',
                                 on_delete=models.CASCADE)
+    positives = models.TextField(verbose_name='Достоинства', db_index=True)
+    negatives = models.TextField(verbose_name='Недостатки', db_index=True)
+
     # doctors = models.ManyToManyField('staff.Doctor', verbose_name='Врачи', blank=True,
     #                                  related_name='reviews')
 
     class Meta(BaseFeedback.Meta):
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
+
+    def save(self, *args, **kwargs):
+        self.positives = self.positives.replace('\n', '<br>')
+        self.negatives = self.negatives.replace('\n', '<br>')
+
+        super(Review, self).save(*args, **kwargs)
 
 
 class Feedback(BaseFeedback):  # обратная связь
