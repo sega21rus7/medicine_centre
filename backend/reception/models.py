@@ -5,6 +5,13 @@ class Office(models.Model):
     number = models.CharField(verbose_name='Номер', max_length=3)
     floor = models.CharField(verbose_name='Этаж', max_length=1)
 
+    class Meta:
+        verbose_name = 'Кабинет'
+        verbose_name_plural = 'Кабинеты'
+
+    def __str__(self):
+        return '№ %s' % self.number
+
 
 class Reception(models.Model):
     patient = models.ForeignKey('client.Patient', verbose_name='Пациент',
