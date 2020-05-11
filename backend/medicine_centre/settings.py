@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'staff.apps.StaffConfig',
     'client.apps.ClientConfig',
     'lk.apps.LkConfig',
+    'reception.apps.ReceptionConfig',
     'phonenumber_field',
     'address',
     'ckeditor',
