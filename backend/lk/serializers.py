@@ -11,8 +11,8 @@ User = get_user_model()
 class CustomerUserSerializer(RestCustomerUserSerializer):
     class Meta(RestCustomerUserSerializer.Meta):
         fields = ('pk', 'username', 'email', 'first_name', 'last_name',
-                  'middle_name', 'phone_number', 'avatar', 'doctor', 'patient', 'nurse', 'is_superuser')
-        read_only_fields = ('doctor', 'patient', 'nurse', 'is_superuser')
+                  'middle_name', 'phone_number', 'avatar', 'doctor', 'patient', 'is_superuser')
+        read_only_fields = ('doctor', 'patient', 'is_superuser')
 
 
 class PasswordResetSerializer(RestPasswordResetSerializer):
