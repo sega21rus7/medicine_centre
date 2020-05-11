@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import AddReviewForm from "../../components/AddReviewForm";
 import ReviewLongList from "./ReviewLongList";
 
@@ -8,8 +8,15 @@ class PatientReviewList extends React.Component {
   render() {
     return (
       <Container className="PatientReviewList">
-        <AddReviewForm/>
-        <ReviewLongList personalUrl={'http://localhost:8000/marketing/api/user_reviews/'}/>
+        <Row>
+          <Col lg={6}>
+            <ReviewLongList personalTitle={'Мои отзывы'}
+                            personalUrl={'http://localhost:8000/marketing/api/user_reviews/'}/>
+          </Col>
+          <Col lg={6}>
+            <AddReviewForm/>
+          </Col>
+        </Row>
       </Container>
     )
   };

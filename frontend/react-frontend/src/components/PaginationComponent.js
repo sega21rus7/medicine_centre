@@ -23,7 +23,7 @@ class PaginationComponent extends React.Component {
     const page = event.target.getAttribute('value') ||
       event.target.parentElement.getAttribute('value');
     this.setState({activePage: Number(page)}, () => {
-      this.props.getData(page);
+      this.props.getData(page, this.props.specialUrl);
     });
   };
 

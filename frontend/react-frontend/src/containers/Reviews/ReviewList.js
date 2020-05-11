@@ -51,7 +51,7 @@ class ReviewList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated} = this.props;
+    const {isPaginated, personalTitle, personalUrl} = this.props;
 
     const row = this.state.items.map((item, index) => {
         return <ReviewListItem key={index} item={item} index={index}/>;
@@ -64,7 +64,8 @@ class ReviewList extends React.Component {
                                               getData={this.getData}
                                               paginateCount={paginateCount}
                                               next={next}
-                                              previous={previous}/>;
+                                              previous={previous}
+                                              specialUrl={personalUrl}/>;
       }
     } else {
       var button = <ViewAllList button={this.button}/>;
@@ -72,7 +73,7 @@ class ReviewList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <h3 className="caption-left">Отзывы</h3>
+        <h3 className="caption-left">{personalTitle || 'Отзывы'}</h3>
         <Row>
           {row}
         </Row>
