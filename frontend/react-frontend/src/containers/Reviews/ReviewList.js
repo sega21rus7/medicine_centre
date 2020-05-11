@@ -23,11 +23,15 @@ class ReviewList extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(1);
+    this.getData(1, this.props.personalUrl);
   }
 
-  getData = (page) => {
-    const url = `http://localhost:8000/marketing/api/reviews/?page=${page}`;
+  getData = (page, initialUrl = 'http://localhost:8000/marketing/api/reviews/') => {
+    const url = `${initialUrl}?page=${page}`;
+    let token = localStorage.getItem('token');
+    if (token) {
+      axios.defaults.headers = {'Authorization': `Token ${token}`};
+    }
     axios.get(url)
       .then(response => {
         this.setState({

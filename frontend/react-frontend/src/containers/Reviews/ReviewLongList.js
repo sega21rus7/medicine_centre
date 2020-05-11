@@ -6,7 +6,7 @@ class ReviewLongList extends React.Component {
   render() {
     return (
       <div className="ReviewLongList">
-        <ReviewList isPaginated={true}/>
+        <ReviewList isPaginated={true} personalUrl={this.props.personalUrl}/>
       </div>
     )
   };
