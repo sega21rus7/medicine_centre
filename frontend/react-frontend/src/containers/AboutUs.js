@@ -1,6 +1,7 @@
 import React from 'react';
 import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
 import Feedback from "./Feedback";
+import ReviewLongList from "./Reviews/ReviewLongList";
 
 
 class AboutUs extends React.Component {
@@ -34,11 +35,12 @@ class AboutUs extends React.Component {
             </Col>
             <Col sm={9}>
               <Tab.Content>
-                {
-                  <Tab.Pane eventKey="4">
-                    <Feedback/>
-                  </Tab.Pane>
-                }
+                <Tab.Pane eventKey="3">
+                  <ReviewLongList/>
+                </Tab.Pane>
+                <Tab.Pane eventKey="4">
+                  <Feedback/>
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
