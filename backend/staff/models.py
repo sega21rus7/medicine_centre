@@ -82,7 +82,8 @@ class Doctor(models.Model):
 class Award(ReferenceByNameModel):
     image = smart_fields.ImageField(verbose_name='Изображение', upload_to='staff/images/awards',
                                     null=True, blank=True)
-    doctor = models.ForeignKey(Doctor, verbose_name='Врач', on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, verbose_name='Врач', on_delete=models.CASCADE,
+                               related_name='awards')
 
     class Meta(ReferenceByNameModel.Meta):
         verbose_name = 'Награда'
@@ -92,7 +93,8 @@ class Award(ReferenceByNameModel):
 class Certificate(ReferenceByNameModel):
     image = smart_fields.ImageField(verbose_name='Изображение', upload_to='staff/images/certificates',
                                     null=True, blank=True)
-    doctor = models.ForeignKey(Doctor, verbose_name='Врач', on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, verbose_name='Врач', on_delete=models.CASCADE,
+                               related_name='certificates')
 
     class Meta(ReferenceByNameModel.Meta):
         verbose_name = 'Сертификат'
