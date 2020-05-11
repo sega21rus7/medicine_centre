@@ -62,7 +62,7 @@ class Doctor(models.Model):
                                    on_delete=models.CASCADE)
     diploma_specialty = models.ForeignKey(DiplomaSpecialty, verbose_name='Специальность по диплому',
                                           on_delete=models.CASCADE, blank=True, null=True)
-    qualification_Category = models.ForeignKey(QualificationCategory,
+    qualification_category = models.ForeignKey(QualificationCategory,
                                                verbose_name='Квалификационная категория',
                                                on_delete=models.CASCADE, blank=True, null=True)
 
