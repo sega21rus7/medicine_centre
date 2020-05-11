@@ -5,8 +5,8 @@ import axios from "axios";
 import ProfileForm from '../components/Lk/ProfileForm'
 import ChangePasswordForm from "../components/Lk/ChangePasswordForm";
 import LogoutForm from "../components/Lk/LogoutForm";
-import AddSupportQuestionForm from "../components/AddSupportQuestionForm";
 import PatientReviewList from "./Reviews/PatientReviewList";
+import UserSupportQuestion from "./SupportQuestions/UserSupportQuestion";
 
 class Lk extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Lk extends React.Component {
       'Профиль',
       'Сменить пароль',
       'Мои отзывы',
-      'Задать вопрос',
+      'Техподдержка',
       'Выйти',
     ];
   }
@@ -88,7 +88,7 @@ class Lk extends React.Component {
                   }
                 </Tab.Pane>
                 <Tab.Pane key="4" eventKey="4">
-                  <AddSupportQuestionForm/>
+                  <UserSupportQuestion/>
                 </Tab.Pane>
                 <Tab.Pane key="5" eventKey="5">
                   <LogoutForm/>

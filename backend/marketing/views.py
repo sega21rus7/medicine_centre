@@ -83,7 +83,6 @@ class FeedbackViewSet(viewsets.ModelViewSet):
 
 class SupportQuestionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    queryset = SupportQuestion.objects.all()
     serializer_class = SupportQuestionListSerializer
     serializer_action_classes = {
         'list': SupportQuestionListSerializer,
@@ -92,3 +91,7 @@ class SupportQuestionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewS
         'destroy': SupportQuestionCreateUpdateDestroySerializer,
     }
     pagination_class = StandardPagination
+
+    def get_queryset(self):
+        qs = SupportQuestion.objects.filter(user_id=self.request.user.id).all()
+        return qs

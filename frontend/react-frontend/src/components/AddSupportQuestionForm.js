@@ -17,7 +17,7 @@ class AddSupportQuestionForm extends React.Component {
     if (token) {
       const options = {
         method: 'POST',
-        url: 'http://localhost:8000/marketing/api/support_question/',
+        url: 'http://localhost:8000/marketing/api/user_support_questions/',
         data: {
           content: event.target.elements.content.value,
         },
