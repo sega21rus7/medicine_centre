@@ -12,7 +12,7 @@ class AddSupportQuestionForm extends React.Component {
   };
 
   handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     let token = localStorage.getItem('token');
     if (token) {
       const options = {
