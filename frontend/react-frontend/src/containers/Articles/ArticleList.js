@@ -47,7 +47,7 @@ class ArticleList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated} = this.props;
+    const {isPaginated, specialUrl} = this.props;
 
     const row = this.state.items.map((item, index) => {
         return <ArticleListItem key={index} item={item} index={index}/>;
@@ -60,7 +60,8 @@ class ArticleList extends React.Component {
                                               getData={this.getData}
                                               paginateCount={paginateCount}
                                               next={next}
-                                              previous={previous}/>;
+                                              previous={previous}
+                                              specialUrl={specialUrl}/>;
       }
     } else {
       var button = <ViewAllList button={this.button}/>;
