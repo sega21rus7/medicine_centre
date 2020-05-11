@@ -78,3 +78,6 @@ class SupportQuestionCreateUpdateDestroySerializer(serializers.ModelSerializer):
 
 class SupportQuestionListSerializer(SupportQuestionCreateUpdateDestroySerializer):
     user = CustomerUserSerializer(read_only=True)
+
+    class Meta(SupportQuestionCreateUpdateDestroySerializer.Meta):
+        fields = ('user', 'pub_date', 'last_change_date', 'content', 'answer')
