@@ -8,7 +8,7 @@ class ReviewForm extends React.Component {
     super(props);
     this.state = {
       errors: null,
-      doctors: null,
+      // doctors: null,
     }
   };
 
@@ -16,10 +16,10 @@ class ReviewForm extends React.Component {
   //
   // };
 
-  handleChange = (e) => {
-    let value = Array.from(e.target.selectedOptions, option => option.value);
-    this.setState({doctors: value});
-  };
+  // handleChange = (e) => {
+  //   let value = Array.from(e.target.selectedOptions, option => option.value);
+  //   this.setState({doctors: value});
+  // };
 
   handleSubmit = (event) => {
     event.preventDefault();
