@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Office(models.Model):
-    number = models.IntegerField(verbose_name='Номер', max_length=3)
-    floor = models.IntegerField(verbose_name='Этаж', max_length=1)
+    number = models.CharField(verbose_name='Номер', max_length=3)
+    floor = models.CharField(verbose_name='Этаж', max_length=1)
 
 
 class Reception(models.Model):

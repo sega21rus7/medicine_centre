@@ -32,7 +32,7 @@ class Employee(models.Model):
                                 on_delete=models.CASCADE)
     post = models.ForeignKey(Post, verbose_name='Должность', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
-    experience = models.IntegerField(verbose_name='Стаж работы', max_length=2)
+    experience = models.CharField(verbose_name='Стаж работы', max_length=2)
     department = models.ForeignKey(Department, verbose_name='Отделение', on_delete=models.CASCADE)
 
     class Meta:
