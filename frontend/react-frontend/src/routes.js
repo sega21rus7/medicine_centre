@@ -17,12 +17,14 @@ import Error404 from "./containers/Error404";
 import Content from "./containers/Content/Content";
 import ResetPassword from "./containers/Auth/ResetPassword";
 import ResetPasswordDone from "./containers/Auth/ResetPasswordDone";
+import ReviewLongList from "./containers/Reviews/ReviewLongList";
 
 const BaseRouter = () => (
   <div>
     <Switch>
       <Route exact path="/" component={Content}/>
       <Route exact path="/lk" component={Lk}/>
+      <Route exact path="/reviews" component={ReviewLongList}/>
       <Route exact path="/news" component={NewsLongList}/>
       <Route exact path='/new/:slug' component={NewsDetail}/>
       <Route exact path="/doctors" component={DoctorLongList}/>

@@ -6,6 +6,7 @@ import NewsShortList from "../News/NewsShortList";
 import ArticleShortList from "../Articles/ArticleShortList";
 import DoctorShortList from "../Doctors/DoctorShortList";
 import Feedback from "../Feedback";
+import ReviewShortList from "../Reviews/ReviewShortList";
 
 
 class Content extends React.Component {
@@ -18,6 +19,8 @@ class Content extends React.Component {
           <DoctorShortList/>
           <hr/>
           <NewsShortList/>
+          <hr/>
+          <ReviewShortList/>
           <hr/>
           <ArticleShortList/>
           <hr/>
