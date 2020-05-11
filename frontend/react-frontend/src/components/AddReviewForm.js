@@ -3,7 +3,7 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "./ErrorBlock/ErrorBlock";
 
-class ReviewForm extends React.Component {
+class AddReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +29,10 @@ class ReviewForm extends React.Component {
         method: 'POST',
         url: 'http://localhost:8000/marketing/api/reviews/',
         data: {
+          positives: event.target.elements.positives.value,
+          negatives: event.target.elements.negatives.value,
           content: event.target.elements.content.value,
-          doctors: this.state.doctors,
+          // doctors: this.state.doctors,
         },
         headers: {'Authorization': `Token ${token}`},
       };
@@ -55,9 +57,17 @@ class ReviewForm extends React.Component {
       <Form className="user" onSubmit={this.handleSubmit}>
         <Row>
           <Col sm={12}>
+            <Form.Group controlId="formGroupPositives">
+              <textarea name="positives"
+                        placeholder="Достоинства"/>
+            </Form.Group>
+            <Form.Group controlId="formGroupNegatives">
+              <textarea name="negatives"
+                        placeholder="Недостатки"/>
+            </Form.Group>
             <Form.Group controlId="formGroupContent">
               <textarea name="content"
-                        placeholder="Текст отзыва"
+                        placeholder="Комментарий"
                         required/>
               {contentError}
             </Form.Group>
@@ -78,4 +88,4 @@ class ReviewForm extends React.Component {
   };
 }
 
-export default ReviewForm;
+export default AddReviewForm;
