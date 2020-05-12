@@ -7,7 +7,7 @@ import ArticleShortList from "../Articles/ArticleShortList";
 import DoctorShortList from "../Doctors/DoctorShortList";
 import Feedback from "../Feedback";
 import ReviewShortList from "../Reviews/ReviewShortList";
-import DepartmentNavbar from "../../components/DepartmentNavbar/DepartmentNavbar";
+import DepartmentNavbar from "../../components/DepartmentNavbar";
 
 
 class Content extends React.Component {
