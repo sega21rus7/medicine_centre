@@ -21,6 +21,7 @@ class ReviewListItem extends React.Component {
             : null
         }
         <p>Комментарий: {ReactHtmlParser(item.content)}</p>
+        <div className="text-right">Дата публикации: {item.pub_date}</div>
       </Jumbotron>
     )
   };
