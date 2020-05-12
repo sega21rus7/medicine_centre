@@ -61,3 +61,5 @@ class DoctorListSerializer(DoctorCreateUpdateDestroySerializer):
     university = UniversitySerializer()
     diploma_specialty = DiplomaSpecialtySerializer()
     qualification_category = QualificationCategorySerializer()
+    awards = AwardSerializer(many=True)
+    certificates = CertificateSerializer(many=True)
