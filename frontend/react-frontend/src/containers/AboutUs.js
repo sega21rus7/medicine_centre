@@ -8,7 +8,7 @@ class AboutUs extends React.Component {
   constructor(props) {
     super(props);
     this.nav = [
-      'О клинике',
+      'О центре',
       'Вакансии',
       'Для организаций',
       'Отзывы',
