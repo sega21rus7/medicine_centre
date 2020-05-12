@@ -61,7 +61,7 @@ class UserSupportQuestionList extends React.Component {
     }
 
     return (
-      <Container className="mt-4">
+      <Container>
         <h3 className="caption-left">Мои обращения</h3>
         <Row>
           {row}
