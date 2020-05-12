@@ -36,7 +36,7 @@ class AboutUs extends React.Component {
             <Col sm={9}>
               <Tab.Content>
                 <Tab.Pane eventKey="3">
-                  <ReviewLongList/>
+                  <ReviewLongList isNotMt4={true}/>
                 </Tab.Pane>
                 <Tab.Pane eventKey="4">
                   <Feedback/>
