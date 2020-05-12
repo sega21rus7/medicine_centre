@@ -5,9 +5,11 @@ from .models import Patient
 
 
 class PatientCreateUpdateDestroySerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Patient
-        fields = ('user',)
+        fields = ('pk', 'user',)
 
 
 class PatientListSerializer(PatientCreateUpdateDestroySerializer):

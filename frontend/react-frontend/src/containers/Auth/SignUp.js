@@ -25,7 +25,7 @@ class SignUp extends React.Component {
               <Col lg={6}>
                 <div className="p-lg-5 p-3">
                   <div className="text-center">
-                    <h1 className="h4 mb-4 text-middle">Создайте аккаунт!</h1>
+                    <h1 className="h4 mb-4 text-middle">Создание аккаунта пациента</h1>
                   </div>
                   <SignUpForm {...this.props}/>
                   <AlreadySignUpPanel/>
