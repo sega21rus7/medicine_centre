@@ -1,13 +1,13 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from .views import DoctorViewSet, DoctorByDepartmentListView
+from .views import DoctorViewSet, DoctorByPostListView
 
 app_name = 'staff'
 
 urlpatterns = [
-    path('api/doctors_by_department/<department_pk>/', DoctorByDepartmentListView.as_view(),
-         name='doctors_by_department'),
+    path('api/doctors_by_department/<post_pk>/', DoctorByPostListView.as_view(),
+         name='doctors_by_post'),
 ]
 
 router = DefaultRouter()

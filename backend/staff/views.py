@@ -20,10 +20,10 @@ class DoctorViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     pagination_class = StandardPagination
 
 
-class DoctorByDepartmentListView(ListAPIView):
+class DoctorByPostListView(ListAPIView):
     serializer_class = DoctorListSerializer
     pagination_class = StandardPagination
 
     def get_queryset(self):
-        department_pk = self.kwargs['department_pk']
-        return Doctor.objects.filter(post__department_id=department_pk)
+        post_pk = self.kwargs['post_pk']
+        return Doctor.objects.filter(post_id=post_pk)
