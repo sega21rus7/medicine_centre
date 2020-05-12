@@ -35,7 +35,7 @@ class DepartmentNavbar extends React.Component {
                   <Col lg={4} key={departmentIndex}>
                     <NavDropdown title={department.name} id={departmentIndex}>
                       {department.posts.map((post, postIndex) => (
-                        <NavDropdown.Item>
+                        <NavDropdown.Item key={postIndex}>
                           <Link to={'doctor_post/' + post.pk} style={{color: 'inherit'}}>
                             {post.name}
                           </Link>
