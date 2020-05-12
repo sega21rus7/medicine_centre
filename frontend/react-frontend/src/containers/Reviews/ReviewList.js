@@ -72,7 +72,7 @@ class ReviewList extends React.Component {
     }
 
     return (
-      <Container className="mt-4">
+      <Container>
         <h3 className="caption-left">{personalTitle || 'Отзывы'}</h3>
         <Row>
           {row}
