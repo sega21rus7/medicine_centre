@@ -1,10 +1,11 @@
 import React from 'react';
 import './DoctorDetail.css';
 import axios from "axios";
-import {Card, Col, Container, Image, Row} from "react-bootstrap";
+import {Card, Col, Container, Row} from "react-bootstrap";
 import customAvatar from '../../../images/custom_avatar.png'
 import DoctorProperty from "../DoctorProperty";
 import ReactHtmlParser from 'react-html-parser';
+import DoctorPrizeImages from "../DoctorPrizeImages";
 
 class DoctorDetail extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class DoctorDetail extends React.Component {
     const experienceFrom = <DoctorProperty name="Стаж работы с"
                                            content={doctor.experience_from}/>;
     if (doctor.user) {
-      var {avatar, last_name, first_name, middle_name, phone_number} = doctor.user;
+      var {avatar, last_name, first_name, middle_name} = doctor.user;
     }
     const caption =
       <h3 className="caption-center">
@@ -93,23 +94,7 @@ class DoctorDetail extends React.Component {
             </Col>
           </Row>
         </Container>
-        <Container>
-          <Row>
-            {doctor.prize_images ?
-              doctor.prize_images.map((item, index) => (
-                <Col lg={6} key={index} className="mt-4">
-                  <Image
-                    className="img-fluid"
-                    src={item.image}
-                    alt=""
-                    height="400px"
-                  />
-                </Col>
-              ))
-              : null
-            }
-          </Row>
-        </Container>
+        <DoctorPrizeImages doctor={doctor}/>
       </div>
     )
   };
