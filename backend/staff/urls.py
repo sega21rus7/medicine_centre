@@ -6,7 +6,7 @@ from .views import DoctorViewSet, DoctorByPostListView, DepartmentViewSet, PostV
 app_name = 'staff'
 
 urlpatterns = [
-    path('api/doctors_by_department/<post_pk>/', DoctorByPostListView.as_view(),
+    path('api/doctors_by_post/<post_pk>/', DoctorByPostListView.as_view(),
          name='doctors_by_post'),
 ]
 

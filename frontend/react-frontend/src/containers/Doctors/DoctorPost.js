@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "axios";
 import {Col, Container, Image, Row} from "react-bootstrap";
 import ReactHtmlParser from 'react-html-parser';
+import DoctorLongList from "./DoctorLongList";
 
 class DoctorPost extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class DoctorPost extends React.Component {
 
   render() {
     const {doctorPost} = this.state;
+    const doctorPk = this.props.match.params.pk;
 
     return (
       <div className="DoctorPost">
@@ -46,7 +48,10 @@ class DoctorPost extends React.Component {
               </Image>
             </Col>
           </Row>
+          <h1 className="caption-left">Врачи, занимающие должность «{doctorPost.name}»</h1>
         </Container>
+        <DoctorLongList isNotCaption={true}
+                        specialUrl={`http://localhost:8000/staff/api/doctors_by_post/${doctorPk}/`}/>
       </div>
     )
   };

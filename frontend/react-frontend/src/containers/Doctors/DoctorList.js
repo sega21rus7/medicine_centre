@@ -23,11 +23,11 @@ class DoctorList extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(1);
+    this.getData(1, this.props.specialUrl);
   }
 
-  getData = (page) => {
-    const url = `http://localhost:8000/staff/api/doctors/?page=${page}`;
+  getData = (page, initialUrl = 'http://localhost:8000/staff/api/doctors/') => {
+    const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {
         this.setState({
@@ -47,7 +47,7 @@ class DoctorList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated} = this.props;
+    const {isPaginated, isNotCaption} = this.props;
 
     const row = this.state.items.map((item, index) => {
         return <DoctorListItem key={index} item={item} index={index}/>;
@@ -68,7 +68,10 @@ class DoctorList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <h3 className="caption-left">Наши специалисты</h3>
+        {
+          isNotCaption ? null
+            : <h3 className="caption-left">Наши специалисты</h3>
+        }
         <Row>
           {row}
         </Row>
