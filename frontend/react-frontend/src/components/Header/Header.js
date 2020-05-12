@@ -11,6 +11,7 @@ class Header extends React.Component {
     this.custom_nav = {
       'Новости': '/news',
       'Статьи': '/articles',
+      'Врачи': '/doctors',
       'Контакты': '/contacts',
       'О нас': '/about_us',
     };
