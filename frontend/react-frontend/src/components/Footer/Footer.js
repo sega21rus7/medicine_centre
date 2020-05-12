@@ -12,8 +12,12 @@ class Footer extends React.Component {
           <Row className="footer-widgets">
             <Col lg={4}>
               <div className="foot-about">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris
-                  scelerisque, at rutrum nulla dictum. Ut ac ligula sapien.</p>
+                <p>График работы центра:
+                  <br/>
+                  Пн-Сб с 8.00 до 20.00
+                  <br/>
+                  Вс с 9.00 до 18.00
+                </p>
                 <p className="copyright">
                   БУ «Медцентр» Минздрава Чувашии
                   <br/>
@@ -27,7 +31,7 @@ class Footer extends React.Component {
                 <h2>Связаться с нами</h2>
 
                 <ul className="p-0 m-0">
-                  <li><span>Адрес:</span>г. Чебоксары, ул. Пока не придумал, 3</li>
+                  <li><span>Адрес:</span>г. Чебоксары, ул. Карла Маркса, 36</li>
                   <li><span>Телефон:</span>8 800 111-22-33</li>
                   <li><span>Email:</span>chuvash_med_centre@gmail.com</li>
                 </ul>
