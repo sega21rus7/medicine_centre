@@ -55,9 +55,9 @@ class Doctor(models.Model):
     department = models.ForeignKey(Department, verbose_name='Отделение', on_delete=models.CASCADE)
     additional_education = RichTextField(verbose_name='Дополнительное образование', db_index=True,
                                          blank=True, null=True)
-    # awards = RichTextField(verbose_name='Награды', db_index=True, blank=True, null=True)
-    # certificates = RichTextField(verbose_name='Сертификаты', db_index=True,
-    #                              blank=True, null=True)
+    awards = RichTextField(verbose_name='Награды', db_index=True, blank=True, null=True)
+    certificates = RichTextField(verbose_name='Сертификаты', db_index=True,
+                                 blank=True, null=True)
     university = models.ForeignKey(University, verbose_name='Высшее учебное заведение',
                                    on_delete=models.CASCADE)
     diploma_specialty = models.ForeignKey(DiplomaSpecialty, verbose_name='Специальность по диплому',
@@ -79,23 +79,14 @@ class Doctor(models.Model):
         super().save(*args, **kwargs)
 
 
-class Award(ReferenceByNameModel):
-    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='staff/images/awards',
-                                    null=True, blank=True)
+class PrizeImage(models.Model):
+    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='staff/images/prize_images')
     doctor = models.ForeignKey(Doctor, verbose_name='Врач', on_delete=models.CASCADE,
-                               related_name='awards')
+                               related_name='prize_images')
 
-    class Meta(ReferenceByNameModel.Meta):
-        verbose_name = 'Награда'
-        verbose_name_plural = 'Награды'
+    class Meta:
+        verbose_name = 'Фото наград'
+        verbose_name_plural = 'Фото наград'
 
-
-class Certificate(ReferenceByNameModel):
-    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='staff/images/certificates',
-                                    null=True, blank=True)
-    doctor = models.ForeignKey(Doctor, verbose_name='Врач', on_delete=models.CASCADE,
-                               related_name='certificates')
-
-    class Meta(ReferenceByNameModel.Meta):
-        verbose_name = 'Сертификат'
-        verbose_name_plural = 'Сертификаты'
+    def __str__(self):
+        return '%s - %d' % (self.doctor.user, self.pk)

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from lk.serializers import CustomerUserSerializer
-from .models import Doctor, Post, Department, University, QualificationCategory, DiplomaSpecialty, Award, Certificate
+from .models import Doctor, Post, Department, University, QualificationCategory, DiplomaSpecialty, PrizeImage
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -34,16 +34,10 @@ class QualificationCategorySerializer(serializers.ModelSerializer):
         fields = ('name',)
 
 
-class AwardSerializer(serializers.ModelSerializer):
+class PrizeImageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Award
-        fields = ('name', 'image',)
-
-
-class CertificateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Certificate
-        fields = ('name', 'image',)
+        model = PrizeImage
+        fields = ('image',)
 
 
 class DoctorCreateUpdateDestroySerializer(serializers.ModelSerializer):
@@ -51,7 +45,7 @@ class DoctorCreateUpdateDestroySerializer(serializers.ModelSerializer):
         model = Doctor
         fields = ('user', 'post', 'slug', 'experience_from', 'department', 'additional_education',
                   'university', 'diploma_specialty', 'qualification_category',
-                  'awards', 'certificates')
+                  'awards', 'certificates', 'prize_images')
 
 
 class DoctorListSerializer(DoctorCreateUpdateDestroySerializer):
@@ -61,5 +55,4 @@ class DoctorListSerializer(DoctorCreateUpdateDestroySerializer):
     university = UniversitySerializer()
     diploma_specialty = DiplomaSpecialtySerializer()
     qualification_category = QualificationCategorySerializer()
-    awards = AwardSerializer(many=True)
-    certificates = CertificateSerializer(many=True)
+    prize_images = PrizeImageSerializer(many=True)
