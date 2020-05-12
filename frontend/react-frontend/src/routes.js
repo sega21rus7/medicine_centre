@@ -38,7 +38,7 @@ const BaseRouter = () => (
       <Route exact path="/sign_in" component={SignIn}/>
       <Route exact path="/reset_password" component={ResetPassword}/>
       <Route exact path="/reset_password_done/:uid/:token" component={ResetPasswordDone}/>
-      <Route exact path="/verify-email/:key" component={VerifyEmail}/>
+      <Route exact path="/verify_email/:key" component={VerifyEmail}/>
       <Route component={Error404}/>
     </Switch>
   </div>
