@@ -1,5 +1,5 @@
 import React from "react";
-import NewsListItem from "../../components/ListItems/NewsListItem";
+import NewsListItem from "../../components/News/NewsListItem";
 import PaginationComponent from "../../components/PaginationComponent";
 import {Container, Row} from "react-bootstrap";
 import axios from "axios";

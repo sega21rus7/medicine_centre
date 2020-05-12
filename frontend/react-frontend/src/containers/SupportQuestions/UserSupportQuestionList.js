@@ -2,7 +2,7 @@ import React from "react";
 import {Container, Row} from "react-bootstrap";
 import axios from "axios";
 import PaginationComponent from "../../components/PaginationComponent";
-import SupportQuestionListItem from "../../components/ListItems/SupportQuestionListItem";
+import SupportQuestionListItem from "../../components/SupportQuestions/SupportQuestionListItem";
 
 class UserSupportQuestionList extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
-import AddReviewForm from "../../components/AddReviewForm";
+import AddReviewForm from "../../components/Reviews/AddReviewForm";
 import ReviewLongList from "./ReviewLongList";
 
 

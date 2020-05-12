@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
-import ErrorBlock from "./ErrorBlock/ErrorBlock";
+import ErrorBlock from "../ErrorBlock/ErrorBlock";
 
 class AddReviewForm extends React.Component {
   constructor(props) {

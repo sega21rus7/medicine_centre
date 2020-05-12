@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import UserSupportQuestionList from "./UserSupportQuestionList";
-import AddSupportQuestionForm from "../../components/AddSupportQuestionForm";
+import AddSupportQuestionForm from "../../components/SupportQuestions/AddSupportQuestionForm";
 
 
 class UserSupportQuestion extends React.Component {

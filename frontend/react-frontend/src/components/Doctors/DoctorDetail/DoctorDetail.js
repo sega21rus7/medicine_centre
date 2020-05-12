@@ -3,7 +3,7 @@ import './DoctorDetail.css';
 import axios from "axios";
 import {Card, Col, Container, Image, Row} from "react-bootstrap";
 import customAvatar from '../../../images/custom_avatar.png'
-import DoctorProperty from "../../DoctorProperty";
+import DoctorProperty from "../DoctorProperty";
 import ReactHtmlParser from 'react-html-parser';
 
 class DoctorDetail extends React.Component {

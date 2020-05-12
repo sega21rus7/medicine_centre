@@ -3,7 +3,7 @@ import {Container, Row} from "react-bootstrap";
 import axios from "axios";
 import PaginationComponent from "../../components/PaginationComponent";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
-import ReviewListItem from "../../components/ListItems/ReviewListItem";
+import ReviewListItem from "../../components/Reviews/ReviewListItem";
 
 class ReviewList extends React.Component {
   constructor(props) {
