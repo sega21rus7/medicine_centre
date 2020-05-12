@@ -3,9 +3,9 @@ from rest_framework.generics import ListAPIView
 
 from medicine_centre.paginators import StandardPagination
 from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
-from .models import Doctor, Department
+from .models import Doctor, Department, Post
 from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializer, \
-    DepartmentCreateUpdateDestroySerializer, DepartmentListSerializer
+    DepartmentCreateUpdateDestroySerializer, DepartmentListSerializer, PostSerializer
 
 
 class DoctorViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
@@ -19,6 +19,11 @@ class DoctorViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
         'destroy': DoctorCreateUpdateDestroySerializer,
     }
     pagination_class = StandardPagination
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
 
 class DepartmentViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
