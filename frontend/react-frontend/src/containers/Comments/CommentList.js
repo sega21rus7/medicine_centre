@@ -15,7 +15,8 @@ class CommentList extends React.Component {
           {comments.map((item, index) => (
             <li key={index} className="media">
               <div className="media-left">
-                <img className="media-object" src={item.user ? item.user.avatar || avatar : ''}
+                <img className="media-object"
+                     src={item.user ? item.user.avatar || avatar : ''}
                      alt="Аватар"/>
               </div>
               <div className="media-body">
