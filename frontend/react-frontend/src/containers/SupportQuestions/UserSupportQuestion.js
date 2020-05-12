@@ -7,7 +7,7 @@ import AddSupportQuestionForm from "../../components/SupportQuestions/AddSupport
 class UserSupportQuestion extends React.Component {
   render() {
     return (
-      <Container className="PatientReviewList">
+      <Container className="UserSupportQuestion">
         <Row>
           <Col lg={6}>
             <UserSupportQuestionList/>
