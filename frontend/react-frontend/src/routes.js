@@ -4,7 +4,7 @@ import Lk from "./containers/Lk";
 import NewsLongList from "./containers/News/NewsLongList";
 import NewsDetail from "./components/ListDetails/NewsDetail";
 import DoctorLongList from "./containers/Doctors/DoctorLongList";
-import DoctorDetail from "./components/ListDetails/DoctorDetail";
+import DoctorDetail from "./components/ListDetails/DoctorDetail/DoctorDetail";
 import ArticleLongList from "./containers/Articles/ArticleLongList";
 import ArticleDetail from "./components/ListDetails/ArticleDetail";
 import TagDetail from "./components/ListDetails/TagDetail";
