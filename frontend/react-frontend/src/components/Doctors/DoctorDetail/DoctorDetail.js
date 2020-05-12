@@ -41,9 +41,7 @@ class DoctorDetail extends React.Component {
     }
     if (doctor.post) {
       var post = <DoctorProperty name="Должность" content={doctor.post.name}/>;
-    }
-    if (doctor.department) {
-      var department = <DoctorProperty name="Отделение" content={doctor.department.name}/>;
+      var department = <DoctorProperty name="Отделение" content={doctor.post.department.name}/>;
     }
     if (doctor.additional_education) {
       var additionalEducation = <DoctorProperty name="Дополнительное образование"

@@ -35,6 +35,13 @@ class DiplomaSpecialty(ReferenceByNameModel):
 
 
 class Post(ReferenceByNameModel):
+    description = RichTextField(verbose_name='Описание', db_index=True,
+                                blank=True, null=True)
+    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='staff/images/posts',
+                                    blank=True, null=True)
+    department = models.ForeignKey(Department, verbose_name='Отделение', on_delete=models.CASCADE,
+                                   related_name='posts')
+
     class Meta(ReferenceByNameModel.Meta):
         verbose_name = 'Должность'
         verbose_name_plural = 'Должности'
@@ -52,7 +59,6 @@ class Doctor(models.Model):
     post = models.ForeignKey(Post, verbose_name='Должность', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
     experience_from = models.CharField(verbose_name='Стаж работы c', max_length=4)
-    department = models.ForeignKey(Department, verbose_name='Отделение', on_delete=models.CASCADE)
     additional_education = RichTextField(verbose_name='Дополнительное образование', db_index=True,
                                          blank=True, null=True)
     awards = RichTextField(verbose_name='Награды', db_index=True, blank=True, null=True)
