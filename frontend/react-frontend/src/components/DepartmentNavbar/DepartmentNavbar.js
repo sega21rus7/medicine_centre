@@ -30,12 +30,12 @@ class DepartmentNavbar extends React.Component {
           <Nav>
             {
               departments ?
-                departments.map((item, index) => (
-                  <Col lg={4} key={index}>
-                    <NavDropdown title={item.name} id={index}>
-                      <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                departments.map((department, departmentIndex) => (
+                  <Col lg={4} key={departmentIndex}>
+                    <NavDropdown title={department.name} id={departmentIndex}>
+                      {department.posts.map((post, postIndex) => (
+                        <NavDropdown.Item>{post.name}</NavDropdown.Item>
+                      ))}
                     </NavDropdown>
                   </Col>
                 ))

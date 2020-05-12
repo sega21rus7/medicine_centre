@@ -4,18 +4,25 @@ from lk.serializers import CustomerUserSerializer
 from .models import Doctor, Post, Department, University, QualificationCategory, DiplomaSpecialty, PrizeImage
 
 
-class DepartmentSerializer(serializers.ModelSerializer):
+class DepartmentCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = ('name',)
 
 
 class PostSerializer(serializers.ModelSerializer):
-    department = DepartmentSerializer(read_only=True)
+    department = DepartmentCreateUpdateDestroySerializer(read_only=True)
 
     class Meta:
         model = Post
-        fields = ('name', 'department', 'description', 'image',)
+        fields = ('pk', 'name', 'department', 'description', 'image',)
+
+
+class DepartmentListSerializer(DepartmentCreateUpdateDestroySerializer):
+    posts = PostSerializer(read_only=True, many=True)
+
+    class Meta(DepartmentCreateUpdateDestroySerializer.Meta):
+        fields = ('name', 'posts',)
 
 
 class UniversitySerializer(serializers.ModelSerializer):
