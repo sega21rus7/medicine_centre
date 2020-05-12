@@ -18,6 +18,7 @@ import Content from "./containers/Content/Content";
 import ResetPassword from "./containers/Auth/ResetPassword";
 import ResetPasswordDone from "./containers/Auth/ResetPasswordDone";
 import ReviewLongList from "./containers/Reviews/ReviewLongList";
+import DoctorPost from "./containers/Doctors/DoctorPost";
 
 const BaseRouter = () => (
   <div>
@@ -39,6 +40,7 @@ const BaseRouter = () => (
       <Route exact path="/reset_password" component={ResetPassword}/>
       <Route exact path="/reset_password_done/:uid/:token" component={ResetPasswordDone}/>
       <Route exact path="/verify_email/:key" component={VerifyEmail}/>
+      <Route exact path="/doctor_post/:pk" component={DoctorPost}/>
       <Route component={Error404}/>
     </Switch>
   </div>

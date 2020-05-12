@@ -1,6 +1,7 @@
 import React from 'react';
 import {Col, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class DepartmentNavbar extends React.Component {
   constructor(props) {
@@ -34,7 +35,11 @@ class DepartmentNavbar extends React.Component {
                   <Col lg={4} key={departmentIndex}>
                     <NavDropdown title={department.name} id={departmentIndex}>
                       {department.posts.map((post, postIndex) => (
-                        <NavDropdown.Item>{post.name}</NavDropdown.Item>
+                        <NavDropdown.Item>
+                          <Link to={'doctor_post/' + post.pk} style={{color: 'inherit'}}>
+                            {post.name}
+                          </Link>
+                        </NavDropdown.Item>
                       ))}
                     </NavDropdown>
                   </Col>
