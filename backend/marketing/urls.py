@@ -21,5 +21,5 @@ router.register(r'api/articles', ArticleViewSet, basename='articles')
 router.register(r'api/comments', ArticleCommentViewSet, basename='comments')
 router.register(r'api/user_reviews', UserReviewViewSet, basename='user_reviews')
 router.register(r'api/feedback', FeedbackViewSet, basename='feedback')
-router.register(r'api/user_support_questions', SupportQuestionViewSet, basename='support_question')
+router.register(r'api/user_support_questions', SupportQuestionViewSet, basename='user_support_question')
 urlpatterns += router.urls
