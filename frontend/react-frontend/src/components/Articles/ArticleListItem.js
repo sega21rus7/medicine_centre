@@ -12,8 +12,7 @@ class ArticleListItem extends React.Component {
     }
 
     return (
-      <Col md={4} sm={6} key={index}>
-
+      <Col md={4} sm={6} key={index} className="mb-2">
         <Card>
           <Link to={'article/' + item.slug} style={{color: 'inherit'}}>
             <Card.Img

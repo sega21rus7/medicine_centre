@@ -8,7 +8,7 @@ class DoctorListItem extends React.Component {
     const {item, index} = this.props;
 
     return (
-      <Col md={4} className="text-center" key={index}>
+      <Col md={4} className="text-center mb-2" key={index}>
         <Link to={'doctor/' + item.slug} style={{color: 'inherit'}}>
           <Image
             src={item.user.avatar ? item.user.avatar : avatar}

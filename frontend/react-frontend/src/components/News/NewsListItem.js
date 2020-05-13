@@ -7,7 +7,7 @@ class NewsListItem extends React.Component {
     const {item, index} = this.props;
 
     return (
-      <Col md={4} sm={6} key={index}>
+      <Col md={4} sm={6} key={index} className="mb-2">
         <Link to={'new/' + item.slug} style={{color: 'inherit'}}>
           <Card>
             <Card.Img
