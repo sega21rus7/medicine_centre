@@ -3,6 +3,7 @@ import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
 import Feedback from "./Feedback";
 import ReviewLongList from "./Reviews/ReviewLongList";
 import Vacancy from "../components/Vacancy";
+import AboutCenter from "../components/AboutCenter";
 
 
 class AboutUs extends React.Component {
@@ -36,6 +37,9 @@ class AboutUs extends React.Component {
             </Col>
             <Col sm={9}>
               <Tab.Content>
+                <Tab.Pane eventKey="0">
+                  <AboutCenter/>
+                </Tab.Pane>
                 <Tab.Pane eventKey="1">
                   <Vacancy/>
                 </Tab.Pane>
