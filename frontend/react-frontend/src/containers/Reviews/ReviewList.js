@@ -73,7 +73,7 @@ class ReviewList extends React.Component {
 
     return (
       <Container className={isNotMt4 ? '' : 'mt-4'}>
-        <h3 className="caption-left">{personalTitle || 'Отзывы'}</h3>
+        <h3 className="orange-caption-left">{personalTitle || 'Отзывы'}</h3>
         <Row>
           {row}
         </Row>

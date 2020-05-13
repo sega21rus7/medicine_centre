@@ -69,7 +69,7 @@ class ArticleList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <h3 className="caption-left">Статьи</h3>
+        <h3 className="orange-caption-left">Статьи</h3>
         <Row>
           {row}
         </Row>

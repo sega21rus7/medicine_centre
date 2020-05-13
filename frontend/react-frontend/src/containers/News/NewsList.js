@@ -68,7 +68,7 @@ class NewsList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <h3 className="caption-left">Новости</h3>
+        <h3 className="orange-caption-left">Новости</h3>
         <Row>
           {row}
         </Row>

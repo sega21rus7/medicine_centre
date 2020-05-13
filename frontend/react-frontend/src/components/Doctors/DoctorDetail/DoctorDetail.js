@@ -61,7 +61,7 @@ class DoctorDetail extends React.Component {
       var {avatar, last_name, first_name, middle_name} = doctor.user;
     }
     const caption =
-      <h3 className="caption-center">
+      <h3 className="orange-caption-center">
         {last_name}&nbsp;{first_name}&nbsp;{middle_name}
       </h3>;
 

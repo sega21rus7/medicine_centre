@@ -29,7 +29,7 @@ class NewsDetail extends React.Component {
         <Container className="mt-4">
           <Row>
             <Col md={5}>
-              <h3 className="caption-center">{newItem.title}</h3>
+              <h3 className="orange-caption-center">{newItem.title}</h3>
               <Card>
                 <Card.Img
                   variant="top"

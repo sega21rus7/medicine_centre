@@ -34,7 +34,7 @@ class DoctorPost extends React.Component {
     return (
       <div className="DoctorPost">
         <Container className="mt-4">
-          <h1 className="caption-left">{doctorPost.name}</h1>
+          <h1 className="orange-caption-left">{doctorPost.name}</h1>
           <Row>
             <Col lg={6}>
               {ReactHtmlParser(doctorPost.description)}
@@ -48,7 +48,7 @@ class DoctorPost extends React.Component {
               </Image>
             </Col>
           </Row>
-          <h1 className="caption-left">Врачи, занимающие должность «{doctorPost.name}»</h1>
+          <h1 className="green-caption-left">Врачи, занимающие должность «{doctorPost.name}»</h1>
         </Container>
         <DoctorLongList isNotCaption={true}
                         specialUrl={`http://localhost:8000/staff/api/doctors_by_post/${doctorPk}/`}/>

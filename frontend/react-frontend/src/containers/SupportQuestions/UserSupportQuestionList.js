@@ -62,7 +62,7 @@ class UserSupportQuestionList extends React.Component {
 
     return (
       <Container>
-        <h3 className="caption-left">Мои обращения</h3>
+        <h3 className="orange-caption-left">Мои обращения</h3>
         <Row>
           {row}
         </Row>

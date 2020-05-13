@@ -28,7 +28,7 @@ class Vacancy extends React.Component {
   render() {
     return (
       <Container className="Vacancy">
-        <h3 className="caption-left">Вакансии</h3>
+        <h3 className="orange-caption-left">Вакансии</h3>
         <p className="font-weight-bold">Уважаемые врачи!</p>
         <p>В связи с расширением, а также долгосрочными планами развития, «Медцентр» продолжает набор врачей и
           медицинских

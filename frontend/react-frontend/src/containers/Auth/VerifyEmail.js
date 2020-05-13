@@ -40,7 +40,7 @@ class VerifyEmail extends React.Component {
               <Col lg={6}>
                 <div className="p-lg-5 p-3">
                   <div className="text-center">
-                    <h1 className="caption-center">Подтверждение email</h1>
+                    <h1 className="orange-caption-center">Подтверждение email</h1>
                     <p>{message}</p>
                     <AlreadySignUpPanel/>
                   </div>

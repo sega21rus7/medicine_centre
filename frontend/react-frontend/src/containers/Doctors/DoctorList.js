@@ -70,7 +70,7 @@ class DoctorList extends React.Component {
       <Container className="mt-4">
         {
           isNotCaption ? null
-            : <h3 className="caption-left">Наши специалисты</h3>
+            : <h3 className="orange-caption-left">Наши специалисты</h3>
         }
         <Row>
           {row}

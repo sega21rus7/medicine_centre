@@ -1,9 +1,19 @@
-.caption-left {
+.orange-caption-left {
   color: #ff7c50;
   text-align: left;
 }
 
-.caption-center {
+.orange-caption-left {
+  color: #ff7c50;
+  text-align: left;
+}
+
+.green-caption-left {
+  color: #399f40;
+  text-align: left;
+}
+
+.orange-caption-center {
   color: #ff7c50;
   text-align: center;
 }

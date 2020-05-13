@@ -7,7 +7,7 @@ class Feedback extends React.Component {
   render() {
     return (
       <Container className="Feedback">
-        <h3 className="caption-left">Обратная связь</h3>
+        <h3 className="orange-caption-left">Обратная связь</h3>
         <Row>
           <Col lg={12}>
             <FeedbackForm/>
