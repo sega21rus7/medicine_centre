@@ -60,7 +60,7 @@ class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
 
 class ReviewListSerializer(ReviewCreateUpdateDestroySerializer):
     patient = PatientListSerializer(read_only=True)
-    doctor = DoctorListSerializer(read_only=True, many=True)
+    doctor = DoctorListSerializer(read_only=True)
 
 
 class FeedbackSerializer(serializers.ModelSerializer):

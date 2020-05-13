@@ -7,9 +7,17 @@ class ReviewListItem extends React.Component {
     const {item, index} = this.props;
     const user = item.patient.user;
 
+    if (item.doctor) {
+      const doctorName = `${item.doctor.user.last_name} ${item.doctor.user.first_name} ${item.doctor.user.middle_name}`;
+      var doctor = <p>Врач: {ReactHtmlParser(doctorName)}</p>
+    }
+
     return (
+
+
       <Jumbotron key={index}>
-        <h2>{user.first_name}&nbsp;{user.middle_name.charAt(0)}.</h2>
+        <h2>{user.first_name}&nbsp;{user.middle_name}</h2>
+        {doctor}
         {
           item.negatives ?
             <p>Достоинства: {ReactHtmlParser(item.negatives)}</p>
@@ -21,6 +29,7 @@ class ReviewListItem extends React.Component {
             : null
         }
         <p>Комментарий: {ReactHtmlParser(item.content)}</p>
+
         <div className="text-right">Дата публикации: {item.pub_date}</div>
       </Jumbotron>
     )

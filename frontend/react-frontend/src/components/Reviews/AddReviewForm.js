@@ -50,7 +50,7 @@ class AddReviewForm extends React.Component {
           positives: event.target.elements.positives.value,
           negatives: event.target.elements.negatives.value,
           content: event.target.elements.content.value,
-          // doctor: this.state.doctors,
+          doctor: this.state.selectedValuePk,
         },
         headers: {'Authorization': `Token ${token}`},
       };
