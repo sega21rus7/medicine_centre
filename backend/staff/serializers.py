@@ -52,7 +52,7 @@ class PrizeImageSerializer(serializers.ModelSerializer):
 class DoctorCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Doctor
-        fields = ('user', 'post', 'slug', 'experience_from', 'additional_education',
+        fields = ('pk', 'user', 'post', 'slug', 'experience_from', 'additional_education',
                   'university', 'diploma_specialty', 'qualification_category',
                   'awards', 'certificates', 'prize_images')
 

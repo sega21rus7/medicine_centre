@@ -107,9 +107,8 @@ class Review(BaseFeedback):  # отзыв
                                 on_delete=models.CASCADE)
     positives = models.TextField(verbose_name='Достоинства', db_index=True, blank=True, null=True)
     negatives = models.TextField(verbose_name='Недостатки', db_index=True, blank=True, null=True)
-
-    # doctors = models.ManyToManyField('staff.Doctor', verbose_name='Врачи', blank=True,
-    #                                  related_name='reviews')
+    doctor = models.ForeignKey('staff.Doctor', verbose_name='Врач', blank=True, null=True,
+                               related_name='reviews', on_delete=models.CASCADE)
 
     class Meta(BaseFeedback.Meta):
         verbose_name = 'Отзыв'
