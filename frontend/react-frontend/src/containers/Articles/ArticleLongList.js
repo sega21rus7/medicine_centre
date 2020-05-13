@@ -5,7 +5,9 @@ class ArticleLongList extends React.Component {
   render() {
     return (
       <div className="ArticleLongList">
-        <ArticleList isPaginated={true} specialUrl={this.props.specialUrl}/>
+        <ArticleList isPaginated={true}
+                     specialUrl={this.props.specialUrl}
+                     isSearchable={true}/>
       </div>
     )
   };

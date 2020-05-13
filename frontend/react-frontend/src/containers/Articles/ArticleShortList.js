@@ -5,7 +5,7 @@ class ArticleShortList extends React.Component {
   render() {
     return (
       <div className="ArticleShortList">
-        <ArticleList isPaginated={false}/>
+        <ArticleList isPaginated={false} isSearchable={false}/>
       </div>
     )
   };

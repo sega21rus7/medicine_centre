@@ -5,14 +5,14 @@ import ArticleTagList from "../../containers/Tags/ArticleTagList";
 
 class ArticleListItem extends React.Component {
   render() {
-    const {item, index} = this.props;
+    const {item, index, isSearchable} = this.props;
     let tags = '-';
     if (item.tags) {
       tags = <ArticleTagList tags={item.tags}/>;
     }
 
     return (
-      <Col md={3} sm={6} key={index} className="mb-2">
+      <Col md={isSearchable ? 3 : 4} sm={6} key={index} className="mb-2">
         <Card>
           <Link to={'article/' + item.slug} style={{color: 'inherit'}}>
             <Card.Img

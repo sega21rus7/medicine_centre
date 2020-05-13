@@ -48,10 +48,10 @@ class ArticleList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated, specialUrl} = this.props;
+    const {isPaginated, specialUrl, isSearchable} = this.props;
 
     const row = this.state.items.map((item, index) => {
-        return <ArticleListItem key={index} item={item} index={index}/>;
+        return <ArticleListItem isSearchable={isSearchable} key={index} item={item} index={index}/>;
       }
     );
 
@@ -72,9 +72,13 @@ class ArticleList extends React.Component {
       <Container className="mt-4">
         <h3 className="orange-caption-left">Статьи</h3>
         <Row>
-          <Col md={3}>
-            <ArticleSearchForm/>
-          </Col>
+          {
+            isSearchable ?
+              <Col md={3}>
+                <ArticleSearchForm getData={this.getData}/>
+              </Col>
+              : null
+          }
           {row}
         </Row>
         {button}
