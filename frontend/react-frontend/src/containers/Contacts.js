@@ -13,9 +13,9 @@ class Contacts extends React.Component {
           loadingElement={<div style={{height: `100%`}}/>}
           containerElement={<div style={{height: `400px`}}/>}
           mapElement={<div style={{height: `100%`}}/>}/>
-        <p>Адрес: г. Чебоксары, ул. Карла Маркса, 36</p>
-        <p>Телефон: 8 800 111-22-33</p>
-        <p>Email: chuvash_med_centre@gmail.com</p>
+        <p>Адрес: <span className="contact-item">г. Чебоксары, ул. Карла Маркса, 36</span></p>
+        <p>Телефон: <span className="contact-item">8 800 111-22-33</span></p>
+        <p>Email: <span className="contact-item">chuvash_med_centre@gmail.com</span></p>
         <Feedback/>
       </Container>
     )
