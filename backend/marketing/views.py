@@ -84,6 +84,16 @@ class ReviewListView(ListAPIView):
     pagination_class = StandardPagination
 
 
+class DoctorReviewListView(ListAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ReviewListSerializer
+    pagination_class = StandardPagination
+
+    def get_queryset(self):
+        qs = Review.objects.filter(doctor__user_id=self.request.user.id).all()
+        return qs
+
+
 class PatientReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = ReviewListSerializer
