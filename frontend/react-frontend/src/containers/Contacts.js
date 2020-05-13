@@ -9,8 +9,7 @@ class Contacts extends React.Component {
     return (
       <Container className="Contacts mt-4">
         <ContactsMap
-          googleMapURL=
-            "https://maps.googleapis.com/maps/api/js?key=AIzaSyBRrUrAMvwhI_oyn3tGfgQjcCATSzXHIaY"
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${constants.GOOGLE_API_KEY}`}
           loadingElement={<div style={{height: `100%`}}/>}
           containerElement={<div style={{height: `400px`}}/>}
           mapElement={<div style={{height: `100%`}}/>}/>
