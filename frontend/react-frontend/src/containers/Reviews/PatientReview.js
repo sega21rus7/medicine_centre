@@ -7,7 +7,7 @@ import ReviewLongList from "./ReviewLongList";
 class PatientReview extends React.Component {
   render() {
     return (
-      <Container className="PatientReviewList">
+      <Container className="PatientReview">
         <Row>
           <Col lg={6}>
             <ReviewLongList personalTitle={'Мои отзывы'}
