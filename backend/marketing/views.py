@@ -1,3 +1,4 @@
+from django.db.models import Q
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -17,6 +18,18 @@ class NewsViewSet(viewsets.ModelViewSet):
     serializer_class = NewsSerializer
     lookup_field = 'slug'
     pagination_class = StandardPagination
+
+
+class SearchArticleListView(ListAPIView):
+    serializer_class = ArticleListSerializer
+    pagination_class = StandardPagination
+
+    def get_queryset(self):
+        search_key = self.kwargs['search_key']
+        qs = Article.objects.filter(
+            Q(title__icontains=search_key) |
+            Q(content__icontains=search_key)).all()
+        return qs
 
 
 class ArticleViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
