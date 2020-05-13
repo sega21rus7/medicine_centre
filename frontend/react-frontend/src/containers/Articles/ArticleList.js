@@ -1,9 +1,10 @@
 import React from "react";
 import PaginationComponent from "../../components/PaginationComponent";
-import {Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import ArticleListItem from "../../components/Articles/ArticleListItem";
+import ArticleSearch from "../../components/Articles/ArticleSearch";
 
 class ArticleList extends React.Component {
   constructor(props) {
@@ -69,7 +70,14 @@ class ArticleList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <h3 className="orange-caption-left">Статьи</h3>
+        <Row>
+          <Col>
+            <h3 className="orange-caption-left">Статьи</h3>
+          </Col>
+          <Col>
+            <ArticleSearch/>
+          </Col>
+        </Row>
         <Row>
           {row}
         </Row>
