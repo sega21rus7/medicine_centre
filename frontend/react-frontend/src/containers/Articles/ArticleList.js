@@ -70,15 +70,11 @@ class ArticleList extends React.Component {
 
     return (
       <Container className="mt-4">
+        <h3 className="orange-caption-left">Статьи</h3>
         <Row>
-          <Col>
-            <h3 className="orange-caption-left">Статьи</h3>
-          </Col>
-          <Col>
+          <Col md={3}>
             <ArticleSearch/>
           </Col>
-        </Row>
-        <Row>
           {row}
         </Row>
         {button}

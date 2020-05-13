@@ -4,10 +4,18 @@ import {Button, Form, FormControl} from "react-bootstrap";
 class ArticleSearch extends React.Component {
   render() {
     return (
-      <Form inline>
-        <FormControl type="text" placeholder="Поиск" className=" mr-sm-2"/>
-        <Button type="submit">Найти</Button>
-      </Form>
+      <div className="ArticleSearch">
+        <Form>
+          <Form.Group controlId="formGroupSearch">
+            <FormControl type="text" placeholder="Введите ключевую фразу"/>
+          </Form.Group>
+          <Button type="submit" variant="outline-success" block>Поиск</Button>
+        </Form>
+
+        <Form>
+          <Button type="submit" variant="outline-danger" block>Сброс</Button>
+        </Form>
+      </div>
     )
   }
 }
