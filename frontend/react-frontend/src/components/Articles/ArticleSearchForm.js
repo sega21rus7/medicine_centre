@@ -18,7 +18,7 @@ class ArticleSearchForm extends React.Component {
 
   render() {
     return (
-      <div className="ArticleSearch">
+      <div className="ArticleSearchForm">
         <Form onSubmit={this.handleSearch}>
           <Form.Group controlId="formGroupSearch">
             <FormControl name="text" type="text" placeholder="Поиск"/>
