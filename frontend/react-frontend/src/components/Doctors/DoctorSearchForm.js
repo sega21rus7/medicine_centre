@@ -11,11 +11,6 @@ class DoctorSearchForm extends React.Component {
 
   };
 
-  handleReset = (event) => {
-    //event.preventDefault();
-    this.props.getData(1);
-  };
-
   render() {
     return (
       <div className="DoctorSearchForm">
@@ -24,10 +19,6 @@ class DoctorSearchForm extends React.Component {
             <FormControl name="text" type="text" placeholder="Поиск" required/>
           </Form.Group>
           <Button type="submit" variant="outline-success" block>Найти</Button>
-        </Form>
-
-        <Form className="mt-2 mb-2" onSubmit={this.handleReset}>
-          <Button type="submit" variant="outline-danger" block>Сброс</Button>
         </Form>
       </div>
     )

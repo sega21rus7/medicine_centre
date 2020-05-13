@@ -5,6 +5,8 @@ import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import DoctorListItem from "../../components/Doctors/DoctorListItem";
 import DoctorSearchForm from "../../components/Doctors/DoctorSearchForm";
+import DoctorFilterForm from "../../components/Doctors/DoctorFilterForm/DoctorFilterForm";
+import DoctorResetForm from "../../components/Doctors/DoctorResetForm";
 
 class DoctorList extends React.Component {
   constructor(props) {
@@ -81,6 +83,8 @@ class DoctorList extends React.Component {
             isSearchable ?
               <Col md={3}>
                 <DoctorSearchForm getData={this.getData}/>
+                <DoctorFilterForm getData={this.getData}/>
+                <DoctorResetForm getData={this.getData}/>
               </Col>
               : null
           }
