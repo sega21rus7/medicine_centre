@@ -11,3 +11,11 @@ notes(to correct later):
 - sign_in/sign_up
 - tags/tags
 - doctor_post/doctor
+
+todo-list:
+1) Запись на прием в ЛК для пациента
+2) CRUD обращений в ТП для пациента
+3) CRUD отзывов для пациента
+4) Отзывы о враче в ЛК враче
+5) Select multiple поле выбора врачей в отзыве
+6) Доп. фильтры для врача
