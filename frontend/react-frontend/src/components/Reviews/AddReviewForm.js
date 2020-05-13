@@ -45,7 +45,7 @@ class AddReviewForm extends React.Component {
     if (token) {
       const options = {
         method: 'POST',
-        url: 'http://localhost:8000/marketing/api/user_reviews/',
+        url: 'http://localhost:8000/marketing/api/patient_reviews/',
         data: {
           positives: event.target.elements.positives.value,
           negatives: event.target.elements.negatives.value,

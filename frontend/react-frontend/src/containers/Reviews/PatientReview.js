@@ -11,7 +11,7 @@ class PatientReview extends React.Component {
         <Row>
           <Col lg={6}>
             <ReviewLongList personalTitle={'Мои отзывы'}
-                            personalUrl={'http://localhost:8000/marketing/api/user_reviews/'}
+                            personalUrl={'http://localhost:8000/marketing/api/patient_reviews/'}
                             isNotMt4={true}/>
           </Col>
           <Col lg={6}>
