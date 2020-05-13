@@ -1,9 +1,10 @@
 import React from "react";
 import NewsListItem from "../../components/News/NewsListItem";
 import PaginationComponent from "../../components/PaginationComponent";
-import {Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
+import NewsSearchForm from "../../components/News/NewsSearchForm";
 
 class NewsList extends React.Component {
   constructor(props) {
@@ -26,8 +27,8 @@ class NewsList extends React.Component {
     this.getData(1);
   }
 
-  getData = (page) => {
-    const url = `http://localhost:8000/marketing/api/news/?page=${page}`;
+  getData = (page, initialUrl='http://localhost:8000/marketing/api/news/') => {
+    const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {
         this.setState({
@@ -47,10 +48,10 @@ class NewsList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated} = this.props;
+    const {isPaginated, isSearchable} = this.props;
 
     const row = this.state.items.map((item, index) => {
-        return <NewsListItem key={index} item={item} index={index}/>;
+        return <NewsListItem isSearchable={isSearchable} key={index} item={item} index={index}/>;
       }
     );
 
@@ -70,6 +71,13 @@ class NewsList extends React.Component {
       <Container className="mt-4">
         <h3 className="orange-caption-left">Новости</h3>
         <Row>
+          {
+            isSearchable ?
+              <Col md={3}>
+                <NewsSearchForm getData={this.getData}/>
+              </Col>
+              : null
+          }
           {row}
         </Row>
         {button}

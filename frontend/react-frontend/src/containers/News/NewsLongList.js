@@ -6,7 +6,8 @@ class NewsLongList extends React.Component {
   render() {
     return (
       <div className="NewsLongList">
-        <NewsList isPaginated={true}/>
+        <NewsList isPaginated={true}
+                  isSearchable={true}/>
       </div>
     )
   };

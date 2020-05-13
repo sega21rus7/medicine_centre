@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from .views import NewsViewSet, ArticleViewSet, TagListView, ArticleWithTagView, \
     ArticleCommentViewSet, UserReviewViewSet, FeedbackViewSet, SupportQuestionViewSet, \
-    ReviewListView, SearchArticleListView
+    ReviewListView, SearchArticleListView, SearchNewsListView
 
 app_name = 'marketing'
 
@@ -12,6 +12,7 @@ urlpatterns = [
     path('api/articles_with_tag/<slug>/', ArticleWithTagView.as_view(), name='articles_with_tag'),
     path('api/reviews/', ReviewListView.as_view(), name='reviews'),
     path('api/search_articles/<search_key>', SearchArticleListView.as_view(), name='search_articles'),
+    path('api/search_news/<search_key>', SearchNewsListView.as_view(), name='search_news'),
 ]
 
 router = DefaultRouter()

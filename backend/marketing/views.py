@@ -32,6 +32,18 @@ class SearchArticleListView(ListAPIView):
         return qs
 
 
+class SearchNewsListView(ListAPIView):
+    serializer_class = NewsSerializer
+    pagination_class = StandardPagination
+
+    def get_queryset(self):
+        search_key = self.kwargs['search_key']
+        qs = News.objects.filter(
+            Q(title__icontains=search_key) |
+            Q(content__icontains=search_key)).all()
+        return qs
+
+
 class ArticleViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     queryset = Article.objects.all()
     lookup_field = 'slug'

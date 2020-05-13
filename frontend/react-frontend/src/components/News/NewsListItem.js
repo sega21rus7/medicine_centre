@@ -4,10 +4,10 @@ import {Link} from "react-router-dom";
 
 class NewsListItem extends React.Component {
   render() {
-    const {item, index} = this.props;
+    const {item, index, isSearchable} = this.props;
 
     return (
-      <Col md={4} sm={6} key={index} className="mb-2">
+      <Col md={isSearchable ? 3 : 4} sm={6} key={index} className="mb-2">
         <Link to={'new/' + item.slug} style={{color: 'inherit'}}>
           <Card>
             <Card.Img
