@@ -11,8 +11,8 @@ class DoctorLongList extends React.Component {
         <DoctorList isPaginated={true}
                     isNotCaption={isNotCaption}
                     specialUrl={specialUrl}
-                    isSearchable={isSearchable || true}
-                    isFilterable={isFilterable || true}/>
+                    isSearchable={isSearchable !== false}
+                    isFilterable={isFilterable !== false}/>
       </div>
     )
   };
