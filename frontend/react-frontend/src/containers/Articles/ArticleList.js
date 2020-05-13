@@ -51,7 +51,11 @@ class ArticleList extends React.Component {
     const {isPaginated, specialUrl, isSearchable} = this.props;
 
     const row = this.state.items.map((item, index) => {
-        return <ArticleListItem isSearchable={isSearchable} key={index} item={item} index={index}/>;
+        return <ArticleListItem
+          isSearchable={isSearchable}
+          key={index}
+          item={item}
+          index={index}/>;
       }
     );
 

@@ -27,7 +27,7 @@ class NewsList extends React.Component {
     this.getData(1);
   }
 
-  getData = (page, initialUrl='http://localhost:8000/marketing/api/news/') => {
+  getData = (page, initialUrl = 'http://localhost:8000/marketing/api/news/') => {
     const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {
@@ -51,7 +51,10 @@ class NewsList extends React.Component {
     const {isPaginated, isSearchable} = this.props;
 
     const row = this.state.items.map((item, index) => {
-        return <NewsListItem isSearchable={isSearchable} key={index} item={item} index={index}/>;
+        return <NewsListItem isSearchable={isSearchable}
+                             key={index}
+                             item={item}
+                             index={index}/>;
       }
     );
 
