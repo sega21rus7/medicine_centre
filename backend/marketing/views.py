@@ -59,7 +59,7 @@ class ReviewListView(ListAPIView):
     pagination_class = StandardPagination
 
 
-class ReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+class UserReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = ReviewListSerializer
     serializer_action_classes = {
