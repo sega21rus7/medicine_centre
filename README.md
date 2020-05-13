@@ -7,3 +7,4 @@ notes(to correct later):
 3) // нужен redux, при наличии > 3 статей пагинация отрабатывает неправильно 
 4) // event.preventDefault()
 5) //event.preventDefault()
+6) накладываются urls sign_in/sign_up а также tags/tags
