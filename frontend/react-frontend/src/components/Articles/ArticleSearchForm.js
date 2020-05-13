@@ -21,7 +21,7 @@ class ArticleSearchForm extends React.Component {
       <div className="ArticleSearchForm">
         <Form onSubmit={this.handleSearch}>
           <Form.Group controlId="formGroupSearch">
-            <FormControl name="text" type="text" placeholder="Поиск"/>
+            <FormControl name="text" type="text" placeholder="Поиск" required/>
           </Form.Group>
           <Button type="submit" variant="outline-success" block>Найти</Button>
         </Form>
