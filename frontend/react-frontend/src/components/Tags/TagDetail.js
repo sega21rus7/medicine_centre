@@ -9,7 +9,9 @@ class TagDetail extends React.Component {
 
     return (
       <Container className="TagDetail">
-        <ArticleLongList isPaginated={true} specialUrl={url}/>
+        <ArticleLongList isPaginated={true}
+                         specialUrl={url}
+                         isSearchable={true}/>
       </Container>
     )
   };
