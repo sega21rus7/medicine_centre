@@ -2,7 +2,7 @@ import React from 'react';
 import './Footer.css';
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-
+import * as constants from '../../constants';
 
 class Footer extends React.Component {
   render() {
@@ -31,9 +31,9 @@ class Footer extends React.Component {
                 <h2>Связаться с нами</h2>
 
                 <ul className="p-0 m-0">
-                  <li><span>Адрес:</span>г. Чебоксары, ул. Карла Маркса, 36</li>
-                  <li><span>Телефон:</span>8 800 111-22-33</li>
-                  <li><span>Email:</span>chuvash_med_centre@gmail.com</li>
+                  <li><span>Адрес:</span>{constants.COMPANY_ADDRESS}</li>
+                  <li><span>Телефон:</span>{constants.COMPANY_PHONE}</li>
+                  <li><span>Email:</span>{constants.COMPANY_EMAIL}</li>
                 </ul>
               </div>
             </Col>

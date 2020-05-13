@@ -1,4 +1,5 @@
 import React from 'react';
+import * as constants from '../constants';
 
 class ForCompanies extends React.Component {
   render() {
@@ -37,8 +38,9 @@ class ForCompanies extends React.Component {
           соответственно влияет на процветание вашей компании. Ведь хороший работник – это, в первую
           очередь, здоровый работник.</p>
 
-        <p>По вопросам сотрудничества обращаться по телефону: <span className="contact-item">8 800 111-22-33</span> или
-          по электронной почте <span className="contact-item">chuvash_med_centre@gmail.com</span></p>
+        <p>По вопросам сотрудничества обращаться по телефону: <span
+          className="contact-item">{constants.COMPANY_PHONE}</span> или
+          по электронной почте <span className="contact-item">{constants.COMPANY_EMAIL}.</span></p>
       </div>
     )
   }

@@ -4,6 +4,7 @@ import {Nav, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router";
 import {connect} from "react-redux";
+import * as constants from '../../constants';
 
 class Header extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Header extends React.Component {
             </Nav>
             <Nav pullright="true">
               <Nav.Link href="tel:88001112233">
-                8 800 111-22-33
+                {constants.COMPANY_PHONE}
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

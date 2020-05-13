@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
+import * as constants from '../constants';
 
 class Vacancy extends React.Component {
   constructor(props) {
@@ -44,8 +45,8 @@ class Vacancy extends React.Component {
           }
         </ul>
         <p>
-          Резюме отправлять по адресу: chuvash_med_centre@gmail.com
-          или звоните по тел. 8 (800) 111-22-33
+          Резюме отправлять по адресу: <span className="contact-item">{constants.COMPANY_EMAIL}</span> или звоните по
+          тел. <span className="contact-item">{constants.COMPANY_PHONE}</span>.
         </p>
       </Container>
     )
