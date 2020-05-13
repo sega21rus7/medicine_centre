@@ -1,9 +1,10 @@
 import React from "react";
 import PaginationComponent from "../../components/PaginationComponent";
-import {Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import DoctorListItem from "../../components/Doctors/DoctorListItem";
+import DoctorSearchForm from "../../components/Doctors/DoctorSearchForm";
 
 class DoctorList extends React.Component {
   constructor(props) {
@@ -47,10 +48,13 @@ class DoctorList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated, isNotCaption} = this.props;
+    const {isPaginated, isNotCaption, isSearchable} = this.props;
 
     const row = this.state.items.map((item, index) => {
-        return <DoctorListItem key={index} item={item} index={index}/>;
+        return <DoctorListItem key={index}
+                               item={item}
+                               index={index}
+                               isSearchable={isSearchable}/>;
       }
     );
 
@@ -73,6 +77,13 @@ class DoctorList extends React.Component {
             : <h3 className="orange-caption-left">Наши специалисты</h3>
         }
         <Row>
+          {
+            isSearchable ?
+              <Col md={3}>
+                <DoctorSearchForm getData={this.getData}/>
+              </Col>
+              : null
+          }
           {row}
         </Row>
         {button}

@@ -5,7 +5,8 @@ class DoctorShortList extends React.Component {
   render() {
     return (
       <div className="DoctorShortList">
-        <DoctorList isPaginated={false}/>
+        <DoctorList isPaginated={false}
+                    isSearchable={false}/>
       </div>
     )
   };

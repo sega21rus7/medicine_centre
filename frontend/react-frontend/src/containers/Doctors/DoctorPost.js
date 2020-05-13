@@ -51,7 +51,8 @@ class DoctorPost extends React.Component {
           <h1 className="green-caption-left">Врачи, занимающие должность «{doctorPost.name}»</h1>
         </Container>
         <DoctorLongList isNotCaption={true}
-                        specialUrl={`http://localhost:8000/staff/api/doctors_by_post/${doctorPk}/`}/>
+                        specialUrl={`http://localhost:8000/staff/api/doctors_by_post/${doctorPk}/`}
+                        isSearchable={true}/>
       </div>
     )
   };

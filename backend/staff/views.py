@@ -1,3 +1,5 @@
+from django.db.models import Q
+from pytils.translit import slugify
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 
@@ -6,6 +8,17 @@ from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
 from .models import Doctor, Department, Post
 from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializer, \
     DepartmentCreateUpdateDestroySerializer, DepartmentListSerializer, PostSerializer
+
+
+class SearchDoctorListView(ListAPIView):
+    serializer_class = DoctorListSerializer
+    pagination_class = StandardPagination
+
+    def get_queryset(self):
+        search_key = self.kwargs['search_key']
+        slugify_key = slugify(search_key)
+        qs = Doctor.objects.filter(slug__icontains=slugify_key).all()
+        return qs
 
 
 class DoctorViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):

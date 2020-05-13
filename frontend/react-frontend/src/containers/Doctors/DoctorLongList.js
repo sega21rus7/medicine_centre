@@ -10,7 +10,8 @@ class DoctorLongList extends React.Component {
       <div className="DoctorLongList">
         <DoctorList isPaginated={true}
                     isNotCaption={isNotCaption}
-                    specialUrl={specialUrl}/>
+                    specialUrl={specialUrl}
+                    isSearchable={true}/>
       </div>
     )
   };
