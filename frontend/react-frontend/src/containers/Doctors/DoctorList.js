@@ -50,7 +50,7 @@ class DoctorList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated, isNotCaption, isSearchable} = this.props;
+    const {isPaginated, isNotCaption, isSearchable, isFilterable} = this.props;
 
     const row = this.state.items.map((item, index) => {
         return <DoctorListItem key={index}
@@ -80,10 +80,18 @@ class DoctorList extends React.Component {
         }
         <Row>
           {
-            isSearchable ?
+            isSearchable || isFilterable ?
               <Col md={3}>
-                <DoctorSearchForm getData={this.getData}/>
-                <DoctorFilterForm getData={this.getData}/>
+                {
+                  isSearchable ?
+                    <DoctorSearchForm getData={this.getData}/>
+                    : null
+                }
+                {
+                  isFilterable ?
+                    <DoctorFilterForm getData={this.getData}/>
+                    : null
+                }
                 <DoctorResetForm getData={this.getData}/>
               </Col>
               : null
