@@ -33,28 +33,30 @@ class PaginationComponent extends React.Component {
     const pagination = this.getPaginationPages();
 
     return (
-      <Pagination>
-        <Pagination.First
-          onClick={this.paginate}
-          value={1}
-          disabled={!previous}
-        />
-        {pagination.map((item, index) => {
-            const isActive = item === activePage;
-            return (
-              <Pagination.Item onClick={this.paginate}
-                               key={index} value={item}
-                               active={isActive}>
-                {item}
-              </Pagination.Item>
-            )
-          }
-        )}
-        <Pagination.Last onClick={this.paginate}
-                         value={pagination.length}
-                         disabled={!next}
-        />
-      </Pagination>
+      <div className="PaginationComponent">
+        <Pagination className="justify-content-end">
+          <Pagination.First
+            onClick={this.paginate}
+            value={1}
+            disabled={!previous}
+          />
+          {pagination.map((item, index) => {
+              const isActive = item === activePage;
+              return (
+                <Pagination.Item onClick={this.paginate}
+                                 key={index} value={item}
+                                 active={isActive}>
+                  {item}
+                </Pagination.Item>
+              )
+            }
+          )}
+          <Pagination.Last onClick={this.paginate}
+                           value={pagination.length}
+                           disabled={!next}
+          />
+        </Pagination>
+      </div>
     )
   };
 }
