@@ -4,7 +4,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import ArticleListItem from "../../components/Articles/ArticleListItem";
-import ArticleSearch from "../../components/Articles/ArticleSearch";
+import ArticleSearchForm from "../../components/Articles/ArticleSearchForm";
 
 class ArticleList extends React.Component {
   constructor(props) {
@@ -73,7 +73,7 @@ class ArticleList extends React.Component {
         <h3 className="orange-caption-left">Статьи</h3>
         <Row>
           <Col md={3}>
-            <ArticleSearch/>
+            <ArticleSearchForm/>
           </Col>
           {row}
         </Row>

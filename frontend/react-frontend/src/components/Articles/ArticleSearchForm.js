@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Form, FormControl} from "react-bootstrap";
 
-class ArticleSearch extends React.Component {
+class ArticleSearchForm extends React.Component {
   render() {
     return (
       <div className="ArticleSearch">
@@ -20,4 +20,4 @@ class ArticleSearch extends React.Component {
   }
 }
 
-export default ArticleSearch;
+export default ArticleSearchForm;
