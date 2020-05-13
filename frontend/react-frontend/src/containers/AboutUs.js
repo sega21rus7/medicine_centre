@@ -4,6 +4,7 @@ import Feedback from "./Feedback";
 import ReviewLongList from "./Reviews/ReviewLongList";
 import Vacancy from "../components/Vacancy";
 import AboutCenter from "../components/AboutCenter";
+import ForCompanies from "../components/ForCompanies";
 
 
 class AboutUs extends React.Component {
@@ -42,6 +43,9 @@ class AboutUs extends React.Component {
                 </Tab.Pane>
                 <Tab.Pane eventKey="1">
                   <Vacancy/>
+                </Tab.Pane>
+                <Tab.Pane eventKey="2">
+                  <ForCompanies/>
                 </Tab.Pane>
                 <Tab.Pane eventKey="3">
                   <ReviewLongList isNotMt4={true}/>
