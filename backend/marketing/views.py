@@ -47,13 +47,8 @@ class SearchNewsListView(ListAPIView):
 class ArticleViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     queryset = Article.objects.all()
     lookup_field = 'slug'
-    serializer_class = ArticleListSerializer
-    serializer_action_classes = {
-        'list': ArticleListSerializer,
-        'create': ArticleCreateUpdateDestroySerializer,
-        'update': ArticleCreateUpdateDestroySerializer,
-        'destroy': ArticleCreateUpdateDestroySerializer,
-    }
+    list_serializer_class = ArticleListSerializer
+    crud_serializer_class = ArticleCreateUpdateDestroySerializer
     pagination_class = StandardPagination
 
 
@@ -96,13 +91,8 @@ class DoctorReviewListView(ListAPIView):
 
 class PatientReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    serializer_class = ReviewListSerializer
-    serializer_action_classes = {
-        'list': ReviewListSerializer,
-        'create': ReviewCreateUpdateDestroySerializer,
-        'update': ReviewCreateUpdateDestroySerializer,
-        'destroy': ReviewCreateUpdateDestroySerializer,
-    }
+    list_serializer_class = ReviewListSerializer
+    crud_serializer_class = ReviewCreateUpdateDestroySerializer
     pagination_class = StandardPagination
 
     def get_queryset(self):
@@ -118,13 +108,8 @@ class FeedbackViewSet(viewsets.ModelViewSet):
 
 class SupportQuestionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    serializer_class = SupportQuestionListSerializer
-    serializer_action_classes = {
-        'list': SupportQuestionListSerializer,
-        'create': SupportQuestionCreateUpdateDestroySerializer,
-        'update': SupportQuestionCreateUpdateDestroySerializer,
-        'destroy': SupportQuestionCreateUpdateDestroySerializer,
-    }
+    list_serializer_class = SupportQuestionListSerializer
+    crud_serializer_class = SupportQuestionCreateUpdateDestroySerializer
     pagination_class = StandardPagination
 
     def get_queryset(self):

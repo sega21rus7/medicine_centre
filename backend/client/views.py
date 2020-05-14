@@ -9,12 +9,7 @@ from .serializers import PatientListSerializer, PatientCreateUpdateDestroySerial
 
 class PatientViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     queryset = Patient.objects.all()
-    serializer_class = PatientListSerializer
+    list_serializer_class = PatientListSerializer
+    crud_serializer_class = PatientCreateUpdateDestroySerializer
     permission_classes = (IsAuthenticated,)
-    serializer_action_classes = {
-        'list': PatientListSerializer,
-        'create': PatientCreateUpdateDestroySerializer,
-        'update': PatientCreateUpdateDestroySerializer,
-        'destroy': PatientCreateUpdateDestroySerializer,
-    }
     pagination_class = StandardPagination

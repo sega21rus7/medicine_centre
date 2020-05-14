@@ -1,4 +1,3 @@
-from django.db.models import Q
 from pytils.translit import slugify
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
@@ -23,14 +22,9 @@ class SearchDoctorListView(ListAPIView):
 
 class DoctorViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     queryset = Doctor.objects.all()
-    serializer_class = DoctorListSerializer
+    list_serializer_class = DoctorListSerializer
+    crud_serializer_class = DoctorCreateUpdateDestroySerializer
     lookup_field = 'slug'
-    serializer_action_classes = {
-        'list': DoctorListSerializer,
-        'create': DoctorCreateUpdateDestroySerializer,
-        'update': DoctorCreateUpdateDestroySerializer,
-        'destroy': DoctorCreateUpdateDestroySerializer,
-    }
     pagination_class = StandardPagination
 
 
@@ -41,13 +35,8 @@ class PostViewSet(viewsets.ModelViewSet):
 
 class DepartmentViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     queryset = Department.objects.all()
-    serializer_class = DepartmentListSerializer
-    serializer_action_classes = {
-        'list': DepartmentListSerializer,
-        'create': DepartmentCreateUpdateDestroySerializer,
-        'update': DepartmentCreateUpdateDestroySerializer,
-        'destroy': DepartmentCreateUpdateDestroySerializer,
-    }
+    list_serializer_class = DepartmentListSerializer
+    crud_serializer_class = DepartmentCreateUpdateDestroySerializer
 
 
 class DoctorByPostListView(ListAPIView):
