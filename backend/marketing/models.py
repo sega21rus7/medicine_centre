@@ -30,7 +30,7 @@ class NewsBase(models.Model):
 class News(NewsBase):
     objects = NewsQuerySet.as_manager()
 
-    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='marketing/images/news', blank=True)
+    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='marketing/images/news')
 
     class Meta(NewsBase.Meta):
         verbose_name = 'Новость'
@@ -40,7 +40,7 @@ class News(NewsBase):
 class Article(NewsBase):
     objects = ArticleQuerySet.as_manager()
 
-    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='marketing/images/articles', blank=True)
+    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='marketing/images/articles')
     tags = models.ManyToManyField('Tag', verbose_name='Теги', blank=True, related_name='articles')
 
     class Meta(NewsBase.Meta):
