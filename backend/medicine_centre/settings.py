@@ -147,7 +147,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'lk.CustomerUser'
-GOOGLE_API_KEY = 'AIzaSyD--your-google-maps-key-SjQBE'
 
 SITE_ID = 1
 ACCOUNT_LOGOUT_ON_GET = True
