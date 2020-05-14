@@ -5,6 +5,7 @@ const initialState = {
   token: null,
   error: null,
   isAuthenticated: false,
+  isRegistered: false,
 };
 
 const authStart = (state, action) => {
@@ -26,6 +27,7 @@ const regSuccess = (state, action) => {
   return updateObject(state, {
     error: null,
     isAuthenticated: false,
+    isRegistered: true,
   });
 };
 
@@ -33,6 +35,7 @@ const authFail = (state, action) => {
   return updateObject(state, {
     error: action.error,
     isAuthenticated: false,
+    isRegistered: false,
   });
 };
 

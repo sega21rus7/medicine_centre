@@ -9,9 +9,9 @@ import SignUpForm from "../../components/Auth/SignUpForm";
 
 class SignUp extends React.Component {
   render() {
-    const {isAuthenticated} = this.props;
-    if (isAuthenticated) {
-      return <Redirect to='/lk'/>;
+    const {isRegistered} = this.props;
+    if (isRegistered) {
+      return <Redirect to='/sign_in'/>;
     }
 
     return (
@@ -42,7 +42,7 @@ class SignUp extends React.Component {
 const mapStateToProps = (state) => {
   return {
     error: state.error,
-    isAuthenticated: state.isAuthenticated,
+    isRegistered: state.isRegistered,
   }
 };
 
