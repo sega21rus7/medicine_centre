@@ -7,7 +7,8 @@ notes(to correct later):
 3) // нужен redux, при наличии > 3 статей пагинация отрабатывает неправильно 
 4) // event.preventDefault()
 5) //event.preventDefault()
-6) накладываются urls 
+6) // avatar будет загружать в базу по новой, потом исправлю
+7) накладываются urls 
 - sign_in/sign_up
 - tags/tags
 - doctor_post/doctor
@@ -18,3 +19,5 @@ todo-list:
 3) CRUD отзывов для пациента
 4) Доп. фильтры для врача
 5) permissions для сериализаторов по типу IsAuthenticated
+6) валидация не стирается после успеха мб var -> let
+
