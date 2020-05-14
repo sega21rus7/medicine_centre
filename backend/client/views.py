@@ -7,7 +7,7 @@ from .models import Patient
 from .serializers import PatientListSerializer, PatientCreateUpdateDestroySerializer
 
 
-class ClientViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+class PatientViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientListSerializer
     permission_classes = (IsAuthenticated,)
