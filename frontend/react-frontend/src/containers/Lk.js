@@ -40,7 +40,6 @@ class Lk extends React.Component {
 
   render() {
     const {user} = this.state;
-    let userData = user ? user : null;
 
     return (
       <Container fluid className="Lk mt-4">
@@ -52,7 +51,7 @@ class Lk extends React.Component {
                 <Nav.Item key="0" className="nav-item-bg-info">
                   <Nav.Link eventKey="0">
                     {
-                      userData.patient ?
+                      user.patient ?
                         'Записаться на прием'
                         : 'Мои пациенты'
                     }
@@ -74,7 +73,7 @@ class Lk extends React.Component {
                 <Nav.Item key="3" className="nav-item-bg-info">
                   <Nav.Link eventKey="3">
                     {
-                      userData.patient ?
+                      user.patient ?
                         'Мои отзывы'
                         : 'Отзывы обо мне'
                     }
@@ -100,7 +99,7 @@ class Lk extends React.Component {
               <Tab.Content>
 
                 <Tab.Pane key="1" eventKey="1">
-                  <ProfileForm user={userData}/>
+                  <ProfileForm user={user}/>
                 </Tab.Pane>
 
                 <Tab.Pane key="2" eventKey="2">
@@ -109,7 +108,7 @@ class Lk extends React.Component {
 
                 <Tab.Pane key="3" eventKey="3">
                   {
-                    userData.patient ?
+                    user.patient ?
                       <PatientReview/>
                       : <DoctorReview/>
                   }
