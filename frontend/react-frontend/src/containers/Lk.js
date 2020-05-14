@@ -15,13 +15,6 @@ class Lk extends React.Component {
     this.state = {
       user: {},
     };
-    this.nav = [
-      'Профиль',
-      'Сменить пароль',
-      'Мои отзывы',
-      'Техподдержка',
-      'Выйти',
-    ];
   }
 
   componentDidMount() {
@@ -55,6 +48,7 @@ class Lk extends React.Component {
           <Row>
             <Col sm={3}>
               <Nav variant="pills" className="flex-column">
+
                 <Nav.Item key="0" className="nav-item-bg-info">
                   <Nav.Link eventKey="0">
                     {
@@ -64,23 +58,55 @@ class Lk extends React.Component {
                     }
                   </Nav.Link>
                 </Nav.Item>
-                {this.nav.map((item, index) => (
-                    <Nav.Item key={index + 1} className="nav-item-bg-info">
-                      <Nav.Link eventKey={index + 1}>{item}</Nav.Link>
-                    </Nav.Item>
-                  )
-                )}
+
+                <Nav.Item key="1" className="nav-item-bg-info">
+                  <Nav.Link eventKey="1">
+                    Профиль
+                  </Nav.Link>
+                </Nav.Item>
+
+                <Nav.Item key="2" className="nav-item-bg-info">
+                  <Nav.Link eventKey="2">
+                    Сменить пароль
+                  </Nav.Link>
+                </Nav.Item>
+
+                <Nav.Item key="3" className="nav-item-bg-info">
+                  <Nav.Link eventKey="3">
+                    {
+                      userData.patient ?
+                        'Мои отзывы'
+                        : 'Отзывы обо мне'
+                    }
+                  </Nav.Link>
+                </Nav.Item>
+
+                <Nav.Item key="4" className="nav-item-bg-info">
+                  <Nav.Link eventKey="4">
+                    Техподдержка
+                  </Nav.Link>
+                </Nav.Item>
+
+                <Nav.Item key="5" className="nav-item-bg-info">
+                  <Nav.Link eventKey="5">
+                    Выйти
+                  </Nav.Link>
+                </Nav.Item>
+
               </Nav>
 
             </Col>
             <Col sm={9}>
               <Tab.Content>
+
                 <Tab.Pane key="1" eventKey="1">
                   <ProfileForm user={userData}/>
                 </Tab.Pane>
+
                 <Tab.Pane key="2" eventKey="2">
                   <ChangePasswordForm/>
                 </Tab.Pane>
+
                 <Tab.Pane key="3" eventKey="3">
                   {
                     userData.patient ?
@@ -88,12 +114,15 @@ class Lk extends React.Component {
                       : <DoctorReview/>
                   }
                 </Tab.Pane>
+
                 <Tab.Pane key="4" eventKey="4">
                   <UserSupportQuestion/>
                 </Tab.Pane>
+
                 <Tab.Pane key="5" eventKey="5">
                   <LogoutForm/>
                 </Tab.Pane>
+
               </Tab.Content>
             </Col>
           </Row>
