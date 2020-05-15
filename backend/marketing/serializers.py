@@ -55,7 +55,7 @@ class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ('patient', 'pub_date', 'last_change_date', 'positives', 'negatives', 'content', 'doctor')
+        fields = ('pk', 'patient', 'pub_date', 'last_change_date', 'positives', 'negatives', 'content', 'doctor')
 
 
 class ReviewListSerializer(ReviewCreateUpdateDestroySerializer):
