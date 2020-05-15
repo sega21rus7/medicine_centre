@@ -1,9 +1,10 @@
 from pytils.translit import slugify
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 
 from medicine_centre.paginators import StandardPagination
-from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
+from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin
 from .models import Doctor, Department, Post
 from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializer, \
     DepartmentCreateUpdateDestroySerializer, DepartmentListSerializer, PostSerializer
@@ -20,23 +21,30 @@ class SearchDoctorListView(ListAPIView):
         return qs
 
 
-class DoctorViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+class DoctorViewSet(MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin, viewsets.ModelViewSet):
     queryset = Doctor.objects.all()
-    list_serializer_class = DoctorListSerializer
+    serializer_class = DoctorListSerializer
     crud_serializer_class = DoctorCreateUpdateDestroySerializer
+    serializer_permission_classes = (AllowAny,)
+    crud_serializer_permission_classes = (IsAdminUser,)
     lookup_field = 'slug'
     pagination_class = StandardPagination
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class PostViewSet(MultiplePermissionsViewSetMixin, viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    serializer_permission_classes = (AllowAny,)
+    crud_serializer_permission_classes = (IsAdminUser,)
 
 
-class DepartmentViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+class DepartmentViewSet(MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin,
+                        viewsets.ModelViewSet):
     queryset = Department.objects.all()
-    list_serializer_class = DepartmentListSerializer
+    serializer_class = DepartmentListSerializer
     crud_serializer_class = DepartmentCreateUpdateDestroySerializer
+    serializer_permission_classes = (AllowAny,)
+    crud_serializer_permission_classes = (IsAdminUser,)
 
 
 class DoctorByPostListView(ListAPIView):

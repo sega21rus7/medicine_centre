@@ -1,10 +1,10 @@
 from django.db.models import Q
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 
 from medicine_centre.paginators import StandardPagination
-from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
+from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin
 from .models import News, Article, Tag, ArticleComment, Review, Feedback, SupportQuestion
 from .serializers import (
     NewsSerializer, ArticleListSerializer, ArticleCreateUpdateDestroySerializer,
@@ -13,11 +13,13 @@ from .serializers import (
     SupportQuestionCreateUpdateDestroySerializer)
 
 
-class NewsViewSet(viewsets.ModelViewSet):
+class NewsViewSet(viewsets.ModelViewSet, MultiplePermissionsViewSetMixin):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     lookup_field = 'slug'
     pagination_class = StandardPagination
+    serializer_permission_classes = (AllowAny,)
+    crud_serializer_permission_classes = (IsAdminUser,)
 
 
 class SearchArticleListView(ListAPIView):
@@ -44,12 +46,15 @@ class SearchNewsListView(ListAPIView):
         return qs
 
 
-class ArticleViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+class ArticleViewSet(MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin,
+                     viewsets.ModelViewSet):
     queryset = Article.objects.all()
     lookup_field = 'slug'
-    list_serializer_class = ArticleListSerializer
+    serializer_class = ArticleListSerializer
     crud_serializer_class = ArticleCreateUpdateDestroySerializer
     pagination_class = StandardPagination
+    serializer_permission_classes = (AllowAny,)
+    crud_serializer_permission_classes = (IsAdminUser,)
 
 
 class TagListView(ListAPIView):
@@ -91,7 +96,7 @@ class DoctorReviewListView(ListAPIView):
 
 class PatientReviewViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    list_serializer_class = ReviewListSerializer
+    serializer_class = ReviewListSerializer
     crud_serializer_class = ReviewCreateUpdateDestroySerializer
     pagination_class = StandardPagination
 
@@ -108,7 +113,7 @@ class FeedbackViewSet(viewsets.ModelViewSet):
 
 class SupportQuestionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    list_serializer_class = SupportQuestionListSerializer
+    serializer_class = SupportQuestionListSerializer
     crud_serializer_class = SupportQuestionCreateUpdateDestroySerializer
     pagination_class = StandardPagination
 
