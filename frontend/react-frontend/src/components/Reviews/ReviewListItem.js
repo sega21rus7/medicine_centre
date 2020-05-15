@@ -40,7 +40,7 @@ class ReviewListItem extends React.Component {
         }
         {
           isChangeable ?
-            <Button as={Link} to={'lk/user_review/' + item.pk} variant="outline-secondary">Изменить</Button>
+            <Button as={Link} to={'lk/patient_review/' + item.pk} variant="outline-secondary">Изменить</Button>
             : null
         }
 

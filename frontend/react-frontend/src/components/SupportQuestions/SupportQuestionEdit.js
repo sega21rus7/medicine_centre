@@ -1,14 +1,14 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
 
-class PatientReviewListItem extends React.Component {
+class SupportQuestionEdit extends React.Component {
   render() {
     return (
-      <Container className="PatientReviewListItem">
+      <Container className="SupportQuestionEdit">
         <p>fasfaf</p>
       </Container>
     )
   }
 }
 
-export default PatientReviewListItem;
+export default SupportQuestionEdit;

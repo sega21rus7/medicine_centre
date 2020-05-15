@@ -1,6 +1,7 @@
 import React from 'react';
-import {Jumbotron} from "react-bootstrap";
+import {Button, Jumbotron} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
+import {Link} from "react-router-dom";
 
 class SupportQuestionListItem extends React.Component {
   render() {
@@ -9,6 +10,13 @@ class SupportQuestionListItem extends React.Component {
     return (
       <Jumbotron key={index}>
         {ReactHtmlParser(item.content)}
+        <div className="text-right">Дата публикации<br/>{item.pub_date}</div>
+        {
+          item.last_change_date ?
+            <div className="text-right">Последнее изменение<br/>{item.last_change_date}</div>
+            : null
+        }
+        <Button as={Link} to={'lk/patient_support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
         {
           item.answer ?
             <p><h5>Ответ от администрации:</h5> {ReactHtmlParser(item.answer)}</p>
