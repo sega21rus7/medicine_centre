@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import ReviewLongList from "./ReviewLongList";
 
 
-class DoctorReview extends React.Component {
+class DoctorReviews extends React.Component {
   render() {
     return (
       <Container className="DoctorReview">
@@ -19,4 +19,4 @@ class DoctorReview extends React.Component {
   };
 }
 
-export default DoctorReview;
+export default DoctorReviews;
