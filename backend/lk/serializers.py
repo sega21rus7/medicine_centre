@@ -10,18 +10,10 @@ from medicine_centre import settings
 User = get_user_model()
 
 
-class EmailAddressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = EmailAddress
-        fields = ('email', 'verified', 'primary',)
-
-
 class CustomerUserSerializer(RestCustomerUserSerializer):
-    emailaddress_set = EmailAddressSerializer(many=True)
-
     class Meta(RestCustomerUserSerializer.Meta):
         fields = ('pk', 'username', 'email', 'first_name', 'last_name',
-                  'middle_name', 'phone_number', 'avatar', 'doctor', 'patient', 'is_superuser', 'emailaddress_set')
+                  'middle_name', 'phone_number', 'avatar', 'doctor', 'patient', 'is_superuser')
         read_only_fields = ('doctor', 'patient', 'is_superuser')
 
 
