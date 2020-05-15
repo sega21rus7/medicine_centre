@@ -5,9 +5,9 @@ import axios from "axios";
 import ProfileForm from '../components/Lk/ProfileForm'
 import ChangePasswordForm from "../components/Lk/ChangePasswordForm";
 import LogoutForm from "../components/Lk/LogoutForm";
-import PatientReview from "./Reviews/PatientReview";
+import PatientReviews from "./Reviews/PatientReviews";
 import UserSupportQuestion from "./SupportQuestions/UserSupportQuestion";
-import DoctorReview from "./Reviews/DoctorReview";
+import DoctorReviews from "./Reviews/DoctorReviews";
 
 class Lk extends React.Component {
   constructor(props) {
@@ -109,8 +109,8 @@ class Lk extends React.Component {
                 <Tab.Pane key="3" eventKey="3">
                   {
                     user.patient ?
-                      <PatientReview/>
-                      : <DoctorReview/>
+                      <PatientReviews/>
+                      : <DoctorReviews/>
                   }
                 </Tab.Pane>
 
