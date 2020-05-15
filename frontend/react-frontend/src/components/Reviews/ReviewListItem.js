@@ -21,15 +21,15 @@ class ReviewListItem extends React.Component {
         {doctor}
         {
           item.negatives ?
-            <p>Достоинства: {ReactHtmlParser(item.negatives)}</p>
+            <div>Достоинства: {ReactHtmlParser(item.negatives)}</div>
             : null
         }
         {
           item.positives ?
-            <p>Недостатки: {ReactHtmlParser(item.positives)}</p>
+            <div>Недостатки: {ReactHtmlParser(item.positives)}</div>
             : null
         }
-        <p>Комментарий: {ReactHtmlParser(item.content)}</p>
+        <div>Комментарий:</div> {ReactHtmlParser(item.content)}
         <div className="text-right">Дата публикации<br/>{item.pub_date}</div>
         {
           item.last_change_date ?
