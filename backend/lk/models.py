@@ -42,9 +42,10 @@ class CustomerUser(AbstractUser):
     def save(self, *args, **kwargs):
         super(CustomerUser, self).save(*args, **kwargs)
 
-        if self.role == self.PATIENT:
-            Patient.objects.create(user=self)
+        patient = Patient.objects.filter(user=self).exists()
+        if not patient:
+            if self.role == self.PATIENT:
+                Patient.objects.create(user=self)
         else:
-            patient = Patient.objects.filter(user=self).exists()
-            if patient:
+            if self.role == self.DOCTOR:
                 patient.delete()
