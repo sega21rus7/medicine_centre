@@ -1,6 +1,6 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import PatientReviewListItem from "./components/Reviews/PatientReviewListItem";
+import PatientReviewListItem from "../components/Reviews/PatientReviewListItem";
 
 const LkRouter = () => (
   <div>

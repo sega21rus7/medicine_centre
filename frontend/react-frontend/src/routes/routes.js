@@ -1,24 +1,24 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import Lk from "./containers/Lk";
-import NewsLongList from "./containers/News/NewsLongList";
-import NewsDetail from "./components/News/NewsDetail";
-import DoctorLongList from "./containers/Doctors/DoctorLongList";
-import DoctorDetail from "./components/Doctors/DoctorDetail/DoctorDetail";
-import ArticleLongList from "./containers/Articles/ArticleLongList";
-import ArticleDetail from "./components/Articles/ArticleDetail";
-import TagDetail from "./components/Tags/TagDetail";
-import Contacts from "./containers/MainPage/Contacts";
-import AboutUs from "./containers/MainPage/AboutUs";
-import SignUp from "./containers/Auth/SignUp";
-import SignIn from "./containers/Auth/SignIn";
-import VerifyEmail from "./containers/Auth/VerifyEmail";
-import Error404 from "./containers/Error404";
-import Content from "./containers/Content/Content";
-import ResetPassword from "./containers/Auth/ResetPassword";
-import ResetPasswordDone from "./containers/Auth/ResetPasswordDone";
-import ReviewLongList from "./containers/Reviews/ReviewLongList";
-import DoctorPost from "./containers/Doctors/DoctorPost";
+import Lk from "../containers/Lk";
+import NewsLongList from "../containers/News/NewsLongList";
+import NewsDetail from "../components/News/NewsDetail";
+import DoctorLongList from "../containers/Doctors/DoctorLongList";
+import DoctorDetail from "../components/Doctors/DoctorDetail/DoctorDetail";
+import ArticleLongList from "../containers/Articles/ArticleLongList";
+import ArticleDetail from "../components/Articles/ArticleDetail";
+import TagDetail from "../components/Tags/TagDetail";
+import Contacts from "../containers/MainPage/Contacts";
+import AboutUs from "../containers/MainPage/AboutUs";
+import SignUp from "../containers/Auth/SignUp";
+import SignIn from "../containers/Auth/SignIn";
+import VerifyEmail from "../containers/Auth/VerifyEmail";
+import Error404 from "../containers/Error404";
+import Content from "../containers/Content/Content";
+import ResetPassword from "../containers/Auth/ResetPassword";
+import ResetPasswordDone from "../containers/Auth/ResetPasswordDone";
+import ReviewLongList from "../containers/Reviews/ReviewLongList";
+import DoctorPost from "../containers/Doctors/DoctorPost";
 
 const BaseRouter = () => (
   <div>
