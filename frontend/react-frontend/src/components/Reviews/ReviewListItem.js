@@ -12,12 +12,13 @@ class ReviewListItem extends React.Component {
       const doctorName = `${item.doctor.user.last_name} ${item.doctor.user.first_name} ${item.doctor.user.middle_name}`;
       var doctor = <p>Врач: {ReactHtmlParser(doctorName)}</p>
     }
+    const patient = user.first_name && user.middle_name ?
+      <h2>{user.first_name}&nbsp;{user.middle_name}</h2>
+      : <h2>{user.username}</h2>
 
     return (
-
-
       <Jumbotron key={index}>
-        <h2>{user.first_name}&nbsp;{user.middle_name}</h2>
+        {patient}
         {doctor}
         {
           item.negatives ?
@@ -29,7 +30,8 @@ class ReviewListItem extends React.Component {
             <div>Недостатки: {ReactHtmlParser(item.positives)}</div>
             : null
         }
-        <div>Комментарий:</div> {ReactHtmlParser(item.content)}
+        <div>Комментарий:</div>
+        {ReactHtmlParser(item.content)}
         <div className="text-right">Дата публикации<br/>{item.pub_date}</div>
         {
           item.last_change_date ?
