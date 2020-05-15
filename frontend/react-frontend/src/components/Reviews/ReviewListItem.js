@@ -14,7 +14,7 @@ class ReviewListItem extends React.Component {
     }
     const patient = user.first_name && user.middle_name ?
       <h2>{user.first_name}&nbsp;{user.middle_name}</h2>
-      : <h2>{user.username}</h2>
+      : <h2>{user.username}</h2>;
 
     return (
       <Jumbotron key={index}>
