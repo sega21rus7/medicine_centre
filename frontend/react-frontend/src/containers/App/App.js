@@ -2,10 +2,10 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {BrowserRouter as Router} from "react-router-dom";
-import CustomLayout from "../containers/CustomLayout";
-import BaseRouter from "../routes";
 import {connect} from 'react-redux';
-import * as actions from '../store/actions/auth'
+import * as actions from '../../store/actions/auth'
+import CustomLayout from "../CustomLayout";
+import BaseRouter from "../../routes";
 
 class App extends React.Component {
   componentDidMount() {

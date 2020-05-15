@@ -9,6 +9,8 @@ import LogoutForm from "./LogoutForm";
 
 class LkTabsContent extends React.Component {
   render() {
+    const {user} = this.props;
+
     return (
       <Tab.Content>
 
