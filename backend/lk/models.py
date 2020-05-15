@@ -44,3 +44,7 @@ class CustomerUser(AbstractUser):
 
         if self.role == self.PATIENT:
             Patient.objects.create(user=self)
+        else:
+            patient = Patient.objects.filter(user=self).exists()
+            if patient:
+                patient.delete()
