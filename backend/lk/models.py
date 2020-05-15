@@ -1,18 +1,26 @@
-from address.models import AddressField
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 from smartfields import fields as smart_fields
 
+from client.models import Patient
+
 
 class CustomerUser(AbstractUser):
-    # user = models.ForeignKey(settings.AUTH_USER_MODEL) - в дальнейшем используем так
+    DOCTOR = 'Доктор'
+    PATIENT = 'Пациент'
+
+    ROLE_CHOICES = (
+        (DOCTOR, 'Doctor'),
+        (PATIENT, 'Patient'),
+    )
+
     email = models.EmailField(_('Email address'), unique=True)
     middle_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True)
     phone_number = PhoneNumberField(verbose_name='Номер телефона', blank=True)
-    address = AddressField(verbose_name='Адрес', blank=True, null=True, on_delete=models.CASCADE)
     avatar = smart_fields.ImageField(verbose_name='Аватар', upload_to='lk/images', blank=True, null=True)
+    role = models.CharField(max_length=7, choices=ROLE_CHOICES, default=PATIENT)
 
     class Meta:
         verbose_name = 'пользователь'
@@ -24,12 +32,15 @@ class CustomerUser(AbstractUser):
             return '%s %s %s' % (self.last_name, self.first_name, self.middle_name)
         return None
 
-    def get_fio_with_line_break(self):
-        return self.get_fio().replace(' ', '<br>')
-
     def __str__(self):
         fio = self.get_fio() or ''
         res = '%s - %s' % (self.username, self.email)
         if fio:
             res += ' - %s' % fio
         return res
+
+    def save(self, *args, **kwargs):
+        super(CustomerUser, self).save(*args, **kwargs)
+
+        if self.role == self.PATIENT:
+            Patient.objects.create(user=self)
