@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 class ReviewListItem extends React.Component {
   render() {
-    const {item, index} = this.props;
+    const {item, index, isChangeable} = this.props;
     const user = item.patient.user;
 
     if (item.doctor) {
@@ -30,13 +30,18 @@ class ReviewListItem extends React.Component {
             : null
         }
         <p>Комментарий: {ReactHtmlParser(item.content)}</p>
-        <div className="text-right">Дата публикации: {item.pub_date}</div>
+        <div className="text-right">Дата публикации<br/>{item.pub_date}</div>
         {
           item.last_change_date ?
             <div className="text-right">Последнее изменение: {item.last_change_date}</div>
             : null
         }
-        <Button as={Link} to={'lk/user_review/' + item.pk} variant="outline-secondary">Изменить</Button>
+        {
+          isChangeable ?
+            <Button as={Link} to={'lk/user_review/' + item.pk} variant="outline-secondary">Изменить</Button>
+            : null
+        }
+
       </Jumbotron>
     )
   };

@@ -51,10 +51,10 @@ class ReviewList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated, personalTitle, personalUrl, isNotMt4} = this.props;
+    const {isPaginated, personalTitle, personalUrl, isNotMt4, isChangeable} = this.props;
 
     const row = this.state.items.map((item, index) => {
-        return <ReviewListItem key={index} item={item} index={index}/>;
+        return <ReviewListItem key={index} item={item} index={index} isChangeable={isChangeable}/>;
       }
     );
 

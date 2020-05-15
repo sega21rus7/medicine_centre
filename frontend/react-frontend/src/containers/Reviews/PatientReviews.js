@@ -12,7 +12,8 @@ class PatientReviews extends React.Component {
           <Col lg={6}>
             <ReviewLongList personalTitle={'Мои отзывы'}
                             personalUrl={'http://localhost:8000/marketing/api/patient_reviews/'}
-                            isNotMt4={true}/>
+                            isNotMt4={true}
+                            isChangeable={true}/>
           </Col>
           <Col lg={6}>
             <AddReviewForm/>
