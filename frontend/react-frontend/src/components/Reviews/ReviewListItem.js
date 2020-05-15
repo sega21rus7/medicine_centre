@@ -33,7 +33,7 @@ class ReviewListItem extends React.Component {
         <div className="text-right">Дата публикации<br/>{item.pub_date}</div>
         {
           item.last_change_date ?
-            <div className="text-right">Последнее изменение: {item.last_change_date}</div>
+            <div className="text-right">Последнее изменение<br/>{item.last_change_date}</div>
             : null
         }
         {
