@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'lk.apps.LkConfig',
     'reception.apps.ReceptionConfig',
     'phonenumber_field',
-    'address',
     'ckeditor',
     'allauth',
     'allauth.account',
