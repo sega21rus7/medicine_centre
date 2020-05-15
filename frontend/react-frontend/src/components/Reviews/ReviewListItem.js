@@ -1,6 +1,7 @@
 import React from 'react';
-import {Jumbotron} from "react-bootstrap";
+import {Button, Jumbotron} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
+import {Link} from "react-router-dom";
 
 class ReviewListItem extends React.Component {
   render() {
@@ -29,8 +30,13 @@ class ReviewListItem extends React.Component {
             : null
         }
         <p>Комментарий: {ReactHtmlParser(item.content)}</p>
-
         <div className="text-right">Дата публикации: {item.pub_date}</div>
+        {
+          item.last_change_date ?
+            <div className="text-right">Последнее изменение: {item.last_change_date}</div>
+            : null
+        }
+        <Button as={Link} to={'lk/user_review/' + item.pk} variant="outline-secondary">Изменить</Button>
       </Jumbotron>
     )
   };
