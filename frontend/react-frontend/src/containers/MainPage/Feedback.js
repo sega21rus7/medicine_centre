@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
-import FeedbackForm from "../components/FeedbackForm";
+import FeedbackForm from "../../components/MainPage/FeedbackForm";
 
 
 class Feedback extends React.Component {

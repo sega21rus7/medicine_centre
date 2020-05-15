@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
-import ErrorBlock from "./ErrorBlock/ErrorBlock";
-import SuccessBlock from "./SuccessBlock/SuccessBlock";
+import ErrorBlock from "../ErrorBlock/ErrorBlock";
+import SuccessBlock from "../SuccessBlock/SuccessBlock";
 
 
 class FeedbackForm extends React.Component {

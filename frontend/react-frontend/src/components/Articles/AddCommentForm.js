@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Container, Form} from "react-bootstrap";
 import axios from "axios";
-import ErrorBlock from "./ErrorBlock/ErrorBlock";
+import ErrorBlock from "../ErrorBlock/ErrorBlock";
 import {connect} from "react-redux";
 
 class AddCommentForm extends React.Component {

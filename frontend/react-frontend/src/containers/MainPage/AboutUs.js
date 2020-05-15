@@ -1,10 +1,10 @@
 import React from 'react';
 import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
 import Feedback from "./Feedback";
-import ReviewLongList from "./Reviews/ReviewLongList";
-import Vacancy from "../components/Vacancy";
-import AboutCenter from "../components/AboutCenter";
-import ForCompanies from "../components/ForCompanies";
+import ReviewLongList from "../Reviews/ReviewLongList";
+import Vacancy from "../../components/MainPage/Vacancy";
+import AboutCenter from "../../components/MainPage/AboutCenter";
+import ForCompanies from "../../components/MainPage/ForCompanies";
 
 
 class AboutUs extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
-import * as constants from '../constants';
+import * as constants from '../../constants';
 
 class Vacancy extends React.Component {
   constructor(props) {

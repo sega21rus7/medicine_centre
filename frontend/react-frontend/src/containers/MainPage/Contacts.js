@@ -1,8 +1,8 @@
 import React from 'react';
 import Feedback from "./Feedback";
 import {Container} from "react-bootstrap";
-import ContactsMap from '../components/ContactsMap';
-import * as constants from '../constants';
+import ContactsMap from '../../components/MainPage/ContactsMap';
+import * as constants from '../../constants';
 
 class Contacts extends React.Component {
   render() {

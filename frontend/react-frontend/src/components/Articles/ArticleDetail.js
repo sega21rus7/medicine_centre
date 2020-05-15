@@ -3,7 +3,7 @@ import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import CommentList from "../../containers/Comments/CommentList";
-import AddCommentForm from "../AddCommentForm";
+import AddCommentForm from "./AddCommentForm";
 import ArticleTagList from "../../containers/Tags/ArticleTagList";
 
 class ArticleDetail extends React.Component {

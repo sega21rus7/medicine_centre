@@ -1,5 +1,5 @@
 import React from 'react';
-import * as constants from '../constants';
+import * as constants from '../../constants';
 
 class ForCompanies extends React.Component {
   render() {
