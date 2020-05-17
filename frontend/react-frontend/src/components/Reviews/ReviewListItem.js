@@ -32,10 +32,10 @@ class ReviewListItem extends React.Component {
         }
         <div>Комментарий:</div>
         {ReactHtmlParser(item.content)}
-        <div className="text-right">Дата публикации<br/>{item.pub_date}</div>
+        <div className="text-right">Опубликован: {item.pub_date}</div>
         {
           item.last_change_date ?
-            <div className="text-right">Последнее изменение<br/>{item.last_change_date}</div>
+            <div className="text-right">Изменен: {item.last_change_date}</div>
             : null
         }
         {

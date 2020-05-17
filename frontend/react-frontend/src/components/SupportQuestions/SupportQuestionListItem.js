@@ -10,10 +10,10 @@ class SupportQuestionListItem extends React.Component {
     return (
       <Jumbotron key={index}>
         {ReactHtmlParser(item.content)}
-        <div className="text-right">Дата публикации<br/>{item.pub_date}</div>
+        <div className="text-right">Опубликовано: {item.pub_date}</div>
         {
           item.last_change_date ?
-            <div className="text-right">Последнее изменение<br/>{item.last_change_date}</div>
+            <div className="text-right">Изменено: {item.last_change_date}</div>
             : null
         }
         <Button as={Link} to={'lk/patient_support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
