@@ -20,14 +20,16 @@ class ReviewListItem extends React.Component {
       <Jumbotron key={index}>
         {patient}
         {doctor}
+        <div>Достоинства:</div>
         {
           item.negatives ?
-            <div>Достоинства: {ReactHtmlParser(item.negatives)}</div>
+            <div>{ReactHtmlParser(item.negatives)}</div>
             : null
         }
+        <div>Недостатки:</div>
         {
           item.positives ?
-            <div>Недостатки: {ReactHtmlParser(item.positives)}</div>
+            <div>{ReactHtmlParser(item.positives)}</div>
             : null
         }
         <div>Комментарий:</div>
