@@ -14,7 +14,7 @@ class ArticleListItem extends React.Component {
     return (
       <Col md={isSearchable ? 3 : 4} sm={6} key={index} className="mb-2">
         <Card>
-          <Link to={'article/' + item.slug} style={{color: 'inherit'}}>
+          <Link to={'/article/' + item.slug} style={{color: 'inherit'}}>
             <Card.Img
               variant="top"
               src={item.image}

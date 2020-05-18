@@ -12,10 +12,6 @@ notes(to correct later):
 их список в другом компоненте, судя по всему нужен redux
 
 6) // avatar будет загружать в базу по новой, потом исправлю
-7) накладываются urls 
-- sign_in/sign_up
-- tags/tags
-- doctor_post/doctor
 
 todo-list:
 1) Запись на прием в ЛК для пациента

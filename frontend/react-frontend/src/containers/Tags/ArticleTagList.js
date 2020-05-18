@@ -16,7 +16,7 @@ class ArticleTagList extends React.Component {
         &nbsp;
         {tags.map((tag, tag_index) => (
           <span key={tag_index}>
-            <Link to={'tag/' + tag.slug}>
+            <Link to={'/tag/' + tag.slug}>
               #{tag.title}
             </Link>&nbsp;
           </span>

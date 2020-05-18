@@ -9,7 +9,7 @@ class DoctorListItem extends React.Component {
 
     return (
       <Col md={isSearchable ? 3 : 4} className="text-center mb-2" key={index}>
-        <Link to={'doctor/' + item.slug} style={{color: 'inherit'}}>
+        <Link to={'/doctor/' + item.slug} style={{color: 'inherit'}}>
           <Image
             src={item.user.avatar ? item.user.avatar : avatar}
             alt={item.user.username}
