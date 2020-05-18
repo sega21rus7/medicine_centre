@@ -13,7 +13,7 @@ class NotSignUpYetPanel extends React.Component {
           </Link>
         </div>
         <div className="text-center">
-          <Link className="text-small" to="sign_up/">
+          <Link className="text-small" to="/sign_up">
             Еще не зарегистрированы? Вам сюда!
           </Link>
         </div>

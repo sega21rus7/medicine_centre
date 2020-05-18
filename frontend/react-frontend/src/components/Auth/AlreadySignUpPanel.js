@@ -13,7 +13,7 @@ class AlreadySignUpPanel extends React.Component {
           </Link>
         </div>
         <div className="text-center">
-          <Link className="text-small" to="sign_in/">
+          <Link className="text-small" to="/sign_in">
             Уже есть аккаунт? Войдите!
           </Link>
         </div>
