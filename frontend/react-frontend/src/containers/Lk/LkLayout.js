@@ -3,16 +3,9 @@ import {Col, Container, Row, Tab} from "react-bootstrap";
 import LkTabs from "../../components/Lk/LkTabs";
 
 class LkLayout extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {},
-    };
-  }
-
   render() {
     return (
-      <Container fluid className="LkLayout mt-4">
+      <Container fluid className="mt-4">
         <Tab.Container id="left-tabs" defaultActiveKey="0">
           <Row>
             <Col sm={3}>
@@ -29,3 +22,4 @@ class LkLayout extends React.Component {
 }
 
 export default LkLayout;
+

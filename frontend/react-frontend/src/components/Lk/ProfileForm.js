@@ -12,37 +12,13 @@ class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
       errors: null,
       success: false,
     }
   }
 
-  componentDidMount() {
-    let token = localStorage.getItem('token');
-    if (token) {
-      const options = {
-        method: 'GET',
-        url: 'http://localhost:8000/rest-auth/user/',
-        headers: {'Authorization': `Token ${token}`},
-      };
-      axios(options)
-        .then(response => {
-          this.setState({user: response.data});
-          this.props.identifyUserType(response.data.patient);
-          console.log('patient' + ' ' + response.data.patient);
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.log(error.response);
-        });
-    } else {
-      this.props.history.push('/sign_in');
-    }
-  };
-
   handleSubmit = (event) => {
-    // event.preventDefault(); пока не перехватываем
+    event.preventDefault();
     // не обновляется картинка
     let token = localStorage.getItem('token');
     if (token) {
@@ -73,6 +49,7 @@ class ProfileForm extends React.Component {
         .then(res => {
           console.log(res);
           this.setState({success: true});
+          this.props.getUser();
         })
         .catch(err => {
           console.log(err.response);
@@ -82,7 +59,7 @@ class ProfileForm extends React.Component {
   };
 
   render() {
-    const {user} = this.state;
+    const {user} = this.props;
     const {errors, success} = this.state;
     if (errors) {
       var loginError = <ErrorBlock text={errors.login}/>;
@@ -175,10 +152,16 @@ class ProfileForm extends React.Component {
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state) => {
   return {
-    identifyUserType: (user) => dispatch(actions.identifyUserType(user))
+    user: state.user,
   }
 };
 
-export default connect(null, mapDispatchToProps)(ProfileForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    getUser: (user) => dispatch(actions.getUser(user))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);

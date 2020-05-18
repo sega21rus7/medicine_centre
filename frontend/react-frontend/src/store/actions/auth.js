@@ -13,10 +13,31 @@ export const regSuccess = () => {
   }
 };
 
-export const identifyUserType = user => {
+export const getUserSuccess = (user) => {
   return {
-    type: actionTypes.IDENTIFY_USER_TYPE,
-    isPatient: user.patient,
+    type: actionTypes.GET_USER_SUCCESS,
+    user: user,
+  }
+};
+
+export const getUser = () => {
+  return dispatch => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const options = {
+        method: 'GET',
+        url: 'http://localhost:8000/rest-auth/user/',
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then(response => {
+          console.log(response.data);
+          dispatch(getUserSuccess(response.data));
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+    }
   }
 };
 

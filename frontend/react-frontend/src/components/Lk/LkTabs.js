@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 
 class LkTabs extends React.Component {
   render() {
-    const {isPatient} = this.props;
+    const {user} = this.props;
+    const isPatient = user ? user.patient : false;
 
     return (
       <Nav variant="pills" className="flex-column">
@@ -61,7 +62,7 @@ class LkTabs extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isPatient: state.isPatient,
+    user: state.user,
   }
 };
 
