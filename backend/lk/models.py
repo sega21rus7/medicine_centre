@@ -8,19 +8,19 @@ from client.models import Patient
 
 
 class CustomerUser(AbstractUser):
-    DOCTOR = 'Доктор'
-    PATIENT = 'Пациент'
+    DOCTOR = 'Doctor'
+    PATIENT = 'Patient'
 
     ROLE_CHOICES = (
-        (DOCTOR, 'Doctor'),
-        (PATIENT, 'Patient'),
+        (DOCTOR, 'Доктор'),
+        (PATIENT, 'Пациент'),
     )
 
     email = models.EmailField(_('Email address'), unique=True)
     middle_name = models.CharField(verbose_name='Отчество', max_length=150, blank=True)
     phone_number = PhoneNumberField(verbose_name='Номер телефона', blank=True)
     avatar = smart_fields.ImageField(verbose_name='Аватар', upload_to='lk/images', blank=True, null=True)
-    role = models.CharField(max_length=7, choices=ROLE_CHOICES, default=PATIENT)
+    role = models.CharField(verbose_name='Роль', max_length=7, choices=ROLE_CHOICES, default=PATIENT)
 
     class Meta:
         verbose_name = 'пользователь'
