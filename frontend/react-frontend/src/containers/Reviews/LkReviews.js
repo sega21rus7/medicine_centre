@@ -19,7 +19,7 @@ class LkReviews extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isPatient: state.isPatient,
+    isPatient: state.user.patient,
   }
 };
 
