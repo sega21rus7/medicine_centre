@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import LkRouter from "../../routes/lk_routes";
 import LkLayout from './LkLayout';
 import * as actions from "../../store/actions/auth";
@@ -17,11 +17,9 @@ class Lk extends React.Component {
 
     return (
       <div className="Lk">
-        <Router>
-          <LkLayout>
-            <LkRouter/>
-          </LkLayout>
-        </Router>
+        <LkLayout>
+          <LkRouter/>
+        </LkLayout>
       </div>
     )
   };
