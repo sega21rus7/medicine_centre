@@ -5,15 +5,41 @@ import ErrorBlock from "../ErrorBlock/ErrorBlock";
 import axios from 'axios';
 import avatar from '../../images/custom_avatar.png'
 import SuccessBlock from "../SuccessBlock/SuccessBlock";
+import {connect} from "react-redux";
+import * as actions from "../../store/actions/auth";
 
 class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: {},
       errors: null,
       success: false,
     }
   }
+
+  componentDidMount() {
+    let token = localStorage.getItem('token');
+    if (token) {
+      const options = {
+        method: 'GET',
+        url: 'http://localhost:8000/rest-auth/user/',
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then(response => {
+          this.setState({user: response.data});
+          this.props.identifyUserType(response.data.patient);
+          console.log('patient' + ' ' + response.data.patient);
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+    } else {
+      this.props.history.push('/sign_in');
+    }
+  };
 
   handleSubmit = (event) => {
     // event.preventDefault(); пока не перехватываем
@@ -56,7 +82,7 @@ class ProfileForm extends React.Component {
   };
 
   render() {
-    const {user} = this.props;
+    const {user} = this.state;
     const {errors, success} = this.state;
     if (errors) {
       var loginError = <ErrorBlock text={errors.login}/>;
@@ -149,4 +175,10 @@ class ProfileForm extends React.Component {
   };
 }
 
-export default ProfileForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    identifyUserType: (user) => dispatch(actions.identifyUserType(user))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(ProfileForm);

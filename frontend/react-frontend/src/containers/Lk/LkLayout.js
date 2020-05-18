@@ -1,0 +1,31 @@
+import React from 'react';
+import {Col, Container, Row, Tab} from "react-bootstrap";
+import LkTabs from "../../components/Lk/LkTabs";
+
+class LkLayout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+    };
+  }
+
+  render() {
+    return (
+      <Container fluid className="LkLayout mt-4">
+        <Tab.Container id="left-tabs" defaultActiveKey="0">
+          <Row>
+            <Col sm={3}>
+              <LkTabs/>
+            </Col>
+            <Col sm={9}>
+              {this.props.children}
+            </Col>
+          </Row>
+        </Tab.Container>
+      </Container>
+    )
+  };
+}
+
+export default LkLayout;

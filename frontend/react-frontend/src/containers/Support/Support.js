@@ -1,16 +1,16 @@
 import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
-import UserSupportQuestionList from "./UserSupportQuestionList";
-import AddSupportQuestionForm from "../../components/SupportQuestions/AddSupportQuestionForm";
+import SupportQuestionList from "./SupportQuestionList";
+import AddSupportQuestionForm from "../../components/Support/AddSupportQuestionForm";
 
 
-class UserSupportQuestion extends React.Component {
+class Support extends React.Component {
   render() {
     return (
       <Container className="UserSupportQuestion">
         <Row>
           <Col lg={6}>
-            <UserSupportQuestionList/>
+            <SupportQuestionList/>
           </Col>
           <Col lg={6}>
             <AddSupportQuestionForm/>
@@ -21,4 +21,4 @@ class UserSupportQuestion extends React.Component {
   };
 }
 
-export default UserSupportQuestion;
+export default Support;

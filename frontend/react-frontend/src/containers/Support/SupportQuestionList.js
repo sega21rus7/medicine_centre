@@ -2,9 +2,9 @@ import React from "react";
 import {Container, Row} from "react-bootstrap";
 import axios from "axios";
 import PaginationComponent from "../../components/PaginationComponent";
-import SupportQuestionListItem from "../../components/SupportQuestions/SupportQuestionListItem";
+import SupportQuestionListItem from "../../components/Support/SupportQuestionListItem";
 
-class UserSupportQuestionList extends React.Component {
+class SupportQuestionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,4 +72,4 @@ class UserSupportQuestionList extends React.Component {
   };
 }
 
-export default UserSupportQuestionList;
+export default SupportQuestionList;

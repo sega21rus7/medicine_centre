@@ -6,12 +6,19 @@ const initialState = {
   error: null,
   isAuthenticated: false,
   isRegistered: false,
+  isPatient: false,
 };
 
 const authStart = (state, action) => {
   return updateObject(state, {
     error: null,
     isAuthenticated: false,
+  });
+};
+
+const identifyUserType = (state, action) => {
+  return updateObject(state, {
+    isPatient: state.isPatient,
   });
 };
 
@@ -58,6 +65,8 @@ const reducer = (state = initialState, action) => {
       return authLogout(state, action);
     case actionTypes.REG_SUCCESS:
       return regSuccess(state, action);
+    case actionTypes.IDENTIFY_USER_TYPE:
+      return identifyUserType(state, action);
     default:
       return state;
   }

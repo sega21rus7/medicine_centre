@@ -1,6 +1,5 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import Lk from "../containers/Lk";
 import NewsLongList from "../containers/News/NewsLongList";
 import NewsDetail from "../components/News/NewsDetail";
 import DoctorLongList from "../containers/Doctors/DoctorLongList";
@@ -19,6 +18,7 @@ import ResetPassword from "../containers/Auth/ResetPassword";
 import ResetPasswordDone from "../containers/Auth/ResetPasswordDone";
 import ReviewLongList from "../containers/Reviews/ReviewLongList";
 import DoctorPost from "../containers/Doctors/DoctorPost";
+import Lk from "../containers/Lk/Lk";
 
 const BaseRouter = () => (
   <div>

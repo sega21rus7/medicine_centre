@@ -13,6 +13,13 @@ export const regSuccess = () => {
   }
 };
 
+export const identifyUserType = user => {
+  return {
+    type: actionTypes.IDENTIFY_USER_TYPE,
+    isPatient: user.patient,
+  }
+};
+
 export const authSuccess = token => {
   return {
     type: actionTypes.AUTH_SUCCESS,

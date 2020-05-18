@@ -4,7 +4,7 @@ import './App.css';
 import {BrowserRouter as Router} from "react-router-dom";
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/auth'
-import CustomLayout from "../CustomLayout";
+import CustomLayout from "./CustomLayout";
 import BaseRouter from "../../routes/routes";
 
 class App extends React.Component {
