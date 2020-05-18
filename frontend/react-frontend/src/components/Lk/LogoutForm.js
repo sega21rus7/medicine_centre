@@ -31,4 +31,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(LogoutForm));
+export default connect(null, mapDispatchToProps)(LogoutForm);
