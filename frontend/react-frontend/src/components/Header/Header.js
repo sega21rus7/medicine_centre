@@ -2,7 +2,6 @@ import React from 'react';
 import './Header.css';
 import {Nav, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import {withRouter} from "react-router";
 import {connect} from "react-redux";
 import * as constants from '../../constants';
 

@@ -25,16 +25,10 @@ class LogoutForm extends React.Component {
   };
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.isAuthenticated,
-  }
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(actions.logout)
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogoutForm);
+export default withRouter(connect(null, mapDispatchToProps)(LogoutForm));
