@@ -43,13 +43,14 @@ class AddReviewForm extends React.Component {
     // event.preventDefault();
     let token = localStorage.getItem('token');
     if (token) {
+      const elements = event.target.elements;
       const options = {
         method: 'POST',
         url: 'http://localhost:8000/marketing/api/patient_reviews/',
         data: {
-          positives: event.target.elements.positives.value,
-          negatives: event.target.elements.negatives.value,
-          content: event.target.elements.content.value,
+          positives: elements.positives.value,
+          negatives: elements.negatives.value,
+          content: elements.content.value,
           doctor: this.state.selectedValuePk,
         },
         headers: {'Authorization': `Token ${token}`},
