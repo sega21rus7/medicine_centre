@@ -58,9 +58,7 @@ class SupportQuestionEdit extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.setState({
-            question: res.data,
-          });
+          this.props.history.push('/lk/support');
           console.log(res.data);
         })
         .catch(err => {
