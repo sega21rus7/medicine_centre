@@ -1,7 +1,8 @@
 import React from 'react';
-import {Button, ButtonGroup, Container, Form, Jumbotron} from "react-bootstrap";
+import {Button, Container, Jumbotron} from "react-bootstrap";
 import axios from "axios";
 import ReactHtmlParser from "react-html-parser";
+import AddSupportQuestionForm from "./AddSupportQuestionForm";
 
 class SupportQuestionEdit extends React.Component {
   constructor(props) {
@@ -103,17 +104,10 @@ class SupportQuestionEdit extends React.Component {
               <div className="text-right">Изменено: {question.last_change_date}</div>
               : null
           }
-          <Form className="mt-4" onSubmit={this.handleUpdate}>
-            <Form.Group controlId="formGroupContent">
-              <textarea name="content"
-                        placeholder="Текст"
-                        required/>
-            </Form.Group>
-            <ButtonGroup>
-              <Button type="submit" variant="outline-success">Обновить</Button>
-              <Button variant="outline-danger" onClick={this.handleDelete}>Удалить</Button>
-            </ButtonGroup>
-          </Form>
+          <div className="mt-4">
+            <AddSupportQuestionForm handleUpdate={this.handleUpdate}
+                                    handleDelete={this.handleDelete}/>
+          </div>
         </Jumbotron>
       </Container>
     )

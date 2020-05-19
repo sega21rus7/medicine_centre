@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form, Row} from "react-bootstrap";
+import {Button, ButtonGroup, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "../ErrorBlock/ErrorBlock";
 
@@ -36,12 +36,13 @@ class AddSupportQuestionForm extends React.Component {
 
   render() {
     const {errors} = this.state;
+    const {handleUpdate, handleDelete} = this.props;
     if (errors) {
       var contentError = <ErrorBlock text={errors.content || errors}/>;
     }
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={handleUpdate || this.handleSubmit}>
         <Row>
           <Col sm={12}>
             <Form.Group controlId="formGroupContent">
@@ -52,9 +53,17 @@ class AddSupportQuestionForm extends React.Component {
             </Form.Group>
           </Col>
         </Row>
-        <Button type="submit" variant="outline-primary" className="btn-user">
-          Отправить обращение
-        </Button>
+        {
+          handleUpdate && handleDelete ?
+            <ButtonGroup>
+              <Button type="submit" variant="outline-success">Обновить</Button>
+              <Button variant="outline-danger" onClick={handleDelete}>Удалить</Button>
+            </ButtonGroup>
+            :
+            <Button type="submit" variant="outline-primary" className="btn-user">
+              Отправить обращение
+            </Button>
+        }
       </Form>
     )
   };
