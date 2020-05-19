@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 class SupportQuestionListItem extends React.Component {
   render() {
-    const {item, index} = this.props;
+    const {item, index, isChangeable} = this.props;
 
     return (
       <Jumbotron key={index}>
@@ -16,7 +16,12 @@ class SupportQuestionListItem extends React.Component {
             <div className="text-right">Изменено: {item.last_change_date}</div>
             : null
         }
-        <Button as={Link} to={'/lk/support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
+        {
+          isChangeable ?
+            <Button as={Link} to={'/lk/support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
+            : null
+        }
+
         {
           item.answer ?
             <p><h5>Ответ от администрации:</h5> {ReactHtmlParser(item.answer)}</p>

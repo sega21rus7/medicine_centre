@@ -48,7 +48,10 @@ class SupportQuestionList extends React.Component {
     const {next, previous, items, paginateCount} = this.state;
 
     const row = this.state.items.map((item, index) => {
-        return <SupportQuestionListItem key={index} item={item} index={index}/>;
+        return <SupportQuestionListItem key={index}
+                                        item={item}
+                                        index={index}
+                                        isChangeable={true}/>;
       }
     );
 
