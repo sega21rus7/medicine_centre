@@ -5,7 +5,7 @@ class SupportQuestionEdit extends React.Component {
   render() {
     return (
       <Container className="SupportQuestionEdit">
-        <p>fasfaf</p>
+
       </Container>
     )
   }

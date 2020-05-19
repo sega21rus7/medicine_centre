@@ -16,7 +16,7 @@ class SupportQuestionListItem extends React.Component {
             <div className="text-right">Изменено: {item.last_change_date}</div>
             : null
         }
-        <Button as={Link} to={'/lk/patient_support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
+        <Button as={Link} to={'/lk/support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
         {
           item.answer ?
             <p><h5>Ответ от администрации:</h5> {ReactHtmlParser(item.answer)}</p>

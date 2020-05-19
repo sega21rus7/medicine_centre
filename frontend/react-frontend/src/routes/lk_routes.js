@@ -7,6 +7,7 @@ import LogoutForm from "../components/Lk/LogoutForm";
 import ProfileForm from "../components/Lk/ProfileForm";
 import MakeAppointment from "../containers/MakeAppointment";
 import LkReviews from "../containers/Reviews/LkReviews";
+import SupportQuestionEdit from "../components/Support/SupportQuestionEdit";
 
 const LkRouter = () => (
   <div>
@@ -18,7 +19,7 @@ const LkRouter = () => (
       <Route exact path="/lk/support" component={Support}/>
       <Route exact path="/lk/logout" component={LogoutForm}/>
       <Route exact path="/lk/review/:pk" component={ReviewEdit}/>
-      <Route exact path="/lk/support_question/:pk" component={ReviewEdit}/>
+      <Route exact path="/lk/support_question/:pk" component={SupportQuestionEdit}/>
     </Switch>
   </div>
 );
