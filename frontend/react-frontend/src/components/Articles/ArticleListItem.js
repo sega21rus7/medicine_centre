@@ -5,10 +5,9 @@ import ArticleTagList from "../../containers/Tags/ArticleTagList";
 
 class ArticleListItem extends React.Component {
   render() {
-    const {item, index, isSearchable} = this.props;
-    let tags = '-';
-    if (item.tags) {
-      tags = <ArticleTagList tags={item.tags}/>;
+    const {item, index, isSearchable, isNotTagList} = this.props;
+    if (item.tags && !isNotTagList) {
+      var tags = <ArticleTagList tags={item.tags}/>;
     }
 
     return (
