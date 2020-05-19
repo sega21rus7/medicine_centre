@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Jumbotron} from "react-bootstrap";
+import {Alert, Button, Jumbotron} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import {Link} from "react-router-dom";
 
@@ -17,15 +17,20 @@ class SupportQuestionListItem extends React.Component {
             : null
         }
         {
-          isChangeable ?
-            <Button as={Link} to={'/lk/support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
-            : null
-        }
-
-        {
           item.answer ?
             <p><h5>Ответ от администрации:</h5> {ReactHtmlParser(item.answer)}</p>
             : null
+        }
+        {
+          isChangeable && !item.answer ?
+            <Button as={Link} to={'/lk/support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
+            :
+            <Alert variant="danger">
+              Данное обращение нельзя изменить, т.к. администратор уже ответил на ваш вопрос.
+              <br/>
+              Пожалуйста создайте новое!
+            </Alert>
+
         }
       </Jumbotron>
     )
