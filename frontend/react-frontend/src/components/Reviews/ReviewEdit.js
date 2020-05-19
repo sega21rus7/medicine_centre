@@ -53,14 +53,13 @@ class SupportQuestionEdit extends React.Component {
           positives: elements.positives.value || review.positives,
           negatives: elements.negatives.value || review.negatives,
           content: elements.content.value || review.content,
+          doctor: this.state.selectedValuePk,
         },
         headers: {'Authorization': `Token ${token}`},
       };
       axios(options)
         .then(res => {
-          this.setState({
-            review: res.data,
-          });
+          this.props.history.push('/lk/reviews');
           console.log(res.data);
         })
         .catch(err => {
@@ -92,6 +91,7 @@ class SupportQuestionEdit extends React.Component {
 
   render() {
     const {review} = this.state;
+    console.log(review);
 
     return (
       <Container className="ReviewEdit">

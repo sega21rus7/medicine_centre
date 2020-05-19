@@ -6,15 +6,16 @@ import {Link} from "react-router-dom";
 class ReviewListItem extends React.Component {
   render() {
     const {item, index, isChangeable} = this.props;
-    const user = item.patient ? item.patient.user : {};
+    const patientUser = item.patient ? item.patient.user : {};
+    const doctorUser = item.doctor ? item.doctor.user : {};
 
     if (item.doctor) {
-      const doctorName = `${item.doctor.user.last_name} ${item.doctor.user.first_name} ${item.doctor.user.middle_name}`;
+      const doctorName = `${doctorUser.last_name} ${doctorUser.first_name} ${doctorUser.middle_name}`;
       var doctor = <p>Врач: {ReactHtmlParser(doctorName)}</p>
     }
-    const patient = user.first_name && user.middle_name ?
-      <h2>{user.first_name}&nbsp;{user.middle_name}</h2>
-      : <h2>{user.username}</h2>;
+    const patient = patientUser.first_name && patientUser.middle_name ?
+      <h2>{patientUser.first_name}&nbsp;{patientUser.middle_name}</h2>
+      : <h2>{patientUser.username}</h2>;
 
     return (
       <Jumbotron key={index}>
@@ -22,14 +23,14 @@ class ReviewListItem extends React.Component {
         {doctor}
         <div>Достоинства:</div>
         {
-          item.negatives ?
-            <div>{ReactHtmlParser(item.negatives)}</div>
+          item.positives ?
+            <div>{ReactHtmlParser(item.positives)}</div>
             : null
         }
         <div>Недостатки:</div>
         {
-          item.positives ?
-            <div>{ReactHtmlParser(item.positives)}</div>
+          item.negatives ?
+            <div>{ReactHtmlParser(item.negatives)}</div>
             : null
         }
         <div>Комментарий:</div>

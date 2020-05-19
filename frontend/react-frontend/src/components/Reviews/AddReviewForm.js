@@ -40,7 +40,7 @@ class AddReviewForm extends React.Component {
   };
 
   handleCreate = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     let token = localStorage.getItem('token');
     if (token) {
       const elements = event.target.elements;
@@ -67,7 +67,7 @@ class AddReviewForm extends React.Component {
   };
 
   render() {
-    const {errors, doctors} = this.state;
+    const {selectedValuePk, errors, doctors} = this.state;
     const {handleUpdate, handleDelete, isContentNotRequired} = this.props;
     if (errors) {
       var contentError = <ErrorBlock text={errors.content || errors}/>;
@@ -75,7 +75,7 @@ class AddReviewForm extends React.Component {
 
     return (
       <div className="AddReviewForm">
-        <Form onSubmit={handleUpdate || this.handleCreate}>
+        <Form onSubmit={handleUpdate ? handleUpdate : this.handleCreate}>
           <Row>
             <Col sm={12}>
               <Form.Group controlId="formGroupPositives">
