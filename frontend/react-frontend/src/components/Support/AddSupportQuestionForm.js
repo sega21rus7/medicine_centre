@@ -12,7 +12,7 @@ class AddSupportQuestionForm extends React.Component {
   };
 
   handleCreate = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     let token = localStorage.getItem('token');
     if (token) {
       const options = {
@@ -42,7 +42,7 @@ class AddSupportQuestionForm extends React.Component {
     }
 
     return (
-      <Form onSubmit={handleUpdate || this.handleCreate}>
+      <Form className="AddSupportQuestionForm" onSubmit={handleUpdate || this.handleCreate}>
         <Row>
           <Col sm={12}>
             <Form.Group controlId="formGroupContent">
