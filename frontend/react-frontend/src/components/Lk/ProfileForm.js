@@ -76,7 +76,7 @@ class ProfileForm extends React.Component {
     }
 
     return (
-      <Form className="user" onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <Row>
           <Col sm={4}>
             <Form.Group controlId="formGroupLogin">

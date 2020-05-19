@@ -11,7 +11,7 @@ class LogoutForm extends React.Component {
 
   render() {
     return (
-      <Form className="user" onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <Row>
           <Col sm={6}>
             <p>Вы уверены что хотите выйти?</p>
