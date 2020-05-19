@@ -16,7 +16,9 @@ class PatientReviews extends React.Component {
                             isChangeable={true}/>
           </Tab>
           <Tab eventKey="add" title="Добавить">
-            <AddReviewForm/>
+            <div className="mt-4">
+              <AddReviewForm/>
+            </div>
           </Tab>
         </Tabs>
       </Container>
