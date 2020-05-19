@@ -67,7 +67,7 @@ class AddReviewForm extends React.Component {
   };
 
   render() {
-    const {selectedValuePk, errors, doctors} = this.state;
+    const {errors, doctors} = this.state;
     const {handleUpdate, handleDelete, isContentNotRequired} = this.props;
     if (errors) {
       var contentError = <ErrorBlock text={errors.content || errors}/>;
