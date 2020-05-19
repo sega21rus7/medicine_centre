@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button, Container, Jumbotron} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import axios from "axios";
-import ReactHtmlParser from "react-html-parser";
 import AddSupportQuestionForm from "./AddSupportQuestionForm";
+import SupportQuestionListItem from "./SupportQuestionListItem";
 
 class SupportQuestionEdit extends React.Component {
   constructor(props) {
@@ -96,19 +96,13 @@ class SupportQuestionEdit extends React.Component {
     return (
       <Container className="SupportQuestionEdit">
         <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
-        <Jumbotron className="mt-4">
-          {ReactHtmlParser(question.content)}
-          <div className="text-right">Опубликовано: {question.pub_date}</div>
-          {
-            question.last_change_date ?
-              <div className="text-right">Изменено: {question.last_change_date}</div>
-              : null
-          }
+        <div className="mt-4">
+          <SupportQuestionListItem item={question}/>
           <div className="mt-4">
             <AddSupportQuestionForm handleUpdate={this.handleUpdate}
                                     handleDelete={this.handleDelete}/>
           </div>
-        </Jumbotron>
+        </div>
       </Container>
     )
   }
