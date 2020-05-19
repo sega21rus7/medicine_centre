@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form, Row} from "react-bootstrap";
+import {Button, ButtonGroup, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "../ErrorBlock/ErrorBlock";
 
@@ -39,7 +39,7 @@ class AddReviewForm extends React.Component {
     });
   };
 
-  handleSubmit = (event) => {
+  handleCreate = (event) => {
     // event.preventDefault();
     let token = localStorage.getItem('token');
     if (token) {
@@ -68,13 +68,14 @@ class AddReviewForm extends React.Component {
 
   render() {
     const {errors, doctors} = this.state;
+    const {handleUpdate, handleDelete, isContentNotRequired} = this.props;
     if (errors) {
       var contentError = <ErrorBlock text={errors.content || errors}/>;
     }
 
     return (
       <div className="AddReviewForm">
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={handleUpdate || this.handleCreate}>
           <Row>
             <Col sm={12}>
               <Form.Group controlId="formGroupPositives">
@@ -88,14 +89,13 @@ class AddReviewForm extends React.Component {
               <Form.Group controlId="formGroupContent">
               <textarea name="content"
                         placeholder="Комментарий"
-                        required/>
+                        required={isContentNotRequired}/>
                 {contentError}
               </Form.Group>
               <Form.Group controlId="formGroupDoctor">
                 <select value={this.state.selectedValue}
                         className="filter-select"
-                        onChange={this.handleChange}
-                        required>
+                        onChange={this.handleChange}>
                   <option disabled hidden value="Выберите врача">Выберите врача</option>
                   {
                     doctors.map((item, index) => {
@@ -108,9 +108,17 @@ class AddReviewForm extends React.Component {
               </Form.Group>
             </Col>
           </Row>
-          <Button type="submit" variant="outline-primary" className="btn-user">
-            Оставить отзыв
-          </Button>
+          {
+            handleUpdate && handleDelete ?
+              <ButtonGroup>
+                <Button type="submit" variant="outline-success">Обновить</Button>
+                <Button variant="outline-danger" onClick={handleDelete}>Удалить</Button>
+              </ButtonGroup>
+              :
+              <Button type="submit" variant="outline-primary" className="btn-user">
+                Оставить отзыв
+              </Button>
+          }
         </Form>
       </div>
     )

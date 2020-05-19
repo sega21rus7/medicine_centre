@@ -1,7 +1,8 @@
 import React from 'react';
-import {Button, ButtonGroup, Container, Form, Jumbotron} from "react-bootstrap";
+import {Button, Container, Jumbotron} from "react-bootstrap";
 import axios from "axios";
 import ReactHtmlParser from "react-html-parser";
+import AddReviewForm from "./AddReviewForm";
 
 class SupportQuestionEdit extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class SupportQuestionEdit extends React.Component {
   }
 
   componentDidMount() {
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (token) {
       const pk = this.props.match.params.pk;
       const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}`;
@@ -24,10 +25,7 @@ class SupportQuestionEdit extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.setState({
-            review: res.data,
-            token: token,
-          });
+          this.setState({review: res.data});
           console.log(res.data);
         })
         .catch(err => {
@@ -42,7 +40,8 @@ class SupportQuestionEdit extends React.Component {
 
   handleUpdate = (event) => {
     event.preventDefault();
-    const {token, review} = this.state;
+    const token = localStorage.getItem('token');
+    const review = this.state.review;
     const pk = this.props.match.params.pk;
     if (token) {
       const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
@@ -52,7 +51,7 @@ class SupportQuestionEdit extends React.Component {
         url: url,
         data: {
           positives: elements.positives.value || review.positives,
-          negatives: elements.negatives.value|| review.negatives,
+          negatives: elements.negatives.value || review.negatives,
           content: elements.content.value || review.content,
         },
         headers: {'Authorization': `Token ${token}`},
@@ -93,11 +92,17 @@ class SupportQuestionEdit extends React.Component {
 
   render() {
     const {review} = this.state;
+    if (review.doctor) {
+      const doctorName =
+        `${review.doctor.user.last_name} ${review.doctor.user.first_name} ${review.doctor.user.middle_name}`;
+      var doctor = <p>Врач: {ReactHtmlParser(doctorName)}</p>
+    }
 
     return (
       <Container className="ReviewEdit">
         <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
         <Jumbotron className="mt-4">
+          {doctor}
           <div>Достоинства:</div>
           {
             review.positives ?
@@ -118,24 +123,11 @@ class SupportQuestionEdit extends React.Component {
               <div className="text-right">Изменен: {review.last_change_date}</div>
               : null
           }
-          <Form className="mt-4" onSubmit={this.handleUpdate}>
-            <Form.Group controlId="formGroupPositives">
-              <textarea name="positives"
-                        placeholder="Достоинства"/>
-            </Form.Group>
-            <Form.Group controlId="formGroupNegatives">
-              <textarea name="negatives"
-                        placeholder="Недостатки"/>
-            </Form.Group>
-            <Form.Group controlId="formGroupContent">
-              <textarea name="content"
-                        placeholder="Комментарий"/>
-            </Form.Group>
-            <ButtonGroup>
-              <Button type="submit" variant="outline-success">Обновить</Button>
-              <Button variant="outline-danger" onClick={this.handleDelete}>Удалить</Button>
-            </ButtonGroup>
-          </Form>
+          <div className="mt-4">
+            <AddReviewForm handleUpdate={this.handleUpdate}
+                           handleDelete={this.handleDelete}
+                           isContentNotRequired={true}/>
+          </div>
         </Jumbotron>
       </Container>
     )
