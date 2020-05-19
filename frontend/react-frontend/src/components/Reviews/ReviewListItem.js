@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 class ReviewListItem extends React.Component {
   render() {
     const {item, index, isChangeable} = this.props;
-    const user = item.patient.user;
+    const user = item.patient ? item.patient.user : {};
 
     if (item.doctor) {
       const doctorName = `${item.doctor.user.last_name} ${item.doctor.user.first_name} ${item.doctor.user.middle_name}`;

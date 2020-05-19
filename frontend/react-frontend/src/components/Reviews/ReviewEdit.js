@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button, Container, Jumbotron} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import axios from "axios";
-import ReactHtmlParser from "react-html-parser";
 import AddReviewForm from "./AddReviewForm";
+import ReviewListItem from "./ReviewListItem";
 
 class SupportQuestionEdit extends React.Component {
   constructor(props) {
@@ -92,43 +92,18 @@ class SupportQuestionEdit extends React.Component {
 
   render() {
     const {review} = this.state;
-    if (review.doctor) {
-      const doctorName =
-        `${review.doctor.user.last_name} ${review.doctor.user.first_name} ${review.doctor.user.middle_name}`;
-      var doctor = <p>Врач: {ReactHtmlParser(doctorName)}</p>
-    }
 
     return (
       <Container className="ReviewEdit">
         <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
-        <Jumbotron className="mt-4">
-          {doctor}
-          <div>Достоинства:</div>
-          {
-            review.positives ?
-              <div>{ReactHtmlParser(review.positives)}</div>
-              : null
-          }
-          <div>Недостатки:</div>
-          {
-            review.negatives ?
-              <div>{ReactHtmlParser(review.negatives)}</div>
-              : null
-          }
-          <div>Комментарий:</div>
-          {ReactHtmlParser(review.content)}
-          <div className="text-right">Опубликован: {review.pub_date}</div>
-          {
-            review.last_change_date ?
-              <div className="text-right">Изменен: {review.last_change_date}</div>
-              : null
-          }
+        <div className="mt-4">
+          <ReviewListItem item={review}/>
           <div className="mt-4">
             <AddReviewForm handleUpdate={this.handleUpdate}
                            handleDelete={this.handleDelete}
                            isContentNotRequired={true}/>
           </div>
-        </Jumbotron>
+        </div>
       </Container>
     )
   }

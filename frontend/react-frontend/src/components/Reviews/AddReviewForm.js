@@ -89,7 +89,7 @@ class AddReviewForm extends React.Component {
               <Form.Group controlId="formGroupContent">
               <textarea name="content"
                         placeholder="Комментарий"
-                        required={isContentNotRequired}/>
+                        required={!isContentNotRequired}/>
                 {contentError}
               </Form.Group>
               <Form.Group controlId="formGroupDoctor">
