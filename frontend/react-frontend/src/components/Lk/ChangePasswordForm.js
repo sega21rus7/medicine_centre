@@ -30,11 +30,17 @@ class ChangePasswordForm extends React.Component {
       axios(options)
         .then(res => {
           console.log(res);
-          this.setState({success: res.data.detail});
+          this.setState({
+            success: res.data.detail,
+            errors: null,
+          });
         })
         .catch(err => {
           console.log(err.response);
-          this.setState({errors: err.response});
+          this.setState({
+            success: null,
+            errors: err.response.data
+          });
         })
     }
   };

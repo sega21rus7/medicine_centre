@@ -48,12 +48,18 @@ class ProfileForm extends React.Component {
       axios(options)
         .then(res => {
           console.log(res);
-          this.setState({success: true});
+          this.setState({
+            success: true,
+            errors: null,
+          });
           this.props.getUser();
         })
         .catch(err => {
           console.log(err.response);
-          this.setState({errors: err.response.data});
+          this.setState({
+            success: false,
+            errors: err.response.data,
+          });
         })
     }
   };
