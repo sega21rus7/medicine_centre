@@ -73,7 +73,7 @@ class AddReviewForm extends React.Component {
 
     return (
       <div className="AddReviewForm">
-        <Form className="user" onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col sm={12}>
               <Form.Group controlId="formGroupPositives">
