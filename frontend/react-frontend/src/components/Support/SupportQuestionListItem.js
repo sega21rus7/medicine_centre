@@ -18,18 +18,20 @@ class SupportQuestionListItem extends React.Component {
         }
         {
           item.answer ?
-            <p><h5>Ответ от администрации:</h5> {ReactHtmlParser(item.answer)}</p>
-            : null
+            <div>
+              <p><h5>Ответ от администрации:</h5> {ReactHtmlParser(item.answer)}</p>
+              <Alert variant="danger">
+                Данное обращение нельзя изменить, т.к. администратор уже ответил на ваш вопрос.
+                <br/>
+                Пожалуйста создайте новое!
+              </Alert>
+            </div>
+            :
+            isChangeable ?
+              <Button as={Link} to={'/lk/support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
+              : null
         }
         {
-          isChangeable && !item.answer ?
-            <Button as={Link} to={'/lk/support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
-            :
-            <Alert variant="danger">
-              Данное обращение нельзя изменить, т.к. администратор уже ответил на ваш вопрос.
-              <br/>
-              Пожалуйста создайте новое!
-            </Alert>
 
         }
       </Jumbotron>
