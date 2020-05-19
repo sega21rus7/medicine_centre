@@ -30,7 +30,6 @@ class ProfileForm extends React.Component {
       form_data.append('first_name', elements.firstName.value);
       form_data.append('last_name', elements.lastName.value);
       form_data.append('middle_name', elements.middleName.value);
-      // avatar будет загружать в базу по новой, потом исправлю
       const avatar = elements.avatar.files[0];
       if (avatar) {
         form_data.append('avatar', avatar);
