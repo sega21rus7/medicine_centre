@@ -42,7 +42,7 @@ class SupportQuestionEdit extends React.Component {
 
   handleUpdate = (event) => {
     event.preventDefault();
-    const token = this.state.token;
+    const {token, review} = this.state;
     const pk = this.props.match.params.pk;
     if (token) {
       const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
@@ -51,9 +51,9 @@ class SupportQuestionEdit extends React.Component {
         method: 'PUT',
         url: url,
         data: {
-          positives: elements.positives.value,
-          negatives: elements.negatives.value,
-          content: elements.content.value,
+          positives: elements.positives.value || review.positives,
+          negatives: elements.negatives.value|| review.negatives,
+          content: elements.content.value || review.content,
         },
         headers: {'Authorization': `Token ${token}`},
       };
@@ -100,14 +100,14 @@ class SupportQuestionEdit extends React.Component {
         <Jumbotron className="mt-4">
           <div>Достоинства:</div>
           {
-            review.negatives ?
-              <div>{ReactHtmlParser(review.negatives)}</div>
+            review.positives ?
+              <div>{ReactHtmlParser(review.positives)}</div>
               : null
           }
           <div>Недостатки:</div>
           {
-            review.positives ?
-              <div>{ReactHtmlParser(review.positives)}</div>
+            review.negatives ?
+              <div>{ReactHtmlParser(review.negatives)}</div>
               : null
           }
           <div>Комментарий:</div>
@@ -129,8 +129,7 @@ class SupportQuestionEdit extends React.Component {
             </Form.Group>
             <Form.Group controlId="formGroupContent">
               <textarea name="content"
-                        placeholder="Комментарий"
-                        required/>
+                        placeholder="Комментарий"/>
             </Form.Group>
             <ButtonGroup>
               <Button type="submit" variant="outline-success">Обновить</Button>
