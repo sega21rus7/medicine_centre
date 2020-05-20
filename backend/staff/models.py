@@ -96,3 +96,19 @@ class PrizeImage(models.Model):
 
     def __str__(self):
         return '%s - %d' % (self.doctor.user, self.pk)
+
+
+class WorkTime(models.Model):
+    doctor = models.ForeignKey(Doctor, verbose_name='Врач',
+                               on_delete=models.CASCADE, related_name='work_times')
+    from_time = models.TimeField(verbose_name='C')
+    to_time = models.TimeField(verbose_name='До')
+    date = models.DateField(verbose_name='Дата')
+    is_occupied = models.BooleanField(verbose_name='Занято', default=False)
+
+    class Meta:
+        verbose_name = 'Время приема'
+        verbose_name_plural = 'Времена приемов'
+
+    def __str__(self):
+        return '%s. Дата: %s. Время: %s - %s' % (self.doctor, self.date, self.from_time, self.to_time)
