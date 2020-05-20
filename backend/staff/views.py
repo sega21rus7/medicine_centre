@@ -63,3 +63,12 @@ class WorkTimeViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     crud_serializer_class = WorkTimeCreateUpdateDestroySerializer
     permission_classes = (IsAuthenticated,)
     pagination_class = StandardPagination
+
+
+class WorkTimeByDoctorListView(ListAPIView):
+    serializer_class = WorkTimeListSerializer
+
+    def get_queryset(self):
+        doctor_pk = self.kwargs['doctor_pk']
+        return WorkTime.objects.filter(doctor_id=doctor_pk)
+
