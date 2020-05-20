@@ -11,11 +11,11 @@ class MakeAppointment extends React.Component {
     };
   }
 
-  componentDidMount() {
+  static getDerivedStateFromProps(props, state) {
     const token = localStorage.getItem('token');
     let schedule = {};
-    if (token && this.props.user) {
-      const pk = this.props.user.doctor;
+    if (token && props.user) {
+      const pk = props.user.doctor;
       const url = `http://localhost:8000/staff/api/work_times_by_doctor/${pk}`;
       const options = {
         method: 'GET',
@@ -24,14 +24,37 @@ class MakeAppointment extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.setState({schedule: res.data});
+          schedule = res.data;
           console.log(res.data);
         })
         .catch(err => {
           console.log(err.response);
         });
     }
+    return {schedule: schedule} // schedule = {} все равно
   }
+
+  // componentDidMount() {
+  //   const token = localStorage.getItem('token');
+  //   let schedule = {};
+  //   if (token && this.props.user) {
+  //     const pk = this.props.user.doctor;
+  //     const url = `http://localhost:8000/staff/api/work_times_by_doctor/${pk}`;
+  //     const options = {
+  //       method: 'GET',
+  //       url: url,
+  //       headers: {'Authorization': `Token ${token}`},
+  //     };
+  //     axios(options)
+  //       .then(res => {
+  //         this.setState({schedule: res.data});
+  //         console.log(res.data);
+  //       })
+  //       .catch(err => {
+  //         console.log(err.response);
+  //       });
+  //   }
+  // }
 
   render() {
     const {schedule} = this.state;
