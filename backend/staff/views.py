@@ -5,9 +5,10 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 
 from medicine_centre.paginators import StandardPagination
 from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin
-from .models import Doctor, Department, Post
+from .models import Doctor, Department, Post, WorkTime
 from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializer, \
-    DepartmentCreateUpdateDestroySerializer, DepartmentListSerializer, PostSerializer
+    DepartmentCreateUpdateDestroySerializer, DepartmentListSerializer, PostSerializer, WorkTimeListSerializer, \
+    WorkTimeCreateUpdateDestroySerializer
 
 
 class SearchDoctorListView(ListAPIView):
@@ -54,3 +55,11 @@ class DoctorByPostListView(ListAPIView):
     def get_queryset(self):
         post_pk = self.kwargs['post_pk']
         return Doctor.objects.filter(post_id=post_pk)
+
+
+class WorkTimeViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
+    queryset = WorkTime.objects.all()
+    serializer_class = WorkTimeListSerializer
+    crud_serializer_class = WorkTimeCreateUpdateDestroySerializer
+    permission_classes = (IsAuthenticated,)
+    pagination_class = StandardPagination
