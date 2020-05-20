@@ -19,7 +19,7 @@ class SupportQuestionListItem extends React.Component {
         {
           item.answer ?
             <div>
-              <p><h5>Ответ от администрации:</h5> {ReactHtmlParser(item.answer)}</p>
+              <h5>Ответ от администрации:</h5> {ReactHtmlParser(item.answer)}
               <Alert variant="danger">
                 Данное обращение нельзя изменить, т.к. администратор уже ответил на ваш вопрос.
                 <br/>
@@ -30,9 +30,6 @@ class SupportQuestionListItem extends React.Component {
             isChangeable ?
               <Button as={Link} to={'/lk/support_question/' + item.pk} variant="outline-secondary">Изменить</Button>
               : null
-        }
-        {
-
         }
       </Jumbotron>
     )
