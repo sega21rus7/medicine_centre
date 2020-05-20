@@ -11,6 +11,7 @@ urlpatterns = [
     path('marketing/', include('marketing.urls')),
     path('staff/', include('staff.urls')),
     path('client/', include('client.urls')),
+    path('reception/', include('reception.urls')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('rest-auth/registration/account-confirm-email/<key>/', ConfirmEmailView.as_view(),
