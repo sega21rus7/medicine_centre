@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from .models import Reception, Office
+from .models import Reception
 
 admin.site.register(Reception)
-admin.site.register(Office)

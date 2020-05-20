@@ -53,6 +53,18 @@ class QualificationCategory(ReferenceByNameModel):
         verbose_name_plural = 'Квалификационные категории'
 
 
+class Office(models.Model):
+    number = models.CharField(verbose_name='Номер', max_length=3)
+    floor = models.CharField(verbose_name='Этаж', max_length=1)
+
+    class Meta:
+        verbose_name = 'Кабинет'
+        verbose_name_plural = 'Кабинеты'
+
+    def __str__(self):
+        return '№ %s. Этаж %s' % (self.number, self.floor)
+
+
 class Doctor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                                 on_delete=models.CASCADE)
@@ -71,6 +83,8 @@ class Doctor(models.Model):
     qualification_category = models.ForeignKey(QualificationCategory,
                                                verbose_name='Квалификационная категория',
                                                on_delete=models.CASCADE, blank=True, null=True)
+    office = models.ForeignKey(Office, verbose_name='Кабинет',
+                               on_delete=models.CASCADE, related_name='offices')
 
     class Meta:
         verbose_name = 'Врач'
