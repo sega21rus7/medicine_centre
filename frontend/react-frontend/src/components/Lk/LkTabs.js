@@ -16,7 +16,7 @@ class LkTabs extends React.Component {
             {
               isPatient ?
                 'Записаться на прием'
-                : 'Мое расписание'
+                : 'Мой график'
             }
           </Nav.Link>
         </Nav.Item>
