@@ -62,7 +62,7 @@ class DoctorDetail extends React.Component {
     }
     const caption =
       <h3 className="orange-caption-center">
-        {last_name}&nbsp;{first_name}&nbsp;{middle_name}
+        {last_name}&nbsp;{first_name}<br/>{middle_name}
       </h3>;
 
     return (
