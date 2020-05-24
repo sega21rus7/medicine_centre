@@ -74,14 +74,7 @@ class DoctorListSerializer(DoctorCreateUpdateDestroySerializer):
     office = OfficeSerializer(read_only=True)
 
 
-class WorkTimeCreateUpdateDestroySerializer(serializers.ModelSerializer):
+class WorkTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkTime
-        fields = ('doctor', 'from_time', 'to_time', 'date', 'is_occupied',)
-
-
-class WorkTimeListSerializer(WorkTimeCreateUpdateDestroySerializer):
-    doctor = DoctorListSerializer(read_only=True)
-
-    class Meta(WorkTimeCreateUpdateDestroySerializer.Meta):
-        pass
+        fields = ('from_time', 'to_time', 'date',)
