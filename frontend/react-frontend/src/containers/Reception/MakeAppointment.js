@@ -4,13 +4,19 @@ import {Button, Col, Container, Row, Table} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import ReceptionFilterForm from "../../components/Reception/ReceptionFilterForm";
+import PaginationComponent from "../../components/PaginationComponent";
 
 class MakeAppointment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       schedule: null,
-    }
+      next: null,
+      previous: null,
+      count: 0,
+      paginateCount: 0,
+    };
+    this.paginate_by = 3;
   }
 
   getSchedule = (selectedIndex) => {
@@ -27,8 +33,18 @@ class MakeAppointment extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.setState({schedule: res.data.results});
+          this.setState({
+            next: res.data.next,
+            previous: res.data.previous,
+            count: res.data.count,
+            schedule: res.data.results,
+          });
           console.log(res.data.results);
+        })
+        .then(() => {
+          this.setState({
+            paginateCount: Math.ceil(this.state.count / this.paginate_by)
+          });
         })
         .catch(err => {
           console.log(err.response);
@@ -47,7 +63,7 @@ class MakeAppointment extends React.Component {
   }
 
   render() {
-    const {schedule} = this.state;
+    const {schedule, next, previous, paginateCount} = this.state;
     const {user} = this.props;
 
     return (
@@ -99,6 +115,15 @@ class MakeAppointment extends React.Component {
               }
               </tbody>
             </Table>
+            {
+              paginateCount > 1 ?
+                <PaginationComponent items={schedule}
+                                     getData={this.getSchedule}
+                                     paginateCount={paginateCount}
+                                     next={next}
+                                     previous={previous}/>
+                : null
+            }
           </Col>
         </Row>
       </Container>
