@@ -8,7 +8,6 @@ import {connect} from "react-redux";
 class Lk extends React.Component {
   constructor(props){
     super(props);
-    console.log(props);
     props.getUser();
   }
 
