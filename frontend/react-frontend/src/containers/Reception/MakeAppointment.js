@@ -1,44 +1,23 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
+import {Button, Col, Container, Row, Table} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import ReceptionFilterForm from "../../components/Reception/ReceptionFilterForm";
 
 class MakeAppointment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       schedule: null,
-      selectedValue: 'Выберите пункт',
-      selectedIndex: null,
-    };
-    this.filterItems = [
-      'Мои записи',
-      'Свободные записи'
-    ];
+    }
   }
 
-
-  handleChange = (event) => {
-    event.preventDefault();
-    const selectedIndex = event.target.options.selectedIndex;
-    const index = event.target.options[selectedIndex].getAttribute('index');
-    this.setState({
-      selectedValue: event.target.value,
-      selectedIndex: index,
-    });
-  };
-
-  handleFilter = (event) => {
-    event.preventDefault();
-    this.getSchedule();
-  };
-
-  getSchedule = () => {
+  getSchedule = (selectedIndex) => {
     const token = localStorage.getItem('token');
     if (token && this.props.user) {
       const pk = this.props.user.patient;
-      const url = Number(this.state.selectedIndex) === 0 ?
+      const url = selectedIndex === 0 ?
         `http://localhost:8000/reception/api/receptions_by_patient/${pk}` :
         'http://localhost:8000/reception/api/free_receptions/';
       const options = {
@@ -75,22 +54,7 @@ class MakeAppointment extends React.Component {
       <Container>
         <Row>
           <Col md={3}>
-            <Form onSubmit={this.handleFilter}>
-              <Form.Group controlId="formGroupFilter">
-                <select value={this.state.selectedValue}
-                        className="filter-select"
-                        onChange={this.handleChange}
-                        required>
-                  <option disabled hidden value="Выберите пункт">Выберите пункт</option>
-                  {
-                    this.filterItems.map((item, index) => (
-                      <option value={item} key={index} index={index}>{item}</option>
-                    ))
-                  }
-                </select>
-              </Form.Group>
-              <Button type="submit" variant="outline-success" block>Выбрать</Button>
-            </Form>
+            <ReceptionFilterForm getSchedule={this.getSchedule}/>
           </Col>
         </Row>
         <Row>
