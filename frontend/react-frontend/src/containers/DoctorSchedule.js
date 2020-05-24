@@ -42,6 +42,7 @@ class DoctorSchedule extends React.Component {
     return (
       <Container className="MakeAppointment">
         <Button type="submit" variant="outline-success" onClick={this.getSchedule}>Show</Button>
+
         <Table bordered>
           <thead>
           <tr>
@@ -51,17 +52,15 @@ class DoctorSchedule extends React.Component {
           </tr>
           </thead>
           <tbody>
-
           {
             schedule ? schedule.map((item, index) => (
               <tr key={index}>
                 <td>{item.work_time.date}</td>
                 <td>{item.work_time.from_time} - {item.work_time.to_time}</td>
-                <td>{this.getFio(item.patient.user)}</td>
+                <td>{item.patient ? this.getFio(item.patient.user) : '-'}</td>
               </tr>
             )) : null
           }
-
           </tbody>
         </Table>
       </Container>
