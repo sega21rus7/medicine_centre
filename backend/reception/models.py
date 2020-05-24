@@ -3,7 +3,8 @@ from django.db import models
 
 class Reception(models.Model):
     patient = models.ForeignKey('client.Patient', verbose_name='Пациент',
-                                on_delete=models.CASCADE, related_name='receptions')
+                                on_delete=models.CASCADE, related_name='receptions',
+                                blank=True, null=True)
     doctor = models.ForeignKey('staff.Doctor', verbose_name='Врач',
                                on_delete=models.CASCADE, related_name='receptions')
     work_time = models.ForeignKey('staff.WorkTime', verbose_name='Время приема',
