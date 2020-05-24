@@ -32,8 +32,14 @@ class DoctorSchedule extends React.Component {
     }
   };
 
-  getFio(user) {
-    return `${user.last_name} ${user.first_name} ${user.middle_name}`;
+  getFullName(user) {
+    const lastName = user.last_name;
+    const firstName = user.first_name;
+    const middleName = user.middle_name;
+
+    if(lastName && firstName && middleName)
+      return `${lastName} ${firstName} ${middleName}`;
+    return user.username;
   }
 
   render() {
@@ -57,7 +63,7 @@ class DoctorSchedule extends React.Component {
               <tr key={index}>
                 <td>{item.work_time.date}</td>
                 <td>{item.work_time.from_time} - {item.work_time.to_time}</td>
-                <td>{item.patient ? this.getFio(item.patient.user) : '-'}</td>
+                <td>{item.patient ? this.getFullName(item.patient.user) : '-'}</td>
               </tr>
             )) : null
           }
