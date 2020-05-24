@@ -23,5 +23,5 @@ class ReceptionByDoctorListView(ListAPIView):
 
     def get_queryset(self):
         doctor_pk = self.kwargs['doctor_pk']
-        qs = Reception.objects.filter(doctor_id=doctor_pk)
+        qs = Reception.objects.filter(doctor_id=doctor_pk).all()
         return qs

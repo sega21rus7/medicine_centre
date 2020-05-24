@@ -1,4 +1,4 @@
-from oauthlib.uri_validate import path
+from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 from .views import ReceptionViewSet, ReceptionByDoctorListView
@@ -11,6 +11,5 @@ urlpatterns = [
 ]
 
 router = DefaultRouter()
-
 router.register(r'api/receptions', ReceptionViewSet, basename='receptions')
 urlpatterns += router.urls
