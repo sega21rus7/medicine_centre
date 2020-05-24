@@ -42,9 +42,7 @@ class DoctorSchedule extends React.Component {
           <thead>
           <tr>
             <th>Дата</th>
-            <th>С</th>
-            <th>По</th>
-            <th>Занято</th>
+            <th>Время</th>
           </tr>
           </thead>
           <tbody>
@@ -54,8 +52,7 @@ class DoctorSchedule extends React.Component {
               <tr key={index}>
                 <td>{item.date}</td>
                 <td>{item.from_time}</td>
-                <td>{item.to_time}</td>
-                <td>{item.is_occupied ? 'Да' : 'Нет'}</td>
+                <td>{item.from_time} - {item.to_time}</td>
               </tr>
             )) : null
           }
