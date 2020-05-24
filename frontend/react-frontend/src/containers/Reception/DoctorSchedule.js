@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Button, Container, Table} from "react-bootstrap";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class DoctorSchedule extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class DoctorSchedule extends React.Component {
     const firstName = user.first_name;
     const middleName = user.middle_name;
 
-    if(lastName && firstName && middleName)
+    if (lastName && firstName && middleName)
       return `${lastName} ${firstName} ${middleName}`;
     return user.username;
   }
@@ -63,7 +64,11 @@ class DoctorSchedule extends React.Component {
               <tr key={index}>
                 <td>{item.work_time.date}</td>
                 <td>{item.work_time.from_time} - {item.work_time.to_time}</td>
-                <td>{item.patient ? this.getFullName(item.patient.user) : '-'}</td>
+                <td>
+                  <Link to="/">
+                    {item.patient ? this.getFullName(item.patient.user) : '-'}
+                  </Link>
+                </td>
               </tr>
             )) : null
           }
