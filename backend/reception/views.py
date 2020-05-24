@@ -25,3 +25,24 @@ class ReceptionByDoctorListView(ListAPIView):
         doctor_pk = self.kwargs['doctor_pk']
         qs = Reception.objects.filter(doctor_id=doctor_pk).all()
         return qs
+
+
+class ReceptionByPatientListView(ListAPIView):
+    serializer_class = ReceptionListSerializer
+    permission_classes = (IsAuthenticated,)
+    pagination_class = StandardPagination
+
+    def get_queryset(self):
+        patient_pk = self.kwargs['patient_pk']
+        qs = Reception.objects.filter(patient_id=patient_pk).all()
+        return qs
+
+
+class FreeReceptionListView(ListAPIView):
+    serializer_class = ReceptionListSerializer
+    permission_classes = (IsAuthenticated,)
+    pagination_class = StandardPagination
+
+    def get_queryset(self):
+        qs = Reception.objects.filter(patient__isnull=True).all()
+        return qs
