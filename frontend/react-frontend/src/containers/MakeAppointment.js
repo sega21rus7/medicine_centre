@@ -15,7 +15,7 @@ class MakeAppointment extends React.Component {
   getSchedule = () => {
     const token = localStorage.getItem('token');
     if (token) {
-      const url = `http://localhost:8000/staff/api/work_times/`;
+      const url = `http://localhost:8000/reception/api/receptions/`;
       const options = {
         method: 'GET',
         url: url,
@@ -41,13 +41,15 @@ class MakeAppointment extends React.Component {
 
     return (
       <Container>
-        <Button type="submit" variant="outline-success" onClick={this.getSchedule}>Show</Button>
+        <Button variant="outline-success" onClick={this.getSchedule}>Show</Button>
         <Table bordered>
           <thead>
           <tr>
             <th>Врач</th>
             <th>Дата</th>
             <th>Время</th>
+            <th>Пациент</th>
+            <th>Запись</th>
           </tr>
           </thead>
           <tbody>
@@ -59,8 +61,12 @@ class MakeAppointment extends React.Component {
                     {this.getFio(item.doctor.user)}
                   </Link>
                 </td>
-                <td>{item.date}</td>
-                <td>{item.from_time} - {item.to_time}</td>
+                <td>{item.work_time.date}</td>
+                <td>{item.work_time.from_time} - {item.work_time.to_time}</td>
+                <td>{this.getFio(item.patient.user)}</td>
+                <td>
+                  <Button variant="outline-success">Записаться</Button>
+                </td>
               </tr>
             )) : null
           }

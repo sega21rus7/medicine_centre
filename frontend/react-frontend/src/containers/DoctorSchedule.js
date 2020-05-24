@@ -15,7 +15,7 @@ class DoctorSchedule extends React.Component {
     const token = localStorage.getItem('token');
     if (token && this.props.user) {
       const pk = this.props.user.doctor;
-      const url = `http://localhost:8000/staff/api/work_times_by_doctor/${pk}`;
+      const url = `http://localhost:8000/reception/api/receptions_by_doctor/${pk}`;
       const options = {
         method: 'GET',
         url: url,
@@ -23,14 +23,18 @@ class DoctorSchedule extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.setState({schedule: res.data});
-          console.log(res.data);
+          this.setState({schedule: res.data.results});
+          console.log(res.data.results);
         })
         .catch(err => {
           console.log(err.response);
         });
     }
   };
+
+  getFio(user) {
+    return `${user.last_name} ${user.first_name} ${user.middle_name}`;
+  }
 
   render() {
     const {schedule} = this.state;
@@ -43,6 +47,7 @@ class DoctorSchedule extends React.Component {
           <tr>
             <th>Дата</th>
             <th>Время</th>
+            <th>Пациент</th>
           </tr>
           </thead>
           <tbody>
@@ -50,9 +55,9 @@ class DoctorSchedule extends React.Component {
           {
             schedule ? schedule.map((item, index) => (
               <tr key={index}>
-                <td>{item.date}</td>
-                <td>{item.from_time}</td>
-                <td>{item.from_time} - {item.to_time}</td>
+                <td>{item.work_time.date}</td>
+                <td>{item.work_time.from_time} - {item.work_time.to_time}</td>
+                <td>{this.getFio(item.patient.user)}</td>
               </tr>
             )) : null
           }
