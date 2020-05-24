@@ -5,14 +5,14 @@ import ReviewEdit from "../components/Reviews/ReviewEdit";
 import LkSupport from "../containers/Support/LkSupport";
 import LogoutForm from "../components/Lk/LogoutForm";
 import ProfileForm from "../components/Lk/ProfileForm";
-import MakeAppointment from "../containers/MakeAppointment";
 import LkReviews from "../containers/Reviews/LkReviews";
 import SupportQuestionEdit from "../components/Support/SupportQuestionEdit";
+import LkReception from "../containers/LkReception";
 
 const LkRouter = () => (
   <div>
     <Switch>
-      <Route exact path="/lk" component={MakeAppointment}/>
+      <Route exact path="/lk" component={LkReception}/>
       <Route exact path="/lk/profile" component={ProfileForm}/>
       <Route exact path="/lk/change_password" component={ChangePasswordForm}/>
       <Route exact path="/lk/reviews" component={LkReviews}/>

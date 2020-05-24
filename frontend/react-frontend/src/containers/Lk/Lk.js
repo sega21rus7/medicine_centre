@@ -6,9 +6,11 @@ import * as actions from "../../store/actions/auth";
 import {connect} from "react-redux";
 
 class Lk extends React.Component {
-  componentDidMount() {
-    this.props.getUser();
-  };
+  constructor(props){
+    super(props);
+    console.log(props);
+    props.getUser();
+  }
 
   render() {
     if (!this.props.isAuthenticated) {
