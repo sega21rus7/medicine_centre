@@ -7,7 +7,7 @@ import LogoutForm from "../components/Lk/LogoutForm";
 import ProfileForm from "../components/Lk/ProfileForm";
 import LkReviews from "../containers/Reviews/LkReviews";
 import SupportQuestionEdit from "../components/Support/SupportQuestionEdit";
-import LkReception from "../containers/LkReception";
+import LkReception from "../containers/Reception/LkReception";
 
 const LkRouter = () => (
   <div>
