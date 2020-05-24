@@ -1,41 +1,44 @@
 import React from 'react';
-import {Container, Table} from "react-bootstrap";
+import axios from 'axios';
+import {Button, Container, Table} from "react-bootstrap";
+import {connect} from "react-redux";
 
 class DoctorSchedule extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      schedule: {},
+      schedule: null,
     };
   }
 
-  // componentDidMount() {
-  //   const token = localStorage.getItem('token');
-  //   let schedule = {};
-  //   if (token && this.props.user) {
-  //     const pk = this.props.user.doctor;
-  //     const url = `http://localhost:8000/staff/api/work_times_by_doctor/${pk}`;
-  //     const options = {
-  //       method: 'GET',
-  //       url: url,
-  //       headers: {'Authorization': `Token ${token}`},
-  //     };
-  //     axios(options)
-  //       .then(res => {
-  //         this.setState({schedule: res.data});
-  //         console.log(res.data);
-  //       })
-  //       .catch(err => {
-  //         console.log(err.response);
-  //       });
-  //   }
-  // }
+  getSchedule = () => {
+    const token = localStorage.getItem('token');
+    let schedule = {};
+    if (token && this.props.user) {
+      const pk = this.props.user.doctor;
+      const url = `http://localhost:8000/staff/api/work_times_by_doctor/${pk}`;
+      const options = {
+        method: 'GET',
+        url: url,
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then(res => {
+          this.setState({schedule: res.data});
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+    }
+  };
 
   render() {
     const {schedule} = this.state;
 
     return (
       <Container className="MakeAppointment">
+        <Button type="submit" variant="outline-success" onClick={this.getSchedule}>Show</Button>
         <Table bordered>
           <thead>
           <tr>
@@ -47,16 +50,16 @@ class DoctorSchedule extends React.Component {
           </thead>
           <tbody>
 
-          {/*{*/}
-          {/*  schedule.map((item, index) => (*/}
-          {/*    <tr>*/}
-          {/*      <td>1</td>*/}
-          {/*      <td>Mark</td>*/}
-          {/*      <td>Otto</td>*/}
-          {/*      <td>@mdo</td>*/}
-          {/*    </tr>*/}
-          {/*  ))*/}
-          {/*}*/}
+          {
+            schedule ? schedule.map((item, index) => (
+              <tr key={index}>
+                <td>{item.date}</td>
+                <td>{item.from_time}</td>
+                <td>{item.to_time}</td>
+                <td>{item.is_occupied ? 'Да' : 'Нет'}</td>
+              </tr>
+            )) : null
+          }
 
           </tbody>
         </Table>
@@ -65,4 +68,10 @@ class DoctorSchedule extends React.Component {
   }
 }
 
-export default DoctorSchedule;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+};
+
+export default connect(mapStateToProps, null)(DoctorSchedule);
