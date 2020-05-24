@@ -13,7 +13,6 @@ class DoctorSchedule extends React.Component {
 
   getSchedule = () => {
     const token = localStorage.getItem('token');
-    let schedule = {};
     if (token && this.props.user) {
       const pk = this.props.user.doctor;
       const url = `http://localhost:8000/staff/api/work_times_by_doctor/${pk}`;
