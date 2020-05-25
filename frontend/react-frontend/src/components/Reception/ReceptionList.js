@@ -65,6 +65,27 @@ class ReceptionList extends React.Component {
     return user.username;
   }
 
+  cancelReception = (event) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const pk = event.target.getAttribute('pk');
+      const url = `http://localhost:8000/reception/api/receptions/${pk}`;
+      const options = {
+        method: 'DELETE',
+        url: url,
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+    }
+    this.getSchedule(1, this.props.specialUrl);
+  };
+
   render() {
     const {schedule, next, previous, paginateCount} = this.state;
     const {user, specialUrl} = this.props;
@@ -96,7 +117,8 @@ class ReceptionList extends React.Component {
                   <td>
                     {
                       item.patient && user.pk === item.patient.user.pk ?
-                        <Button variant="outline-danger">Отменить</Button>
+                        <Button variant="outline-danger" pk={item.pk}
+                                onClick={this.cancelReception}>Отменить</Button>
                         :
                         <Button variant="outline-success">Записаться</Button>
                     }
