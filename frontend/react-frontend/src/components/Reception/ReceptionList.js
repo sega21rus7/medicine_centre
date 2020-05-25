@@ -68,16 +68,16 @@ class ReceptionList extends React.Component {
   doReception = (event) => {
     const token = localStorage.getItem('token');
     if (token && this.props.user) {
-      const pk = event.target.getAttribute('pk');
-      const workTimePk = event.target.getAttribute('work_time_pk');
-      const doctorPk = event.target.getAttribute('doctor_pk');
-      const url = `http://localhost:8000/reception/api/receptions/${pk}/`;
+      const item = event.target.getAttribute('item');
+      const url = `http://localhost:8000/reception/api/receptions/${item.pk}/`;
       const options = {
         method: 'PUT',
         url: url,
         data: {
-          doctor: doctorPk,
-          work_time: workTimePk,
+          doctor: item.doctor.pk,
+          date: item.date,
+          from_time: item.from_time,
+          to_time: item.to_time,
           patient: this.props.user.patient,
         },
         headers: {'Authorization': `Token ${token}`},
@@ -96,17 +96,17 @@ class ReceptionList extends React.Component {
   cancelReception = (event) => {
     const token = localStorage.getItem('token');
     if (token && this.props.user) {
-      const pk = event.target.getAttribute('pk');
-      const workTimePk = event.target.getAttribute('work_time_pk');
-      const doctorPk = event.target.getAttribute('doctor_pk');
-      const url = `http://localhost:8000/reception/api/receptions/${pk}/`;
+      const item = event.target.getAttribute('item');
+      const url = `http://localhost:8000/reception/api/receptions/${item.pk}/`;
       const options = {
         method: 'PUT',
         url: url,
         data: {
-          doctor: doctorPk,
-          work_time: workTimePk,
+          doctor: item.doctor.pk,
           patient: null,
+          date: item.date,
+          from_time: item.from_time,
+          to_time: item.to_time,
         },
         headers: {'Authorization': `Token ${token}`},
       };
@@ -146,22 +146,18 @@ class ReceptionList extends React.Component {
                       {this.getFullName(item.doctor.user)}
                     </Link>
                   </td>
-                  <td>{item.work_time.date}</td>
-                  <td>{item.work_time.from_time} - {item.work_time.to_time}</td>
+                  <td>{item.date}</td>
+                  <td>{item.from_time} - {item.to_time}</td>
                   <td>{item.patient ? this.getFullName(item.patient.user) : '-'}</td>
                   <td>
                     {
                       item.patient && user.pk === item.patient.user.pk ?
                         <Button variant="outline-danger"
-                                pk={item.pk}
-                                work_time_pk={item.work_time.pk}
-                                doctor_pk={item.doctor.pk}
+                                reception={item}
                                 onClick={this.cancelReception}>Отменить</Button>
                         :
                         <Button variant="outline-success"
-                                pk={item.pk}
-                                work_time_pk={item.work_time.pk}
-                                doctor_pk={item.doctor.pk}
+                                reception={item}
                                 onClick={this.doReception}>Записаться</Button>
                     }
                   </td>

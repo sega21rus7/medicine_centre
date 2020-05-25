@@ -64,8 +64,8 @@ class DoctorSchedule extends React.Component {
           {
             schedule ? schedule.map((item, index) => (
               <tr key={index}>
-                <td>{item.work_time.date}</td>
-                <td>{item.work_time.from_time} - {item.work_time.to_time}</td>
+                <td>{item.date}</td>
+                <td>{item.from_time} - {item.to_time}</td>
                 <td>
                   <Link to="/">
                     {item.patient ? this.getFullName(item.patient.user) : '-'}
