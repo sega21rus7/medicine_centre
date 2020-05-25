@@ -65,6 +65,34 @@ class ReceptionList extends React.Component {
     return user.username;
   }
 
+  doReception = (event) => {
+    const token = localStorage.getItem('token');
+    if (token && this.props.user) {
+      const pk = event.target.getAttribute('pk');
+      const workTimePk = event.target.getAttribute('work_time_pk');
+      const doctorPk = event.target.getAttribute('doctor_pk');
+      const url = `http://localhost:8000/reception/api/receptions/${pk}/`;
+      const options = {
+        method: 'PUT',
+        url: url,
+        data: {
+          doctor: doctorPk,
+          work_time: workTimePk,
+          patient: this.props.user.patient,
+        },
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+    }
+    this.getSchedule(1, this.props.specialUrl);
+  };
+
   cancelReception = (event) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -120,7 +148,11 @@ class ReceptionList extends React.Component {
                         <Button variant="outline-danger" pk={item.pk}
                                 onClick={this.cancelReception}>Отменить</Button>
                         :
-                        <Button variant="outline-success">Записаться</Button>
+                        <Button variant="outline-success"
+                                pk={item.pk}
+                                work_time_pk={item.work_time.pk}
+                                doctor_pk={item.doctor.pk}
+                                onClick={this.doReception}>Записаться</Button>
                     }
                   </td>
                   <td>

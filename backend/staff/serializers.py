@@ -77,4 +77,4 @@ class DoctorListSerializer(DoctorCreateUpdateDestroySerializer):
 class WorkTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkTime
-        fields = ('from_time', 'to_time', 'date',)
+        fields = ('pk', 'from_time', 'to_time', 'date',)
