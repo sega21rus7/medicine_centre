@@ -12,7 +12,8 @@ class LkTabs extends React.Component {
       <Nav variant="pills" className="flex-column">
 
         <Nav.Item key="0" className="nav-item-bg-info">
-          <Nav.Link eventKey="0" as={Link} to="/lk/reception">
+          <Nav.Link eventKey="0" as={Link}
+                    to={isPatient ? '/lk/reception' : 'lk/schedule'}>
             {
               isPatient ?
                 'Записаться на прием'
