@@ -6,10 +6,10 @@ class Reception(models.Model):
                                 on_delete=models.CASCADE, related_name='receptions',
                                 blank=True, null=True)
     doctor = models.ForeignKey('staff.Doctor', verbose_name='Врач',
-                               on_delete=models.CASCADE, related_name='receptions')
-    from_time = models.TimeField(verbose_name='C')
-    to_time = models.TimeField(verbose_name='До')
-    date = models.DateField(verbose_name='Дата')
+                               on_delete=models.CASCADE, related_name='receptions', blank=True)
+    from_time = models.TimeField(verbose_name='C', blank=True)
+    to_time = models.TimeField(verbose_name='До', blank=True)
+    date = models.DateField(verbose_name='Дата', blank=True)
 
     class Meta:
         verbose_name = 'Прием'
