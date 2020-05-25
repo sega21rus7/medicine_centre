@@ -19,15 +19,16 @@ class ReceptionList extends React.Component {
   }
 
   componentDidMount() {
-    this.getSchedule(this.props.specialUrl);
+    this.getSchedule(1, this.props.specialUrl);
   }
 
-  getSchedule = (specialUrl) => {
+  getSchedule = (page, specialUrl) => {
     const token = localStorage.getItem('token');
     if (token && this.props.user) {
       const pk = this.props.user.patient;
-      const url = specialUrl ? specialUrl :
+      let url = specialUrl ? specialUrl :
         `http://localhost:8000/reception/api/receptions_by_patient/${pk}`;
+      url = `${url}?page=${page}`;
       const options = {
         method: 'GET',
         url: url,
