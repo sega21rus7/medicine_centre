@@ -6,9 +6,8 @@ import * as actions from "../../store/actions/auth";
 import {connect} from "react-redux";
 
 class Lk extends React.Component {
-  constructor(props){
-    super(props);
-    props.getUser();
+  componentDidMount() {
+    this.props.getUser();
   }
 
   render() {

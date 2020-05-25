@@ -6,7 +6,7 @@ class LkLayout extends React.Component {
   render() {
     return (
       <Container fluid className="mt-4">
-        <Tab.Container id="left-tabs" defaultActiveKey="0">
+        <Tab.Container id="left-tabs">
           <Row>
             <Col sm={3}>
               <LkTabs/>
