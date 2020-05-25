@@ -7,8 +7,9 @@ class Reception(models.Model):
                                 blank=True, null=True)
     doctor = models.ForeignKey('staff.Doctor', verbose_name='Врач',
                                on_delete=models.CASCADE, related_name='receptions')
-    work_time = models.ForeignKey('staff.WorkTime', verbose_name='Время приема',
-                                  on_delete=models.CASCADE, related_name='receptions')
+    from_time = models.TimeField(verbose_name='C')
+    to_time = models.TimeField(verbose_name='До')
+    date = models.DateField(verbose_name='Дата')
 
     class Meta:
         verbose_name = 'Прием'
@@ -16,5 +17,5 @@ class Reception(models.Model):
 
     def __str__(self):
         return 'Врач: %s. Пациент: %s. Дата: %s. Время: %s - %s' % (
-            self.doctor, self.patient, self.work_time.date, self.work_time.from_time,
-            self.work_time.to_time)
+            self.doctor, self.patient, self.date, self.from_time,
+            self.to_time)

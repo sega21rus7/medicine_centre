@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 
 from medicine_centre.paginators import StandardPagination
 from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin
-from .models import Doctor, Department, Post, WorkTime
+from .models import Doctor, Department, Post
 from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializer, \
     DepartmentCreateUpdateDestroySerializer, DepartmentListSerializer, PostSerializer
 

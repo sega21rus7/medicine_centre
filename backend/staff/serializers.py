@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from lk.serializers import CustomerUserSerializer
 from .models import Doctor, Post, Department, University, QualificationCategory, DiplomaSpecialty, \
-    PrizeImage, WorkTime, Office
+    PrizeImage, Office
 
 
 class DepartmentCreateUpdateDestroySerializer(serializers.ModelSerializer):
@@ -72,9 +72,3 @@ class DoctorListSerializer(DoctorCreateUpdateDestroySerializer):
     qualification_category = QualificationCategorySerializer(read_only=True)
     prize_images = PrizeImageSerializer(many=True, read_only=True)
     office = OfficeSerializer(read_only=True)
-
-
-class WorkTimeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = WorkTime
-        fields = ('pk', 'from_time', 'to_time', 'date',)

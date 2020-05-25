@@ -110,16 +110,3 @@ class PrizeImage(models.Model):
 
     def __str__(self):
         return '%s - %d' % (self.doctor.user, self.pk)
-
-
-class WorkTime(models.Model):
-    from_time = models.TimeField(verbose_name='C')
-    to_time = models.TimeField(verbose_name='До')
-    date = models.DateField(verbose_name='Дата')
-
-    class Meta:
-        verbose_name = 'Время приема'
-        verbose_name_plural = 'Времена приемов'
-
-    def __str__(self):
-        return 'Дата: %s. Время: %s - %s' % (self.date, self.from_time, self.to_time)
