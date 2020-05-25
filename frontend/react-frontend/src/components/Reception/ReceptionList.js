@@ -65,20 +65,17 @@ class ReceptionList extends React.Component {
     return user.username;
   }
 
-  doReception = (event) => {
+  sendReceptionRequest(event, patient) {
     const token = localStorage.getItem('token');
     if (token && this.props.user) {
-      const item = event.target.getAttribute('item');
-      const url = `http://localhost:8000/reception/api/receptions/${item.pk}/`;
+      const target = event.target;
+      const pk = target.getAttribute('pk');
+      const url = `http://localhost:8000/reception/api/receptions/${pk}/`;
       const options = {
         method: 'PUT',
         url: url,
         data: {
-          doctor: item.doctor.pk,
-          date: item.date,
-          from_time: item.from_time,
-          to_time: item.to_time,
-          patient: this.props.user.patient,
+          patient: patient || null,
         },
         headers: {'Authorization': `Token ${token}`},
       };
@@ -91,34 +88,14 @@ class ReceptionList extends React.Component {
         });
     }
     this.getSchedule(1, this.props.specialUrl);
+  }
+
+  doReception = (event) => {
+    this.sendReceptionRequest(event, this.props.user.patient);
   };
 
   cancelReception = (event) => {
-    const token = localStorage.getItem('token');
-    if (token && this.props.user) {
-      const item = event.target.getAttribute('item');
-      const url = `http://localhost:8000/reception/api/receptions/${item.pk}/`;
-      const options = {
-        method: 'PUT',
-        url: url,
-        data: {
-          doctor: item.doctor.pk,
-          patient: null,
-          date: item.date,
-          from_time: item.from_time,
-          to_time: item.to_time,
-        },
-        headers: {'Authorization': `Token ${token}`},
-      };
-      axios(options)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch(err => {
-          console.log(err.response);
-        });
-    }
-    this.getSchedule(1, this.props.specialUrl);
+    this.sendReceptionRequest(event);
   };
 
   render() {
@@ -153,11 +130,11 @@ class ReceptionList extends React.Component {
                     {
                       item.patient && user.pk === item.patient.user.pk ?
                         <Button variant="outline-danger"
-                                reception={item}
+                                pk={item.pk}
                                 onClick={this.cancelReception}>Отменить</Button>
                         :
                         <Button variant="outline-success"
-                                reception={item}
+                                pk={item.pk}
                                 onClick={this.doReception}>Записаться</Button>
                     }
                   </td>
