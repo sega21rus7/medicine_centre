@@ -12,6 +12,10 @@ class DoctorSchedule extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.getSchedule();
+  }
+
   getSchedule = () => {
     const token = localStorage.getItem('token');
     if (token && this.props.user) {
@@ -48,8 +52,6 @@ class DoctorSchedule extends React.Component {
 
     return (
       <Container className="MakeAppointment">
-        <Button type="submit" variant="outline-success" onClick={this.getSchedule}>Show</Button>
-
         <Table bordered>
           <thead>
           <tr>
