@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, Image, Row} from "react-bootstrap";
+import {Button, Card, Col, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 class NewsListItem extends React.Component {
@@ -10,11 +10,13 @@ class NewsListItem extends React.Component {
       <Row key={index} className="mb-2">
         <Card style={{width: "100%"}}>
           <Card.Body>
-            <Image
-              className="wrap-image"
-              src={item.image}
-              alt={item.title}
-            />
+            <Col md={6}>
+              <Image
+                className="wrap-image img-fluid"
+                src={item.image}
+                alt={item.title}
+              />
+            </Col>
             <div className="text-center">
               {item.title}
             </div>

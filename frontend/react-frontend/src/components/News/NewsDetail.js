@@ -31,6 +31,7 @@ class NewsDetail extends React.Component {
           <Image
             src={newItem.image}
             alt={newItem.title}
+            className="img-fluid"
           />
           {ReactHtmlParser(newItem.content)}
           <hr/>
