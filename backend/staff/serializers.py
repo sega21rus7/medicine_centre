@@ -53,7 +53,7 @@ class PrizeImageSerializer(serializers.ModelSerializer):
 class DoctorCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Doctor
-        fields = ('pk', 'user', 'post', 'slug', 'experience_from', 'additional_education',
+        fields = ('pk', 'user', 'posts', 'slug', 'experience_from', 'additional_education',
                   'university', 'diploma_specialty', 'qualification_category',
                   'awards', 'certificates', 'prize_images', 'office')
 
@@ -66,7 +66,7 @@ class OfficeSerializer(serializers.ModelSerializer):
 
 class DoctorListSerializer(DoctorCreateUpdateDestroySerializer):
     user = CustomerUserSerializer(read_only=True)
-    post = PostSerializer(read_only=True)
+    posts = PostSerializer(read_only=True, many=True)
     university = UniversitySerializer(read_only=True)
     diploma_specialty = DiplomaSpecialtySerializer(read_only=True)
     qualification_category = QualificationCategorySerializer(read_only=True)

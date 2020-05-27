@@ -68,7 +68,7 @@ class Office(models.Model):
 class Doctor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                                 on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, verbose_name='Должность', on_delete=models.CASCADE)
+    posts = models.ManyToManyField(Post, verbose_name='Должности', related_name='doctors')
     slug = models.SlugField(max_length=150, unique=True, blank=True)
     experience_from = models.CharField(verbose_name='Стаж работы c', max_length=4)
     additional_education = RichTextField(verbose_name='Дополнительное образование', db_index=True,

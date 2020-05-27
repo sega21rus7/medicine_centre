@@ -53,7 +53,7 @@ class DoctorByPostListView(ListAPIView):
 
     def get_queryset(self):
         post_pk = self.kwargs['post_pk']
-        return Doctor.objects.filter(post_id=post_pk)
+        return Doctor.objects.filter(posts__id__icontains=post_pk)
 
 
 

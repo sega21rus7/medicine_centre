@@ -39,10 +39,6 @@ class DoctorDetail extends React.Component {
       var qualificationCategory = <DoctorProperty name="Квалицикационная категория"
                                                   content={doctor.qualification_category.name}/>;
     }
-    if (doctor.post) {
-      var post = <DoctorProperty name="Должность" content={doctor.post.name}/>;
-      var department = <DoctorProperty name="Отделение" content={doctor.post.department.name}/>;
-    }
     if (doctor.additional_education) {
       var additionalEducation = <DoctorProperty name="Дополнительное образование"
                                                 content={ReactHtmlParser(doctor.additional_education)}/>;
@@ -80,12 +76,19 @@ class DoctorDetail extends React.Component {
               </Card>
             </Col>
             <Col lg={7}>
-              {post}
               {university}
+              <span className="font-italic font-weight-bold">Должность</span>:
+              {
+                doctor.posts ? doctor.posts.map((item, index) => (
+                  <span key={index}>
+                    &nbsp;{item.name}
+                    &nbsp;({item.department.name})
+                  </span>
+                )) : null
+              }
               {diplomaSpecialty}
               {qualificationCategory}
               {experienceFrom}
-              {department}
               {additionalEducation}
               {awards}
               {certificates}
