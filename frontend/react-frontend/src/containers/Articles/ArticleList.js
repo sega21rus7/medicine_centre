@@ -48,12 +48,11 @@ class ArticleList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isNotTagList, isPaginated, specialUrl, isSearchable} = this.props;
+    const {isPaginated, specialUrl, isSearchable} = this.props;
 
     const row = this.state.items.map((item, index) => {
         return <ArticleListItem
           isSearchable={isSearchable}
-          isNotTagList={isNotTagList}
           key={index}
           item={item}
           index={index}/>;

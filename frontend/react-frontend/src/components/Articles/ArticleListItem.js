@@ -5,10 +5,7 @@ import ArticleTagList from "../../containers/Tags/ArticleTagList";
 
 class ArticleListItem extends React.Component {
   render() {
-    const {item, index, isSearchable, isNotTagList} = this.props;
-    if (item.tags && !isNotTagList) {
-      var tags = <ArticleTagList tags={item.tags}/>;
-    }
+    const {item, index, isSearchable} = this.props;
 
     return (
       <Col md={isSearchable ? 3 : 4} sm={6} key={index} className="mb-2">
@@ -26,7 +23,6 @@ class ArticleListItem extends React.Component {
               <Link to={'article/' + item.slug} style={{color: 'inherit'}}>
                 {item.title}
               </Link>
-              {tags}
             </Card.Text>
           </Card.Body>
         </Card>
