@@ -12,7 +12,7 @@ from .managers import ArticleQuerySet, NewsQuerySet
 class NewsBase(models.Model):
     title = models.CharField(max_length=150, verbose_name='Заголовок', unique=True, db_index=True)
     content = RichTextField(verbose_name='Содержание', db_index=True)
-    pub_date = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateTimeField(verbose_name='Дата публикации', blank=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
 
     class Meta:
@@ -24,6 +24,8 @@ class NewsBase(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
+        if not self.pub_date:
+            self.pub_date = timezone.now()
         super().save(*args, **kwargs)
 
 
