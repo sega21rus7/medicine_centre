@@ -25,7 +25,7 @@ class ArticleListItem extends React.Component {
             </div>
             {tags}
             <div className="text-right">
-              Опубликована: {item.pub_date}
+              Опубликована:<br/> {item.pub_date}
             </div>
             <div className="text-right">
               <Button as={Link} to={'/article/' + item.slug} variant="outline-secondary">Читать</Button>
