@@ -52,7 +52,6 @@ class ArticleList extends React.Component {
 
     const row = this.state.items.map((item, index) => {
         return <ArticleListItem
-          isSearchable={isSearchable}
           key={index}
           item={item}
           index={index}/>;
@@ -74,7 +73,9 @@ class ArticleList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <h3 className="orange-caption-left">Статьи</h3>
+        <Row>
+          <h3 className="orange-caption-left">Статьи</h3>
+        </Row>
         <Row>
           {
             isSearchable ?
@@ -83,7 +84,9 @@ class ArticleList extends React.Component {
               </Col>
               : null
           }
-          {row}
+          <Col md={isSearchable ? 9 : 12}>
+            {row}
+          </Col>
         </Row>
         {button}
         {pagination}

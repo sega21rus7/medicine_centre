@@ -1,32 +1,40 @@
 import React from 'react';
-import {Card, Col} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Button, Card, Image, Row} from "react-bootstrap";
 import ArticleTagList from "../../containers/Tags/ArticleTagList";
+import {Link} from "react-router-dom";
 
 class ArticleListItem extends React.Component {
   render() {
-    const {item, index, isSearchable} = this.props;
+    const {item, index} = this.props;
+
+    if (item.tags) {
+      var tags = <ArticleTagList tags={item.tags}/>;
+    }
 
     return (
-      <Col md={isSearchable ? 3 : 4} sm={6} key={index} className="mb-2">
-        <Card>
-          <Link to={'/article/' + item.slug} style={{color: 'inherit'}}>
-            <Card.Img
-              variant="top"
+      <Row key={index} className="mb-2">
+        <Card style={{width: "100%"}}>
+          <Card.Body>
+            <Image
+              className="wrap-image"
               src={item.image}
               alt={item.title}
-              className="img-fluid"
             />
-          </Link>
-          <Card.Body>
-            <Card.Text className="text-center">
-              <Link to={'article/' + item.slug} style={{color: 'inherit'}}>
-                {item.title}
-              </Link>
-            </Card.Text>
+            <div className="text-center">
+              {item.title}
+            </div>
+            {tags}
+            <div className="text-right">
+              Опубликована: {item.pub_date}
+            </div>
+            <div className="text-right">
+              <Button as={Link} to={'/article/' + item.slug} variant="outline-secondary">Читать</Button>
+            </div>
+
+
           </Card.Body>
         </Card>
-      </Col>
+      </Row>
     )
   };
 }
