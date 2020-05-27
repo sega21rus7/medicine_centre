@@ -1,29 +1,32 @@
 import React from 'react';
-import {Card, Col} from "react-bootstrap";
+import {Button, Card, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 class NewsListItem extends React.Component {
   render() {
-    const {item, index, isSearchable} = this.props;
+    const {item, index} = this.props;
 
     return (
-      <Col md={isSearchable ? 3 : 4} sm={6} key={index} className="mb-2">
-        <Link to={'new/' + item.slug} style={{color: 'inherit'}}>
-          <Card>
-            <Card.Img
-              variant="top"
+      <Row key={index} className="mb-2">
+        <Card style={{width: "100%"}}>
+          <Card.Body>
+            <Image
+              className="wrap-image"
               src={item.image}
               alt={item.title}
-              className="img-fluid"
             />
-            <Card.Body>
-              <Card.Text className="text-center">
-                {item.title}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Link>
-      </Col>
+            <div className="text-center">
+              {item.title}
+            </div>
+            <div className="text-right">
+              Опубликована:<br/> {item.pub_date}
+            </div>
+            <div className="text-right">
+              <Button as={Link} to={'/new/' + item.slug} variant="outline-secondary">Читать</Button>
+            </div>
+          </Card.Body>
+        </Card>
+      </Row>
     )
   };
 }

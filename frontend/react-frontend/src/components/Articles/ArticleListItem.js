@@ -30,8 +30,6 @@ class ArticleListItem extends React.Component {
             <div className="text-right">
               <Button as={Link} to={'/article/' + item.slug} variant="outline-secondary">Читать</Button>
             </div>
-
-
           </Card.Body>
         </Card>
       </Row>

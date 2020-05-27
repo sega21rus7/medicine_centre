@@ -4,7 +4,7 @@ import PaginationComponent from "../../components/PaginationComponent";
 import {Col, Container, Row} from "react-bootstrap";
 import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
-import NewsSearchForm from "../../components/News/NewsSearchForm";
+import ArticleSearchForm from "../../components/Articles/ArticleSearchForm";
 
 class NewsList extends React.Component {
   constructor(props) {
@@ -51,8 +51,7 @@ class NewsList extends React.Component {
     const {isPaginated, isSearchable} = this.props;
 
     const row = this.state.items.map((item, index) => {
-        return <NewsListItem isSearchable={isSearchable}
-                             key={index}
+        return <NewsListItem key={index}
                              item={item}
                              index={index}/>;
       }
@@ -72,16 +71,20 @@ class NewsList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <h3 className="orange-caption-left">Новости</h3>
+        <Row>
+          <h3 className="orange-caption-left">Новости</h3>
+        </Row>
         <Row>
           {
             isSearchable ?
               <Col md={3}>
-                <NewsSearchForm getData={this.getData}/>
+                <ArticleSearchForm getData={this.getData}/>
               </Col>
               : null
           }
-          {row}
+          <Col md={isSearchable ? 9 : 12}>
+            {row}
+          </Col>
         </Row>
         {button}
         {pagination}
