@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import {Card, Col, Container, Row} from "react-bootstrap";
+import {Container, Image} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import CommentList from "../../containers/Comments/CommentList";
 import AddCommentForm from "./AddCommentForm";
@@ -38,30 +38,16 @@ class ArticleDetail extends React.Component {
     return (
       <div className="ArticleDetail">
         <Container className="mt-4">
-          <Row>
-            <Col md={5}>
-              <h3 className="orange-caption-center">{article.title}</h3>
-              <Card>
-                <Card.Img
-                  variant="top"
-                  src={article.image}
-                  alt={article.title}
-                  className="img-fluid"
-                />
-                <Card.Body>
-                  <Card.Text className="text-center">
-                    Дата публикации: {article.pub_date}
-                    {tags}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={7}>
-              <div>
-                {ReactHtmlParser(article.content)}
-              </div>
-            </Col>
-          </Row>
+          <h3 className="orange-caption-left">{article.title}</h3>
+          <Image
+            src={article.image}
+            alt={article.title}
+            className="wrap-image"
+          />
+          {ReactHtmlParser(article.content)}
+          <hr/>
+          Опубликована: {article.pub_date}
+          {tags}
         </Container>
         {comments}
         <AddCommentForm articleID={article.pk} getArticle={this.getData}/>

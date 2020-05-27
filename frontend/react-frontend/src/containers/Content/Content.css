@@ -114,3 +114,9 @@ select {
   font-style: italic;
   text-decoration: underline;
 }
+
+.wrap-image {
+  float: left; /* обтекание слева */
+  margin-right: 100px;
+  margin-bottom: 10px;
+}
