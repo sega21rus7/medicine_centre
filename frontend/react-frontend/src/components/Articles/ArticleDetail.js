@@ -42,7 +42,6 @@ class ArticleDetail extends React.Component {
           <Image
             src={article.image}
             alt={article.title}
-            className="wrap-image"
           />
           {ReactHtmlParser(article.content)}
           <hr/>
