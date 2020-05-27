@@ -33,8 +33,6 @@ const BaseRouter = () => (
       <Route exact path="/articles" component={ArticleLongList}/>
       <Route exact path="/article/:slug" component={ArticleDetail}/>
       <Route exact path="/articles_with_tag/:slug" component={TagDetail}/>
-      {/*костыль*/}
-      <Route exact path="/articles_with_tag/article/:slug" component={ArticleDetail}/>
       <Route exact path="/contacts" component={Contacts}/>
       <Route exact path="/about_us" component={AboutUs}/>
       <Route exact path="/sign_up" component={SignUp}/>
