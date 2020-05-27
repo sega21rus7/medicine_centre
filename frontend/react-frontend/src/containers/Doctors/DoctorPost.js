@@ -48,7 +48,7 @@ class DoctorPost extends React.Component {
               </Image>
             </Col>
           </Row>
-          <h1 className="green-caption-left">Врачи, занимающие должность «{doctorPost.name}»</h1>
+          <h3 className="green-caption-left">Врачи, занимающие должность «{doctorPost.name}»</h3>
         </Container>
         <DoctorLongList isNotCaption={true}
                         specialUrl={`http://localhost:8000/staff/api/doctors_by_post/${doctorPk}/`}
