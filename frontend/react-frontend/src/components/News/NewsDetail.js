@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import {Container, Image} from "react-bootstrap";
+import {Col, Container, Image} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 
 class NewsDetail extends React.Component {
@@ -28,11 +28,13 @@ class NewsDetail extends React.Component {
       <div className="NewDetail">
         <Container className="mt-4">
           <h3 className="orange-caption-left">{newItem.title}</h3>
-          <Image
-            src={newItem.image}
-            alt={newItem.title}
-            className="img-fluid"
-          />
+          <Col md={6}>
+            <Image
+              src={newItem.image}
+              alt={newItem.title}
+              className="img-fluid"
+            />
+          </Col>
           {ReactHtmlParser(newItem.content)}
           <hr/>
           Опубликована: {newItem.pub_date}

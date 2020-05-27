@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import {Container, Image} from "react-bootstrap";
+import {Col, Container, Image} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import CommentList from "../../containers/Comments/CommentList";
 import AddCommentForm from "./AddCommentForm";
@@ -39,11 +39,13 @@ class ArticleDetail extends React.Component {
       <div className="ArticleDetail">
         <Container className="mt-4">
           <h3 className="orange-caption-left">{article.title}</h3>
-          <Image
-            src={article.image}
-            alt={article.title}
-            className="img-fluid"
-          />
+          <Col md={6}>
+            <Image
+              src={article.image}
+              alt={article.title}
+              className="img-fluid"
+            />
+          </Col>
           {ReactHtmlParser(article.content)}
           <hr/>
           Опубликована: {article.pub_date}
