@@ -120,3 +120,7 @@ select {
   margin-right: 100px;
   margin-bottom: 10px;
 }
+
+.text-blue {
+  color: #5da2ff;
+}
