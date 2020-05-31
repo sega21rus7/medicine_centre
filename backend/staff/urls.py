@@ -12,7 +12,7 @@ urlpatterns = [
     path('api/doctors_by_post/<post_pk>/', DoctorByPostListView.as_view(),
          name='doctors_by_post'),
     path('api/search_doctors/<search_key>/', SearchDoctorListView.as_view(), name='search_doctors'),
-    path('api/doctors_for_filter/', DoctorForFilterListView.as_view(), name='doctors_for_filter'),
+    path('api/doctors_choice/', DoctorForFilterListView.as_view(), name='doctors_choice'),
 ]
 
 router = DefaultRouter()

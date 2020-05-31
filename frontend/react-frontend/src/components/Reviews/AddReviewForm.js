@@ -20,7 +20,7 @@ class AddReviewForm extends React.Component {
   }
 
   getDoctors = () => {
-    axios.get('http://localhost:8000/staff/api/doctors_for_filter/')
+    axios.get('http://localhost:8000/staff/api/doctors_choice/')
       .then(response => {
         this.setState({doctors: response.data});
         console.log(response.data);
