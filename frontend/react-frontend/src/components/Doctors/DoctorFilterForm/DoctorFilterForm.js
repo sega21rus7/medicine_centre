@@ -64,7 +64,7 @@ class DoctorFilterForm extends React.Component {
               }
             </select>
           </Form.Group>
-          <Button type="submit" variant="outline-success" block>Отфильтровать</Button>
+          <Button type="submit" variant="outline-success" block>Применить</Button>
         </Form>
       </div>
     )
