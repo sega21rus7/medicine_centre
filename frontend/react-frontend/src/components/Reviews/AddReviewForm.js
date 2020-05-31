@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, ButtonGroup, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "../ErrorBlock/ErrorBlock";
+import {replaceLineBreaks} from "../../methods";
 
 class AddReviewForm extends React.Component {
   constructor(props) {
@@ -68,7 +69,7 @@ class AddReviewForm extends React.Component {
 
   render() {
     const {errors, doctors} = this.state;
-    const {handleUpdate, handleDelete, isContentNotRequired} = this.props;
+    const {handleUpdate, handleDelete, item} = this.props;
     if (errors) {
       var contentError = <ErrorBlock text={errors.content || errors}/>;
     }
@@ -80,16 +81,18 @@ class AddReviewForm extends React.Component {
             <Col sm={12}>
               <Form.Group controlId="formGroupPositives">
               <textarea name="positives"
-                        placeholder="Достоинства"/>
+                        placeholder="Достоинства"
+                        defaultValue={item && replaceLineBreaks(item.positives)}/>
               </Form.Group>
               <Form.Group controlId="formGroupNegatives">
               <textarea name="negatives"
-                        placeholder="Недостатки"/>
+                        placeholder="Недостатки"
+                        defaultValue={item && replaceLineBreaks(item.negatives)}/>
               </Form.Group>
               <Form.Group controlId="formGroupContent">
               <textarea name="content"
                         placeholder="Комментарий"
-                        required={!isContentNotRequired}/>
+                        defaultValue={item && replaceLineBreaks(item.content)}/>
                 {contentError}
               </Form.Group>
               <Form.Group controlId="formGroupDoctor">

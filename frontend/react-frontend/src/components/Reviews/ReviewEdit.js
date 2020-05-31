@@ -97,11 +97,10 @@ class SupportQuestionEdit extends React.Component {
       <Container className="ReviewEdit">
         <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
         <div className="mt-4">
-          <ReviewListItem item={review}/>
           <div className="mt-4">
-            <AddReviewForm handleUpdate={this.handleUpdate}
-                           handleDelete={this.handleDelete}
-                           isContentNotRequired={true}/>
+            <AddReviewForm item={review}
+                           handleUpdate={this.handleUpdate}
+                           handleDelete={this.handleDelete}/>
           </div>
         </div>
       </Container>
