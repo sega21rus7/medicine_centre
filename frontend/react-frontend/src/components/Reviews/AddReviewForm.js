@@ -92,7 +92,8 @@ class AddReviewForm extends React.Component {
               <Form.Group controlId="formGroupContent">
               <textarea name="content"
                         placeholder="Комментарий"
-                        defaultValue={item ? replaceLineBreaks(item.content) : null}/>
+                        defaultValue={item ? replaceLineBreaks(item.content) : null}
+                        required/>
                 {contentError}
               </Form.Group>
               <Form.Group controlId="formGroupDoctor">
