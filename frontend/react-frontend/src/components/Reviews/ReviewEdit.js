@@ -40,7 +40,6 @@ class SupportQuestionEdit extends React.Component {
   handleUpdate = (event) => {
     event.preventDefault();
     const token = localStorage.getItem('token');
-    const review = this.state.review;
     const pk = this.props.match.params.pk;
     if (token) {
       const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
