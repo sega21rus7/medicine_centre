@@ -2,7 +2,6 @@ import React from 'react';
 import {Button, Container} from "react-bootstrap";
 import axios from "axios";
 import AddSupportQuestionForm from "./AddSupportQuestionForm";
-import SupportQuestionListItem from "./SupportQuestionListItem";
 
 class SupportQuestionEdit extends React.Component {
   constructor(props) {
@@ -95,9 +94,9 @@ class SupportQuestionEdit extends React.Component {
       <Container className="SupportQuestionEdit">
         <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
         <div className="mt-4">
-          <SupportQuestionListItem item={question}/>
           <div className="mt-4">
-            <AddSupportQuestionForm handleUpdate={this.handleUpdate}
+            <AddSupportQuestionForm item={question}
+                                    handleUpdate={this.handleUpdate}
                                     handleDelete={this.handleDelete}/>
           </div>
         </div>

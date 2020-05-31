@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, ButtonGroup, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "../ErrorBlock/ErrorBlock";
+import {replaceLineBreaks} from "../../methods";
 
 class AddSupportQuestionForm extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class AddSupportQuestionForm extends React.Component {
 
   render() {
     const {errors} = this.state;
-    const {handleUpdate, handleDelete} = this.props;
+    const {item, handleUpdate, handleDelete} = this.props;
     if (errors) {
       var contentError = <ErrorBlock text={errors.content || errors}/>;
     }
@@ -48,6 +49,7 @@ class AddSupportQuestionForm extends React.Component {
             <Form.Group controlId="formGroupContent">
               <textarea name="content"
                         placeholder="Сообщение"
+                        defaultValue={item ? replaceLineBreaks(item.content) : null}
                         required/>
               {contentError}
             </Form.Group>
