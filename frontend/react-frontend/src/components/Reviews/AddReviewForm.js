@@ -30,7 +30,7 @@ class AddReviewForm extends React.Component {
       })
   };
 
-  handleChange = (event) => {
+  handleDoctorChange = (event) => {
     event.preventDefault();
     const selectedIndex = event.target.options.selectedIndex;
     const pk = event.target.options[selectedIndex].getAttribute('pk');
@@ -82,23 +82,23 @@ class AddReviewForm extends React.Component {
               <Form.Group controlId="formGroupPositives">
               <textarea name="positives"
                         placeholder="Достоинства"
-                        defaultValue={item && replaceLineBreaks(item.positives)}/>
+                        defaultValue={item ? replaceLineBreaks(item.positives) : null}/>
               </Form.Group>
               <Form.Group controlId="formGroupNegatives">
               <textarea name="negatives"
                         placeholder="Недостатки"
-                        defaultValue={item && replaceLineBreaks(item.negatives)}/>
+                        defaultValue={item ? replaceLineBreaks(item.negatives) : null}/>
               </Form.Group>
               <Form.Group controlId="formGroupContent">
               <textarea name="content"
                         placeholder="Комментарий"
-                        defaultValue={item && replaceLineBreaks(item.content)}/>
+                        defaultValue={item ? replaceLineBreaks(item.content) : null}/>
                 {contentError}
               </Form.Group>
               <Form.Group controlId="formGroupDoctor">
                 <select value={this.state.selectedValue}
                         className="filter-select"
-                        onChange={this.handleChange}>
+                        onChange={this.handleDoctorChange}>
                   <option disabled
                           hidden
                           value={item && item.doctor ? item.doctor.pk : 'Выберите врача'}>
