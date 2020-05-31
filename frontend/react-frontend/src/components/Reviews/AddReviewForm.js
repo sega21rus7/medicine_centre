@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, ButtonGroup, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "../ErrorBlock/ErrorBlock";
-import {replaceLineBreaks} from "../../methods";
+import {getFullName, replaceLineBreaks} from "../../methods";
 
 class AddReviewForm extends React.Component {
   constructor(props) {
@@ -107,9 +107,11 @@ class AddReviewForm extends React.Component {
                   </option>
                   {
                     doctors.map((item, index) => {
-                      const user = item.user;
-                      const name = `${user.last_name} ${user.first_name} ${user.middle_name}`;
-                      return <option value={name} key={index} pk={item.pk}>{name}</option>
+                      return <option value={getFullName(item.user)}
+                                     key={index}
+                                     pk={item.pk}>
+                        {getFullName(item.user)}
+                      </option>
                     })
                   }
                 </select>
