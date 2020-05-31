@@ -3,6 +3,7 @@ import './CommentList.css';
 import {Container} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import avatar from '../../images/custom_avatar.png';
+import {getFullName} from "../../methods";
 
 class CommentList extends React.Component {
   render() {
@@ -22,7 +23,7 @@ class CommentList extends React.Component {
               <div className="media-body">
                 <div className="media-heading">
                   <div className="comment-author">
-                    {item.user ? `${item.user.last_name} ${item.user.first_name} ${item.user.middle_name}` : ''}
+                    {getFullName(item.user)}
                   </div>
                   <div className="metadata">
                     <span className="date">{item.pub_date}</span>
