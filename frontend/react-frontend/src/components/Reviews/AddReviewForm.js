@@ -99,7 +99,11 @@ class AddReviewForm extends React.Component {
                 <select value={this.state.selectedValue}
                         className="filter-select"
                         onChange={this.handleChange}>
-                  <option disabled hidden value="Выберите врача">Выберите врача</option>
+                  <option disabled
+                          hidden
+                          value={item && item.doctor ? item.doctor.pk : 'Выберите врача'}>
+                    {item && item.doctor ? item.doctor.pk : 'Выберите врача'}
+                  </option>
                   {
                     doctors.map((item, index) => {
                       const user = item.user;
