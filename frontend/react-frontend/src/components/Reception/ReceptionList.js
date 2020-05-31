@@ -4,6 +4,7 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
 import {connect} from "react-redux";
+import {getFullName} from "../../methods";
 
 class ReceptionList extends React.Component {
   constructor(props) {
@@ -54,16 +55,6 @@ class ReceptionList extends React.Component {
         });
     }
   };
-
-  getFullName(user) {
-    const lastName = user.last_name;
-    const firstName = user.first_name;
-    const middleName = user.middle_name;
-
-    if (lastName && firstName && middleName)
-      return `${lastName} ${firstName} ${middleName}`;
-    return user.username;
-  }
 
   sendReceptionRequest(event, patient) {
     const token = localStorage.getItem('token');
@@ -120,12 +111,12 @@ class ReceptionList extends React.Component {
                 <tr key={index}>
                   <td>
                     <Link to={'/doctor/' + item.doctor.slug}>
-                      {this.getFullName(item.doctor.user)}
+                      {getFullName(item.doctor.user)}
                     </Link>
                   </td>
                   <td>{item.date}</td>
                   <td>{item.from_time} - {item.to_time}</td>
-                  <td>{item.patient ? this.getFullName(item.patient.user) : '-'}</td>
+                  <td>{item.patient ? getFullName(item.patient.user) : '-'}</td>
                   <td>
                     {
                       item.patient && user.pk === item.patient.user.pk ?

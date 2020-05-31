@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Container, Table} from "react-bootstrap";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {getFullName} from "../../methods";
 
 class DoctorSchedule extends React.Component {
   constructor(props) {
@@ -37,16 +38,6 @@ class DoctorSchedule extends React.Component {
     }
   };
 
-  getFullName(user) {
-    const lastName = user.last_name;
-    const firstName = user.first_name;
-    const middleName = user.middle_name;
-
-    if (lastName && firstName && middleName)
-      return `${lastName} ${firstName} ${middleName}`;
-    return user.username;
-  }
-
   render() {
     const {schedule} = this.state;
 
@@ -68,7 +59,7 @@ class DoctorSchedule extends React.Component {
                 <td>{item.from_time} - {item.to_time}</td>
                 <td>
                   <Link to="/">
-                    {item.patient ? this.getFullName(item.patient.user) : '-'}
+                    {item.patient ? getFullName(item.patient.user) : '-'}
                   </Link>
                 </td>
               </tr>

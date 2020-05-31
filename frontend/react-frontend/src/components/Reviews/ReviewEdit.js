@@ -2,7 +2,6 @@ import React from 'react';
 import {Button, Container} from "react-bootstrap";
 import axios from "axios";
 import AddReviewForm from "./AddReviewForm";
-import ReviewListItem from "./ReviewListItem";
 
 class SupportQuestionEdit extends React.Component {
   constructor(props) {

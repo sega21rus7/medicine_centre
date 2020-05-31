@@ -2,25 +2,20 @@ import React from 'react';
 import {Button, Jumbotron} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
 import {Link} from "react-router-dom";
+import {getFullName} from "../../methods";
 
 class ReviewListItem extends React.Component {
   render() {
     const {item, index, isChangeable} = this.props;
-    const patientUser = item.patient ? item.patient.user : {};
-    const doctorUser = item.doctor ? item.doctor.user : {};
-
-    if (item.doctor) {
-      const doctorName = `${doctorUser.last_name} ${doctorUser.first_name} ${doctorUser.middle_name}`;
-      var doctor = <p>Врач: {ReactHtmlParser(doctorName)}</p>
-    }
-    const patient = patientUser.first_name && patientUser.middle_name ?
-      <h2>{patientUser.first_name}&nbsp;{patientUser.middle_name}</h2>
-      : <h2>{patientUser.username}</h2>;
 
     return (
       <Jumbotron key={index}>
-        {patient}
-        {doctor}
+        <div>
+          <span className="text-blue">Пациент:</span> {item.patient ? getFullName(item.patient.user) : null}
+        </div>
+        <div>
+          <span className="text-blue">Врач:</span> {item.doctor ? getFullName(item.doctor.user) : null}
+        </div>
         <div className="text-blue">Достоинства:</div>
         {
           item.positives ?
