@@ -49,9 +49,9 @@ class SupportQuestionEdit extends React.Component {
         method: 'PUT',
         url: url,
         data: {
-          positives: elements.positives.value || review.positives,
-          negatives: elements.negatives.value || review.negatives,
-          content: elements.content.value || review.content,
+          positives: elements.positives.value,
+          negatives: elements.negatives.value,
+          content: elements.content.value,
           doctor: this.state.selectedValuePk,
         },
         headers: {'Authorization': `Token ${token}`},

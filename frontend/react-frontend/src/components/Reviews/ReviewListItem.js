@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button, Jumbotron} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
-import {Link} from "react-router-dom";
 import {getFullName} from "../../methods";
+import {Link} from "react-router-dom";
 
 class ReviewListItem extends React.Component {
   render() {
@@ -16,18 +16,21 @@ class ReviewListItem extends React.Component {
         <div>
           <span className="text-blue">Врач:</span> {item.doctor ? getFullName(item.doctor.user) : null}
         </div>
-        <div className="text-blue">Достоинства:</div>
         {
           item.positives ?
-            <div>{ReactHtmlParser(item.positives)}</div>
-            : null
+            <>
+              <div className="text-blue">Достоинства:</div>
+              <div>{ReactHtmlParser(item.positives)}</div>
+            </> : null
         }
-        <div className="text-blue">Недостатки:</div>
         {
           item.negatives ?
-            <div>{ReactHtmlParser(item.negatives)}</div>
-            : null
+            <>
+              <div className="text-blue">Недостатки:</div>
+              <div>{ReactHtmlParser(item.negatives)}</div>
+            </> : null
         }
+
         <div className="text-blue">Комментарий:</div>
         {ReactHtmlParser(item.content)}
         <div className="text-right">Опубликован: {item.pub_date}</div>
