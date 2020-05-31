@@ -1,7 +1,7 @@
 from pytils.translit import slugify
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
+from rest_framework.permissions import AllowAny, IsAdminUser
 
 from medicine_centre.paginators import StandardPagination
 from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin
@@ -56,4 +56,6 @@ class DoctorByPostListView(ListAPIView):
         return Doctor.objects.filter(posts__id__icontains=post_pk)
 
 
-
+class DoctorForFilterListView(ListAPIView):
+    serializer_class = DoctorListSerializer
+    queryset = Doctor.objects.all()
