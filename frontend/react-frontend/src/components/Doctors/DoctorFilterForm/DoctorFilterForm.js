@@ -30,9 +30,12 @@ class DoctorFilterForm extends React.Component {
 
   handleFilter = (event) => {
     event.preventDefault();
-    this.props.getData(
-      1,
-      `http://localhost:8000/staff/api/doctors_by_post/${this.state.selectedValuePk}`);
+    const pk = this.state.selectedValuePk;
+    if (pk) {
+      this.props.getData(
+        1,
+        `http://localhost:8000/staff/api/doctors_by_post/${pk}`);
+    }
   };
 
   handleChange = (event) => {
