@@ -6,9 +6,11 @@ import {Link} from "react-router-dom";
 
 class LkSupportLayout extends React.Component {
   render() {
+    const {tabActiveValue} = this.props;
+
     return (
       <Container className="LkSupportLayout">
-        <Tab.Container id="support-tabs" defaultActiveKey="view">
+        <Tab.Container id="support-tabs" activeKey={tabActiveValue}>
           <Nav variant="tabs">
             <Nav.Item key="view">
               <Nav.Link eventKey="view" as={Link} to="/lk/support/view">
@@ -28,4 +30,10 @@ class LkSupportLayout extends React.Component {
   };
 }
 
-export default LkSupportLayout;
+const mapStateToProps = (state) => {
+  return {
+    tabActiveValue : state.support.tabActiveValue,
+  }
+};
+
+export default connect(mapStateToProps, null)(LkSupportLayout);

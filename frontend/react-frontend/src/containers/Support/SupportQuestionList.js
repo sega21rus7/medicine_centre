@@ -3,6 +3,8 @@ import {Container, Row} from "react-bootstrap";
 import axios from "axios";
 import PaginationComponent from "../../components/PaginationComponent";
 import SupportQuestionListItem from "../../components/Support/SupportQuestionListItem";
+import * as actions from "../../store/actions/support/support";
+import {connect} from "react-redux";
 
 class SupportQuestionList extends React.Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class SupportQuestionList extends React.Component {
   }
 
   componentDidMount() {
+    this.props.setTabActiveValue('view');
     this.getData(1);
   }
 
@@ -75,4 +78,10 @@ class SupportQuestionList extends React.Component {
   };
 }
 
-export default SupportQuestionList;
+const mapDispatchToProps = dispatch => {
+  return {
+    setTabActiveValue: (value) => dispatch(actions.setTabActiveValue(value))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(SupportQuestionList);
