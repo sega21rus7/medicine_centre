@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, Col, Container, Row} from "react-bootstrap";
 import AlreadySignUpPanel from "../../components/Auth/AlreadySignUpPanel";
 import {connect} from 'react-redux';
-import * as actions from '../../store/actions/auth';
+import * as actions from '../../store/actions/auth/auth';
 import {Redirect} from "react-router";
 import LeftImage from "../../components/Auth/LeftImage";
 import SignUpForm from "../../components/Auth/SignUpForm";

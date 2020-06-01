@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Col, Form, Row} from "react-bootstrap";
-import * as actions from "../../store/actions/auth";
+import * as actions from "../../store/actions/auth/auth";
 import {connect} from "react-redux";
 
 class LogoutForm extends React.Component {

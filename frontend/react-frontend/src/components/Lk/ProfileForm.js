@@ -6,7 +6,7 @@ import axios from 'axios';
 import avatar from '../../images/custom_avatar.png'
 import SuccessBlock from "../SuccessBlock/SuccessBlock";
 import {connect} from "react-redux";
-import * as actions from "../../store/actions/auth";
+import * as actions from "../../store/actions/auth/auth";
 
 class ProfileForm extends React.Component {
   constructor(props) {

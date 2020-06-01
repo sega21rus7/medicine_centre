@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, Col, Container, Dropdown, Row} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import NotSignUpYetPanel from "../../components/Auth/NotSignUpYetPanel";
-import * as actions from '../../store/actions/auth';
+import * as actions from '../../store/actions/auth/auth';
 import {connect} from 'react-redux';
 import {Redirect} from "react-router";
 import LeftImage from "../../components/Auth/LeftImage";

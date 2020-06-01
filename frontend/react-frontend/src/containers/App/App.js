@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {BrowserRouter as Router} from "react-router-dom";
 import {connect} from 'react-redux';
-import * as actions from '../../store/actions/auth'
+import * as actions from '../../store/actions/auth/auth'
 import CustomLayout from "./CustomLayout";
 import BaseRouter from "../../routes/routes";
 
