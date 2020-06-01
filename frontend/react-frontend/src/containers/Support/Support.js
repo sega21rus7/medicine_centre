@@ -4,7 +4,7 @@ import SupportQuestionList from "./SupportQuestionList";
 import SupportQuestionForm from "../../components/Support/SupportQuestionForm";
 
 
-class LkSupport extends React.Component {
+class Support extends React.Component {
   render() {
     return (
       <Container className="LkSupport">
@@ -23,4 +23,4 @@ class LkSupport extends React.Component {
   };
 }
 
-export default LkSupport;
+export default Support;
