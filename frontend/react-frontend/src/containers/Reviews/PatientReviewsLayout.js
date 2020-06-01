@@ -6,20 +6,22 @@ import {Link} from "react-router-dom";
 
 class PatientReviewsLayout extends React.Component {
   render() {
-    if (!this.props.user) {
+    const {user, tabActiveValue} = this.props;
+
+    if (!user.patient) {
       return null;
     }
 
     return (
       <Container className="PatientReviewsLayout">
-        <Tab.Container id="review-tabs" defaultActiveKey="view">
+        <Tab.Container id="review-tabs" activeKey={tabActiveValue}>
           <Nav variant="tabs">
             <Nav.Item key="view">
               <Nav.Link eventKey="view" as={Link} to="/lk/patient_reviews/view">
                 Просмотр
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item key="view">
+            <Nav.Item key="add">
               <Nav.Link eventKey="add" as={Link} to="/lk/patient_reviews/add">
                 Добавить
               </Nav.Link>
@@ -34,7 +36,8 @@ class PatientReviewsLayout extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    user: state.auth.user,
+    tabActiveValue : state.reviews.tabActiveValue,
   }
 };
 

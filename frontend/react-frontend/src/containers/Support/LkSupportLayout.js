@@ -15,7 +15,7 @@ class LkSupportLayout extends React.Component {
                 Просмотр
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item key="view">
+            <Nav.Item key="add">
               <Nav.Link eventKey="add" as={Link} to="/lk/support/add">
                 Добавить
               </Nav.Link>

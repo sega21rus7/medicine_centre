@@ -3,6 +3,8 @@ import {Button, ButtonGroup, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import {getFullName, replaceLineBreaks} from "../../methods";
 import {withRouter} from "react-router";
+import * as actions from "../../store/actions/reviews/reviews";
+import {connect} from "react-redux";
 
 class ReviewForm extends React.Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class ReviewForm extends React.Component {
 
   componentDidMount() {
     this.getDoctors();
+    // if(!this.props.isEdit) this.props.setTabActiveValue('add');
   }
 
   getDoctors = () => {
@@ -57,6 +60,7 @@ class ReviewForm extends React.Component {
       };
       axios(options)
         .then(res => {
+          this.props.setTabActiveValue('view');
           this.props.history.push('/lk/patient_reviews/view');
           console.log(res);
         })
@@ -176,4 +180,10 @@ class ReviewForm extends React.Component {
   };
 }
 
-export default withRouter(ReviewForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    setTabActiveValue: (value) => dispatch(actions.setTabActiveValue(value))
+  }
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(ReviewForm));

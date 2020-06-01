@@ -69,7 +69,7 @@ class DoctorSchedule extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    user: state.auth.user,
   }
 };
 

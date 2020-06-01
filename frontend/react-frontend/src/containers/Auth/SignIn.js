@@ -66,8 +66,8 @@ class SignIn extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    error: state.error,
-    isAuthenticated: state.isAuthenticated,
+    error: state.auth.error,
+    isAuthenticated: state.auth.isAuthenticated,
   }
 };
 

@@ -1,7 +1,13 @@
 import React from 'react';
 import ReviewLongList from "./ReviewLongList";
+import {connect} from "react-redux";
+import * as actions from "../../store/actions/reviews/reviews";
 
 class PatientReviewList extends React.Component {
+  componentDidMount() {
+    this.props.setTabActiveValue('view');
+  }
+
   render() {
     return (
       <ReviewLongList personalTitle={'Мои отзывы'}
@@ -12,4 +18,11 @@ class PatientReviewList extends React.Component {
   }
 }
 
-export default PatientReviewList;
+const mapDispatchToProps = dispatch => {
+  return {
+    setTabActiveValue: (value) => dispatch(actions.setTabActiveValue(value))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(PatientReviewList);
+
