@@ -6,7 +6,7 @@ import Support from "../containers/Support/Support";
 import LogoutForm from "../components/Lk/LogoutForm";
 import ProfileForm from "../components/Lk/ProfileForm";
 import SupportQuestionEdit from "../components/Support/SupportQuestionEdit";
-import AboutCenter from "../components/MainPage/AboutCenter";
+import Welcome from "../components/Lk/Welcome";
 import MakeAppointment from "../containers/Reception/MakeAppointment";
 import DoctorSchedule from "../containers/Reception/DoctorSchedule";
 import PatientReviews from "../containers/Reviews/PatientReviews";
@@ -15,7 +15,7 @@ import DoctorReviews from "../containers/Reviews/DoctorReviews";
 const LkRouter = () => (
   <div>
     <Switch>
-      <Route exact path="/lk" component={AboutCenter}/>
+      <Route exact path="/lk" component={Welcome}/>
       <Route exact path="/lk/reception" component={MakeAppointment}/>
       <Route exact path="/lk/schedule" component={DoctorSchedule}/>
       <Route exact path="/lk/profile" component={ProfileForm}/>
