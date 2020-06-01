@@ -8,7 +8,6 @@ class SupportQuestionEdit extends React.Component {
     super(props);
     this.state = {
       question: {},
-      token: null,
     }
   }
 
