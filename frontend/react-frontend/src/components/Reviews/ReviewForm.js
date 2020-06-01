@@ -18,7 +18,6 @@ class ReviewForm extends React.Component {
 
   componentDidMount() {
     this.getDoctors();
-    // if(!this.props.isEdit) this.props.setTabActiveValue('add');
   }
 
   getDoctors = () => {

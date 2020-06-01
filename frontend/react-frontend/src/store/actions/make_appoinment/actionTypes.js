@@ -1,0 +1,1 @@
+export const TAB_ACTIVE_VALUE = 'TAB_ACTIVE_VALUE';

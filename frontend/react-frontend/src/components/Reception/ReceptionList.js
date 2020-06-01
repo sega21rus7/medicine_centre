@@ -1,10 +1,11 @@
 import React from 'react';
 import {Button, Container, Table} from "react-bootstrap";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
 import {connect} from "react-redux";
 import {getFullName} from "../../methods";
+import * as actions from "../../store/actions/reviews/reviews";
 
 class ReceptionList extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class ReceptionList extends React.Component {
   }
 
   componentDidMount() {
+    this.props.setTabActiveValue('my');
     this.getSchedule(1, this.props.specialUrl);
   }
 
@@ -158,4 +160,10 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps, null)(ReceptionList);
+const mapDispatchToProps = dispatch => {
+  return {
+    setTabActiveValue: (value) => dispatch(actions.setTabActiveValue(value))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReceptionList);

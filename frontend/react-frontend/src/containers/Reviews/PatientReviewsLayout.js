@@ -13,7 +13,7 @@ class PatientReviewsLayout extends React.Component {
     }
 
     return (
-      <Container className="PatientReviewsLayout">
+      <div className="PatientReviewsLayout">
         <Tab.Container id="review-tabs" activeKey={tabActiveValue}>
           <Nav variant="tabs">
             <Nav.Item key="view">
@@ -29,7 +29,7 @@ class PatientReviewsLayout extends React.Component {
           </Nav>
           {this.props.children}
         </Tab.Container>
-      </Container>
+      </div>
     )
   };
 }

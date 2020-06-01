@@ -16,7 +16,7 @@ const LkRouter = () => (
   <div>
     <Switch>
       <Route exact path="/lk" component={Welcome}/>
-      <Route exact path="/lk/reception" component={MakeAppointment}/>
+      <Route path="/lk/make_appointment" component={MakeAppointment}/>
       <Route exact path="/lk/schedule" component={DoctorSchedule}/>
       <Route exact path="/lk/profile" component={ProfileForm}/>
       <Route exact path="/lk/change_password" component={ChangePasswordForm}/>
