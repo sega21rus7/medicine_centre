@@ -1,6 +1,6 @@
 import React from 'react';
 import './DoctorFilterForm.css';
-import {Button, Form} from "react-bootstrap";
+import {Button, ButtonGroup, Form} from "react-bootstrap";
 import axios from "axios";
 
 class DoctorFilterForm extends React.Component {
@@ -45,18 +45,24 @@ class DoctorFilterForm extends React.Component {
     });
   };
 
+  handleReset = (event) => {
+    event.preventDefault();
+    this.setState({selectedValue: 'Выберите должность'});
+    this.props.getData(1);
+  };
+
   render() {
-    const {posts} = this.state;
+    const {posts, selectedValue} = this.state;
 
     return (
       <div className="DoctorFilterForm mt-2">
         <Form onSubmit={this.handleFilter}>
           <Form.Group controlId="formGroupFilter">
-            <select value={this.state.selectedValue}
+            <select value={selectedValue}
                     className="filter-select"
                     onChange={this.handleChange}
                     required>
-              <option disabled hidden value="Выберите должность">Выберите должность</option>
+              <option disabled hidden value={selectedValue}>{selectedValue}</option>
               {
                 posts.map((item, index) => (
                   <option value={item.name} key={index} pk={item.pk}>{item.name}</option>
@@ -64,7 +70,10 @@ class DoctorFilterForm extends React.Component {
               }
             </select>
           </Form.Group>
-          <Button type="submit" variant="outline-success" block>Применить</Button>
+          <ButtonGroup style={{width:'100%'}}>
+            <Button style={{width: '50%'}} type="submit" variant="outline-success">Применить</Button>
+            <Button style={{width: '50%'}} variant="outline-danger" onClick={this.handleReset}>Сброс</Button>
+          </ButtonGroup>
         </Form>
       </div>
     )

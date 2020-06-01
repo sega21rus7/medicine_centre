@@ -6,7 +6,6 @@ import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import DoctorListItem from "../../components/Doctors/DoctorListItem";
 import DoctorSearchForm from "../../components/Doctors/DoctorSearchForm";
 import DoctorFilterForm from "../../components/Doctors/DoctorFilterForm/DoctorFilterForm";
-import DoctorResetForm from "../../components/Doctors/DoctorResetForm";
 
 class DoctorList extends React.Component {
   constructor(props) {
@@ -92,7 +91,6 @@ class DoctorList extends React.Component {
                     <DoctorFilterForm getData={this.getData}/>
                     : null
                 }
-                <DoctorResetForm getData={this.getData}/>
               </Col>
               : null
           }

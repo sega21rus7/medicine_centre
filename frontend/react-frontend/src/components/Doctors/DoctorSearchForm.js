@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, FormControl} from "react-bootstrap";
+import {Button, ButtonGroup, Form, FormControl} from "react-bootstrap";
 
 class DoctorSearchForm extends React.Component {
   handleSearch = (event) => {
@@ -11,6 +11,11 @@ class DoctorSearchForm extends React.Component {
 
   };
 
+  handleReset = (event) => {
+    event.preventDefault();
+    this.props.getData(1);
+  };
+
   render() {
     return (
       <div className="DoctorSearchForm">
@@ -18,7 +23,10 @@ class DoctorSearchForm extends React.Component {
           <Form.Group controlId="formGroupSearch">
             <FormControl name="text" type="text" placeholder="Поиск" required/>
           </Form.Group>
-          <Button type="submit" variant="outline-success" block>Найти</Button>
+          <ButtonGroup style={{width: '100%'}}>
+            <Button style={{width: '50%'}} type="submit" variant="outline-success">Найти</Button>
+            <Button style={{width: '50%'}} variant="outline-danger" onClick={this.handleReset}>Сброс</Button>
+          </ButtonGroup>
         </Form>
       </div>
     )
