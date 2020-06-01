@@ -68,7 +68,7 @@ class ReviewForm extends React.Component {
   handleUpdate = (event) => {
     event.preventDefault();
     const token = localStorage.getItem('token');
-    const pk = this.props.itemPk;
+    const pk = this.props.instancePk;
     if (token) {
       const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
       const elements = event.target.elements;
@@ -145,7 +145,7 @@ class ReviewForm extends React.Component {
                 <select value={this.state.selectedValue}
                         className="filter-select"
                         onChange={this.handleDoctorChange}>
-                  <option value={currentDoctor}>{currentDoctor}</option>
+                  <option hidden disabled value={currentDoctor}>{currentDoctor}</option>
                   {
                     doctors.map((doctor, index) => {
                       return <option value={getFullName(doctor.user)}

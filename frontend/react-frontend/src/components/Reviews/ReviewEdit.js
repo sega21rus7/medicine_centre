@@ -46,7 +46,7 @@ class ReviewEdit extends React.Component {
           <div className="mt-4">
             <ReviewForm instance={review}
                         isEdit={true}
-                        itemPk={this.props.match.params.pk}/>
+                        instancePk={this.props.match.params.pk}/>
           </div>
         </div>
       </Container>
