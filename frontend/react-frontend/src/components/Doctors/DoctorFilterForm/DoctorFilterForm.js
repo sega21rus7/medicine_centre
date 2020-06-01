@@ -56,6 +56,7 @@ class DoctorFilterForm extends React.Component {
 
     return (
       <div className="DoctorFilterForm mt-2">
+        <div className="text-center text-blue mb-2">Фильтр</div>
         <Form onSubmit={this.handleFilter}>
           <Form.Group controlId="formGroupFilter">
             <select value={selectedValue}
@@ -70,7 +71,7 @@ class DoctorFilterForm extends React.Component {
               }
             </select>
           </Form.Group>
-          <ButtonGroup style={{width:'100%'}}>
+          <ButtonGroup style={{width: '100%'}}>
             <Button style={{width: '50%'}} type="submit" variant="outline-success">Применить</Button>
             <Button style={{width: '50%'}} variant="outline-danger" onClick={this.handleReset}>Сброс</Button>
           </ButtonGroup>
