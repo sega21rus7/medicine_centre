@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Tab, Tabs} from "react-bootstrap";
 import SupportQuestionList from "./SupportQuestionList";
-import AddSupportQuestionForm from "../../components/Support/AddSupportQuestionForm";
+import SupportQuestionForm from "../../components/Support/SupportQuestionForm";
 
 
 class LkSupport extends React.Component {
@@ -14,7 +14,7 @@ class LkSupport extends React.Component {
           </Tab>
           <Tab eventKey="add" title="Добавить">
             <div className="mt-4">
-              <AddSupportQuestionForm/>
+              <SupportQuestionForm/>
             </div>
           </Tab>
         </Tabs>
