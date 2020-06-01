@@ -36,7 +36,7 @@ class LkTabs extends React.Component {
 
         <Nav.Item key="3" className="nav-item-bg-info">
           <Nav.Link eventKey="3" as={Link}
-                    to={isPatient ? '/lk/patient_reviews' : '/lk/doctor_reviews'}>
+                    to={isPatient ? '/lk/patient_reviews/view' : '/lk/doctor_reviews'}>
             {
               isPatient ?
                 'Мои отзывы'

@@ -21,7 +21,7 @@ const LkRouter = () => (
       <Route exact path="/lk/profile" component={ProfileForm}/>
       <Route exact path="/lk/change_password" component={ChangePasswordForm}/>
       <Route exact path="/lk/doctor_reviews" component={DoctorReviews}/>
-      <Route exact path="/lk/patient_reviews" component={PatientReviews}/>
+      <Route path="/lk/patient_reviews" component={PatientReviews}/>
       <Route exact path="/lk/support" component={Support}/>
       <Route exact path="/lk/logout" component={LogoutForm}/>
       <Route exact path="/lk/review/:pk" component={ReviewEdit}/>

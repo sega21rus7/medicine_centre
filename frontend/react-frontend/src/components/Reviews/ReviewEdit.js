@@ -33,7 +33,7 @@ class ReviewEdit extends React.Component {
   };
 
   handleBack = () => {
-    this.props.history.push('/lk/patient_reviews');
+    this.props.history.push('/lk/patient_reviews/view');
   };
 
   render() {

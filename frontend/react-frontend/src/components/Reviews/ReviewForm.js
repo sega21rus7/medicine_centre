@@ -57,6 +57,7 @@ class ReviewForm extends React.Component {
       };
       axios(options)
         .then(res => {
+          this.props.history.push('/lk/patient_reviews/view');
           console.log(res);
         })
         .catch(err => {
@@ -85,7 +86,7 @@ class ReviewForm extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.props.history.push('/lk/patient_reviews');
+          this.props.history.push('/lk/patient_reviews/view');
           console.log(res.data);
         })
         .catch(err => {
@@ -107,7 +108,7 @@ class ReviewForm extends React.Component {
       axios(options)
         .then(res => {
           console.log(res.data);
-          this.props.history.push('/lk/patient_reviews');
+          this.props.history.push('/lk/patient_reviews/view');
         })
         .catch(err => {
           console.log(err.response);
