@@ -4,7 +4,7 @@ import PaginationComponent from "../../components/PaginationComponent";
 import {Col, Container, Row} from "react-bootstrap";
 import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
-import ArticleSearchForm from "../../components/Articles/ArticleSearchForm";
+import NewsSearchForm from "../../components/News/NewsSearchForm";
 
 class NewsList extends React.Component {
   constructor(props) {
@@ -78,7 +78,7 @@ class NewsList extends React.Component {
           {
             isSearchable ?
               <Col md={3}>
-                <ArticleSearchForm getData={this.getData}/>
+                <NewsSearchForm getData={this.getData}/>
               </Col>
               : null
           }
