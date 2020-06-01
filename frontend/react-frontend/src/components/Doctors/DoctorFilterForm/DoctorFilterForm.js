@@ -1,6 +1,6 @@
 import React from 'react';
 import './DoctorFilterForm.css';
-import {Button, ButtonGroup, Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import axios from "axios";
 
 class DoctorFilterForm extends React.Component {
@@ -71,10 +71,8 @@ class DoctorFilterForm extends React.Component {
               }
             </select>
           </Form.Group>
-          <ButtonGroup style={{width: '100%'}}>
-            <Button style={{width: '50%'}} type="submit" variant="outline-success">Применить</Button>
-            <Button style={{width: '50%'}} variant="outline-danger" onClick={this.handleReset}>Сброс</Button>
-          </ButtonGroup>
+          <Button type="submit" variant="outline-success" block>Применить</Button>
+          <Button variant="outline-danger" onClick={this.handleReset} block>Сброс</Button>
         </Form>
       </div>
     )
