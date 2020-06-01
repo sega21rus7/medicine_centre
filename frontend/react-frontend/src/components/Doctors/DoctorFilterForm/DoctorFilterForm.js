@@ -8,7 +8,7 @@ class DoctorFilterForm extends React.Component {
     super(props);
     this.state = {
       posts: [],
-      selectedValue: 'Выберите должность',
+      selectedValue: 'Должность',
       selectedValuePk: null,
     }
   }
@@ -50,7 +50,7 @@ class DoctorFilterForm extends React.Component {
 
   handleReset = (event) => {
     event.preventDefault();
-    this.setState({selectedValue: 'Выберите должность'});
+    this.setState({selectedValue: 'Должность'});
     this.props.getData(1);
   };
 
