@@ -36,7 +36,7 @@ class SupportQuestionEdit extends React.Component {
   };
 
   handleBack = () => {
-    this.props.history.push('/lk/support');
+    this.props.history.push('/lk/support/view');
   };
 
   render() {

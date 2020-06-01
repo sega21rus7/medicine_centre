@@ -11,7 +11,7 @@ class DoctorReviews extends React.Component {
     }
 
     return (
-      <Container className="DoctorReview">
+      <Container className="DoctorReviews">
         <Row>
           <Col lg={12}>
             <ReviewLongList personalTitle={'Отзывы обо мне'}

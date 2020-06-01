@@ -46,7 +46,7 @@ class LkTabs extends React.Component {
         </Nav.Item>
 
         <Nav.Item key="4" className="nav-item-bg-info">
-          <Nav.Link eventKey="4" as={Link} to="/lk/support">
+          <Nav.Link eventKey="4" as={Link} to="/lk/support/view">
             Техподдержка
           </Nav.Link>
         </Nav.Item>

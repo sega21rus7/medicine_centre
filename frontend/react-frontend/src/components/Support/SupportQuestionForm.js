@@ -22,8 +22,8 @@ class SupportQuestionForm extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.props.history.push('/lk/support');
           console.log(res.data);
+          this.props.history.push('/lk/support/view');
         })
         .catch(err => {
           console.log(err.response);
@@ -44,7 +44,7 @@ class SupportQuestionForm extends React.Component {
       axios(options)
         .then(res => {
           console.log(res.data);
-          this.props.history.push('/lk/support');
+          this.props.history.push('/lk/support/view');
         })
         .catch(err => {
           console.log(err.response);
@@ -67,6 +67,7 @@ class SupportQuestionForm extends React.Component {
       axios(options)
         .then(res => {
           console.log(res);
+          this.props.history.push('/lk/support/view');
         })
         .catch(err => {
           console.log(err.response);

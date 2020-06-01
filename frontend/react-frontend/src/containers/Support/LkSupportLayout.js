@@ -4,23 +4,19 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 
-class PatientReviewsLayout extends React.Component {
+class LkSupportLayout extends React.Component {
   render() {
-    if (!this.props.user) {
-      return null;
-    }
-
     return (
-      <Container className="PatientReviewsLayout">
-        <Tab.Container id="review-tabs" defaultActiveKey="view">
+      <Container className="LkSupportLayout">
+        <Tab.Container id="support-tabs" defaultActiveKey="view">
           <Nav variant="tabs">
             <Nav.Item key="view">
-              <Nav.Link eventKey="view" as={Link} to="/lk/patient_reviews/view">
+              <Nav.Link eventKey="view" as={Link} to="/lk/support/view">
                 Просмотр
               </Nav.Link>
             </Nav.Item>
             <Nav.Item key="view">
-              <Nav.Link eventKey="add" as={Link} to="/lk/patient_reviews/add">
+              <Nav.Link eventKey="add" as={Link} to="/lk/support/add">
                 Добавить
               </Nav.Link>
             </Nav.Item>
@@ -32,10 +28,4 @@ class PatientReviewsLayout extends React.Component {
   };
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-  }
-};
-
-export default connect(mapStateToProps, null)(PatientReviewsLayout);
+export default LkSupportLayout;

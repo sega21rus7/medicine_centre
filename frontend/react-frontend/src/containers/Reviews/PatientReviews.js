@@ -5,7 +5,7 @@ import PatientReviewsRouter from "../../routes/patient_reviews_routes";
 class PatientReviews extends React.Component {
   render() {
     return (
-      <div className="Lk">
+      <div className="PatientReviews">
         <PatientReviewsLayout>
           <PatientReviewsRouter/>
         </PatientReviewsLayout>
