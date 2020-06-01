@@ -13,9 +13,12 @@ class ReviewListItem extends React.Component {
         <div>
           <span className="text-blue">Пациент:</span> {item.patient ? getFullName(item.patient.user) : null}
         </div>
-        <div>
-          <span className="text-blue">Врач:</span> {item.doctor ? getFullName(item.doctor.user) : null}
-        </div>
+        {
+          item.doctor ?
+            <div>
+              <span className="text-blue">Врач:</span> {item.doctor ? getFullName(item.doctor.user) : null}
+            </div> : null
+        }
         {
           item.positives ?
             <>
