@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import AllowAny, IsAdminUser
 
-from medicine_centre.paginators import StandardPagination
+from medicine_centre.paginators import PaginationBy3
 from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMixin
 from .models import Doctor, Department, Post
 from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializer, \
@@ -12,7 +12,7 @@ from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializ
 
 class SearchDoctorListView(ListAPIView):
     serializer_class = DoctorListSerializer
-    pagination_class = StandardPagination
+    pagination_class = PaginationBy3
 
     def get_queryset(self):
         search_key = self.kwargs['search_key']
@@ -28,7 +28,7 @@ class DoctorViewSet(MultipleSerializerViewSetMixin, MultiplePermissionsViewSetMi
     serializer_permission_classes = (AllowAny,)
     crud_serializer_permission_classes = (IsAdminUser,)
     lookup_field = 'slug'
-    pagination_class = StandardPagination
+    pagination_class = PaginationBy3
 
 
 class PostViewSet(MultiplePermissionsViewSetMixin, viewsets.ModelViewSet):
@@ -49,7 +49,7 @@ class DepartmentViewSet(MultipleSerializerViewSetMixin, MultiplePermissionsViewS
 
 class DoctorByPostListView(ListAPIView):
     serializer_class = DoctorListSerializer
-    pagination_class = StandardPagination
+    pagination_class = PaginationBy3
 
     def get_queryset(self):
         post_pk = self.kwargs['post_pk']

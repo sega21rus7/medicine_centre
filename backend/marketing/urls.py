@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 from .views import NewsViewSet, ArticleViewSet, TagListView, ArticleWithTagView, \
-    ArticleCommentViewSet, PatientReviewViewSet, FeedbackViewSet, SupportQuestionViewSet, \
+    CommentViewSet, PatientReviewViewSet, FeedbackViewSet, SupportQuestionViewSet, \
     ReviewListView, SearchArticleListView, SearchNewsListView, DoctorReviewListView
 
 app_name = 'marketing'
@@ -19,7 +19,7 @@ urlpatterns = [
 router = DefaultRouter()
 router.register(r'api/news', NewsViewSet, basename='news')
 router.register(r'api/articles', ArticleViewSet, basename='articles')
-router.register(r'api/comments', ArticleCommentViewSet, basename='comments')
+router.register(r'api/comments', CommentViewSet, basename='comments')
 router.register(r'api/patient_reviews', PatientReviewViewSet, basename='patient_reviews')
 router.register(r'api/feedback', FeedbackViewSet, basename='feedback')
 router.register(r'api/support', SupportQuestionViewSet, basename='user_support_question')
