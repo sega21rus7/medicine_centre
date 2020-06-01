@@ -17,4 +17,4 @@ class CustomLayout extends Component {
   }
 }
 
-export default withRouter(CustomLayout);
+export default CustomLayout;
