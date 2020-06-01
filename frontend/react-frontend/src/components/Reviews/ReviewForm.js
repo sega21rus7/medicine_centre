@@ -85,7 +85,7 @@ class ReviewForm extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.props.history.push('/lk/reviews');
+          this.props.history.push('/lk/patient_reviews');
           console.log(res.data);
         })
         .catch(err => {
@@ -107,7 +107,7 @@ class ReviewForm extends React.Component {
       axios(options)
         .then(res => {
           console.log(res.data);
-          this.props.history.push('/lk/reviews');
+          this.props.history.push('/lk/patient_reviews');
         })
         .catch(err => {
           console.log(err.response);
@@ -116,9 +116,8 @@ class ReviewForm extends React.Component {
   };
 
   render() {
-    const {doctors} = this.state;
+    const {doctors, selectedValue} = this.state;
     const {isEdit, instance} = this.props;
-    const currentDoctor = 'Выберите врача';
 
     return (
       <div className="AddReviewForm">
@@ -142,10 +141,10 @@ class ReviewForm extends React.Component {
                         required/>
               </Form.Group>
               <Form.Group controlId="formGroupDoctor">
-                <select value={this.state.selectedValue}
+                <select value={selectedValue}
                         className="filter-select"
                         onChange={this.handleDoctorChange}>
-                  <option hidden disabled value={currentDoctor}>{currentDoctor}</option>
+                  <option hidden disabled value={selectedValue}>{selectedValue}</option>
                   {
                     doctors.map((doctor, index) => {
                       return <option value={getFullName(doctor.user)}
