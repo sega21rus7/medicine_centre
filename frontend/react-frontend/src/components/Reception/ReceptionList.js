@@ -129,8 +129,6 @@ class ReceptionList extends React.Component {
                                 onClick={this.doReception}>Записаться</Button>
                     }
                   </td>
-                  <td>
-                  </td>
                 </tr>
               )) :
               <tr>
