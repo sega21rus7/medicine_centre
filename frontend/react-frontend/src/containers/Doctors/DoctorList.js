@@ -80,7 +80,7 @@ class DoctorList extends React.Component {
         <Row>
           {
             isSearchable || isFilterable ?
-              <Col md={3}>
+              <Col md={3} className="mb-2">
                 {
                   isSearchable ?
                     <DoctorSearchForm getData={this.getData}/>
