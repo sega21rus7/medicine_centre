@@ -3,7 +3,7 @@ import {Button, Form} from "react-bootstrap";
 
 class DoctorResetForm extends React.Component {
   handleReset = (event) => {
-    //event.preventDefault();
+    event.preventDefault();
     this.props.getData(1);
   };
 

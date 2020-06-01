@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Form, FormControl} from "react-bootstrap";
+import {withRouter} from "react-router";
 
 class NewsSearchForm extends React.Component {
   handleSearch = (event) => {
@@ -12,7 +13,7 @@ class NewsSearchForm extends React.Component {
   };
 
   handleReset = (event) => {
-    //event.preventDefault();
+    event.preventDefault();
     this.props.getData(1);
   };
 
@@ -34,4 +35,4 @@ class NewsSearchForm extends React.Component {
   }
 }
 
-export default NewsSearchForm;
+export default withRouter(NewsSearchForm);

@@ -12,7 +12,7 @@ class ArticleSearchForm extends React.Component {
   };
 
   handleReset = (event) => {
-    //event.preventDefault();
+    event.preventDefault();
     this.props.getData(1);
   };
 
