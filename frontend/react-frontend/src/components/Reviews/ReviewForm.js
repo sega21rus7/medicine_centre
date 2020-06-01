@@ -1,14 +1,13 @@
 import React from 'react';
 import {Button, ButtonGroup, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
-import ErrorBlock from "../ErrorBlock/ErrorBlock";
 import {getFullName, replaceLineBreaks} from "../../methods";
+import {withRouter} from "react-router";
 
-class AddReviewForm extends React.Component {
+class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: null,
       doctors: [],
       selectedValue: 'Выберите врача',
       selectedValuePk: null,
@@ -62,55 +61,97 @@ class AddReviewForm extends React.Component {
         })
         .catch(err => {
           console.log(err.response);
-          this.setState({errors: err.response});
         })
     }
   };
 
-  render() {
-    const {errors, doctors} = this.state;
-    const {handleUpdate, handleDelete, item} = this.props;
-    if (errors) {
-      var contentError = <ErrorBlock text={errors.content || errors}/>;
+  handleUpdate = (event) => {
+    event.preventDefault();
+    const token = localStorage.getItem('token');
+    const pk = this.props.itemPk;
+    if (token) {
+      const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
+      const elements = event.target.elements;
+      const options = {
+        method: 'PUT',
+        url: url,
+        data: {
+          positives: elements.positives.value,
+          negatives: elements.negatives.value,
+          content: elements.content.value,
+          doctor: this.state.selectedValuePk,
+        },
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then(res => {
+          this.props.history.push('/lk/reviews');
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
     }
+  };
+
+  handleDelete = () => {
+    const token = localStorage.getItem('token');
+    const pk = this.props.match.params.pk;
+    if (token) {
+      const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
+      const options = {
+        method: 'DELETE',
+        url: url,
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then(res => {
+          console.log(res.data);
+          this.props.history.push('/lk/reviews');
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+    }
+  };
+
+  render() {
+    const {doctors} = this.state;
+    const {isEdit, instance} = this.props;
+    const currentDoctor = 'Выберите врача';
 
     return (
       <div className="AddReviewForm">
-        <Form onSubmit={handleUpdate ? handleUpdate : this.handleCreate}>
+        <Form onSubmit={isEdit ? this.handleUpdate : this.handleCreate}>
           <Row>
             <Col sm={12}>
               <Form.Group controlId="formGroupPositives">
               <textarea name="positives"
                         placeholder="Достоинства"
-                        defaultValue={item ? replaceLineBreaks(item.positives) : null}/>
+                        defaultValue={instance ? replaceLineBreaks(instance.positives) : null}/>
               </Form.Group>
               <Form.Group controlId="formGroupNegatives">
               <textarea name="negatives"
                         placeholder="Недостатки"
-                        defaultValue={item ? replaceLineBreaks(item.negatives) : null}/>
+                        defaultValue={instance ? replaceLineBreaks(instance.negatives) : null}/>
               </Form.Group>
               <Form.Group controlId="formGroupContent">
               <textarea name="content"
                         placeholder="Комментарий"
-                        defaultValue={item ? replaceLineBreaks(item.content) : null}
+                        defaultValue={instance ? replaceLineBreaks(instance.content) : null}
                         required/>
-                {contentError}
               </Form.Group>
               <Form.Group controlId="formGroupDoctor">
                 <select value={this.state.selectedValue}
                         className="filter-select"
                         onChange={this.handleDoctorChange}>
-                  <option disabled
-                          hidden
-                          value={item && item.doctor ? item.doctor.pk : 'Выберите врача'}>
-                    {item && item.doctor ? item.doctor.pk : 'Выберите врача'}
-                  </option>
+                  <option value={currentDoctor}>{currentDoctor}</option>
                   {
-                    doctors.map((item, index) => {
-                      return <option value={getFullName(item.user)}
+                    doctors.map((doctor, index) => {
+                      return <option value={getFullName(doctor.user)}
                                      key={index}
-                                     pk={item.pk}>
-                        {getFullName(item.user)}
+                                     pk={doctor.pk}>
+                        {getFullName(doctor.user)}
                       </option>
                     })
                   }
@@ -119,10 +160,10 @@ class AddReviewForm extends React.Component {
             </Col>
           </Row>
           {
-            handleUpdate && handleDelete ?
+            isEdit ?
               <ButtonGroup>
                 <Button type="submit" variant="outline-success">Обновить</Button>
-                <Button variant="outline-danger" onClick={handleDelete}>Удалить</Button>
+                <Button variant="outline-danger" onClick={this.handleDelete}>Удалить</Button>
               </ButtonGroup>
               :
               <Button type="submit" variant="outline-primary" className="btn-user">
@@ -135,4 +176,4 @@ class AddReviewForm extends React.Component {
   };
 }
 
-export default AddReviewForm;
+export default withRouter(ReviewForm);

@@ -1,14 +1,13 @@
 import React from 'react';
 import {Button, Container} from "react-bootstrap";
 import axios from "axios";
-import AddReviewForm from "./AddReviewForm";
+import ReviewForm from "./ReviewForm";
 
-class SupportQuestionEdit extends React.Component {
+class ReviewEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       review: {},
-      token: null,
     }
   }
 
@@ -37,68 +36,17 @@ class SupportQuestionEdit extends React.Component {
     this.props.history.push('/lk/reviews');
   };
 
-  handleUpdate = (event) => {
-    event.preventDefault();
-    const token = localStorage.getItem('token');
-    const pk = this.props.match.params.pk;
-    if (token) {
-      const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
-      const elements = event.target.elements;
-      const options = {
-        method: 'PUT',
-        url: url,
-        data: {
-          positives: elements.positives.value,
-          negatives: elements.negatives.value,
-          content: elements.content.value,
-          doctor: this.state.selectedValuePk,
-        },
-        headers: {'Authorization': `Token ${token}`},
-      };
-      axios(options)
-        .then(res => {
-          this.props.history.push('/lk/reviews');
-          console.log(res.data);
-        })
-        .catch(err => {
-          console.log(err.response);
-        });
-    }
-  };
-
-  handleDelete = () => {
-    const token = this.state.token;
-    const pk = this.props.match.params.pk;
-    if (token) {
-      const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
-      const options = {
-        method: 'DELETE',
-        url: url,
-        headers: {'Authorization': `Token ${token}`},
-      };
-      axios(options)
-        .then(res => {
-          console.log(res.data);
-          this.props.history.push('/lk/reviews');
-        })
-        .catch(err => {
-          console.log(err.response);
-        });
-    }
-  };
-
   render() {
     const {review} = this.state;
-    console.log(review);
 
     return (
       <Container className="ReviewEdit">
         <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
         <div className="mt-4">
           <div className="mt-4">
-            <AddReviewForm item={review}
-                           handleUpdate={this.handleUpdate}
-                           handleDelete={this.handleDelete}/>
+            <ReviewForm instance={review}
+                        isEdit={true}
+                        itemPk={this.props.match.params.pk}/>
           </div>
         </div>
       </Container>
@@ -106,4 +54,4 @@ class SupportQuestionEdit extends React.Component {
   }
 }
 
-export default SupportQuestionEdit;
+export default ReviewEdit;

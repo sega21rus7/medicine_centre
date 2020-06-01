@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Tab, Tabs} from "react-bootstrap";
-import AddReviewForm from "../../components/Reviews/AddReviewForm";
+import ReviewForm from "../../components/Reviews/ReviewForm";
 import ReviewLongList from "./ReviewLongList";
 
 
@@ -17,7 +17,7 @@ class PatientReviews extends React.Component {
           </Tab>
           <Tab eventKey="add" title="Добавить">
             <div className="mt-4">
-              <AddReviewForm/>
+              <ReviewForm/>
             </div>
           </Tab>
         </Tabs>
