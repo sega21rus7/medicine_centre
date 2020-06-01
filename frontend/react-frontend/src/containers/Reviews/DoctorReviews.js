@@ -1,10 +1,15 @@
 import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import ReviewLongList from "./ReviewLongList";
+import {connect} from "react-redux";
 
 
 class DoctorReviews extends React.Component {
   render() {
+    if(!this.props.user){
+      return null;
+    }
+
     return (
       <Container className="DoctorReview">
         <Row>
@@ -19,4 +24,10 @@ class DoctorReviews extends React.Component {
   };
 }
 
-export default DoctorReviews;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+};
+
+export default connect(mapStateToProps, null)(DoctorReviews);

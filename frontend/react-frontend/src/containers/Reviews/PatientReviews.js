@@ -2,10 +2,15 @@ import React from 'react';
 import {Container, Tab, Tabs} from "react-bootstrap";
 import ReviewForm from "../../components/Reviews/ReviewForm";
 import ReviewLongList from "./ReviewLongList";
+import {connect} from "react-redux";
 
 
 class PatientReviews extends React.Component {
   render() {
+    if (!this.props.user) {
+      return null;
+    }
+
     return (
       <Container className="PatientReview">
         <Tabs defaultActiveKey="view" id="tab-patient-reviews">
@@ -26,4 +31,10 @@ class PatientReviews extends React.Component {
   };
 }
 
-export default PatientReviews;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  }
+};
+
+export default connect(mapStateToProps, null)(PatientReviews);
