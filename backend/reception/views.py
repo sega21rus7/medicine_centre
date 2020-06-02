@@ -1,8 +1,11 @@
+import datetime
+
+from django.db.models import Q
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from medicine_centre.paginators import PaginationBy3, PaginationBy10
+from medicine_centre.paginators import PaginationBy10
 from medicine_centre.serializer_mixins import MultipleSerializerViewSetMixin
 from .models import Reception
 from .serializers import ReceptionCreateUpdateDestroySerializer, ReceptionListSerializer
@@ -24,6 +27,10 @@ class ReceptionByDoctorListView(ListAPIView):
     def get_queryset(self):
         doctor_pk = self.kwargs['doctor_pk']
         qs = Reception.objects.filter(doctor_id=doctor_pk).all()
+        # также фильтруем по дате и времени, чтобы не выводить архивные записи
+        qs = qs.filter(Q(date__lte=datetime.date.today()) &
+                       Q(to_time__lte=datetime.datetime.now())
+                       )
         return qs
 
 
@@ -35,6 +42,10 @@ class ReceptionByPatientListView(ListAPIView):
     def get_queryset(self):
         patient_pk = self.kwargs['patient_pk']
         qs = Reception.objects.filter(patient_id=patient_pk).all()
+        # также фильтруем по дате и времени, чтобы не выводить архивные записи
+        qs = qs.filter(Q(date__lte=datetime.date.today()) &
+                       Q(to_time__lte=datetime.datetime.now())
+                       )
         return qs
 
 
@@ -45,6 +56,10 @@ class FreeReceptionListView(ListAPIView):
 
     def get_queryset(self):
         qs = Reception.objects.filter(patient__isnull=True).all()
+        # также фильтруем по дате и времени, чтобы не выводить архивные записи
+        qs = qs.filter(Q(date__lte=datetime.date.today()) &
+                       Q(to_time__lte=datetime.datetime.now())
+                       )
         return qs
 
 
@@ -54,6 +69,3 @@ class FreeReceptionByPostListView(FreeReceptionListView):
         qs = super(FreeReceptionByPostListView, self).get_queryset()
         qs = qs.filter(doctor__posts__id__icontains=post_pk)
         return qs
-
-
-
