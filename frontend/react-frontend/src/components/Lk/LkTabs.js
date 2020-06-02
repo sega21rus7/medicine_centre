@@ -64,7 +64,7 @@ class LkTabs extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.actionCreators.user,
+    user: state.auth.user,
   }
 };
 

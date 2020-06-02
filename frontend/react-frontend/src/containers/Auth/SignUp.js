@@ -41,8 +41,8 @@ class SignUp extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    error: state.actionCreators.error,
-    isRegistered: state.actionCreators.isRegistered,
+    error: state.auth.error,
+    isRegistered: state.auth.isRegistered,
   }
 };
 
