@@ -105,7 +105,8 @@ class ProfileForm extends React.Component {
             <Form.Group controlId="formGroupPhone">
               <Form.Label column="name">Номер телефона</Form.Label>
               <Form.Control className="form-control-user" type="text" name="phone"
-                            defaultValue={user.phone_number}/>
+                            defaultValue={user.phone_number}
+                            required/>
               {phoneError}
             </Form.Group>
           </Col>
@@ -114,19 +115,22 @@ class ProfileForm extends React.Component {
             <Form.Group controlId="formGroupFirstName">
               <Form.Label column="name">Имя</Form.Label>
               <Form.Control className="form-control-user" type="text" name="firstName"
-                            defaultValue={user.first_name}/>
+                            defaultValue={user.first_name}
+                            required/>
               {firstNameError}
             </Form.Group>
             <Form.Group controlId="formGroupLastName">
               <Form.Label column="name">Фамилия</Form.Label>
               <Form.Control className="form-control-user" type="text" name="lastName"
-                            defaultValue={user.last_name}/>
+                            defaultValue={user.last_name}
+                            required/>
               {lastNameError}
             </Form.Group>
             <Form.Group controlId="formGroupMiddleName">
               <Form.Label column="name">Отчество</Form.Label>
               <Form.Control className="form-control-user" type="text" name="middleName"
-                            defaultValue={user.middle_name}/>
+                            defaultValue={user.middle_name}
+                            required/>
               {middleNameError}
             </Form.Group>
           </Col>

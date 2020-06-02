@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Container, Table} from "react-bootstrap";
+import {Alert, Button, Col, Container, Table} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
@@ -17,6 +17,7 @@ class ReceptionList extends React.Component {
       previous: null,
       count: 0,
       paginateCount: 0,
+      error: false,
     };
     this.paginate_by = 10;
   }
@@ -95,7 +96,11 @@ class ReceptionList extends React.Component {
   };
 
   doReception = (event) => {
-    this.sendReceptionRequest(event, this.props.user.patient);
+    const user = this.props.user;
+    if (user.last_name && user.first_name && user.middle_name && user.phone_number)
+      this.sendReceptionRequest(event, user.patient);
+    else
+      this.setState({error: true});
   };
 
   cancelReception = (event) => {
@@ -103,7 +108,7 @@ class ReceptionList extends React.Component {
   };
 
   render() {
-    const {schedule, next, previous, paginateCount} = this.state;
+    const {schedule, next, previous, paginateCount, error} = this.state;
     const {user, isFilterable, specialUrl, isNotAppointable} = this.props;
 
     return (
@@ -118,6 +123,13 @@ class ReceptionList extends React.Component {
             : null
         }
 
+        {
+          error ?
+            <Alert className="mt-2" variant="danger">
+              Вам нужно заполнить ФИО и номер телефона в профиле, чтобы записаться на прием!
+            </Alert>
+            : null
+        }
 
         <Table bordered>
           <thead>
