@@ -4,7 +4,7 @@ from client.serializers import PatientListSerializer
 from lk.serializers import CustomerUserSerializer
 from staff.serializers import DoctorListSerializer
 from .models import News, Tag, Article, ArticleComment, Review, Feedback, SupportQuestion
-from .serializer_fields import CurrentPatientDefault
+from medicine_centre.serializer_fields import CurrentPatientDefault
 
 
 class NewsSerializer(serializers.ModelSerializer):
