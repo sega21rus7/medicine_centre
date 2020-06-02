@@ -3,7 +3,7 @@ import {Button, ButtonGroup, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import {getFullName, replaceLineBreaks} from "../../methods";
 import {withRouter} from "react-router";
-import * as actions from "../../store/actions/reviews/reviews";
+import * as actions from "../../store/actions/reviews/actionCreators";
 import {connect} from "react-redux";
 
 class ReviewForm extends React.Component {

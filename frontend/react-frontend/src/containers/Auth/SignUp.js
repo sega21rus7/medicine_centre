@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, Col, Container, Row} from "react-bootstrap";
 import AlreadySignUpPanel from "../../components/Auth/AlreadySignUpPanel";
 import {connect} from 'react-redux';
-import * as actions from '../../store/actions/auth/auth';
+import * as actions from '../../store/actions/auth/actionCreators';
 import {Redirect} from "react-router";
 import LeftImage from "../../components/Auth/LeftImage";
 import SignUpForm from "../../components/Auth/SignUpForm";
@@ -41,8 +41,8 @@ class SignUp extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    error: state.auth.error,
-    isRegistered: state.auth.isRegistered,
+    error: state.actionCreators.error,
+    isRegistered: state.actionCreators.isRegistered,
   }
 };
 

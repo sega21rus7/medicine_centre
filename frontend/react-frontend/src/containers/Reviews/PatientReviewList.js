@@ -1,7 +1,7 @@
 import React from 'react';
 import ReviewLongList from "./ReviewLongList";
 import {connect} from "react-redux";
-import * as actions from "../../store/actions/reviews/reviews";
+import * as actions from "../../store/actions/reviews/actionCreators";
 
 class PatientReviewList extends React.Component {
   componentDidMount() {

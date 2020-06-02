@@ -3,7 +3,7 @@ import {Container, Row} from "react-bootstrap";
 import axios from "axios";
 import PaginationComponent from "../../components/PaginationComponent";
 import SupportQuestionListItem from "../../components/Support/SupportQuestionListItem";
-import * as actions from "../../store/actions/support/support";
+import * as actions from "../../store/actions/support/actionCreators";
 import {connect} from "react-redux";
 
 class SupportQuestionList extends React.Component {

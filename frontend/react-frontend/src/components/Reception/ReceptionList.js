@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
 import {connect} from "react-redux";
 import {getFullName} from "../../methods";
-import * as actions from "../../store/actions/make_appoinment/make_appoinment";
+import * as actions from "../../store/actions/make_appoinment/actionCreators";
 
 class ReceptionList extends React.Component {
   constructor(props) {
@@ -156,7 +156,7 @@ class ReceptionList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth.user,
+    user: state.actionCreators.user,
   }
 };
 

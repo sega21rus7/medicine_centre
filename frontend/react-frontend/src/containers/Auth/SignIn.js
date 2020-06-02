@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, Col, Container, Dropdown, Row} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import NotSignUpYetPanel from "../../components/Auth/NotSignUpYetPanel";
-import * as actions from '../../store/actions/auth/auth';
+import * as actions from '../../store/actions/auth/actionCreators';
 import {connect} from 'react-redux';
 import {Redirect} from "react-router";
 import LeftImage from "../../components/Auth/LeftImage";
@@ -66,8 +66,8 @@ class SignIn extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    error: state.auth.error,
-    isAuthenticated: state.auth.isAuthenticated,
+    error: state.actionCreators.error,
+    isAuthenticated: state.actionCreators.isAuthenticated,
   }
 };
 

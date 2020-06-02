@@ -2,7 +2,7 @@ import React from 'react';
 import {Redirect} from "react-router-dom";
 import LkRouter from "../../routes/lk_routes";
 import LkLayout from './LkLayout';
-import * as actions from "../../store/actions/auth/auth";
+import * as actions from "../../store/actions/auth/actionCreators";
 import {connect} from "react-redux";
 
 class Lk extends React.Component {
@@ -27,7 +27,7 @@ class Lk extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated,
+    isAuthenticated: state.actionCreators.isAuthenticated,
   }
 };
 

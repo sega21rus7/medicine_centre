@@ -6,8 +6,6 @@ const initialState = {
 };
 
 const setTabActiveValue = (state, action) => {
-  console.log('reducer');
-
   return updateObject(state, {
     tabActiveValue: action.tabActiveValue,
   });

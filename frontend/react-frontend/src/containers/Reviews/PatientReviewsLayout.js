@@ -36,7 +36,7 @@ class PatientReviewsLayout extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth.user,
+    user: state.actionCreators.user,
     tabActiveValue: state.reviews.tabActiveValue,
   }
 };

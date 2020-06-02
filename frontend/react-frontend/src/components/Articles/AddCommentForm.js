@@ -69,7 +69,7 @@ class AddCommentForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated,
+    isAuthenticated: state.actionCreators.isAuthenticated,
   }
 };
 
