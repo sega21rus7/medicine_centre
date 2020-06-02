@@ -28,8 +28,21 @@ class ReceptionByDoctorListView(ListAPIView):
         doctor_pk = self.kwargs['doctor_pk']
         qs = Reception.objects.filter(doctor_id=doctor_pk).all()
         # также фильтруем по дате и времени, чтобы не выводить архивные записи
-        qs = qs.filter(Q(date__lte=datetime.date.today()) &
-                       Q(to_time__lte=datetime.datetime.now())
+        now = datetime.datetime.now()
+        qs = qs.filter(Q(date__gt=now.date()) |
+                       (Q(date=now.date()) & Q(from_time__gt=now.time()))
+                       )
+        return qs
+
+
+class ArchiveReceptionByDoctorListView(ReceptionByDoctorListView):
+    def get_queryset(self):
+        doctor_pk = self.kwargs['doctor_pk']
+        qs = Reception.objects.filter(doctor_id=doctor_pk).all()
+        # выводим архивные записи
+        now = datetime.datetime.now()
+        qs = qs.filter(Q(date__lt=now.date()) |
+                       (Q(date=now.date()) & Q(from_time__lt=now.time()))
                        )
         return qs
 
@@ -43,8 +56,21 @@ class ReceptionByPatientListView(ListAPIView):
         patient_pk = self.kwargs['patient_pk']
         qs = Reception.objects.filter(patient_id=patient_pk).all()
         # также фильтруем по дате и времени, чтобы не выводить архивные записи
-        qs = qs.filter(Q(date__lte=datetime.date.today()) &
-                       Q(to_time__lte=datetime.datetime.now())
+        now = datetime.datetime.now()
+        qs = qs.filter(Q(date__gt=now.date()) |
+                       (Q(date=now.date()) & Q(from_time__gt=now.time()))
+                       )
+        return qs
+
+
+class ArchiveReceptionByPatientListView(ReceptionByPatientListView):
+    def get_queryset(self):
+        patient_pk = self.kwargs['patient_pk']
+        qs = Reception.objects.filter(patient_id=patient_pk).all()
+        # выводим архивные записи
+        now = datetime.datetime.now()
+        qs = qs.filter(Q(date__lt=now.date()) |
+                       (Q(date=now.date()) & Q(from_time__lt=now.time()))
                        )
         return qs
 
@@ -57,8 +83,9 @@ class FreeReceptionListView(ListAPIView):
     def get_queryset(self):
         qs = Reception.objects.filter(patient__isnull=True).all()
         # также фильтруем по дате и времени, чтобы не выводить архивные записи
-        qs = qs.filter(Q(date__lte=datetime.date.today()) &
-                       Q(to_time__lte=datetime.datetime.now())
+        now = datetime.datetime.now()
+        qs = qs.filter(Q(date__gt=now.date()) |
+                       (Q(date=now.date()) & Q(from_time__gt=now.time()))
                        )
         return qs
 

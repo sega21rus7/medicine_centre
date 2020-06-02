@@ -62,16 +62,19 @@ class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
         fields = ('pk', 'patient', 'pub_date', 'last_change_date', 'positives', 'negatives', 'content', 'doctor')
 
     def validate(self, attrs):
-        patient_pk = attrs['patient']
-        doctor_pk = attrs['doctor']
-        reception = Reception.objects.filter(
-            Q(patient_id=patient_pk) &
-            Q(doctor_id=doctor_pk) &
-            Q(date__lte=datetime.date.today()) &
-            Q(to_time__lte=datetime.datetime.now()))
-        if not reception:
-            raise serializers.ValidationError(
-                'Вы не были на приеме у данного врача, поэтому не можете оставить отзыв о его работе.')
+        now = datetime.datetime.now()
+        patient = attrs['patient']
+        doctor = attrs['doctor']
+        if doctor:
+            reception = Reception.objects.filter(
+                Q(patient=patient) &
+                Q(doctor=doctor) &
+                (Q(date__lt=now.date()) |
+                 (Q(date=now.date()) & Q(from_time__lt=now.time())))
+            ).exists()
+            if not reception:
+                raise serializers.ValidationError(
+                    'Вы не были на приеме у данного врача, поэтому не можете оставить отзыв о его работе.')
         return attrs
 
 
