@@ -32,7 +32,7 @@ class MakeAppointmentLayout extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    tabActiveValue: state.reviews.tabActiveValue,
+    tabActiveValue: state.makeAppointment.tabActiveValue,
   }
 };
 

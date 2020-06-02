@@ -1,11 +1,11 @@
 import React from 'react';
 import {Button, Container, Table} from "react-bootstrap";
 import axios from "axios";
-import {Link, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
 import {connect} from "react-redux";
 import {getFullName} from "../../methods";
-import * as actions from "../../store/actions/reviews/reviews";
+import * as actions from "../../store/actions/make_appoinment/make_appoinment";
 
 class ReceptionList extends React.Component {
   constructor(props) {

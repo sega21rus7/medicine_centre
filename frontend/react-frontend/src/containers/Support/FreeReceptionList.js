@@ -1,6 +1,6 @@
 import React from 'react';
 import ReceptionList from "../../components/Reception/ReceptionList";
-import * as actions from "../../store/actions/reviews/reviews";
+import * as actions from "../../store/actions/make_appoinment/make_appoinment";
 import {connect} from "react-redux";
 
 class FreeReceptionList extends React.Component {

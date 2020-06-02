@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Nav, Tab} from "react-bootstrap";
+import {Nav, Tab} from "react-bootstrap";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
@@ -37,7 +37,7 @@ class PatientReviewsLayout extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    tabActiveValue : state.reviews.tabActiveValue,
+    tabActiveValue: state.reviews.tabActiveValue,
   }
 };
 

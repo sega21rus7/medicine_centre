@@ -59,7 +59,6 @@ class ReviewForm extends React.Component {
       };
       axios(options)
         .then(res => {
-          this.props.setTabActiveValue('view');
           this.props.history.push('/lk/patient_reviews/view');
           console.log(res);
         })
