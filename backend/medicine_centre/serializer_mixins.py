@@ -1,6 +1,3 @@
-from rest_framework.permissions import AllowAny
-
-
 class MultipleSerializerViewSetMixin:
     serializer_class = None
     crud_serializer_class = None
