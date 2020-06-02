@@ -32,6 +32,9 @@ class ReceptionList extends React.Component {
       const pk = this.props.user.patient;
       let url = specialUrl ? specialUrl :
         `http://localhost:8000/reception/api/receptions_by_patient/${pk}`;
+      if(this.props.specialUrlUsesPk){
+        url = `${specialUrl}/${pk}`;
+      }
       url = `${url}?page=${page}`;
       const options = {
         method: 'GET',
@@ -101,12 +104,12 @@ class ReceptionList extends React.Component {
 
   render() {
     const {schedule, next, previous, paginateCount} = this.state;
-    const {user, specialUrl} = this.props;
+    const {user, isFilterable, specialUrl} = this.props;
 
     return (
       <Container className="ReceptionList">
         {
-          specialUrl ?
+          isFilterable ?
             <Col md={3}>
               <DoctorFilterForm getData={this.getSchedule}
                                 specialUrl={specialUrl}

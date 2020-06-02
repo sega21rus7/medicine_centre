@@ -22,6 +22,11 @@ class MakeAppointmentLayout extends React.Component {
                 Свободные записи
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item key="archive">
+              <Nav.Link eventKey="archive" as={Link} to="/lk/make_appointment/archive">
+                Архив моих записей
+              </Nav.Link>
+            </Nav.Item>
           </Nav>
           {this.props.children}
         </Tab.Container>

@@ -3,16 +3,15 @@ import ReceptionList from "../../components/Reception/ReceptionList";
 import * as actions from "../../store/actions/make_appoinment/actionCreators";
 import {connect} from "react-redux";
 
-class FreeReceptionList extends React.Component {
+class ArchiveReceptionList extends React.Component {
   componentDidMount() {
-    this.props.setTabActiveValue('free');
+    this.props.setTabActiveValue('archive');
   }
 
   render() {
     return (
-      <ReceptionList history={this.props.history}
-                     specialUrl={'http://localhost:8000/reception/api/free_receptions/'}
-                     isFilterable={true}/>
+      <ReceptionList specialUrl={'http://localhost:8000/reception/api/archive_receptions_by_patient/'}
+                     specialUrlUsesPk={true}/>
     )
   }
 }
@@ -23,4 +22,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(null, mapDispatchToProps)(FreeReceptionList);
+export default connect(null, mapDispatchToProps)(ArchiveReceptionList);
