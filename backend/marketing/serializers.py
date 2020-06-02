@@ -1,10 +1,14 @@
+import datetime
+
+from django.db.models import Q
 from rest_framework import serializers
 
 from client.serializers import PatientListSerializer
 from lk.serializers import CustomerUserSerializer
+from medicine_centre.serializer_fields import CurrentPatientDefault
+from reception.models import Reception
 from staff.serializers import DoctorListSerializer
 from .models import News, Tag, Article, ArticleComment, Review, Feedback, SupportQuestion
-from medicine_centre.serializer_fields import CurrentPatientDefault
 
 
 class NewsSerializer(serializers.ModelSerializer):
@@ -56,6 +60,19 @@ class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ('pk', 'patient', 'pub_date', 'last_change_date', 'positives', 'negatives', 'content', 'doctor')
+
+    def validate(self, attrs):
+        patient_pk = attrs['patient']
+        doctor_pk = attrs['doctor']
+        reception = Reception.objects.filter(
+            Q(patient_id=patient_pk) &
+            Q(doctor_id=doctor_pk) &
+            Q(date__lte=datetime.date.today()) &
+            Q(to_time__lte=datetime.datetime.now()))
+        if not reception:
+            raise serializers.ValidationError(
+                'Вы не были на приеме у данного врача, поэтому не можете оставить отзыв о его работе.')
+        return attrs
 
 
 class ReviewListSerializer(ReviewCreateUpdateDestroySerializer):

@@ -5,6 +5,7 @@ import {getFullName, replaceLineBreaks} from "../../methods";
 import {withRouter} from "react-router";
 import * as actions from "../../store/actions/reviews/actionCreators";
 import {connect} from "react-redux";
+import ErrorBlock from "../ErrorBlock/ErrorBlock";
 
 class ReviewForm extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class ReviewForm extends React.Component {
       doctors: [],
       selectedValue: 'Выберите врача',
       selectedValuePk: null,
+      errors: [],
     }
   };
 
@@ -63,6 +65,7 @@ class ReviewForm extends React.Component {
           console.log(res);
         })
         .catch(err => {
+          this.setState({errors: err.response.data.non_field_errors});
           console.log(err.response);
         })
     }
@@ -119,7 +122,7 @@ class ReviewForm extends React.Component {
   };
 
   render() {
-    const {doctors, selectedValue} = this.state;
+    const {doctors, selectedValue, errors} = this.state;
     const {isEdit, instance} = this.props;
 
     return (
@@ -161,6 +164,7 @@ class ReviewForm extends React.Component {
               </Form.Group>
             </Col>
           </Row>
+          <ErrorBlock text={errors}/>
           {
             isEdit ?
               <ButtonGroup>
