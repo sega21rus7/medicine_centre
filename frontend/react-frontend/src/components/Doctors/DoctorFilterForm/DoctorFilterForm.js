@@ -65,17 +65,18 @@ class DoctorFilterForm extends React.Component {
         <div className="text-center text-blue mb-2">Фильтр</div>
         <Form onSubmit={this.handleFilter}>
           <Form.Group controlId="formGroupFilter">
-            <select value={selectedValue}
-                    className="filter-select"
-                    onChange={this.handleChange}
-                    required>
+            <Form.Control as="select"
+                          value={selectedValue}
+                          className="filter-select"
+                          onChange={this.handleChange}
+                          required>
               <option disabled hidden value={selectedValue}>{selectedValue}</option>
               {
                 posts.map((item, index) => (
                   <option value={item.name} key={index} pk={item.pk}>{item.name}</option>
                 ))
               }
-            </select>
+            </Form.Control>
           </Form.Group>
           <Button type="submit" variant="outline-success" block>Применить</Button>
           <Button variant="outline-danger" onClick={this.handleReset} block>Сброс</Button>

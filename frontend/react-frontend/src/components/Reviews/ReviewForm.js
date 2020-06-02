@@ -131,25 +131,29 @@ class ReviewForm extends React.Component {
           <Row>
             <Col sm={12}>
               <Form.Group controlId="formGroupPositives">
-              <textarea name="positives"
-                        placeholder="Достоинства"
-                        defaultValue={instance ? replaceLineBreaks(instance.positives) : null}/>
+                <Form.Control as="textarea"
+                              name="positives"
+                              placeholder="Достоинства"
+                              defaultValue={instance ? replaceLineBreaks(instance.positives) : null}/>
               </Form.Group>
               <Form.Group controlId="formGroupNegatives">
-              <textarea name="negatives"
-                        placeholder="Недостатки"
-                        defaultValue={instance ? replaceLineBreaks(instance.negatives) : null}/>
+                <Form.Control as="textarea"
+                              name="negatives"
+                              placeholder="Недостатки"
+                              defaultValue={instance ? replaceLineBreaks(instance.negatives) : null}/>
               </Form.Group>
               <Form.Group controlId="formGroupContent">
-              <textarea name="content"
-                        placeholder="Комментарий"
-                        defaultValue={instance ? replaceLineBreaks(instance.content) : null}
-                        required/>
+                <Form.Control as="textarea"
+                              name="content"
+                              placeholder="Комментарий"
+                              defaultValue={instance ? replaceLineBreaks(instance.content) : null}
+                              required/>
               </Form.Group>
               <Form.Group controlId="formGroupDoctor">
-                <select value={selectedValue}
-                        className="filter-select"
-                        onChange={this.handleDoctorChange}>
+                <Form.Control as="select"
+                              value={selectedValue}
+                              className="filter-select"
+                              onChange={this.handleDoctorChange}>
                   <option hidden disabled value={selectedValue}>{selectedValue}</option>
                   {
                     doctors.map((doctor, index) => {
@@ -160,7 +164,7 @@ class ReviewForm extends React.Component {
                       </option>
                     })
                   }
-                </select>
+                </Form.Control>
               </Form.Group>
             </Col>
           </Row>

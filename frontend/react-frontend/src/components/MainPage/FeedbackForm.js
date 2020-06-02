@@ -47,12 +47,11 @@ class FeedbackForm extends React.Component {
     }
 
     return (
-      <Form className="user" onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <Row>
           <Col sm={6}>
             <Form.Group controlId="formGroupName">
-              <Form.Control className="form-control-user"
-                            type="text"
+              <Form.Control type="text"
                             name="name"
                             placeholder="Имя"
                             required/>
@@ -73,9 +72,10 @@ class FeedbackForm extends React.Component {
           </Col>
         </Row>
         <Form.Group controlId="formGroupContent">
-          <textarea name="content"
-                    placeholder="Сообщение"
-                    required/>
+          <Form.Control as="textarea"
+                        name="content"
+                        placeholder="Сообщение"
+                        required/>
           {contentError}
         </Form.Group>
         {nonFieldErrors}

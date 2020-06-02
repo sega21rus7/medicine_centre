@@ -52,9 +52,10 @@ class AddCommentForm extends React.Component {
       <Container className="AddComment">
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formGroupContent">
-            <textarea name="content"
-                      placeholder="Сообщение"
-                      required/>
+            <Form.Control as="textarea"
+                          name="content"
+                          placeholder="Сообщение"
+                          required/>
             {contentError}
           </Form.Group>
           <Button type="submit" variant="primary">

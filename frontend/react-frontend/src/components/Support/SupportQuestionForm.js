@@ -85,10 +85,11 @@ class SupportQuestionForm extends React.Component {
         <Row>
           <Col sm={12}>
             <Form.Group controlId="formGroupContent">
-              <textarea name="content"
-                        placeholder="Сообщение"
-                        defaultValue={instance ? replaceLineBreaks(instance.content) : null}
-                        required/>
+              <Form.Control as="textarea"
+                            name="content"
+                            placeholder="Сообщение"
+                            defaultValue={instance ? replaceLineBreaks(instance.content) : null}
+                            required/>
             </Form.Group>
           </Col>
         </Row>
