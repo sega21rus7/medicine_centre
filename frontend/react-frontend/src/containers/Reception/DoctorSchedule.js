@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Container, Table} from "react-bootstrap";
 import {connect} from "react-redux";
 import {getFullName} from "../../methods";
+import {Link} from "react-router-dom";
 
 class DoctorSchedule extends React.Component {
   constructor(props) {
@@ -45,6 +46,9 @@ class DoctorSchedule extends React.Component {
         <Table bordered>
           <thead>
           <tr>
+            <th>Врач</th>
+            <th>Кабинет</th>
+            <th>Этаж</th>
             <th>Дата</th>
             <th>Время</th>
             <th>Пациент</th>
@@ -54,6 +58,13 @@ class DoctorSchedule extends React.Component {
           {
             schedule ? schedule.map((item, index) => (
               <tr key={index}>
+                <td>
+                  <Link to={'/doctor/' + item.doctor.slug}>
+                    {getFullName(item.doctor.user)}
+                  </Link>
+                </td>
+                <td>{item.doctor.office.number}</td>
+                <td>{item.doctor.office.floor}</td>
                 <td>{item.date}</td>
                 <td>{item.from_time} - {item.to_time}</td>
                 <td>{item.patient ? getFullName(item.patient.user) : '-'}</td>
