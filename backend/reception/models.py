@@ -14,7 +14,7 @@ class Reception(models.Model):
     class Meta:
         verbose_name = 'Прием'
         verbose_name_plural = 'Приемы'
-        ordering = ('-date',)
+        ordering = ('-date', '-from_time')
 
     def __str__(self):
         return 'Врач: %s. Пациент: %s. Дата: %s. Время: %s - %s' % (
