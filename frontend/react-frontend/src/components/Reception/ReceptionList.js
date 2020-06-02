@@ -75,13 +75,20 @@ class ReceptionList extends React.Component {
       axios(options)
         .then((res) => {
           console.log(res.data);
+          this.redirectAfterReceptionRequest();
         })
         .catch(err => {
           console.log(err.response);
         });
     }
-    this.getSchedule(1, this.props.specialUrl);
   }
+
+  redirectAfterReceptionRequest = () => {
+    if (this.props.tabActiveValue === 'my')
+      this.props.history.push('/lk/make_appointment/free');
+    else
+      this.props.history.push('/lk/make_appointment/my');
+  };
 
   doReception = (event) => {
     this.sendReceptionRequest(event, this.props.user.patient);
@@ -157,6 +164,7 @@ class ReceptionList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
+    tabActiveValue: state.makeAppointment.tabActiveValue,
   }
 };
 

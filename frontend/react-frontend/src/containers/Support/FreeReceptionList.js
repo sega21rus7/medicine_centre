@@ -10,7 +10,8 @@ class FreeReceptionList extends React.Component {
 
   render() {
     return (
-      <ReceptionList specialUrl={'http://localhost:8000/reception/api/free_receptions/'}/>
+      <ReceptionList history={this.props.history}
+                     specialUrl={'http://localhost:8000/reception/api/free_receptions/'}/>
     )
   }
 }
