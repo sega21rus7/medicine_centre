@@ -108,6 +108,8 @@ class ReceptionList extends React.Component {
           <thead>
           <tr>
             <th>Врач</th>
+            <th>Кабинет</th>
+            <th>Этаж</th>
             <th>Дата</th>
             <th>Время</th>
             <th>Пациент</th>
@@ -123,6 +125,8 @@ class ReceptionList extends React.Component {
                       {getFullName(item.doctor.user)}
                     </Link>
                   </td>
+                  <td>{item.doctor.office.number}</td>
+                  <td>{item.doctor.office.floor}</td>
                   <td>{item.date}</td>
                   <td>{item.from_time} - {item.to_time}</td>
                   <td>{item.patient ? getFullName(item.patient.user) : '-'}</td>
