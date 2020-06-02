@@ -88,7 +88,8 @@ class DoctorList extends React.Component {
                 }
                 {
                   isFilterable ?
-                    <DoctorFilterForm getData={this.getData}/>
+                    <DoctorFilterForm getData={this.getData}
+                                      postFilterUrl={'http://localhost:8000/staff/api/doctors_by_post/'}/>
                     : null
                 }
               </Col>

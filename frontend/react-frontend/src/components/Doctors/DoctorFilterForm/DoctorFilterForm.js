@@ -34,7 +34,7 @@ class DoctorFilterForm extends React.Component {
     if (pk) {
       this.props.getData(
         1,
-        `http://localhost:8000/staff/api/doctors_by_post/${pk}`);
+        `${this.props.postFilterUrl}${pk}`);
     }
   };
 
@@ -51,7 +51,7 @@ class DoctorFilterForm extends React.Component {
   handleReset = (event) => {
     event.preventDefault();
     this.setState({selectedValue: 'Должность'});
-    this.props.getData(1);
+    this.props.getData(1, this.props.specialUrl);
   };
 
   render() {

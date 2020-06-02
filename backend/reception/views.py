@@ -46,3 +46,14 @@ class FreeReceptionListView(ListAPIView):
     def get_queryset(self):
         qs = Reception.objects.filter(patient__isnull=True).all()
         return qs
+
+
+class FreeReceptionByPostListView(FreeReceptionListView):
+    def get_queryset(self):
+        post_pk = self.kwargs['post_pk']
+        qs = super(FreeReceptionByPostListView, self).get_queryset()
+        qs = qs.filter(doctor__posts__id__icontains=post_pk)
+        return qs
+
+
+

@@ -1,11 +1,12 @@
 import React from 'react';
-import {Button, Container, Table} from "react-bootstrap";
+import {Button, Col, Container, Table} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
 import {connect} from "react-redux";
 import {getFullName} from "../../methods";
 import * as actions from "../../store/actions/make_appoinment/actionCreators";
+import DoctorFilterForm from "../Doctors/DoctorFilterForm/DoctorFilterForm";
 
 class ReceptionList extends React.Component {
   constructor(props) {
@@ -104,6 +105,17 @@ class ReceptionList extends React.Component {
 
     return (
       <Container className="ReceptionList">
+        {
+          specialUrl ?
+            <Col md={3}>
+              <DoctorFilterForm getData={this.getSchedule}
+                                specialUrl={specialUrl}
+                                postFilterUrl={'http://localhost:8000/reception/api/free_receptions_by_post/'}/>
+            </Col>
+            : null
+        }
+
+
         <Table bordered>
           <thead>
           <tr>
