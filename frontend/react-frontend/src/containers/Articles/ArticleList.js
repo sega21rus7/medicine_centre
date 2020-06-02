@@ -73,9 +73,7 @@ class ArticleList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <Row>
-          <h3 className="orange-caption-left">Статьи</h3>
-        </Row>
+        <h3 className="orange-caption-left">Статьи</h3>
         <Row>
           {
             isSearchable ?

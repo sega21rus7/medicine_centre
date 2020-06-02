@@ -71,9 +71,7 @@ class NewsList extends React.Component {
 
     return (
       <Container className="mt-4">
-        <Row>
-          <h3 className="orange-caption-left">Новости</h3>
-        </Row>
+        <h3 className="orange-caption-left">Новости</h3>
         <Row>
           {
             isSearchable ?
