@@ -32,8 +32,8 @@ class ReceptionList extends React.Component {
       const pk = this.props.user.patient;
       let url = specialUrl ? specialUrl :
         `http://localhost:8000/reception/api/receptions_by_patient/${pk}`;
-      if(this.props.specialUrlUsesPk){
-        url = `${specialUrl}/${pk}`;
+      if (this.props.specialUrlUsesPk) {
+        url = `${specialUrl}${pk}`;
       }
       url = `${url}?page=${page}`;
       const options = {
@@ -104,7 +104,7 @@ class ReceptionList extends React.Component {
 
   render() {
     const {schedule, next, previous, paginateCount} = this.state;
-    const {user, isFilterable, specialUrl} = this.props;
+    const {user, isFilterable, specialUrl, isAppointable} = this.props;
 
     return (
       <Container className="ReceptionList">
@@ -128,7 +128,9 @@ class ReceptionList extends React.Component {
             <th>Дата</th>
             <th>Время</th>
             <th>Пациент</th>
-            <th>Запись</th>
+            {
+              isAppointable ? <th>Запись</th> : null
+            }
           </tr>
           </thead>
           <tbody>
@@ -145,18 +147,22 @@ class ReceptionList extends React.Component {
                   <td>{item.date}</td>
                   <td>{item.from_time} - {item.to_time}</td>
                   <td>{item.patient ? getFullName(item.patient.user) : '-'}</td>
-                  <td>
-                    {
-                      item.patient && user.pk === item.patient.user.pk ?
-                        <Button variant="outline-danger"
-                                pk={item.pk}
-                                onClick={this.cancelReception}>Отменить</Button>
-                        :
-                        <Button variant="outline-success"
-                                pk={item.pk}
-                                onClick={this.doReception}>Записаться</Button>
-                    }
-                  </td>
+                  {
+                    isAppointable ?
+                      <td>
+                        {
+                          item.patient && user.pk === item.patient.user.pk ?
+                            <Button variant="outline-danger"
+                                    pk={item.pk}
+                                    onClick={this.cancelReception}>Отменить</Button>
+                            :
+                            <Button variant="outline-success"
+                                    pk={item.pk}
+                                    onClick={this.doReception}>Записаться</Button>
+                        }
+                      </td>
+                      : null
+                  }
                 </tr>
               )) :
               <tr>
