@@ -104,7 +104,7 @@ class ReceptionList extends React.Component {
 
   render() {
     const {schedule, next, previous, paginateCount} = this.state;
-    const {user, isFilterable, specialUrl, isAppointable} = this.props;
+    const {user, isFilterable, specialUrl, isNotAppointable} = this.props;
 
     return (
       <Container className="ReceptionList">
@@ -129,7 +129,7 @@ class ReceptionList extends React.Component {
             <th>Время</th>
             <th>Пациент</th>
             {
-              isAppointable ? <th>Запись</th> : null
+              !isNotAppointable ? <th>Запись</th> : null
             }
           </tr>
           </thead>
@@ -148,7 +148,7 @@ class ReceptionList extends React.Component {
                   <td>{item.from_time} - {item.to_time}</td>
                   <td>{item.patient ? getFullName(item.patient.user) : '-'}</td>
                   {
-                    isAppointable ?
+                    !isNotAppointable ?
                       <td>
                         {
                           item.patient && user.pk === item.patient.user.pk ?

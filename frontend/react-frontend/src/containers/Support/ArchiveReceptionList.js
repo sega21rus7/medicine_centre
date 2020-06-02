@@ -11,7 +11,8 @@ class ArchiveReceptionList extends React.Component {
   render() {
     return (
       <ReceptionList specialUrl={'http://localhost:8000/reception/api/archive_receptions_by_patient/'}
-                     specialUrlUsesPk={true}/>
+                     specialUrlUsesPk={true}
+                     isNotAppointable={true}/>
     )
   }
 }
