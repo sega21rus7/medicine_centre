@@ -50,7 +50,10 @@ class DoctorFilterForm extends React.Component {
 
   handleReset = (event) => {
     event.preventDefault();
-    this.setState({selectedValue: 'Должность'});
+    this.setState({
+      selectedValue: 'Должность',
+      selectedValuePk: null,
+    });
     this.props.getData(1, this.props.specialUrl);
   };
 
