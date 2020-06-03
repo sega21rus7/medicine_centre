@@ -46,7 +46,6 @@ class ProfileForm extends React.Component {
       };
       axios(options)
         .then(res => {
-          console.log(res);
           this.setState({
             success: true,
             errors: null,
@@ -54,7 +53,6 @@ class ProfileForm extends React.Component {
           this.props.getUser();
         })
         .catch(err => {
-          console.log(err.response);
           this.setState({
             success: false,
             errors: err.response.data,

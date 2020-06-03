@@ -27,12 +27,10 @@ class AddCommentForm extends React.Component {
       };
       axios(options)
         .then(response => {
-          console.log(response.data);
           this.setState({errors: null});
           this.props.getArticle();
         })
         .catch(error => {
-          console.log(error.response.data);
           this.setState({errors: error.response.data});
         });
     }

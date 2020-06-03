@@ -20,10 +20,10 @@ class DoctorPost extends React.Component {
     axios.get(`http://localhost:8000/staff/api/posts/${this.props.match.params.pk}`)
       .then(response => {
         this.setState({doctorPost: response.data});
-        console.log(response.data);
+
       })
       .catch(err => {
-        console.log(err.response);
+
       })
   };
 

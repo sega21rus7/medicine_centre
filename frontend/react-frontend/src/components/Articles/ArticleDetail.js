@@ -20,7 +20,6 @@ class ArticleDetail extends React.Component {
         this.setState({
           article: response.data
         });
-        console.log(response.data);
       })
   };
 

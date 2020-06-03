@@ -31,11 +31,10 @@ export const getUser = () => {
       };
       axios(options)
         .then(response => {
-          console.log(response.data);
           dispatch(getUserSuccess(response.data));
         })
         .catch(error => {
-          console.log(error.response);
+
         });
     }
   }

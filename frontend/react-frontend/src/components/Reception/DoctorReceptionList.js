@@ -42,7 +42,6 @@ class DoctorReceptionList extends React.Component {
             count: res.data.count,
             schedule: res.data.results,
           });
-          console.log(res.data.results);
         })
         .then(() => {
           this.setState({
@@ -50,7 +49,7 @@ class DoctorReceptionList extends React.Component {
           });
         })
         .catch(err => {
-          console.log(err.response);
+
         });
     }
   };

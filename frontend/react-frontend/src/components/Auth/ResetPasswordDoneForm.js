@@ -27,7 +27,6 @@ class ResetPasswordDoneForm extends React.Component {
         this.setState({success: res.data.detail});
       })
       .catch(err => {
-        console.log(err.response);
         this.setState({errors: err.response.data});
       })
   };

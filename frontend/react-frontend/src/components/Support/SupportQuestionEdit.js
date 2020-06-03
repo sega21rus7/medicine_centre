@@ -27,10 +27,9 @@ class SupportQuestionEdit extends React.Component {
             question: res.data,
             token: token,
           });
-          console.log(res.data);
         })
         .catch(err => {
-          console.log(err.response);
+
         });
     }
   };

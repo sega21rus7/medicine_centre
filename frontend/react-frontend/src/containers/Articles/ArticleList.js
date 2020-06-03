@@ -37,7 +37,6 @@ class ArticleList extends React.Component {
           previous: response.data.previous,
           count: response.data.count,
         });
-        console.log(response.data);
       })
       .then(() => {
         this.setState({

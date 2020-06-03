@@ -24,10 +24,9 @@ class ReviewEdit extends React.Component {
       axios(options)
         .then(res => {
           this.setState({review: res.data});
-          console.log(res.data);
         })
         .catch(err => {
-          console.log(err.response);
+
         });
     }
   };

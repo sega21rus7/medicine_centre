@@ -19,7 +19,6 @@ class PaginationComponent extends React.Component {
   };
 
   paginate = event => {
-    // console.log(event.target.getAttribute('value'));
     const page = event.target.getAttribute('value') ||
       event.target.parentElement.getAttribute('value');
     this.setState({activePage: Number(page)}, () => {

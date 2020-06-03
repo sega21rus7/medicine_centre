@@ -50,7 +50,7 @@ class PatientReceptionList extends React.Component {
             count: res.data.count,
             schedule: res.data.results,
           });
-          console.log(res.data.results);
+
         })
         .then(() => {
           this.setState({
@@ -58,7 +58,7 @@ class PatientReceptionList extends React.Component {
           });
         })
         .catch(err => {
-          console.log(err.response);
+
         });
     }
   };
@@ -79,11 +79,11 @@ class PatientReceptionList extends React.Component {
       };
       axios(options)
         .then((res) => {
-          console.log(res.data);
+
           this.redirectAfterReceptionRequest();
         })
         .catch(err => {
-          console.log(err.response);
+
         });
     }
   }

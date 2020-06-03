@@ -21,7 +21,6 @@ class DoctorDetail extends React.Component {
         this.setState({
           doctor: response.data
         });
-        console.log(response.data);
       })
   }
 

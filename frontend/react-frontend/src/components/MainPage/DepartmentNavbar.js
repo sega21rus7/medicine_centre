@@ -17,7 +17,6 @@ class DepartmentNavbar extends React.Component {
         this.setState({
           departments: response.data
         });
-        console.log(response.data);
       })
   }
 

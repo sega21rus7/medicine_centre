@@ -26,10 +26,9 @@ class ReviewForm extends React.Component {
     axios.get('http://localhost:8000/staff/api/doctors_choice/')
       .then(response => {
         this.setState({doctors: response.data});
-        console.log(response.data);
       })
       .catch(err => {
-        console.log(err.response);
+
       })
   };
 
@@ -62,11 +61,10 @@ class ReviewForm extends React.Component {
       axios(options)
         .then(res => {
           this.props.history.push('/lk/patient_reviews/view');
-          console.log(res);
         })
         .catch(err => {
           this.setState({errors: err.response.data.non_field_errors});
-          console.log(err.response);
+
         })
     }
   };
@@ -92,10 +90,9 @@ class ReviewForm extends React.Component {
       axios(options)
         .then(res => {
           this.props.history.push('/lk/patient_reviews/view');
-          console.log(res.data);
         })
         .catch(err => {
-          console.log(err.response);
+
         });
     }
   };
@@ -112,11 +109,10 @@ class ReviewForm extends React.Component {
       };
       axios(options)
         .then(res => {
-          console.log(res.data);
           this.props.history.push('/lk/patient_reviews/view');
         })
         .catch(err => {
-          console.log(err.response);
+
         });
     }
   };

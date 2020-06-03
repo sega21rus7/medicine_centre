@@ -21,10 +21,9 @@ class DoctorFilterForm extends React.Component {
     axios.get('http://localhost:8000/staff/api/posts/')
       .then(response => {
         this.setState({posts: response.data});
-        console.log(response.data);
       })
       .catch(err => {
-        console.log(err.response);
+
       })
   };
 

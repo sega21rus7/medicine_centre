@@ -23,11 +23,9 @@ class FeedbackForm extends React.Component {
       content: elements.content.value,
     })
       .then(res => {
-        console.log(res);
         this.setState({success: true});
       })
       .catch(err => {
-        console.log(err.response);
         this.setState({errors: err.response.data});
       })
   };
