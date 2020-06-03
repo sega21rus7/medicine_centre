@@ -1,9 +1,9 @@
 import React from 'react';
-import ReceptionList from "../../components/Reception/ReceptionList";
+import ReceptionList from "../../components/Reception/PatientReceptionList";
 import * as actions from "../../store/actions/make_appoinment/actionCreators";
 import {connect} from "react-redux";
 
-class FreeReceptionList extends React.Component {
+class PatientFreeReceptionList extends React.Component {
   componentDidMount() {
     this.props.setTabActiveValue('free');
   }
@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(null, mapDispatchToProps)(FreeReceptionList);
+export default connect(null, mapDispatchToProps)(PatientFreeReceptionList);

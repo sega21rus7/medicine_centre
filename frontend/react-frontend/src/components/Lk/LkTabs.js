@@ -13,7 +13,7 @@ class LkTabs extends React.Component {
 
         <Nav.Item key="0" className="nav-item-bg-info">
           <Nav.Link eventKey="0" as={Link}
-                    to={isPatient ? '/lk/make_appointment/my' : '/lk/schedule'}>
+                    to={isPatient ? '/lk/make_appointment/my' : '/lk/doctor_schedule/my'}>
             {
               isPatient ?
                 'Записаться на прием'

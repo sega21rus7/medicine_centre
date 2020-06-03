@@ -1,8 +1,8 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import ReceptionList from "../components/Reception/ReceptionList";
-import FreeReceptionList from "../containers/Support/FreeReceptionList";
-import ArchiveReceptionList from "../containers/Support/ArchiveReceptionList";
+import ReceptionList from "../components/Reception/PatientReceptionList";
+import FreeReceptionList from "../containers/Reception/PatientFreeReceptionList";
+import ArchiveReceptionList from "../containers/Reception/PatientArchiveReceptionList";
 
 const MakeAppointmentRouter = () => (
   <div>

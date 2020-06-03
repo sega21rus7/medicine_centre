@@ -8,7 +8,7 @@ import {getFullName} from "../../methods";
 import * as actions from "../../store/actions/make_appoinment/actionCreators";
 import DoctorFilterForm from "../Doctors/DoctorFilterForm/DoctorFilterForm";
 
-class ReceptionList extends React.Component {
+class PatientReceptionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -112,7 +112,7 @@ class ReceptionList extends React.Component {
     const {user, isFilterable, specialUrl, isNotAppointable} = this.props;
 
     return (
-      <Container className="ReceptionList">
+      <Container className="PatientReceptionList">
         {
           isFilterable ?
             <Col md={3}>
@@ -148,38 +148,35 @@ class ReceptionList extends React.Component {
           <tbody>
           {
             schedule ? schedule.map((item, index) => (
-                <tr key={index}>
-                  <td>
-                    <Link to={'/doctor/' + item.doctor.slug}>
-                      {getFullName(item.doctor.user)}
-                    </Link>
-                  </td>
-                  <td>{item.doctor.office.number}</td>
-                  <td>{item.doctor.office.floor}</td>
-                  <td>{item.date}</td>
-                  <td>{item.from_time} - {item.to_time}</td>
-                  <td>{item.patient ? getFullName(item.patient.user) : '-'}</td>
-                  {
-                    !isNotAppointable ?
-                      <td>
-                        {
-                          item.patient && user.pk === item.patient.user.pk ?
-                            <Button variant="outline-danger"
-                                    pk={item.pk}
-                                    onClick={this.cancelReception}>Отменить</Button>
-                            :
-                            <Button variant="outline-success"
-                                    pk={item.pk}
-                                    onClick={this.doReception}>Записаться</Button>
-                        }
-                      </td>
-                      : null
-                  }
-                </tr>
-              )) :
-              <tr>
-                <td>Нет подходящих приемов. Убедитесь в правильности выбора фильтра.</td>
+              <tr key={index}>
+                <td>
+                  <Link to={'/doctor/' + item.doctor.slug}>
+                    {getFullName(item.doctor.user)}
+                  </Link>
+                </td>
+                <td>{item.doctor.office.number}</td>
+                <td>{item.doctor.office.floor}</td>
+                <td>{item.date}</td>
+                <td>{item.from_time} - {item.to_time}</td>
+                <td>{item.patient ? getFullName(item.patient.user) : '-'}</td>
+                {
+                  !isNotAppointable ?
+                    <td>
+                      {
+                        item.patient && user.pk === item.patient.user.pk ?
+                          <Button variant="outline-danger"
+                                  pk={item.pk}
+                                  onClick={this.cancelReception}>Отменить</Button>
+                          :
+                          <Button variant="outline-success"
+                                  pk={item.pk}
+                                  onClick={this.doReception}>Записаться</Button>
+                      }
+                    </td>
+                    : null
+                }
               </tr>
+            )) : null
           }
           </tbody>
         </Table>
@@ -211,4 +208,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReceptionList);
+export default connect(mapStateToProps, mapDispatchToProps)(PatientReceptionList);
