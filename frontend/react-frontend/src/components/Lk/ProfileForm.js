@@ -83,7 +83,7 @@ class ProfileForm extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Row>
-          <Col sm={4}>
+          <Col md={4}>
             <Form.Group controlId="formGroupLogin">
               <Form.Label column="name">Логин</Form.Label>
               <Form.Control className="form-control-user"
@@ -111,7 +111,7 @@ class ProfileForm extends React.Component {
             </Form.Group>
           </Col>
 
-          <Col sm={4}>
+          <Col md={4}>
             <Form.Group controlId="formGroupFirstName">
               <Form.Label column="name">Имя</Form.Label>
               <Form.Control className="form-control-user" type="text" name="firstName"
@@ -135,7 +135,7 @@ class ProfileForm extends React.Component {
             </Form.Group>
           </Col>
 
-          <Col sm={4}>
+          <Col md={4}>
             <Form.Group controlId="formGroupAvatar">
               <Form.Label column="name">Аватар</Form.Label>
               <Image
