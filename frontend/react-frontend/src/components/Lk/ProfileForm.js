@@ -143,8 +143,7 @@ class ProfileForm extends React.Component {
                 alt="Аватар"
                 height="150px">
               </Image>
-              <Form.Control className="form-control-user" type="file" name="avatar"
-                            accept="image/png, image/jpeg, image/jpg"/>
+              <Form.File name="avatar" accept="image/png, image/jpeg, image/jpg"/>
               {avatarError}
             </Form.Group>
           </Col>
