@@ -3,9 +3,10 @@ import './DoctorDetail.css';
 import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import customAvatar from '../../../images/custom_avatar.png'
-import DoctorProperty from "../DoctorProperty";
+import LineProperty from "../LineProperty";
 import ReactHtmlParser from 'react-html-parser';
 import DoctorPrizeImages from "../DoctorPrizeImages";
+import {connect} from "react-redux";
 
 class DoctorDetail extends React.Component {
   constructor(props) {
@@ -26,34 +27,35 @@ class DoctorDetail extends React.Component {
 
   render() {
     const {doctor} = this.state;
+    const {isAuthenticated} = this.props;
     if (doctor.university) {
-      var university = <DoctorProperty name="Наименование высшего учебного заведения"
-                                       content={doctor.university.name}/>;
+      var university = <LineProperty name="Наименование высшего учебного заведения"
+                                     content={doctor.university.name}/>;
     }
     if (doctor.diploma_specialty) {
-      var diplomaSpecialty = <DoctorProperty name="Специальность по диплому"
-                                             content={doctor.diploma_specialty.name}/>;
+      var diplomaSpecialty = <LineProperty name="Специальность по диплому"
+                                           content={doctor.diploma_specialty.name}/>;
     }
     if (doctor.qualification_category) {
-      var qualificationCategory = <DoctorProperty name="Квалицикационная категория"
-                                                  content={doctor.qualification_category.name}/>;
+      var qualificationCategory = <LineProperty name="Квалицикационная категория"
+                                                content={doctor.qualification_category.name}/>;
     }
     if (doctor.additional_education) {
-      var additionalEducation = <DoctorProperty name="Дополнительное образование"
-                                                content={ReactHtmlParser(doctor.additional_education)}/>;
+      var additionalEducation = <LineProperty name="Дополнительное образование"
+                                              content={ReactHtmlParser(doctor.additional_education)}/>;
     }
     if (doctor.awards) {
-      var awards = <DoctorProperty name="Награды"
-                                   content={ReactHtmlParser(doctor.awards)}/>;
+      var awards = <LineProperty name="Награды"
+                                 content={ReactHtmlParser(doctor.awards)}/>;
     }
     if (doctor.certificates) {
-      var certificates = <DoctorProperty name="Сертификаты"
-                                         content={ReactHtmlParser(doctor.certificates)}/>;
+      var certificates = <LineProperty name="Сертификаты"
+                                       content={ReactHtmlParser(doctor.certificates)}/>;
     }
-    const experienceFrom = <DoctorProperty name="Стаж работы с"
-                                           content={doctor.experience_from}/>;
+    const experienceFrom = <LineProperty name="Стаж работы с"
+                                         content={doctor.experience_from}/>;
     if (doctor.user) {
-      var {avatar, last_name, first_name, middle_name} = doctor.user;
+      var {avatar, last_name, first_name, middle_name, phone_number, email} = doctor.user;
     }
     const caption =
       <h3 className="orange-caption-center">
@@ -75,6 +77,13 @@ class DoctorDetail extends React.Component {
               </Card>
             </Col>
             <Col lg={7}>
+              {
+                isAuthenticated ?
+                  <>
+                    <LineProperty name="Номер телефона" content={phone_number || 'не указан'}/>
+                    <LineProperty name="Email" content={email}/>
+                  </> : null
+              }
               {university}
               <span className="font-italic font-weight-bold">Должность</span>:
               {
@@ -100,4 +109,10 @@ class DoctorDetail extends React.Component {
   };
 }
 
-export default DoctorDetail;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+  }
+};
+
+export default connect(mapStateToProps, null)(DoctorDetail);

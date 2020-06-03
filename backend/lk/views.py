@@ -1,8 +1,15 @@
 from allauth.account.models import EmailConfirmationHMAC, EmailConfirmation
+from django.contrib.auth import get_user_model
 from django.http import Http404
 from django.shortcuts import redirect
 from django.urls import reverse
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
+
+from lk.serializers import CustomerUserSerializer
+
+User = get_user_model()
 
 
 class ConfirmEmailView(APIView):
@@ -27,3 +34,9 @@ class ConfirmEmailView(APIView):
         qs = EmailConfirmation.objects.all_valid()
         qs = qs.select_related("email_address__user")
         return qs
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = CustomerUserSerializer
+    serializer_permission_classes = (IsAuthenticated,)

@@ -1,11 +1,11 @@
 import React from 'react';
 
-class DoctorProperty extends React.Component {
+class LineProperty extends React.Component {
   render() {
     const {name, content} = this.props;
 
     return (
-      <div className="DoctorProperty">
+      <div className="LineProperty">
         <span className="font-italic font-weight-bold">{name}</span>:&nbsp;{content}
         <br/>
       </div>
@@ -13,4 +13,4 @@ class DoctorProperty extends React.Component {
   }
 }
 
-export default DoctorProperty;
+export default LineProperty;

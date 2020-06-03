@@ -1,9 +1,7 @@
-from allauth.account.models import EmailAddress
 from django.contrib.auth import get_user_model
 from rest_auth.serializers import UserDetailsSerializer as RestCustomerUserSerializer, \
     PasswordResetSerializer as RestPasswordResetSerializer, \
     ValidationError
-from rest_framework import serializers
 
 from medicine_centre import settings
 

@@ -158,7 +158,15 @@ class PatientReceptionList extends React.Component {
                 <td>{item.doctor.office.floor}</td>
                 <td>{item.date}</td>
                 <td>{item.from_time} - {item.to_time}</td>
-                <td>{item.patient ? getFullName(item.patient.user) : '-'}</td>
+                <td>
+                  {
+                    item.patient ?
+                      <Link to={'/lk/patient_profile/' + item.patient.user.pk}>
+                        {getFullName(item.patient.user)}
+                      </Link>
+                      : '-'
+                  }
+                </td>
                 {
                   !isNotAppointable ?
                     <td>

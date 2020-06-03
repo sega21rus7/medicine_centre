@@ -11,6 +11,7 @@ import MakeAppointment from "../containers/Reception/MakeAppointment";
 import DoctorSchedule from "../containers/Reception/DoctorSchedule";
 import PatientReviews from "../containers/Reviews/PatientReviews";
 import DoctorReviews from "../containers/Reviews/DoctorReviews";
+import ProfileView from "../components/Lk/ProfileView";
 
 const LkRouter = () => (
   <div>
@@ -19,6 +20,7 @@ const LkRouter = () => (
       <Route path="/lk/make_appointment" component={MakeAppointment}/>
       <Route path="/lk/doctor_schedule" component={DoctorSchedule}/>
       <Route exact path="/lk/profile" component={ProfileForm}/>
+      <Route exact path="/lk/patient_profile/:pk" component={ProfileView}/>
       <Route exact path="/lk/change_password" component={ChangePasswordForm}/>
       <Route exact path="/lk/doctor_reviews" component={DoctorReviews}/>
       <Route path="/lk/patient_reviews" component={PatientReviews}/>
