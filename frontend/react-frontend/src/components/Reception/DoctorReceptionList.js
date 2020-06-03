@@ -16,6 +16,7 @@ class DoctorReceptionList extends React.Component {
       count: 0,
       paginateCount: 0,
     };
+    this.paginate_by = 10;
   }
 
   componentDidMount() {
