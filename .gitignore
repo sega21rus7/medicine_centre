@@ -13,5 +13,5 @@ backend/venv[0-9]*
 frontend/node_modules
 
 #Django
-static/
-media/
+backend/static
+backend/media
