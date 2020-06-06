@@ -1,34 +1,27 @@
 import React from 'react';
-import {Button, Col, Form, Row} from "react-bootstrap";
+import {Button, Col, Row} from "react-bootstrap";
 import * as actions from "../../store/actions/auth/actionCreators";
 import {connect} from "react-redux";
 
 class LogoutForm extends React.Component {
-  handleSubmit = (event) => {
-    // event.preventDefault(); с перехватом почему-то не работает
+  handleClick = () => {
     this.props.logout();
   };
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <div className="LogoutForm">
         <Row>
           <Col sm={6}>
-            <p>Вы уверены что хотите выйти?</p>
+            <p>Вы уверены, что хотите выйти?</p>
           </Col>
         </Row>
-        <Button type="submit" variant="outline-primary" className="btn-user">
+        <Button variant="outline-primary" className="btn-user" onClick={this.handleClick}>
           Выйти
         </Button>
-      </Form>
+      </div>
     )
   };
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    logout: () => dispatch(actions.logout)
-  }
-};
-
-export default connect(null, mapDispatchToProps)(LogoutForm);
+export default connect(null, {logout: actions.logout})(LogoutForm);
