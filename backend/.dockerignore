@@ -1,0 +1,7 @@
+.idea/
+__pycache__/
+media/
+venv/
+static/
+venv_start.bat
+manage.bat

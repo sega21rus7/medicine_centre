@@ -24,7 +24,7 @@ class PasswordResetSerializer(RestPasswordResetSerializer):
 
     def get_email_options(self):
         data = {
-            'domain_override': settings.URL_FRONT,
+            'domain_override': settings.FRONT_URL,
             'email_template_name': 'registration/password_reset_email.html',
         }
         return data

@@ -7,12 +7,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8n!3jvl&!mrd^=4n9youvidvh!x98(mp&1=07%6gk+z3(ty%w4'
+SECRET_KEY = os.environ.get("SECRET_KEY", default='8n!3jvl&!mrd^=4n9youvidvh!x98(mp&1=07%6gk+z3(ty%w4')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", default=True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", '*').split()
 
 # Application definition
 
@@ -95,17 +95,19 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'medicine_centre.wsgi.application'
 
+FRONT_URL = 'http://localhost:3000/'
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'medicine_centre',
-        'USER': 'postgres',
-        'PASSWORD': 'server',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': os.environ.get('SQL_ENGINE', default='django.db.backends.postgresql_psycopg2'),
+        'NAME': os.environ.get('SQL_DATABASE', default='medicine_centre'),
+        'USER': os.environ.get('SQL_USER', default='postgres'),
+        'PASSWORD': os.environ.get('SQL_PASSWORD', default='server'),
+        'HOST': os.environ.get('SQL_HOST', default=''),
+        'PORT': os.environ.get('SQL_PORT', default=''),
     }
 }
 
@@ -164,4 +166,3 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
 ]
 ACCOUNT_ADAPTER = 'lk.adapters.DefaultAccountAdapterCustom'
-URL_FRONT = 'http://localhost:3000/'
