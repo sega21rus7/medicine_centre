@@ -2,12 +2,5 @@
 __pycache__/
 *.pyc
 
-# Python virtual environment
-backend/venv
-backend/venv[0-9]*
-
 # Pycharm settings folder
 .idea/
-
-#Django
-backend/static

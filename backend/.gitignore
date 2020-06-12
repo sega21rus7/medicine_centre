@@ -1,0 +1,9 @@
+# Python virtual environment
+/venv
+/venv[0-9]*
+
+#Django
+/static
+/media
+
+
