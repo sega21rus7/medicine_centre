@@ -1,6 +1,7 @@
 /media
 /venv
 /static
+/staticfiles
 *.bat
 Dockerfile
 .gitignore
