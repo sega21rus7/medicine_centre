@@ -12,7 +12,7 @@ class DepartmentNavbar extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/staff/api/departments/')
+    axios.get('http://localhost:8000/api/staff/departments/')
       .then(response => {
         this.setState({
           departments: response.data

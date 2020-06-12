@@ -13,7 +13,7 @@ class ProfileView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/lk/api/users/${this.props.match.params.pk}`)
+    axios.get(`http://localhost:8000/api/lk/users/${this.props.match.params.pk}`)
       .then(response => {
         this.setState({
           user: response.data

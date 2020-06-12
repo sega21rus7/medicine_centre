@@ -32,7 +32,7 @@ class PatientReceptionList extends React.Component {
     if (token && this.props.user) {
       const pk = this.props.user.patient;
       let url = specialUrl ? specialUrl :
-        `http://localhost:8000/reception/api/receptions_by_patient/${pk}`;
+        `http://localhost:8000/api/reception/receptions_by_patient/${pk}`;
       if (this.props.specialUrlUsesPk) {
         url = `${specialUrl}${pk}`;
       }
@@ -68,7 +68,7 @@ class PatientReceptionList extends React.Component {
     if (token && this.props.user) {
       const target = event.target;
       const pk = target.getAttribute('pk');
-      const url = `http://localhost:8000/reception/api/receptions/${pk}/`;
+      const url = `http://localhost:8000/api/reception/receptions/${pk}/`;
       const options = {
         method: 'PUT',
         url: url,
@@ -118,7 +118,7 @@ class PatientReceptionList extends React.Component {
             <Col md={3}>
               <DoctorFilterForm getData={this.getSchedule}
                                 specialUrl={specialUrl}
-                                postFilterUrl={'http://localhost:8000/reception/api/free_receptions_by_post/'}/>
+                                postFilterUrl={'http://localhost:8000/api/reception/free_receptions_by_post/'}/>
             </Col>
             : null
         }

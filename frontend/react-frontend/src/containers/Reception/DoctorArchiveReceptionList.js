@@ -5,7 +5,7 @@ class DoctorArchiveReceptionList extends React.Component {
   render() {
     return (
       <DoctorReceptionList
-        specialUrl={'http://localhost:8000/reception/api/archive_receptions_by_doctor/'}/>
+        specialUrl={'http://localhost:8000/api/reception/archive_receptions_by_doctor/'}/>
     )
   }
 }

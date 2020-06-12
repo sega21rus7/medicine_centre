@@ -15,7 +15,7 @@ class ReviewEdit extends React.Component {
     const token = localStorage.getItem('token');
     if (token) {
       const pk = this.props.match.params.pk;
-      const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}`;
+      const url = `http://localhost:8000/api/marketing/patient_reviews/${pk}`;
       const options = {
         method: 'GET',
         url: url,

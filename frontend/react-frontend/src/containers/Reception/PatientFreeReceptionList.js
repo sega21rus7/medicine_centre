@@ -11,7 +11,7 @@ class PatientFreeReceptionList extends React.Component {
   render() {
     return (
       <ReceptionList history={this.props.history}
-                     specialUrl={'http://localhost:8000/reception/api/free_receptions/'}
+                     specialUrl={'http://localhost:8000/api/reception/free_receptions/'}
                      isFilterable={true}/>
     )
   }

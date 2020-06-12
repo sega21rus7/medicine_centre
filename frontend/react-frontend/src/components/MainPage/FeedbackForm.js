@@ -17,7 +17,7 @@ class FeedbackForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const elements = event.target.elements;
-    axios.post('http://localhost:8000/marketing/api/feedback/', {
+    axios.post('http://localhost:8000/api/marketing/feedback/', {
       email: elements.email.value,
       name: elements.name.value,
       content: elements.content.value,

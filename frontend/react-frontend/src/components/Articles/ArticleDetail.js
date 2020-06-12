@@ -15,7 +15,7 @@ class ArticleDetail extends React.Component {
   }
 
   getData = () => {
-    axios.get(`http://localhost:8000/marketing/api/articles/${this.props.match.params.slug}`)
+    axios.get(`http://localhost:8000/api/marketing/articles/${this.props.match.params.slug}`)
       .then(response => {
         this.setState({
           article: response.data

@@ -8,19 +8,19 @@ from .views import NewsViewSet, ArticleViewSet, TagListView, ArticleWithTagView,
 app_name = 'marketing'
 
 urlpatterns = [
-    path('api/tags/', TagListView.as_view(), name='tag_list'),
-    path('api/articles_with_tag/<slug>/', ArticleWithTagView.as_view(), name='articles_with_tag'),
-    path('api/reviews/', ReviewListView.as_view(), name='reviews'),
-    path('api/doctor_reviews/', DoctorReviewListView.as_view(), name='doctor_reviews'),
-    path('api/search_articles/<search_key>', SearchArticleListView.as_view(), name='search_articles'),
-    path('api/search_news/<search_key>', SearchNewsListView.as_view(), name='search_news'),
+    path('tags/', TagListView.as_view(), name='tag_list'),
+    path('articles_with_tag/<slug>/', ArticleWithTagView.as_view(), name='articles_with_tag'),
+    path('reviews/', ReviewListView.as_view(), name='reviews'),
+    path('doctor_reviews/', DoctorReviewListView.as_view(), name='doctor_reviews'),
+    path('search_articles/<search_key>/', SearchArticleListView.as_view(), name='search_articles'),
+    path('search_news/<search_key>/', SearchNewsListView.as_view(), name='search_news'),
 ]
 
 router = DefaultRouter()
-router.register(r'api/news', NewsViewSet, basename='news')
-router.register(r'api/articles', ArticleViewSet, basename='articles')
-router.register(r'api/comments', CommentViewSet, basename='comments')
-router.register(r'api/patient_reviews', PatientReviewViewSet, basename='patient_reviews')
-router.register(r'api/feedback', FeedbackViewSet, basename='feedback')
-router.register(r'api/support', SupportQuestionViewSet, basename='user_support_question')
+router.register(r'news', NewsViewSet, basename='news')
+router.register(r'articles', ArticleViewSet, basename='articles')
+router.register(r'comments', CommentViewSet, basename='comments')
+router.register(r'patient_reviews', PatientReviewViewSet, basename='patient_reviews')
+router.register(r'feedback', FeedbackViewSet, basename='feedback')
+router.register(r'support', SupportQuestionViewSet, basename='user_support_question')
 urlpatterns += router.urls

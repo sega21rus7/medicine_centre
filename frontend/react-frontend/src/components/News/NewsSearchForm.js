@@ -6,7 +6,7 @@ class NewsSearchForm extends React.Component {
   handleSearch = (event) => {
     event.preventDefault();
     const text = event.target.elements.text.value;
-    this.props.getData(1, `http://localhost:8000/marketing/api/search_news/${text}`);
+    this.props.getData(1, `http://localhost:8000/api/marketing/search_news/${text}`);
 
     // нужен redux, при наличии > 3 новостей пагинация отрабатывает неправильно, исправить позже
 

@@ -15,7 +15,7 @@ class SupportQuestionEdit extends React.Component {
     let token = localStorage.getItem('token');
     if (token) {
       const pk = this.props.match.params.pk;
-      const url = `http://localhost:8000/marketing/api/support/${pk}`;
+      const url = `http://localhost:8000/api/marketing/support/${pk}`;
       const options = {
         method: 'GET',
         url: url,

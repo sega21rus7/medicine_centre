@@ -23,7 +23,7 @@ class ReviewForm extends React.Component {
   }
 
   getDoctors = () => {
-    axios.get('http://localhost:8000/staff/api/doctors_choice/')
+    axios.get('http://localhost:8000/api/staff/doctors_choice/')
       .then(response => {
         this.setState({doctors: response.data});
       })
@@ -49,7 +49,7 @@ class ReviewForm extends React.Component {
       const elements = event.target.elements;
       const options = {
         method: 'POST',
-        url: 'http://localhost:8000/marketing/api/patient_reviews/',
+        url: 'http://localhost:8000/api/marketing/patient_reviews/',
         data: {
           positives: elements.positives.value,
           negatives: elements.negatives.value,
@@ -74,7 +74,7 @@ class ReviewForm extends React.Component {
     const token = localStorage.getItem('token');
     const pk = this.props.instancePk;
     if (token) {
-      const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
+      const url = `http://localhost:8000/api/marketing/patient_reviews/${pk}/`;
       const elements = event.target.elements;
       const options = {
         method: 'PUT',
@@ -101,7 +101,7 @@ class ReviewForm extends React.Component {
     const token = localStorage.getItem('token');
     const pk = this.props.match.params.pk;
     if (token) {
-      const url = `http://localhost:8000/marketing/api/patient_reviews/${pk}/`;
+      const url = `http://localhost:8000/api/marketing/patient_reviews/${pk}/`;
       const options = {
         method: 'DELETE',
         url: url,
