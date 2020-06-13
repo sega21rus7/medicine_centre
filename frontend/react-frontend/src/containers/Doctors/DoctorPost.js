@@ -3,6 +3,7 @@ import axios from "axios";
 import {Col, Container, Image, Row} from "react-bootstrap";
 import ReactHtmlParser from 'react-html-parser';
 import DoctorLongList from "./DoctorLongList";
+import {BACKEND_URL} from "../../constants";
 
 class DoctorPost extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class DoctorPost extends React.Component {
   }
 
   getDoctorPostData = () => {
-    axios.get(`http://localhost:8000/rest-api/staff/posts/${this.props.match.params.pk}`)
+    axios.get(`${BACKEND_URL}/rest-api/staff/posts/${this.props.match.params.pk}`)
       .then(response => {
         this.setState({doctorPost: response.data});
 
@@ -51,7 +52,7 @@ class DoctorPost extends React.Component {
           <h3 className="green-caption-left">Врачи, занимающие должность «{doctorPost.name}»</h3>
         </Container>
         <DoctorLongList isNotCaption={true}
-                        specialUrl={`http://localhost:8000/rest-api/staff/doctors_by_post/${doctorPk}/`}
+                        specialUrl={`${BACKEND_URL}/rest-api/staff/doctors_by_post/${doctorPk}/`}
                         isSearchable={true}
                         isFilterable={false}/>
       </div>

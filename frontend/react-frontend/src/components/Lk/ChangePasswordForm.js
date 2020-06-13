@@ -3,6 +3,7 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import ErrorBlock from "../ErrorBlock/ErrorBlock";
 import axios from 'axios';
 import SuccessBlock from "../SuccessBlock/SuccessBlock";
+import {BACKEND_URL} from "../../constants";
 
 class ChangePasswordForm extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class ChangePasswordForm extends React.Component {
       const elements = event.target.elements;
       const options = {
         method: 'POST',
-        url: 'http://localhost:8000/rest-auth/password/change/',
+        url: `${BACKEND_URL}/rest-auth/password/change/`,
         data: {
           new_password1: elements.password.value,
           new_password2: elements.passwordConfirm.value,

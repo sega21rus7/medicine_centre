@@ -2,6 +2,7 @@ import React from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import ReviewLongList from "./ReviewLongList";
 import {connect} from "react-redux";
+import {BACKEND_URL} from "../../constants";
 
 
 class DoctorReviews extends React.Component {
@@ -15,7 +16,7 @@ class DoctorReviews extends React.Component {
         <Row>
           <Col lg={12}>
             <ReviewLongList personalTitle={'Отзывы обо мне'}
-                            personalUrl={'http://localhost:8000/rest-api/marketing/doctor_reviews/'}
+                            personalUrl={`${BACKEND_URL}/rest-api/marketing/doctor_reviews/`}
                             isNotMt4={true}/>
           </Col>
         </Row>

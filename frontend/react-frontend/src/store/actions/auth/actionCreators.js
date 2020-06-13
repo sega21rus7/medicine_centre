@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
+import {BACKEND_URL} from "../../../constants";
 
 export const authStart = () => {
   return {
@@ -26,7 +27,7 @@ export const getUser = () => {
     if (token) {
       const options = {
         method: 'GET',
-        url: 'http://localhost:8000/rest-auth/user/',
+        url: `${BACKEND_URL}/rest-auth/user/`,
         headers: {'Authorization': `Token ${token}`},
       };
       axios(options)

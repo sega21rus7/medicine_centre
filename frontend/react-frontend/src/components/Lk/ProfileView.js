@@ -3,6 +3,7 @@ import {Col, Container, Image, Row} from "react-bootstrap";
 import {getFullName} from "../../methods";
 import axios from "axios";
 import LineProperty from "../Doctors/LineProperty";
+import {BACKEND_URL} from "../../constants";
 
 class ProfileView extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class ProfileView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/rest-api/lk/users/${this.props.match.params.pk}`)
+    axios.get(`${BACKEND_URL}/rest-api/lk/users/${this.props.match.params.pk}`)
       .then(response => {
         this.setState({
           user: response.data

@@ -1,12 +1,13 @@
 import React from 'react';
 import {Button, Form, FormControl} from "react-bootstrap";
 import {withRouter} from "react-router";
+import {BACKEND_URL} from "../../constants";
 
 class NewsSearchForm extends React.Component {
   handleSearch = (event) => {
     event.preventDefault();
     const text = event.target.elements.text.value;
-    this.props.getData(1, `http://localhost:8000/rest-api/marketing/search_news/${text}`);
+    this.props.getData(1, `${BACKEND_URL}/rest-api/marketing/search_news/${text}`);
 
     // нужен redux, при наличии > 3 новостей пагинация отрабатывает неправильно, исправить позже
 

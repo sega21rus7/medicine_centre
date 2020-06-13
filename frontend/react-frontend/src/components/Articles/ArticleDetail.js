@@ -5,6 +5,7 @@ import ReactHtmlParser from "react-html-parser";
 import CommentList from "../../containers/Comments/CommentList";
 import AddCommentForm from "./AddCommentForm";
 import ArticleTagList from "../../containers/Tags/ArticleTagList";
+import {BACKEND_URL} from "../../constants";
 
 class ArticleDetail extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class ArticleDetail extends React.Component {
   }
 
   getData = () => {
-    axios.get(`http://localhost:8000/rest-api/marketing/articles/${this.props.match.params.slug}`)
+    axios.get(`${BACKEND_URL}/rest-api/marketing/articles/${this.props.match.params.slug}`)
       .then(response => {
         this.setState({
           article: response.data

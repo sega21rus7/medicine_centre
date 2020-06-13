@@ -6,6 +6,7 @@ import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import DoctorListItem from "../../components/Doctors/DoctorListItem";
 import DoctorSearchForm from "../../components/Doctors/DoctorSearchForm";
 import DoctorFilterForm from "../../components/Doctors/DoctorFilterForm/DoctorFilterForm";
+import {BACKEND_URL} from "../../constants";
 
 class DoctorList extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class DoctorList extends React.Component {
     this.getData(1, this.props.specialUrl);
   }
 
-  getData = (page, initialUrl = 'http://localhost:8000/rest-api/staff/doctors/') => {
+  getData = (page, initialUrl = `${BACKEND_URL}/rest-api/staff/doctors/`) => {
     const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {
@@ -88,7 +89,7 @@ class DoctorList extends React.Component {
                 {
                   isFilterable ?
                     <DoctorFilterForm getData={this.getData}
-                                      postFilterUrl={'http://localhost:8000/rest-api/staff/doctors_by_post/'}/>
+                                      postFilterUrl={`${BACKEND_URL}/rest-api/staff/doctors_by_post/`}/>
                     : null
                 }
               </Col>

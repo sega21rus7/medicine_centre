@@ -1,11 +1,12 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
 import ArticleLongList from "../../containers/Articles/ArticleLongList";
+import {BACKEND_URL} from "../../constants";
 
 
 class TagDetail extends React.Component {
   render() {
-    const url = `http://localhost:8000/rest-api/marketing/articles_with_tag/${this.props.match.params.slug}/`;
+    const url = `${BACKEND_URL}/rest-api/marketing/articles_with_tag/${this.props.match.params.slug}/`;
 
     return (
       <Container className="TagDetail">

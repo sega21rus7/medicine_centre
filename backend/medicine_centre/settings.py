@@ -95,7 +95,7 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'medicine_centre.wsgi.application'
 
-FRONT_URL = os.environ.get('FRONT_URL', default='http://localhost:3000/')
+FRONT_URL = os.environ.get('FRONT_URL', default='https://localhost:3000/')
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -162,7 +162,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 CORS_ORIGIN_WHITELIST = [
-    FRONT_URL,
+    "http://localhost:3000",
+    'https://chuvash-medicine-centre.ru',
 ]
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.console.EmailBackend')

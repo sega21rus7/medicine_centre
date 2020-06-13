@@ -1,11 +1,12 @@
 import React from 'react';
 import DoctorReceptionList from "../../components/Reception/DoctorReceptionList";
+import {BACKEND_URL} from "../../constants";
 
 class DoctorArchiveReceptionList extends React.Component {
   render() {
     return (
       <DoctorReceptionList
-        specialUrl={'http://localhost:8000/rest-api/reception/archive_receptions_by_doctor/'}/>
+        specialUrl={`${BACKEND_URL}/rest-api/reception/archive_receptions_by_doctor/`}/>
     )
   }
 }

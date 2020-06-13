@@ -7,6 +7,7 @@ import LineProperty from "../LineProperty";
 import ReactHtmlParser from 'react-html-parser';
 import DoctorPrizeImages from "../DoctorPrizeImages";
 import {connect} from "react-redux";
+import {BACKEND_URL} from "../../../constants";
 
 class DoctorDetail extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class DoctorDetail extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/rest-api/staff/doctors/${this.props.match.params.slug}`)
+    axios.get(`${BACKEND_URL}/rest-api/staff/doctors/${this.props.match.params.slug}`)
       .then(response => {
         this.setState({
           doctor: response.data

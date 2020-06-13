@@ -3,6 +3,7 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "../ErrorBlock/ErrorBlock";
 import SuccessBlock from "../SuccessBlock/SuccessBlock";
+import {BACKEND_URL} from "../../constants";
 
 
 class FeedbackForm extends React.Component {
@@ -17,7 +18,7 @@ class FeedbackForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const elements = event.target.elements;
-    axios.post('http://localhost:8000/rest-api/marketing/feedback/', {
+    axios.post(`${BACKEND_URL}/rest-api/marketing/feedback/`, {
       email: elements.email.value,
       name: elements.name.value,
       content: elements.content.value,

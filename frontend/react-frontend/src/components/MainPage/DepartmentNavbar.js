@@ -2,6 +2,7 @@ import React from 'react';
 import {Col, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {BACKEND_URL} from "../../constants";
 
 class DepartmentNavbar extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class DepartmentNavbar extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/rest-api/staff/departments/')
+    axios.get(`${BACKEND_URL}/rest-api/staff/departments/`)
       .then(response => {
         this.setState({
           departments: response.data

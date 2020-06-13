@@ -2,6 +2,7 @@ import React from 'react';
 import ReceptionList from "../../components/Reception/PatientReceptionList";
 import * as actions from "../../store/actions/make_appoinment/actionCreators";
 import {connect} from "react-redux";
+import {BACKEND_URL} from "../../constants";
 
 class PatientFreeReceptionList extends React.Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ class PatientFreeReceptionList extends React.Component {
   render() {
     return (
       <ReceptionList history={this.props.history}
-                     specialUrl={'http://localhost:8000/rest-api/reception/free_receptions/'}
+                     specialUrl={`${BACKEND_URL}/rest-api/reception/free_receptions/`}
                      isFilterable={true}/>
     )
   }

@@ -5,6 +5,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import NewsSearchForm from "../../components/News/NewsSearchForm";
+import {BACKEND_URL} from "../../constants";
 
 class NewsList extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class NewsList extends React.Component {
     this.getData(1);
   }
 
-  getData = (page, initialUrl = 'http://localhost:8000/rest-api/marketing/news/') => {
+  getData = (page, initialUrl = `${BACKEND_URL}/rest-api/marketing/news/`) => {
     const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {

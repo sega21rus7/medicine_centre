@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Container} from "react-bootstrap";
 import axios from "axios";
 import SupportQuestionForm from "./SupportQuestionForm";
+import {BACKEND_URL} from "../../constants";
 
 class SupportQuestionEdit extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class SupportQuestionEdit extends React.Component {
     let token = localStorage.getItem('token');
     if (token) {
       const pk = this.props.match.params.pk;
-      const url = `http://localhost:8000/rest-api/marketing/support/${pk}`;
+      const url = `${BACKEND_URL}/rest-api/marketing/support/${pk}`;
       const options = {
         method: 'GET',
         url: url,

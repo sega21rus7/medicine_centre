@@ -7,6 +7,7 @@ import avatar from '../../images/custom_avatar.png'
 import SuccessBlock from "../SuccessBlock/SuccessBlock";
 import {connect} from "react-redux";
 import * as actions from "../../store/actions/auth/actionCreators";
+import {BACKEND_URL} from "../../constants";
 
 class ProfileForm extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class ProfileForm extends React.Component {
 
       const options = {
         method: 'PUT',
-        url: 'http://localhost:8000/rest-auth/user/',
+        url: `${BACKEND_URL}/rest-auth/user/`,
         data: form_data,
         headers: {
           'Authorization': `Token ${token}`,

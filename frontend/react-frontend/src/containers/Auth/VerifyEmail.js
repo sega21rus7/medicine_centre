@@ -3,6 +3,7 @@ import axios from "axios";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import AlreadySignUpPanel from "../../components/Auth/AlreadySignUpPanel";
 import LeftImage from "../../components/Auth/LeftImage";
+import {BACKEND_URL} from "../../constants";
 
 
 class VerifyEmail extends React.Component {
@@ -15,7 +16,7 @@ class VerifyEmail extends React.Component {
 
   componentDidMount() {
     const key = this.props.match.params.key;
-    axios.get(`http://localhost:8000/rest-auth/registration/account-confirm-email/${key}`)
+    axios.get(`${BACKEND_URL}/rest-auth/registration/account-confirm-email/${key}`)
       .then(response => {
       })
       .catch(err => {

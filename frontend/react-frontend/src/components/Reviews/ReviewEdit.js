@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Container} from "react-bootstrap";
 import axios from "axios";
 import ReviewForm from "./ReviewForm";
+import {BACKEND_URL} from "../../constants";
 
 class ReviewEdit extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class ReviewEdit extends React.Component {
     const token = localStorage.getItem('token');
     if (token) {
       const pk = this.props.match.params.pk;
-      const url = `http://localhost:8000/rest-api/marketing/patient_reviews/${pk}`;
+      const url = `${BACKEND_URL}/rest-api/marketing/patient_reviews/${pk}`;
       const options = {
         method: 'GET',
         url: url,

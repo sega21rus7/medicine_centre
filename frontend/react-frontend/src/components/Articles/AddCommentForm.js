@@ -3,6 +3,7 @@ import {Button, Container, Form} from "react-bootstrap";
 import axios from "axios";
 import ErrorBlock from "../ErrorBlock/ErrorBlock";
 import {connect} from "react-redux";
+import {BACKEND_URL} from "../../constants";
 
 class AddCommentForm extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class AddCommentForm extends React.Component {
     if (token) {
       const options = {
         method: 'POST',
-        url: 'http://localhost:8000/rest-api/marketing/comments/',
+        url: `${BACKEND_URL}/rest-api/marketing/comments/`,
         data: {
           article: this.props.articleID,
           content: event.target.elements.content.value,

@@ -5,6 +5,7 @@ import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import ArticleListItem from "../../components/Articles/ArticleListItem";
 import ArticleSearchForm from "../../components/Articles/ArticleSearchForm";
+import {BACKEND_URL} from "../../constants";
 
 class ArticleList extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class ArticleList extends React.Component {
     this.getData(1, this.props.specialUrl);
   }
 
-  getData = (page, initialUrl = 'http://localhost:8000/rest-api/marketing/articles/') => {
+  getData = (page, initialUrl = `${BACKEND_URL}/rest-api/marketing/articles/`) => {
     const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {

@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {getFullName} from "../../methods";
 import * as actions from "../../store/actions/make_appoinment/actionCreators";
 import DoctorFilterForm from "../Doctors/DoctorFilterForm/DoctorFilterForm";
+import {BACKEND_URL} from "../../constants";
 
 class PatientReceptionList extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class PatientReceptionList extends React.Component {
     if (token && this.props.user) {
       const pk = this.props.user.patient;
       let url = specialUrl ? specialUrl :
-        `http://localhost:8000/rest-api/reception/receptions_by_patient/${pk}`;
+        `${BACKEND_URL}/rest-api/reception/receptions_by_patient/${pk}`;
       if (this.props.specialUrlUsesPk) {
         url = `${specialUrl}${pk}`;
       }
@@ -68,7 +69,7 @@ class PatientReceptionList extends React.Component {
     if (token && this.props.user) {
       const target = event.target;
       const pk = target.getAttribute('pk');
-      const url = `http://localhost:8000/rest-api/reception/receptions/${pk}/`;
+      const url = `${BACKEND_URL}/rest-api/reception/receptions/${pk}/`;
       const options = {
         method: 'PUT',
         url: url,
@@ -118,7 +119,7 @@ class PatientReceptionList extends React.Component {
             <Col md={3}>
               <DoctorFilterForm getData={this.getSchedule}
                                 specialUrl={specialUrl}
-                                postFilterUrl={'http://localhost:8000/rest-api/reception/free_receptions_by_post/'}/>
+                                postFilterUrl={`${BACKEND_URL}/rest-api/reception/free_receptions_by_post/`}/>
             </Col>
             : null
         }

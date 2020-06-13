@@ -3,6 +3,7 @@ import {Button, Form} from "react-bootstrap";
 import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import axios from "axios";
 import SuccessBlock from "../SuccessBlock/SuccessBlock";
+import {BACKEND_URL} from "../../constants";
 
 class ResetPasswordForm extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class ResetPasswordForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8000/rest-auth/password/reset/', {
+    axios.post(`${BACKEND_URL}/rest-auth/password/reset/`, {
       email: event.target.elements.email.value,
     })
       .then(res => {

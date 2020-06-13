@@ -3,6 +3,7 @@ import {Button, Form} from "react-bootstrap";
 import ErrorBlock from "../../components/ErrorBlock/ErrorBlock";
 import axios from "axios";
 import SuccessBlock from "../SuccessBlock/SuccessBlock";
+import {BACKEND_URL} from "../../constants";
 
 class ResetPasswordDoneForm extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class ResetPasswordDoneForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const {uid, token} = this.props;
-    const url = `http://localhost:8000/rest-auth/password/reset/confirm/${uid}/${token}/`;
+    const url = `${BACKEND_URL}/rest-auth/password/reset/confirm/${uid}/${token}/`;
     axios.post(url, {
       new_password1: event.target.elements.password.value,
       new_password2: event.target.elements.passwordConfirm.value,

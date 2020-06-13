@@ -2,6 +2,7 @@ import React from 'react';
 import './DoctorFilterForm.css';
 import {Button, Form} from "react-bootstrap";
 import axios from "axios";
+import {BACKEND_URL} from "../../../constants";
 
 class DoctorFilterForm extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class DoctorFilterForm extends React.Component {
   }
 
   getPosts = () => {
-    axios.get('http://localhost:8000/rest-api/staff/posts/')
+    axios.get(`${BACKEND_URL}/rest-api/staff/posts/`)
       .then(response => {
         this.setState({posts: response.data});
       })

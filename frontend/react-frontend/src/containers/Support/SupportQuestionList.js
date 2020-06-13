@@ -5,6 +5,7 @@ import PaginationComponent from "../../components/PaginationComponent";
 import SupportQuestionListItem from "../../components/Support/SupportQuestionListItem";
 import * as actions from "../../store/actions/support/actionCreators";
 import {connect} from "react-redux";
+import {BACKEND_URL} from "../../constants";
 
 class SupportQuestionList extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class SupportQuestionList extends React.Component {
   }
 
   getData = (page) => {
-    const url = `http://localhost:8000/rest-api/marketing/support/?page=${page}`;
+    const url = `${BACKEND_URL}/rest-api/marketing/support/?page=${page}`;
     let token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers = {'Authorization': `Token ${token}`};

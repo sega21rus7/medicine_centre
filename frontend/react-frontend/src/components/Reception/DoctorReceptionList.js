@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {getFullName} from "../../methods";
 import {Link} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
+import {BACKEND_URL} from "../../constants";
 
 class DoctorReceptionList extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class DoctorReceptionList extends React.Component {
     if (token && this.props.user) {
       const pk = this.props.user.doctor;
       const url = specialUrl ? `${specialUrl}${pk}` :
-        `http://localhost:8000/rest-api/reception/receptions_by_doctor/${pk}`;
+        `${BACKEND_URL}/rest-api/reception/receptions_by_doctor/${pk}`;
       const options = {
         method: 'GET',
         url: url,

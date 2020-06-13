@@ -1,11 +1,12 @@
 import React from 'react';
 import {Button, Form, FormControl} from "react-bootstrap";
+import {BACKEND_URL} from "../../constants";
 
 class ArticleSearchForm extends React.Component {
   handleSearch = (event) => {
     event.preventDefault();
     const text = event.target.elements.text.value;
-    this.props.getData(1, `http://localhost:8000/rest-api/marketing/search_articles/${text}`);
+    this.props.getData(1, `${BACKEND_URL}/rest-api/marketing/search_articles/${text}`);
 
     // нужен redux, при наличии > 3 статей пагинация отрабатывает неправильно, исправить позже
 

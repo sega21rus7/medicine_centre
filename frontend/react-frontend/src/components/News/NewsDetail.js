@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "axios";
 import {Col, Container, Image} from "react-bootstrap";
 import ReactHtmlParser from "react-html-parser";
+import {BACKEND_URL} from "../../constants";
 
 class NewsDetail extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class NewsDetail extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/rest-api/marketing/news/${this.props.match.params.slug}`)
+    axios.get(`${BACKEND_URL}/rest-api/marketing/news/${this.props.match.params.slug}`)
       .then(response => {
         this.setState({newItem: response.data});
       })
