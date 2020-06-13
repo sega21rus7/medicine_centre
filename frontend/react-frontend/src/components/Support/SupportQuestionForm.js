@@ -10,7 +10,7 @@ class SupportQuestionForm extends React.Component {
     const token = localStorage.getItem('token');
     const pk = this.props.match.params.pk;
     if (token) {
-      const url = `http://localhost:8000/api/marketing/support/${pk}/`;
+      const url = `http://localhost:8000/rest-api/marketing/support/${pk}/`;
       const content = event.target.elements.content.value;
       const options = {
         method: 'PUT',
@@ -34,7 +34,7 @@ class SupportQuestionForm extends React.Component {
     const token = localStorage.getItem('token');
     const pk = this.props.instancePk;
     if (token) {
-      const url = `http://localhost:8000/api/marketing/support/${pk}/`;
+      const url = `http://localhost:8000/rest-api/marketing/support/${pk}/`;
       const options = {
         method: 'DELETE',
         url: url,
@@ -57,7 +57,7 @@ class SupportQuestionForm extends React.Component {
     if (token) {
       const options = {
         method: 'POST',
-        url: 'http://localhost:8000/api/marketing/support/',
+        url: 'http://localhost:8000/rest-api/marketing/support/',
         data: {
           content: event.target.elements.content.value,
         },

@@ -28,7 +28,7 @@ class DoctorList extends React.Component {
     this.getData(1, this.props.specialUrl);
   }
 
-  getData = (page, initialUrl = 'http://localhost:8000/api/staff/doctors/') => {
+  getData = (page, initialUrl = 'http://localhost:8000/rest-api/staff/doctors/') => {
     const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {
@@ -88,7 +88,7 @@ class DoctorList extends React.Component {
                 {
                   isFilterable ?
                     <DoctorFilterForm getData={this.getData}
-                                      postFilterUrl={'http://localhost:8000/api/staff/doctors_by_post/'}/>
+                                      postFilterUrl={'http://localhost:8000/rest-api/staff/doctors_by_post/'}/>
                     : null
                 }
               </Col>

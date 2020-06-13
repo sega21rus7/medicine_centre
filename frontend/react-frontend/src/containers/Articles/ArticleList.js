@@ -27,7 +27,7 @@ class ArticleList extends React.Component {
     this.getData(1, this.props.specialUrl);
   }
 
-  getData = (page, initialUrl = 'http://localhost:8000/api/marketing/articles/') => {
+  getData = (page, initialUrl = 'http://localhost:8000/rest-api/marketing/articles/') => {
     const url = `${initialUrl}?page=${page}`;
     axios.get(url)
       .then(response => {

@@ -28,7 +28,7 @@ class DoctorReceptionList extends React.Component {
     if (token && this.props.user) {
       const pk = this.props.user.doctor;
       const url = specialUrl ? `${specialUrl}${pk}` :
-        `http://localhost:8000/api/reception/receptions_by_doctor/${pk}`;
+        `http://localhost:8000/rest-api/reception/receptions_by_doctor/${pk}`;
       const options = {
         method: 'GET',
         url: url,

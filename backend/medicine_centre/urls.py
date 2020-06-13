@@ -7,11 +7,11 @@ from rest_auth.views import PasswordResetView, PasswordResetConfirmView
 from lk.views import ConfirmEmailView
 
 urlpatterns = [
-    path('api/lk/', include('lk.urls')),
-    path('api/marketing/', include('marketing.urls')),
-    path('api/staff/', include('staff.urls')),
-    path('api/client/', include('client.urls')),
-    path('api/reception/', include('reception.urls')),
+    path('rest-api/lk/', include('lk.urls')),
+    path('rest-api/marketing/', include('marketing.urls')),
+    path('rest-api/staff/', include('staff.urls')),
+    path('rest-api/client/', include('client.urls')),
+    path('rest-api/reception/', include('reception.urls')),
     path('admin/', admin.site.urls),
     path('rest-auth/registration/account-confirm-email/<key>/', ConfirmEmailView.as_view(),
          name='account_confirm_email'),

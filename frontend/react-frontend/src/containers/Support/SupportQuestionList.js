@@ -25,7 +25,7 @@ class SupportQuestionList extends React.Component {
   }
 
   getData = (page) => {
-    const url = `http://localhost:8000/api/marketing/support/?page=${page}`;
+    const url = `http://localhost:8000/rest-api/marketing/support/?page=${page}`;
     let token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers = {'Authorization': `Token ${token}`};

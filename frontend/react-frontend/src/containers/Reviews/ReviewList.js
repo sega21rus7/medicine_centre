@@ -26,7 +26,7 @@ class ReviewList extends React.Component {
     this.getData(1, this.props.personalUrl);
   }
 
-  getData = (page, initialUrl = 'http://localhost:8000/api/marketing/reviews/') => {
+  getData = (page, initialUrl = 'http://localhost:8000/rest-api/marketing/reviews/') => {
     const url = `${initialUrl}?page=${page}`;
     let token = localStorage.getItem('token');
     if (token) {

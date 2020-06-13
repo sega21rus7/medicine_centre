@@ -5,7 +5,7 @@ class DoctorSearchForm extends React.Component {
   handleSearch = (event) => {
     event.preventDefault();
     const text = event.target.elements.text.value;
-    this.props.getData(1, `http://localhost:8000/api/staff/search_doctors/${text}`);
+    this.props.getData(1, `http://localhost:8000/rest-api/staff/search_doctors/${text}`);
 
     // нужен redux, при наличии > 3 врачей пагинация отрабатывает неправильно
 

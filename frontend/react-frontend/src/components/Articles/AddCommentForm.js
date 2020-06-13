@@ -18,7 +18,7 @@ class AddCommentForm extends React.Component {
     if (token) {
       const options = {
         method: 'POST',
-        url: 'http://localhost:8000/api/marketing/comments/',
+        url: 'http://localhost:8000/rest-api/marketing/comments/',
         data: {
           article: this.props.articleID,
           content: event.target.elements.content.value,

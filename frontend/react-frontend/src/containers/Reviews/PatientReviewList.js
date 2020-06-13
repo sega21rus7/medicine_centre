@@ -11,7 +11,7 @@ class PatientReviewList extends React.Component {
   render() {
     return (
       <ReviewLongList personalTitle={'Мои отзывы'}
-                      personalUrl={'http://localhost:8000/api/marketing/patient_reviews/'}
+                      personalUrl={'http://localhost:8000/rest-api/marketing/patient_reviews/'}
                       isNotMt4={true}
                       isChangeable={true}/>
     )
