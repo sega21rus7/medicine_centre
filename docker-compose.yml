@@ -7,7 +7,7 @@ services:
     expose:
       - 8000
     env_file:
-      - ./backend/.env.dev
+      - ./backend/.env.production
     volumes:
       - static:/home/backend/staticfiles
       - media:/home/backend/media
