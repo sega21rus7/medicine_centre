@@ -95,7 +95,7 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'medicine_centre.wsgi.application'
 
-FRONT_URL = 'http://localhost:3000/'
+FRONT_URL = os.environ.get('FRONT_URL', default='http://localhost:3000/')
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -157,12 +157,21 @@ AUTH_USER_MODEL = 'lk.CustomerUser'
 
 SITE_ID = 1
 ACCOUNT_LOGOUT_ON_GET = True
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
+    FRONT_URL,
 ]
+
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.console.EmailBackend')
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS")
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_PORT = os.environ.get("EMAIL_PORT")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+# send_mail('django test email', 'content', 'chuvash-medicine-centre@mail.ru',
+# ['sega21rus98@mail.ru'], fail_silently=False)
+
 ACCOUNT_ADAPTER = 'lk.adapters.DefaultAccountAdapterCustom'
