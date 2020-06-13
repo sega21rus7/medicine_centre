@@ -9,7 +9,7 @@ class NewsSearchForm extends React.Component {
     const text = event.target.elements.text.value;
     this.props.getData(1, `${BACKEND_URL}/rest-api/marketing/search_news/${text}`);
 
-    // нужен redux, при наличии > 3 новостей пагинация отрабатывает неправильно, исправить позже
+    // при наличии > 3 новостей пагинация отрабатывает неправильно
 
   };
 

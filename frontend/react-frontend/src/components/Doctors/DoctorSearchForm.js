@@ -8,7 +8,7 @@ class DoctorSearchForm extends React.Component {
     const text = event.target.elements.text.value;
     this.props.getData(1, `${BACKEND_URL}/rest-api/staff/search_doctors/${text}`);
 
-    // нужен redux, при наличии > 3 врачей пагинация отрабатывает неправильно
+    // при наличии > 3 врачей пагинация отрабатывает неправильно
 
   };
 
