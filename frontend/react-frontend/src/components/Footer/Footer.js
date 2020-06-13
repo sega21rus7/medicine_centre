@@ -14,9 +14,7 @@ class Footer extends React.Component {
               <div className="foot-about">
                 <p>График работы центра:
                   <br/>
-                  Пн-Сб с 8.00 до 20.00
-                  <br/>
-                  Вс с 9.00 до 18.00
+                  Пн-Вс с 8.00 до 20.00
                 </p>
                 <p className="copyright">
                   БУ «Медцентр» Минздрава Чувашии
