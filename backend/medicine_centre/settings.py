@@ -95,7 +95,8 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'medicine_centre.wsgi.application'
 
-FRONT_URL = os.environ.get('FRONT_URL', default='https://localhost:3000/')
+SITE_URL = os.environ.get('SITE_URL', default='https://localhost:3000')
+SITE_NAME = os.environ.get('SITE_NAME', default=SITE_URL)
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -168,6 +169,8 @@ CORS_ORIGIN_WHITELIST = [
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.console.EmailBackend')
 EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
+SERVER_EMAIL = os.environ.get("SERVER_EMAIL")
 EMAIL_HOST = os.environ.get("EMAIL_HOST")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_PORT = os.environ.get("EMAIL_PORT")

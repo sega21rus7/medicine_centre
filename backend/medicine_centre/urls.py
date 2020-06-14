@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from rest_auth.registration.views import VerifyEmailView
 from rest_auth.views import PasswordResetView, PasswordResetConfirmView
 
 from lk.views import ConfirmEmailView
@@ -13,6 +14,8 @@ urlpatterns = [
     path('rest-api/client/', include('client.urls')),
     path('rest-api/reception/', include('reception.urls')),
     path('admin/', admin.site.urls),
+    path('rest-auth/registration/verify-email/', VerifyEmailView.as_view(),
+         name='account_email_verification_sent'),
     path('rest-auth/registration/account-confirm-email/<key>/', ConfirmEmailView.as_view(),
          name='account_confirm_email'),
     path('rest-auth/password/reset/', PasswordResetView.as_view(),
