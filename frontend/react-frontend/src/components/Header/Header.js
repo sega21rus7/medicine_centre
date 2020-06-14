@@ -12,6 +12,7 @@ class Header extends React.Component {
       'Новости': '/news',
       'Статьи': '/articles',
       'Врачи': '/doctors',
+      'Отзывы': '/reviews',
       'Контакты': '/contacts',
       'О нас': '/about_us',
     };
