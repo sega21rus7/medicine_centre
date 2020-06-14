@@ -20,10 +20,17 @@ class ResetPasswordForm extends React.Component {
       email: event.target.elements.email.value,
     })
       .then(res => {
-        this.setState({success: res.data.detail});
+        this.setState({
+            success: res.data.detail,
+            errors: null,
+          }
+        );
       })
       .catch(err => {
-        this.setState({errors: err.response.data});
+        this.setState({
+          errors: err.response.data,
+          success: null,
+        });
       })
   };
 
