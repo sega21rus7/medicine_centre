@@ -24,27 +24,25 @@ class NewsDetail extends React.Component {
     const {newItem} = this.state;
 
     return (
-      <div className="NewDetail">
+      <Container className="NewDetail mt-4">
         {
           newItem ?
             <>
-              <Container className="mt-4">
-                <h3 className="orange-caption-left">{newItem.title}</h3>
-                <Col md={6}>
-                  <Image
-                    src={newItem.image}
-                    alt={newItem.title}
-                    className="img-fluid"
-                  />
-                </Col>
-                {ReactHtmlParser(newItem.content)}
-                <hr/>
-                Опубликована: {newItem.pub_date}
-              </Container>
+              <h3 className="orange-caption-left">{newItem.title}</h3>
+              <Col md={6}>
+                <Image
+                  src={newItem.image}
+                  alt={newItem.title}
+                  className="img-fluid"
+                />
+              </Col>
+              {ReactHtmlParser(newItem.content)}
+              <hr/>
+              Опубликована: {newItem.pub_date}
             </>
             : <SpinnerComponent/>
         }
-      </div>
+      </Container>
     )
   };
 }

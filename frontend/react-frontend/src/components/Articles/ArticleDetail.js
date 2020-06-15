@@ -31,36 +31,30 @@ class ArticleDetail extends React.Component {
 
   render() {
     const {article} = this.state;
-    if (article.tags) {
-      var tags = <ArticleTagList tags={article.tags}/>;
-    }
-    const comments = article.comments ? <CommentList comments={article.comments}/> : null;
 
     return (
-      <div className="ArticleDetail">
+      <Container className="ArticleDetail mt-4">
         {
           article ?
             <>
-              <Container className="mt-4">
-                <h3 className="orange-caption-left">{article.title}</h3>
-                <Col md={6}>
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    className="img-fluid"
-                  />
-                </Col>
-                {ReactHtmlParser(article.content)}
-                <hr/>
-                Опубликована: {article.pub_date}
-                {tags}
-              </Container>
-              {comments}
+              <h3 className="orange-caption-left">{article.title}</h3>
+              <Col md={6}>
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  className="img-fluid"
+                />
+              </Col>
+              {ReactHtmlParser(article.content)}
+              <hr/>
+              Опубликована: {article.pub_date}
+              {article.tags ? <ArticleTagList tags={article.tags}/> : null}
+              {article.comments ? <CommentList comments={article.comments}/> : null}
               <AddCommentForm articleID={article.pk} getArticle={this.getData}/>
             </>
             : <SpinnerComponent/>
         }
-      </div>
+      </Container>
     )
   };
 }
