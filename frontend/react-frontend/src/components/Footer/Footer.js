@@ -17,7 +17,7 @@ class Footer extends React.Component {
                   Пн-Вс с 8.00 до 20.00
                 </p>
                 <p className="copyright">
-                  БУ «Медцентр» Минздрава Чувашии
+                  ООО «Медцентр»
                   <br/>
                   &copy;2020 Все права защищены
                 </p>
