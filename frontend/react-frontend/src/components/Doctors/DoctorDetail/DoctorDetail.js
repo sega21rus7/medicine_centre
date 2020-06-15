@@ -5,7 +5,6 @@ import {Card, Col, Container, Row} from "react-bootstrap";
 import customAvatar from '../../../images/custom_avatar.png'
 import LineProperty from "../LineProperty";
 import ReactHtmlParser from 'react-html-parser';
-import DoctorPrizeImages from "../DoctorPrizeImages";
 import {connect} from "react-redux";
 import {BACKEND_URL} from "../../../constants";
 
@@ -104,7 +103,6 @@ class DoctorDetail extends React.Component {
             </Col>
           </Row>
         </Container>
-        <DoctorPrizeImages doctor={doctor}/>
       </div>
     )
   };

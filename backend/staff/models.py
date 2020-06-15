@@ -97,16 +97,3 @@ class Doctor(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.user.get_fio() or self.user.username)
         super().save(*args, **kwargs)
-
-
-class PrizeImage(models.Model):
-    image = smart_fields.ImageField(verbose_name='Изображение', upload_to='staff/images/prize_images')
-    doctor = models.ForeignKey(Doctor, verbose_name='Врач', on_delete=models.CASCADE,
-                               related_name='prize_images')
-
-    class Meta:
-        verbose_name = 'Фото наград'
-        verbose_name_plural = 'Фото наград'
-
-    def __str__(self):
-        return '%s - %d' % (self.doctor.user, self.pk)
