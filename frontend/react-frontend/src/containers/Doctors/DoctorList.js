@@ -49,7 +49,8 @@ class DoctorList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated, isNotCaption, isSearchable, isFilterable} = this.props;
+    const {isPaginated, isNotCaption, isSearchable, isFilterable, specialUrl, postPk} = this.props;
+    const specialSearchUrl = specialUrl ? `${BACKEND_URL}/rest-api/staff/doctors_by_post/${postPk}/search` : null;
 
     const row = this.state.items.map((item, index) => {
         return <DoctorListItem key={index}
@@ -83,7 +84,9 @@ class DoctorList extends React.Component {
               <Col md={3} className="mb-2">
                 {
                   isSearchable ?
-                    <DoctorSearchForm getData={this.getData}/>
+                    <DoctorSearchForm getData={this.getData}
+                                      specialUrl={specialUrl}
+                                      specialSearchUrl={specialSearchUrl}/>
                     : null
                 }
                 {

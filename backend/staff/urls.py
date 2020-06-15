@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (
     DoctorViewSet, DoctorByPostListView, DepartmentViewSet, PostViewSet,
-    SearchDoctorListView, DoctorForFilterListView
+    DoctorSearchListView, DoctorForFilterListView, DoctorByPostSearchListView
 )
 
 app_name = 'staff'
@@ -11,7 +11,9 @@ app_name = 'staff'
 urlpatterns = [
     path('doctors_by_post/<post_pk>/', DoctorByPostListView.as_view(),
          name='doctors_by_post'),
-    path('search_doctors/<search_key>/', SearchDoctorListView.as_view(), name='search_doctors'),
+    path('doctors/search/<search_key>/', DoctorSearchListView.as_view(), name='doctors_search'),
+    path('doctors_by_post/<post_pk>/search/<search_key>/', DoctorByPostSearchListView.as_view(),
+         name='doctors_by_post_search'),
     path('doctors_choice/', DoctorForFilterListView.as_view(), name='doctors_choice'),
 ]
 

@@ -10,7 +10,16 @@ from .serializers import DoctorListSerializer, DoctorCreateUpdateDestroySerializ
     DepartmentCreateUpdateDestroySerializer, DepartmentListSerializer, PostSerializer
 
 
-class SearchDoctorListView(ListAPIView):
+class DoctorByPostListView(ListAPIView):
+    serializer_class = DoctorListSerializer
+    pagination_class = PaginationBy3
+
+    def get_queryset(self):
+        post_pk = self.kwargs['post_pk']
+        return Doctor.objects.filter(posts__id__icontains=post_pk)
+
+
+class DoctorSearchListView(ListAPIView):
     serializer_class = DoctorListSerializer
     pagination_class = PaginationBy3
 
@@ -18,6 +27,15 @@ class SearchDoctorListView(ListAPIView):
         search_key = self.kwargs['search_key']
         slugify_key = slugify(search_key)
         qs = Doctor.objects.filter(slug__icontains=slugify_key).all()
+        return qs
+
+
+class DoctorByPostSearchListView(DoctorByPostListView):
+    def get_queryset(self):
+        qs = super(DoctorByPostSearchListView, self).get_queryset()
+        search_key = self.kwargs['search_key']
+        slugify_key = slugify(search_key)
+        qs = qs.filter(slug__icontains=slugify_key).all()
         return qs
 
 
@@ -45,15 +63,6 @@ class DepartmentViewSet(MultipleSerializerViewSetMixin, MultiplePermissionsViewS
     crud_serializer_class = DepartmentCreateUpdateDestroySerializer
     serializer_permission_classes = (AllowAny,)
     crud_serializer_permission_classes = (IsAdminUser,)
-
-
-class DoctorByPostListView(ListAPIView):
-    serializer_class = DoctorListSerializer
-    pagination_class = PaginationBy3
-
-    def get_queryset(self):
-        post_pk = self.kwargs['post_pk']
-        return Doctor.objects.filter(posts__id__icontains=post_pk)
 
 
 class DoctorForFilterListView(ListAPIView):

@@ -30,7 +30,7 @@ class DoctorPost extends React.Component {
 
   render() {
     const {doctorPost} = this.state;
-    const doctorPk = this.props.match.params.pk;
+    const postPk = this.props.match.params.pk;
 
     return (
       <div className="DoctorPost">
@@ -52,7 +52,8 @@ class DoctorPost extends React.Component {
           <h3 className="green-caption-left">Врачи, занимающие должность «{doctorPost.name}»</h3>
         </Container>
         <DoctorLongList isNotCaption={true}
-                        specialUrl={`${BACKEND_URL}/rest-api/staff/doctors_by_post/${doctorPk}/`}
+                        specialUrl={`${BACKEND_URL}/rest-api/staff/doctors_by_post/${postPk}/`}
+                        postPk={postPk}
                         isSearchable={true}
                         isFilterable={false}/>
       </div>

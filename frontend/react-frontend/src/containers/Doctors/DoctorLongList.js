@@ -4,7 +4,7 @@ import DoctorList from "./DoctorList";
 
 class DoctorLongList extends React.Component {
   render() {
-    const {isNotCaption, specialUrl, isSearchable, isFilterable} = this.props;
+    const {isNotCaption, specialUrl, isSearchable, isFilterable, postPk} = this.props;
 
     return (
       <div className="DoctorLongList">
@@ -12,7 +12,8 @@ class DoctorLongList extends React.Component {
                     isNotCaption={isNotCaption}
                     specialUrl={specialUrl}
                     isSearchable={isSearchable !== false}
-                    isFilterable={isFilterable !== false}/>
+                    isFilterable={isFilterable !== false}
+                    postPk={postPk}/>
       </div>
     )
   };

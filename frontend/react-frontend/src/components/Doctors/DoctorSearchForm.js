@@ -5,16 +5,17 @@ import {BACKEND_URL} from "../../constants";
 class DoctorSearchForm extends React.Component {
   handleSearch = (event) => {
     event.preventDefault();
-    const text = event.target.elements.text.value;
-    this.props.getData(1, `${BACKEND_URL}/rest-api/staff/search_doctors/${text}`);
-
+    const searchText = event.target.elements.text.value;
+    const {specialSearchUrl, getData} = this.props;
+    const url = specialSearchUrl || `${BACKEND_URL}/rest-api/staff/doctors/search`;
+    getData(1, `${url}/${searchText}/`);
     // при наличии > 3 врачей пагинация отрабатывает неправильно
 
   };
 
   handleReset = (event) => {
     event.preventDefault();
-    this.props.getData(1);
+    this.props.getData(1, this.props.specialUrl);
   };
 
   render() {
