@@ -6,6 +6,7 @@ import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import DoctorListItem from "../../components/Doctors/DoctorListItem";
 import DoctorSearchForm from "../../components/Doctors/DoctorSearchForm";
 import DoctorFilterForm from "../../components/Doctors/DoctorFilterForm/DoctorFilterForm";
+import SpinnerComponent from "../../components/SpinnerComponent";
 import {BACKEND_URL} from "../../constants";
 
 class DoctorList extends React.Component {
@@ -15,7 +16,7 @@ class DoctorList extends React.Component {
       next: null,
       previous: null,
       count: 0,
-      items: [],
+      items: null,
       paginateCount: 0,
     };
     this.paginate_by = 3;
@@ -52,14 +53,6 @@ class DoctorList extends React.Component {
     const {isPaginated, isNotCaption, isSearchable, isFilterable, specialUrl, postPk} = this.props;
     const specialSearchUrl = specialUrl ? `${BACKEND_URL}/rest-api/staff/doctors_by_post/${postPk}/search` : null;
 
-    const row = this.state.items.map((item, index) => {
-        return <DoctorListItem key={index}
-                               item={item}
-                               index={index}
-                               isSearchable={isSearchable}/>;
-      }
-    );
-
     if (isPaginated) {
       if (paginateCount > 1) {
         var pagination = <PaginationComponent items={items}
@@ -78,30 +71,43 @@ class DoctorList extends React.Component {
           isNotCaption ? null
             : <h3 className="orange-caption-left">Наши специалисты</h3>
         }
-        <Row>
-          {
-            isSearchable || isFilterable ?
-              <Col md={3} className="mb-2">
+        {
+          items ?
+            <>
+              <Row>
                 {
-                  isSearchable ?
-                    <DoctorSearchForm getData={this.getData}
-                                      specialUrl={specialUrl}
-                                      specialSearchUrl={specialSearchUrl}/>
+                  isSearchable || isFilterable ?
+                    <Col md={3} className="mb-2">
+                      {
+                        isSearchable ?
+                          <DoctorSearchForm getData={this.getData}
+                                            specialUrl={specialUrl}
+                                            specialSearchUrl={specialSearchUrl}/>
+                          : null
+                      }
+                      {
+                        isFilterable ?
+                          <DoctorFilterForm getData={this.getData}
+                                            postFilterUrl={`${BACKEND_URL}/rest-api/staff/doctors_by_post/`}/>
+                          : null
+                      }
+                    </Col>
                     : null
                 }
                 {
-                  isFilterable ?
-                    <DoctorFilterForm getData={this.getData}
-                                      postFilterUrl={`${BACKEND_URL}/rest-api/staff/doctors_by_post/`}/>
-                    : null
+                  items.map((item, index) => (
+                    <DoctorListItem key={index}
+                                    item={item}
+                                    index={index}
+                                    isSearchable={isSearchable}/>
+                  ))
                 }
-              </Col>
-              : null
-          }
-          {row}
-        </Row>
-        {button}
-        {pagination}
+              </Row>
+              {button}
+              {pagination}
+            </>
+            : <SpinnerComponent/>
+        }
       </Container>
     )
   };

@@ -8,6 +8,7 @@ import {getFullName} from "../../methods";
 import * as actions from "../../store/actions/make_appoinment/actionCreators";
 import DoctorFilterForm from "../Doctors/DoctorFilterForm/DoctorFilterForm";
 import {BACKEND_URL} from "../../constants";
+import SpinnerComponent from "../SpinnerComponent";
 
 class PatientReceptionList extends React.Component {
   constructor(props) {
@@ -80,7 +81,6 @@ class PatientReceptionList extends React.Component {
       };
       axios(options)
         .then((res) => {
-
           this.redirectAfterReceptionRequest();
         })
         .catch(err => {
@@ -115,89 +115,95 @@ class PatientReceptionList extends React.Component {
     return (
       <Container className="PatientReceptionList">
         {
-          isFilterable ?
-            <Col md={3}>
-              <DoctorFilterForm getData={this.getSchedule}
-                                specialUrl={specialUrl}
-                                postFilterUrl={`${BACKEND_URL}/rest-api/reception/free_receptions_by_post/`}/>
-            </Col>
-            : null
-        }
+          schedule ?
+            <>
+              {
+                isFilterable ?
+                  <Col md={3}>
+                    <DoctorFilterForm getData={this.getSchedule}
+                                      specialUrl={specialUrl}
+                                      postFilterUrl={`${BACKEND_URL}/rest-api/reception/free_receptions_by_post/`}/>
+                  </Col>
+                  : null
+              }
 
-        {
-          error ?
-            <Alert className="mt-2" variant="danger">
-              Вам нужно заполнить ФИО и номер телефона в профиле, чтобы записаться на прием!
-            </Alert>
-            : null
-        }
+              {
+                error ?
+                  <Alert className="mt-2" variant="danger">
+                    Вам нужно заполнить ФИО и номер телефона в профиле, чтобы записаться на прием!
+                  </Alert>
+                  : null
+              }
 
-        <Table bordered responsive>
-          <thead>
-          <tr>
-            <th>Врач</th>
-            <th>Кабинет</th>
-            <th>Этаж</th>
-            <th>Дата</th>
-            <th>Время</th>
-            <th>Пациент</th>
-            {
-              !isNotAppointable ? <th>Запись</th> : null
-            }
-          </tr>
-          </thead>
-          <tbody>
-          {
-            schedule ? schedule.map((item, index) => (
-              <tr key={index}>
-                <td>
-                  <Link to={'/doctor/' + item.doctor.slug}>
-                    {getFullName(item.doctor.user)}
-                  </Link>
-                </td>
-                <td>{item.doctor.office.number}</td>
-                <td>{item.doctor.office.floor}</td>
-                <td>{item.date}</td>
-                <td>{item.from_time} - {item.to_time}</td>
-                <td>
+              <Table bordered responsive>
+                <thead>
+                <tr>
+                  <th>Врач</th>
+                  <th>Кабинет</th>
+                  <th>Этаж</th>
+                  <th>Дата</th>
+                  <th>Время</th>
+                  <th>Пациент</th>
                   {
-                    item.patient ?
-                      <Link to={'/lk/patient_profile/' + item.patient.user.pk}>
-                        {getFullName(item.patient.user)}
-                      </Link>
-                      : '-'
+                    !isNotAppointable ? <th>Запись</th> : null
                   }
-                </td>
+                </tr>
+                </thead>
+                <tbody>
                 {
-                  !isNotAppointable ?
-                    <td>
+                  schedule ? schedule.map((item, index) => (
+                    <tr key={index}>
+                      <td>
+                        <Link to={'/doctor/' + item.doctor.slug}>
+                          {getFullName(item.doctor.user)}
+                        </Link>
+                      </td>
+                      <td>{item.doctor.office.number}</td>
+                      <td>{item.doctor.office.floor}</td>
+                      <td>{item.date}</td>
+                      <td>{item.from_time} - {item.to_time}</td>
+                      <td>
+                        {
+                          item.patient ?
+                            <Link to={'/lk/patient_profile/' + item.patient.user.pk}>
+                              {getFullName(item.patient.user)}
+                            </Link>
+                            : '-'
+                        }
+                      </td>
                       {
-                        item.patient && user.pk === item.patient.user.pk ?
-                          <Button variant="outline-danger"
-                                  pk={item.pk}
-                                  onClick={this.cancelReception}>Отменить</Button>
-                          :
-                          <Button variant="outline-success"
-                                  pk={item.pk}
-                                  onClick={this.doReception}>Записаться</Button>
+                        !isNotAppointable ?
+                          <td>
+                            {
+                              item.patient && user.pk === item.patient.user.pk ?
+                                <Button variant="outline-danger"
+                                        pk={item.pk}
+                                        onClick={this.cancelReception}>Отменить</Button>
+                                :
+                                <Button variant="outline-success"
+                                        pk={item.pk}
+                                        onClick={this.doReception}>Записаться</Button>
+                            }
+                          </td>
+                          : null
                       }
-                    </td>
-                    : null
+                    </tr>
+                  )) : null
                 }
-              </tr>
-            )) : null
-          }
-          </tbody>
-        </Table>
-        {
-          paginateCount > 1 ?
-            <PaginationComponent items={schedule}
-                                 getData={this.getSchedule}
-                                 paginateCount={paginateCount}
-                                 next={next}
-                                 previous={previous}
-                                 specialUrl={specialUrl}/>
-            : null
+                </tbody>
+              </Table>
+              {
+                paginateCount > 1 ?
+                  <PaginationComponent items={schedule}
+                                       getData={this.getSchedule}
+                                       paginateCount={paginateCount}
+                                       next={next}
+                                       previous={previous}
+                                       specialUrl={specialUrl}/>
+                  : null
+              }
+            </>
+            : <SpinnerComponent/>
         }
       </Container>
     )

@@ -5,6 +5,7 @@ import PaginationComponent from "../../components/PaginationComponent";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import ReviewListItem from "../../components/Reviews/ReviewListItem";
 import {BACKEND_URL} from "../../constants";
+import SpinnerComponent from "../../components/SpinnerComponent";
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class ReviewList extends React.Component {
       next: null,
       previous: null,
       count: 0,
-      items: [],
+      items: null,
       paginateCount: 0,
     };
     this.paginate_by = 3;
@@ -53,11 +54,6 @@ class ReviewList extends React.Component {
     const {next, previous, items, paginateCount} = this.state;
     const {isPaginated, personalTitle, personalUrl, isNotMt4, isChangeable} = this.props;
 
-    const row = this.state.items.map((item, index) => {
-        return <ReviewListItem key={index} item={item} index={index} isChangeable={isChangeable}/>;
-      }
-    );
-
     if (isPaginated) {
       if (paginateCount > 1) {
         var pagination = <PaginationComponent items={items}
@@ -74,11 +70,24 @@ class ReviewList extends React.Component {
     return (
       <Container className={isNotMt4 ? '' : 'mt-4'}>
         <h3 className="orange-caption-left">{personalTitle || 'Отзывы'}</h3>
-        <Row>
-          {row}
-        </Row>
-        {button}
-        {pagination}
+        {
+          items ?
+            <>
+              <Row>
+                {
+                  items.map((item, index) => (
+                    <ReviewListItem key={index}
+                                    item={item}
+                                    index={index}
+                                    isChangeable={isChangeable}/>
+                  ))
+                }
+              </Row>
+              {button}
+              {pagination}
+            </>
+            : <SpinnerComponent/>
+        }
       </Container>
     )
   };

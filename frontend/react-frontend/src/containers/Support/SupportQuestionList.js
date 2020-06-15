@@ -2,10 +2,11 @@ import React from "react";
 import {Container, Row} from "react-bootstrap";
 import axios from "axios";
 import PaginationComponent from "../../components/PaginationComponent";
-import SupportQuestionListItem from "../../components/Support/SupportQuestionListItem";
 import * as actions from "../../store/actions/support/actionCreators";
 import {connect} from "react-redux";
 import {BACKEND_URL} from "../../constants";
+import SupportQuestionListItem from "../../components/Support/SupportQuestionListItem";
+import SpinnerComponent from "../../components/SpinnerComponent";
 
 class SupportQuestionList extends React.Component {
   constructor(props) {
@@ -50,14 +51,6 @@ class SupportQuestionList extends React.Component {
   render() {
     const {next, previous, items, paginateCount} = this.state;
 
-    const row = this.state.items.map((item, index) => {
-        return <SupportQuestionListItem key={index}
-                                        item={item}
-                                        index={index}
-                                        isChangeable={true}/>;
-      }
-    );
-
     if (paginateCount > 1) {
       var pagination = <PaginationComponent items={items}
                                             getData={this.getData}
@@ -69,10 +62,23 @@ class SupportQuestionList extends React.Component {
     return (
       <Container>
         <h3 className="orange-caption-left">Мои обращения</h3>
-        <Row>
-          {row}
-        </Row>
-        {pagination}
+        {
+          items ?
+            <>
+              <Row>
+                {
+                  items.map((item, index) => (
+                    <SupportQuestionListItem key={index}
+                                             item={item}
+                                             index={index}
+                                             isChangeable={true}/>
+                  ))
+                }
+              </Row>
+              {pagination}
+            </>
+            : <SpinnerComponent/>
+        }
       </Container>
     )
   };

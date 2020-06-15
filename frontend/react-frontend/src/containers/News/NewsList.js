@@ -6,6 +6,7 @@ import axios from "axios";
 import ViewAllList from "../../components/ViewAllList/ViewAllList";
 import NewsSearchForm from "../../components/News/NewsSearchForm";
 import {BACKEND_URL} from "../../constants";
+import SpinnerComponent from "../../components/SpinnerComponent";
 
 class NewsList extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class NewsList extends React.Component {
       next: null,
       previous: null,
       count: 0,
-      items: [],
+      items: null,
       paginateCount: 0,
     };
     this.paginate_by = 3;
@@ -50,13 +51,6 @@ class NewsList extends React.Component {
     const {next, previous, items, paginateCount} = this.state;
     const {isPaginated, isSearchable} = this.props;
 
-    const row = this.state.items.map((item, index) => {
-        return <NewsListItem key={index}
-                             item={item}
-                             index={index}/>;
-      }
-    );
-
     if (isPaginated) {
       if (paginateCount > 1) {
         var pagination = <PaginationComponent items={items}
@@ -72,20 +66,32 @@ class NewsList extends React.Component {
     return (
       <Container className="mt-4">
         <h3 className="orange-caption-left">Новости</h3>
-        <Row>
-          {
-            isSearchable ?
-              <Col md={3}>
-                <NewsSearchForm getData={this.getData}/>
-              </Col>
-              : null
-          }
-          <Col md={isSearchable ? 9 : 12}>
-            {row}
-          </Col>
-        </Row>
-        {button}
-        {pagination}
+        {
+          items ?
+            <>
+              <Row>
+                {
+                  isSearchable ?
+                    <Col md={3}>
+                      <NewsSearchForm getData={this.getData}/>
+                    </Col>
+                    : null
+                }
+                <Col md={isSearchable ? 9 : 12}>
+                  {
+                    items.map((item, index) => (
+                      <NewsListItem key={index}
+                                    item={item}
+                                    index={index}/>
+                    ))
+                  }
+                </Col>
+              </Row>
+              {button}
+              {pagination}
+            </>
+            : <SpinnerComponent/>
+        }
       </Container>
     )
   };

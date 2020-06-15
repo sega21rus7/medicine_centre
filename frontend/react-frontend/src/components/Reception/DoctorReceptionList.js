@@ -6,6 +6,7 @@ import {getFullName} from "../../methods";
 import {Link} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
 import {BACKEND_URL} from "../../constants";
+import SpinnerComponent from "../SpinnerComponent";
 
 class DoctorReceptionList extends React.Component {
   constructor(props) {
@@ -61,53 +62,59 @@ class DoctorReceptionList extends React.Component {
 
     return (
       <Container className="DoctorReceptionList">
-        <Table bordered responsive>
-          <thead>
-          <tr>
-            <th>Врач</th>
-            <th>Кабинет</th>
-            <th>Этаж</th>
-            <th>Дата</th>
-            <th>Время</th>
-            <th>Пациент</th>
-          </tr>
-          </thead>
-          <tbody>
-          {
-            schedule ? schedule.map((item, index) => (
-              <tr key={index}>
-                <td>
-                  <Link to={'/doctor/' + item.doctor.slug}>
-                    {getFullName(item.doctor.user)}
-                  </Link>
-                </td>
-                <td>{item.doctor.office.number}</td>
-                <td>{item.doctor.office.floor}</td>
-                <td>{item.date}</td>
-                <td>{item.from_time} - {item.to_time}</td>
-                <td>
-                  {
-                    item.patient ?
-                      <Link to={'/lk/patient_profile/' + item.patient.user.pk}>
-                        {getFullName(item.patient.user)}
-                      </Link>
-                      : '-'
-                  }
-                </td>
-              </tr>
-            )) : null
-          }
-          </tbody>
-        </Table>
         {
-          paginateCount > 1 ?
-            <PaginationComponent items={schedule}
-                                 getData={this.getSchedule}
-                                 paginateCount={paginateCount}
-                                 next={next}
-                                 previous={previous}
-                                 specialUrl={specialUrl}/>
-            : null
+          schedule ?
+            <>
+              <Table bordered responsive>
+                <thead>
+                <tr>
+                  <th>Врач</th>
+                  <th>Кабинет</th>
+                  <th>Этаж</th>
+                  <th>Дата</th>
+                  <th>Время</th>
+                  <th>Пациент</th>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                  schedule ? schedule.map((item, index) => (
+                    <tr key={index}>
+                      <td>
+                        <Link to={'/doctor/' + item.doctor.slug}>
+                          {getFullName(item.doctor.user)}
+                        </Link>
+                      </td>
+                      <td>{item.doctor.office.number}</td>
+                      <td>{item.doctor.office.floor}</td>
+                      <td>{item.date}</td>
+                      <td>{item.from_time} - {item.to_time}</td>
+                      <td>
+                        {
+                          item.patient ?
+                            <Link to={'/lk/patient_profile/' + item.patient.user.pk}>
+                              {getFullName(item.patient.user)}
+                            </Link>
+                            : '-'
+                        }
+                      </td>
+                    </tr>
+                  )) : null
+                }
+                </tbody>
+              </Table>
+              {
+                paginateCount > 1 ?
+                  <PaginationComponent items={schedule}
+                                       getData={this.getSchedule}
+                                       paginateCount={paginateCount}
+                                       next={next}
+                                       previous={previous}
+                                       specialUrl={specialUrl}/>
+                  : null
+              }
+            </>
+            : <SpinnerComponent/>
         }
       </Container>
     )
