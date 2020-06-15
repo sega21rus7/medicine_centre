@@ -78,25 +78,25 @@ class DoctorDetail extends React.Component {
                     )) : null
                   }
                   {
-                    doctor.diplomaSpecialty ?
+                    doctor.diploma_specialty ?
                       <LineProperty name="Специальность по диплому"
                                     content={doctor.diploma_specialty.name}/>
                       : null
                   }
                   {
-                    doctor.qualificationCategory ?
+                    doctor.qualification_category ?
                       <LineProperty name="Квалицикационная категория"
                                     content={doctor.qualification_category.name}/>
                       : null
                   }
                   {
-                    doctor.experienceFrom ?
+                    doctor.experience_from ?
                       <LineProperty name="Стаж работы с"
                                     content={doctor.experience_from}/>
                       : null
                   }
                   {
-                    doctor.additionalEducation ?
+                    doctor.additional_education ?
                       <LineProperty name="Дополнительное образование"
                                     content={ReactHtmlParser(doctor.additional_education)}/>
                       : null
