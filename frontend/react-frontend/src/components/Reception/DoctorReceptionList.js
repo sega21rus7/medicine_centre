@@ -61,7 +61,7 @@ class DoctorReceptionList extends React.Component {
 
     return (
       <Container className="DoctorReceptionList">
-        <Table bordered>
+        <Table bordered responsive>
           <thead>
           <tr>
             <th>Врач</th>

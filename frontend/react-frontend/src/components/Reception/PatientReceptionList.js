@@ -132,7 +132,7 @@ class PatientReceptionList extends React.Component {
             : null
         }
 
-        <Table bordered>
+        <Table bordered responsive>
           <thead>
           <tr>
             <th>Врач</th>
