@@ -3,12 +3,13 @@ import {Button, Container} from "react-bootstrap";
 import axios from "axios";
 import SupportQuestionForm from "./SupportQuestionForm";
 import {BACKEND_URL} from "../../constants";
+import SpinnerComponent from "../SpinnerComponent";
 
 class SupportQuestionEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: {},
+      question: null,
     }
   }
 
@@ -43,16 +44,22 @@ class SupportQuestionEdit extends React.Component {
     const {question} = this.state;
 
     return (
-      <Container className="SupportQuestionEdit">
-        <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
-        <div className="mt-4">
-          <div className="mt-4">
-            <SupportQuestionForm instance={question}
-                                 instancePk={this.props.match.params.pk}
-                                 isEdit={true}/>
-          </div>
-        </div>
-      </Container>
+      <div className="SupportQuestionEdit">
+        {
+          question ?
+            <>
+              <Container>
+                <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
+                <div className="mt-4">
+                  <SupportQuestionForm instance={question}
+                                       instancePk={this.props.match.params.pk}
+                                       isEdit={true}/>
+                </div>
+              </Container>
+            </>
+            : <SpinnerComponent/>
+        }
+      </div>
     )
   }
 }

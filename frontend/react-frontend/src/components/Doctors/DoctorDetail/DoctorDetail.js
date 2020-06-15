@@ -7,12 +7,13 @@ import LineProperty from "../LineProperty";
 import ReactHtmlParser from 'react-html-parser';
 import {connect} from "react-redux";
 import {BACKEND_URL} from "../../../constants";
+import SpinnerComponent from "../../SpinnerComponent";
 
 class DoctorDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      doctor: {},
+      doctor: null,
     }
   }
 
@@ -64,45 +65,51 @@ class DoctorDetail extends React.Component {
 
     return (
       <div className="DoctorDetail">
-        <Container className="mt-4">
-          <Row>
-            <Col lg={5}>
-              {caption}
-              <Card>
-                <Card.Img
-                  variant="top"
-                  src={avatar || customAvatar}
-                  className="img-fluid"
-                />
-              </Card>
-            </Col>
-            <Col lg={7}>
-              {
-                isAuthenticated ?
-                  <>
-                    <LineProperty name="Номер телефона" content={phone_number || 'не указан'}/>
-                    <LineProperty name="Email" content={email}/>
-                  </> : null
-              }
-              {university}
-              <span className="font-italic font-weight-bold">Должность</span>:
-              {
-                doctor.posts ? doctor.posts.map((item, index) => (
-                  <span key={index}>
+        {
+          doctor ?
+            <>
+              <Container className="mt-4">
+                <Row>
+                  <Col lg={5}>
+                    {caption}
+                    <Card>
+                      <Card.Img
+                        variant="top"
+                        src={avatar || customAvatar}
+                        className="img-fluid"
+                      />
+                    </Card>
+                  </Col>
+                  <Col lg={7}>
+                    {
+                      isAuthenticated ?
+                        <>
+                          <LineProperty name="Номер телефона" content={phone_number || 'не указан'}/>
+                          <LineProperty name="Email" content={email}/>
+                        </> : null
+                    }
+                    {university}
+                    <span className="font-italic font-weight-bold">Должность</span>:
+                    {
+                      doctor.posts ? doctor.posts.map((item, index) => (
+                        <span key={index}>
                     &nbsp;{item.name}
-                    &nbsp;({item.department.name})
+                          &nbsp;({item.department.name})
                   </span>
-                )) : null
-              }
-              {diplomaSpecialty}
-              {qualificationCategory}
-              {experienceFrom}
-              {additionalEducation}
-              {awards}
-              {certificates}
-            </Col>
-          </Row>
-        </Container>
+                      )) : null
+                    }
+                    {diplomaSpecialty}
+                    {qualificationCategory}
+                    {experienceFrom}
+                    {additionalEducation}
+                    {awards}
+                    {certificates}
+                  </Col>
+                </Row>
+              </Container>
+            </>
+            : <SpinnerComponent/>
+        }
       </div>
     )
   };

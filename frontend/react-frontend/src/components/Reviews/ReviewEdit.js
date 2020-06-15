@@ -3,12 +3,13 @@ import {Button, Container} from "react-bootstrap";
 import axios from "axios";
 import ReviewForm from "./ReviewForm";
 import {BACKEND_URL} from "../../constants";
+import SpinnerComponent from "../SpinnerComponent";
 
 class ReviewEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      review: {},
+      review: null,
     }
   }
 
@@ -40,16 +41,22 @@ class ReviewEdit extends React.Component {
     const {review} = this.state;
 
     return (
-      <Container className="ReviewEdit">
-        <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
-        <div className="mt-4">
-          <div className="mt-4">
-            <ReviewForm instance={review}
-                        isEdit={true}
-                        instancePk={this.props.match.params.pk}/>
-          </div>
-        </div>
-      </Container>
+      <div className="ReviewEdit">
+        {
+          review ?
+            <>
+              <Container>
+                <Button variant="outline-secondary" onClick={this.handleBack}>Назад</Button>
+                <div className="mt-4">
+                  <ReviewForm instance={review}
+                              isEdit={true}
+                              instancePk={this.props.match.params.pk}/>
+                </div>
+              </Container>
+            </>
+            : <SpinnerComponent/>
+        }
+      </div>
     )
   }
 }
