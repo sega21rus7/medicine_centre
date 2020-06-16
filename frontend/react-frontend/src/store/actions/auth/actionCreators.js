@@ -72,12 +72,11 @@ export const checkAuthTimeout = expirationTime => {
   }
 };
 
-export const authSignIn = (username = '', email = '', password) => {
+export const authSignIn = (username = '', password) => {
   return dispatch => {
     dispatch(authStart());
     axios.post(`${BACKEND_URL}/rest-auth/login/`, {
       username: username,
-      email: email,
       password: password
     })
       .then(res => {

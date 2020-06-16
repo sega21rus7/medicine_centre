@@ -12,16 +12,14 @@ class SignInForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const isEmailInput = this.props.isEmailInput;
     const elements = event.target.elements;
-    const username = isEmailInput ? '' : elements.username.value;
-    const email = isEmailInput ? elements.email.value : '';
+    const username = elements.username.value;
     const password = elements.password.value;
-    this.props.onAuth(username, email, password);
+    this.props.onAuth(username, password);
   };
 
   render() {
-    const {error, isEmailInput} = this.props;
+    const {error} = this.props;
     if (error) {
       var errors = error.data;
     }
@@ -32,20 +30,13 @@ class SignInForm extends React.Component {
                                         placeholder="Пароль"
                                         autoComplete="on"
                                         required/>;
-    const emailInput = <Form.Control className="form-control-user"
-                                     type="email"
-                                     name="email"
-                                     placeholder="Email"
-                                     required/>;
     const loginInput = <Form.Control className="form-control-user"
                                      type="text"
                                      name="username"
-                                     placeholder="Логин"
+                                     placeholder="Логин/Email"
                                      required/>;
-    const emailOrLoginInput = isEmailInput ? emailInput : loginInput;
     if (errors) {
-      var emailOrLoginError = isEmailInput ? errors.email : errors.username;
-      emailOrLoginError = <ErrorBlock text={emailOrLoginError}/>;
+      var loginError = <ErrorBlock text={errors.username}/>;
       var passwordError = <ErrorBlock text={errors.password}/>;
       var nonFieldErrors = <ErrorBlock text={errors.non_field_errors}/>;
     }
@@ -54,8 +45,8 @@ class SignInForm extends React.Component {
     return (
       <Form className="user" onSubmit={this.handleSubmit}>
         <Form.Group controlId="formGroupLoginOrEmail">
-          {emailOrLoginInput}
-          {emailOrLoginError}
+          {loginInput}
+          {loginError}
         </Form.Group>
         <Form.Group controlId="formGroupPassword">
           {passwordInput}
