@@ -77,7 +77,8 @@ class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
                     'Вы не были на приеме у данного врача, поэтому не можете оставить отзыв о его работе.')
             if not reception.first().confirmed_by_doctor:
                 raise serializers.ValidationError(
-                    'Доктор еще не подтвердил ваше посещение, поэтому не можете оставить отзыв о его работе.')
+                    'Доктор еще не подтвердил ваше посещение, поэтому не можете оставить отзыв о его работе. \
+                     Следите за статусом приема в архиве.')
         else:
             reception = Reception.objects.filter(
                 Q(patient=patient) &

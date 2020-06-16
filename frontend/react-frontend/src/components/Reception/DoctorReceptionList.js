@@ -139,13 +139,13 @@ class DoctorReceptionList extends React.Component {
                                 <td>
                                   <Button variant="outline-success"
                                           pk={item.pk}
-                                          onClick={this.doConfirm}>Пройден</Button>
+                                          onClick={this.doConfirm}>Подтвердить, что пройден</Button>
                                 </td>
                                 :
                                 <td>
                                   <Button variant="outline-danger"
                                           pk={item.pk}
-                                          onClick={this.cancelConfirm}>Не пройден</Button>
+                                          onClick={this.cancelConfirm}>Подтвердить, что не пройден</Button>
                                 </td>
                             }
                           </>
