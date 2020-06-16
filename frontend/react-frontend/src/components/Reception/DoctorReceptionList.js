@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Container, Table} from "react-bootstrap";
+import {Button, Container, Table} from "react-bootstrap";
 import {connect} from "react-redux";
 import {getFullName} from "../../methods";
 import {Link} from "react-router-dom";
@@ -56,9 +56,42 @@ class DoctorReceptionList extends React.Component {
     }
   };
 
+  cancelConfirm = (event) => {
+    this.sendConfirmRequest(event, false);
+  };
+
+  doConfirm = (event) => {
+    this.sendConfirmRequest(event, true);
+  };
+
+  sendConfirmRequest(event, value) {
+    const token = localStorage.getItem('token');
+    if (token && this.props.user) {
+      const target = event.target;
+      const pk = target.getAttribute('pk');
+      const url = `${BACKEND_URL}/rest-api/reception/receptions/${pk}/`;
+      const options = {
+        method: 'PUT',
+        url: url,
+        data: {
+          confirmed_by_doctor: value,
+        },
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then((res) => {
+          // this.redirectAfterRequest();
+          this.getSchedule(1, this.props.specialUrl);
+        })
+        .catch(err => {
+
+        });
+    }
+  }
+
   render() {
     const {schedule, next, previous, paginateCount} = this.state;
-    const {specialUrl} = this.props;
+    const {specialUrl, user, isConfirmable} = this.props;
 
     return (
       <Container className="DoctorReceptionList">
@@ -98,6 +131,26 @@ class DoctorReceptionList extends React.Component {
                             : '-'
                         }
                       </td>
+                      {
+                        isConfirmable && item.patient && user.pk === item.doctor.user.pk ?
+                          <>
+                            {
+                              !item.confirmed_by_doctor ?
+                                <td>
+                                  <Button variant="outline-success"
+                                          pk={item.pk}
+                                          onClick={this.doConfirm}>Пройден</Button>
+                                </td>
+                                :
+                                <td>
+                                  <Button variant="outline-danger"
+                                          pk={item.pk}
+                                          onClick={this.cancelConfirm}>Не пройден</Button>
+                                </td>
+                            }
+                          </>
+                          : null
+                      }
                     </tr>
                   )) : null
                 }

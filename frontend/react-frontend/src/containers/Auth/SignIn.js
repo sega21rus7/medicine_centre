@@ -26,7 +26,7 @@ class SignIn extends React.Component {
               <Col lg={6}>
                 <div className="p-lg-5 p-3">
                   <div className="text-center mb-4">
-                    <h1 className="h4 mb-4 text-middle">Создание аккаунта пациента</h1>
+                    <h1 className="h4 mb-4 text-middle">Вход в систему</h1>
                   </div>
 
                   <SignInForm {...this.props}/>

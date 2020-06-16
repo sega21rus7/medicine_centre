@@ -8,7 +8,7 @@ from .models import Reception
 class ReceptionCreateUpdateDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Reception
-        fields = ('pk', 'patient', 'doctor', 'from_time', 'to_time', 'date',)
+        fields = ('pk', 'patient', 'doctor', 'from_time', 'to_time', 'date', 'confirmed_by_doctor')
 
 
 class ReceptionListSerializer(ReceptionCreateUpdateDestroySerializer):

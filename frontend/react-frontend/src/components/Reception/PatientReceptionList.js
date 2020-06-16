@@ -187,6 +187,17 @@ class PatientReceptionList extends React.Component {
                           </td>
                           : null
                       }
+                      {
+                        item.patient && user.pk === item.patient.user.pk ?
+                          <>
+                            {
+                              item.confirmed_by_doctor ?
+                                <td>Пройден</td>
+                                :
+                                <td>Не пройден</td>
+                            }
+                          </> : null
+                      }
                     </tr>
                   )) : null
                 }

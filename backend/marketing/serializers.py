@@ -71,10 +71,13 @@ class ReviewCreateUpdateDestroySerializer(serializers.ModelSerializer):
                 Q(doctor=doctor) &
                 (Q(date__lt=now.date()) |
                  (Q(date=now.date()) & Q(from_time__lt=now.time())))
-            ).exists()
-            if not reception:
+            )
+            if not reception.exists():
                 raise serializers.ValidationError(
                     'Вы не были на приеме у данного врача, поэтому не можете оставить отзыв о его работе.')
+            if not reception.first().confirmed_by_doctor:
+                raise serializers.ValidationError(
+                    'Доктор еще не подтвердил ваше посещение, поэтому не можете оставить отзыв о его работе.')
         else:
             reception = Reception.objects.filter(
                 Q(patient=patient) &

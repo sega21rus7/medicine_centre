@@ -12,6 +12,7 @@ class Reception(models.Model):
     from_time = models.TimeField(verbose_name='C', blank=True)
     to_time = models.TimeField(verbose_name='До', blank=True)
     date = models.DateField(verbose_name='Дата', blank=True)
+    confirmed_by_doctor = models.BooleanField(verbose_name='Подтвержден доктором', default=False)
 
     class Meta:
         verbose_name = 'Прием'
