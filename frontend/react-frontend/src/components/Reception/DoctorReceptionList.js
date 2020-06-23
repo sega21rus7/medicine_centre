@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import PaginationComponent from "../PaginationComponent";
 import {BACKEND_URL} from "../../constants";
 import SpinnerComponent from "../SpinnerComponent";
+import * as actions from "../../store/actions/doctor_schedule/actionCreators";
 
 class DoctorReceptionList extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class DoctorReceptionList extends React.Component {
   }
 
   componentDidMount() {
+    this.props.setTabActiveValue('my');
     this.getSchedule(1, this.props.specialUrl);
   }
 
@@ -177,7 +179,14 @@ class DoctorReceptionList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
+    tabActiveValue: state.doctorSchedule.tabActiveValue,
   }
 };
 
-export default connect(mapStateToProps, null)(DoctorReceptionList);
+const mapDispatchToProps = dispatch => {
+  return {
+    setTabActiveValue: (value) => dispatch(actions.setTabActiveValue(value))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DoctorReceptionList);

@@ -1,13 +1,16 @@
 import React from 'react';
 import {Nav, Tab} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
 
 class DoctorScheduleLayout extends React.Component {
   render() {
+    const {tabActiveValue} = this.props;
+
     return (
       <div className="DoctorScheduleLayout">
-        <Tab.Container id="doctor-schedule-tabs" defaultActiveKey="my">
+        <Tab.Container id="doctor-schedule-tabs" activeKey={tabActiveValue}>
           <Nav variant="tabs">
             <Nav.Item key="my">
               <Nav.Link eventKey="my" as={Link} to="/lk/doctor_schedule/my">
@@ -32,4 +35,10 @@ class DoctorScheduleLayout extends React.Component {
   };
 }
 
-export default DoctorScheduleLayout;
+const mapStateToProps = (state) => {
+  return {
+    tabActiveValue: state.doctorSchedule.tabActiveValue,
+  }
+};
+
+export default connect(mapStateToProps, null)(DoctorScheduleLayout);

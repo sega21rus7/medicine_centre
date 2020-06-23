@@ -1,10 +1,11 @@
 import React from 'react';
 import {Button, Form} from "react-bootstrap";
+import {withRouter} from "react-router";
 
 class DoctorReceptionAddForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
-
+    this.props.history.push('/lk/doctor_schedule/my');
   };
 
   render() {
@@ -40,4 +41,4 @@ class DoctorReceptionAddForm extends React.Component {
   }
 }
 
-export default DoctorReceptionAddForm;
+export default withRouter(DoctorReceptionAddForm);
