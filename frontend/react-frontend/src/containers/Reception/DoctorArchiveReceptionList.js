@@ -12,7 +12,8 @@ class DoctorArchiveReceptionList extends React.Component {
   render() {
     return (
       <DoctorReceptionList specialUrl={`${BACKEND_URL}/rest-api/reception/archive_receptions_by_doctor/`}
-                           isConfirmable={true}/>
+                           isConfirmable={true}
+                           isNotDeletable={true}/>
     )
   }
 }

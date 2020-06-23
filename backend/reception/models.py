@@ -43,8 +43,8 @@ class Reception(models.Model):
         now = datetime.datetime.now()
         working_time_start = now.replace(hour=8, minute=0, second=0, microsecond=0).time()
         working_time_end = now.replace(hour=20, minute=0, second=0, microsecond=0).time()
-        return (not working_time_start < from_time < working_time_end) or (
-            not working_time_start < to_time < working_time_end)
+        return (not working_time_start <= from_time <= working_time_end) or (
+            not working_time_start <= to_time <= working_time_end)
 
     @staticmethod
     def is_datetime_in_past(date, from_time, to_time):

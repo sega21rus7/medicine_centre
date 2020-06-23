@@ -2,6 +2,7 @@ import datetime
 
 from django.db.models import Q
 from rest_framework import viewsets
+from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
@@ -17,6 +18,11 @@ class ReceptionViewSet(MultipleSerializerViewSetMixin, viewsets.ModelViewSet):
     crud_serializer_class = ReceptionCreateUpdateDestroySerializer
     permission_classes = (IsAuthenticated,)
     pagination_class = PaginationBy10
+
+    def perform_destroy(self, instance):
+        if instance.patient:
+            raise ValidationError('Нельзя удалить прием, т.к. на него уже записан пациент!')
+        super().perform_destroy(instance)
 
 
 class ReceptionByDoctorListView(ListAPIView):

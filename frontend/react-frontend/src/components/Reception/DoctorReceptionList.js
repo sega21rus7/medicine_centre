@@ -91,9 +91,30 @@ class DoctorReceptionList extends React.Component {
     }
   }
 
+  cancelReception = (event) => {
+    const token = localStorage.getItem('token');
+    if (token && this.props.user) {
+      const target = event.target;
+      const pk = target.getAttribute('pk');
+      const url = `${BACKEND_URL}/rest-api/reception/receptions/${pk}/`;
+      const options = {
+        method: 'DELETE',
+        url: url,
+        headers: {'Authorization': `Token ${token}`},
+      };
+      axios(options)
+        .then((res) => {
+          this.getSchedule(1, this.props.specialUrl);
+        })
+        .catch(err => {
+
+        });
+    }
+  };
+
   render() {
     const {schedule, next, previous, paginateCount} = this.state;
-    const {specialUrl, user, isConfirmable} = this.props;
+    const {specialUrl, user, isConfirmable, isNotDeletable} = this.props;
 
     return (
       <Container className="DoctorReceptionList">
@@ -133,6 +154,14 @@ class DoctorReceptionList extends React.Component {
                             : '-'
                         }
                       </td>
+                      {
+                        !isNotDeletable && !item.patient ?
+                          <td>
+                            <Button variant="outline-danger"
+                                    pk={item.pk}
+                                    onClick={this.cancelReception}>Отменить</Button>
+                          </td> : null
+                      }
                       {
                         isConfirmable && item.patient && user.pk === item.doctor.user.pk ?
                           <>
