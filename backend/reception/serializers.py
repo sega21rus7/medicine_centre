@@ -17,7 +17,7 @@ class ReceptionCreateUpdateDestroySerializer(serializers.ModelSerializer):
 
         if Reception.is_datetime_in_past(date, from_time, to_time):
             raise serializers.ValidationError('Прием не может состояться в прошлом!')
-        if Reception.is_times_equal(from_time, to_time):
+        elif Reception.is_times_equal(from_time, to_time):
             raise serializers.ValidationError('Время начала приема не должно совпадать с временем его окончания!')
         elif Reception.is_to_time_greater_then_from_time(from_time, to_time):
             raise serializers.ValidationError('Время начала приема не может быть больше его окончания!')
