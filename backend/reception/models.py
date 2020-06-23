@@ -49,7 +49,7 @@ class Reception(models.Model):
     @staticmethod
     def is_datetime_in_past(date, from_time, to_time):
         now = datetime.datetime.now()
-        return date < now.date() or from_time < now.time() or to_time < now.time()
+        return date < now.date() or (date == now.date() and from_time < now.time())
 
     def save(self, *args, **kwargs):
         # if self.is_datetime_in_past(self.date, self.from_time, self.to_time):
