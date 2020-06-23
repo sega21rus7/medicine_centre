@@ -26,7 +26,7 @@ class Reception(models.Model):
 
     @staticmethod
     def is_times_equal(from_time, to_time):
-        return from_time.minute == to_time.minute
+        return from_time.hour == to_time.hour and from_time.minute == to_time.minute
 
     @staticmethod
     def is_to_time_greater_then_from_time(from_time, to_time):
