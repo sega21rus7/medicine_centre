@@ -1,6 +1,6 @@
 import React from 'react';
 import DoctorReceptionAddForm from "../../components/Reception/DoctorReceptionAddForm";
-import {Container} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import * as actions from "../../store/actions/doctor_schedule/actionCreators";
 import {connect} from "react-redux";
 
@@ -12,7 +12,11 @@ class DoctorReceptionAdd extends React.Component {
   render() {
     return (
       <Container className="DoctorReceptionAdd mt-2">
-        <DoctorReceptionAddForm/>
+        <Row>
+          <Col lg={6}>
+            <DoctorReceptionAddForm/>
+          </Col>
+        </Row>
       </Container>
     )
   }
