@@ -11,9 +11,12 @@ class ReceptionCreateUpdateDestroySerializer(serializers.ModelSerializer):
         fields = ('pk', 'patient', 'doctor', 'from_time', 'to_time', 'date', 'confirmed_by_doctor')
 
     def validate(self, attrs):
-        date = attrs['date']
-        from_time = attrs['from_time']
-        to_time = attrs['to_time']
+        date = attrs.get('date')
+        from_time = attrs.get('from_time')
+        to_time = attrs.get('to_time')
+
+        if not date or not from_time or not to_time:
+            return attrs
 
         if Reception.is_datetime_in_past(date, from_time, to_time):
             raise serializers.ValidationError('Прием не может состояться в прошлом!')
