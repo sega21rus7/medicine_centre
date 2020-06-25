@@ -1,8 +1,10 @@
 from django.conf import settings
 from django.db import models
 
+from medicine_centre.model_mixins import AdminUserMixin
 
-class Patient(models.Model):
+
+class Patient(AdminUserMixin, models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                                 on_delete=models.CASCADE)
 

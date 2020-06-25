@@ -4,6 +4,8 @@ from django.db import models
 from pytils.translit import slugify
 from smartfields import fields as smart_fields
 
+from medicine_centre.model_mixins import AdminUserMixin
+
 
 class ReferenceByNameModel(models.Model):
     name = models.CharField(verbose_name='Название', max_length=150, db_index=True)
@@ -65,7 +67,7 @@ class Office(models.Model):
         return '№ %s. Этаж %s' % (self.number, self.floor)
 
 
-class Doctor(models.Model):
+class Doctor(AdminUserMixin, models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь',
                                 on_delete=models.CASCADE)
     posts = models.ManyToManyField(Post, verbose_name='Должности', related_name='doctors')
