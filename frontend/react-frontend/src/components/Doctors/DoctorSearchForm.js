@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, ButtonGroup, Form, FormControl} from "react-bootstrap";
 import {BACKEND_URL} from "../../constants";
-import * as actions from "../../store/actions/doctors_by_post/actionCreators";
+import * as actions from "../../store/actions/filters/actionCreators";
 import {connect} from "react-redux";
 
 class DoctorSearchForm extends React.Component {
@@ -12,7 +12,7 @@ class DoctorSearchForm extends React.Component {
     const url = doctorsByPostSearchUrl || `${BACKEND_URL}/rest-api/staff/doctors/search`;
     const searchUrl = `${url}/${searchText}/`;
     getData(1, searchUrl);
-    this.props.setSearchUrl(searchUrl);
+    this.props.setDoctorSearchUrl(searchUrl);
   };
 
   handleReset = (event) => {
@@ -40,7 +40,7 @@ class DoctorSearchForm extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setSearchUrl: (value) => dispatch(actions.setSearchUrl(value))
+    setDoctorSearchUrl: (value) => dispatch(actions.setDoctorSearchUrl(value))
   }
 };
 

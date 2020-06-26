@@ -23,7 +23,12 @@ class PaginationComponent extends React.Component {
     const page = event.target.getAttribute('value') ||
       event.target.parentElement.getAttribute('value');
     this.setState({activePage: Number(page)}, () => {
-      this.props.getData(page, this.props.searchUrl || this.props.filterUrl || this.props.specialUrl);
+      this.props.getData(page,
+        this.props.doctorSearchUrl ||
+        this.props.newsSearchUrl ||
+        this.props.articleSearchUrl ||
+        this.props.doctorFilterUrl ||
+        this.props.specialUrl);
     });
   };
 
@@ -64,8 +69,10 @@ class PaginationComponent extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    searchUrl: state.doctorsByPost.searchUrl,
-    filterUrl: state.doctorsByPost.filterUrl,
+    doctorSearchUrl: state.filters.doctorSearchUrl,
+    newsSearchUrl: state.filters.newsSearchUrl,
+    articleSearchUrl: state.filters.articleSearchUrl,
+    doctorFilterUrl: state.filters.doctorFilterUrl,
   }
 };
 

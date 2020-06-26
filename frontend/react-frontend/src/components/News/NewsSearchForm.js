@@ -2,20 +2,22 @@ import React from 'react';
 import {Button, Form, FormControl} from "react-bootstrap";
 import {withRouter} from "react-router";
 import {BACKEND_URL} from "../../constants";
+import * as actions from "../../store/actions/filters/actionCreators";
+import {connect} from "react-redux";
 
 class NewsSearchForm extends React.Component {
   handleSearch = (event) => {
     event.preventDefault();
     const text = event.target.elements.text.value;
-    this.props.getData(1, `${BACKEND_URL}/rest-api/marketing/search_news/${text}`);
-
-    // при наличии > 3 новостей пагинация отрабатывает неправильно
-
+    const searchUrl = `${BACKEND_URL}/rest-api/marketing/search_news/${text}`;
+    this.props.getData(1, searchUrl);
+    this.props.setNewsSearchUrl(searchUrl);
   };
 
   handleReset = (event) => {
     event.preventDefault();
     this.props.getData(1);
+    this.props.setNewsSearchUrl(null);
   };
 
   render() {
@@ -36,4 +38,10 @@ class NewsSearchForm extends React.Component {
   }
 }
 
-export default withRouter(NewsSearchForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    setNewsSearchUrl: (value) => dispatch(actions.setNewsSearchUrl(value))
+  }
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(NewsSearchForm));
