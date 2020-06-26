@@ -1,5 +1,7 @@
 import os
 
+from sqlite_config.sqlite_config import USE_SQLITE
+
 # Build paths inside the medicine_centre like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -100,16 +102,24 @@ SITE_NAME = os.environ.get('SITE_NAME', default=SITE_URL)
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('SQL_ENGINE', default='django.db.backends.postgresql_psycopg2'),
-        'NAME': os.environ.get('SQL_DATABASE', default='medicine_centre'),
-        'USER': os.environ.get('SQL_USER', default='postgres'),
-        'PASSWORD': os.environ.get('SQL_PASSWORD', default='server'),
-        'HOST': os.environ.get('SQL_HOST', default=''),
-        'PORT': os.environ.get('SQL_PORT', default=''),
+if USE_SQLITE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('SQL_ENGINE', default='django.db.backends.postgresql_psycopg2'),
+            'NAME': os.environ.get('SQL_DATABASE', default='medicine_centre'),
+            'USER': os.environ.get('SQL_USER', default='postgres'),
+            'PASSWORD': os.environ.get('SQL_PASSWORD', default='server'),
+            'HOST': os.environ.get('SQL_HOST', default=''),
+            'PORT': os.environ.get('SQL_PORT', default=''),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -166,7 +176,7 @@ CORS_ORIGIN_WHITELIST = [
     'https://chuvash-medicine-centre.ru',
 ]
 
-EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.console.EmailBackend')
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", default='django.core.mail.backends.console.EmailBackend')
 EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS")
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
 SERVER_EMAIL = os.environ.get("SERVER_EMAIL")
