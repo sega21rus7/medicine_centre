@@ -1,5 +1,6 @@
 import React from 'react';
 import {Pagination} from "react-bootstrap";
+import {connect} from "react-redux";
 
 
 class PaginationComponent extends React.Component {
@@ -22,7 +23,7 @@ class PaginationComponent extends React.Component {
     const page = event.target.getAttribute('value') ||
       event.target.parentElement.getAttribute('value');
     this.setState({activePage: Number(page)}, () => {
-      this.props.getData(page, this.props.specialUrl);
+      this.props.getData(page, this.props.searchUrl || this.props.filterUrl || this.props.specialUrl);
     });
   };
 
@@ -61,4 +62,12 @@ class PaginationComponent extends React.Component {
   };
 }
 
-export default PaginationComponent;
+const mapStateToProps = (state) => {
+  return {
+    searchUrl: state.doctorsByPost.searchUrl,
+    filterUrl: state.doctorsByPost.filterUrl,
+  }
+};
+
+export default connect(mapStateToProps, null)(PaginationComponent);
+

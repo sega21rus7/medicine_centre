@@ -1,6 +1,8 @@
 import React from 'react';
 import {Button, ButtonGroup, Form, FormControl} from "react-bootstrap";
 import {BACKEND_URL} from "../../constants";
+import * as actions from "../../store/actions/doctors_by_post/actionCreators";
+import {connect} from "react-redux";
 
 class DoctorSearchForm extends React.Component {
   handleSearch = (event) => {
@@ -8,14 +10,15 @@ class DoctorSearchForm extends React.Component {
     const searchText = event.target.elements.text.value;
     const {doctorsByPostSearchUrl, getData} = this.props;
     const url = doctorsByPostSearchUrl || `${BACKEND_URL}/rest-api/staff/doctors/search`;
-    getData(1, `${url}/${searchText}/`);
-    // при наличии > 3 врачей пагинация отрабатывает неправильно
-
+    const searchUrl = `${url}/${searchText}/`;
+    getData(1, searchUrl);
+    this.props.setSearchUrl(searchUrl);
   };
 
   handleReset = (event) => {
     event.preventDefault();
     this.props.getData(1, this.props.doctorsByPostUrl);
+    this.props.setSearchUrl(null);
   };
 
   render() {
@@ -35,4 +38,10 @@ class DoctorSearchForm extends React.Component {
   }
 }
 
-export default DoctorSearchForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    setSearchUrl: (value) => dispatch(actions.setSearchUrl(value))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(DoctorSearchForm);

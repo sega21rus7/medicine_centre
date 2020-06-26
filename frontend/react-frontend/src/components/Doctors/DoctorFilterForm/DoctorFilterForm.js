@@ -3,6 +3,8 @@ import './DoctorFilterForm.css';
 import {Button, Form} from "react-bootstrap";
 import axios from "axios";
 import {BACKEND_URL} from "../../../constants";
+import * as actions from "../../../store/actions/doctors_by_post/actionCreators";
+import {connect} from "react-redux";
 
 class DoctorFilterForm extends React.Component {
   constructor(props) {
@@ -32,9 +34,9 @@ class DoctorFilterForm extends React.Component {
     event.preventDefault();
     const pk = this.state.selectedValuePk;
     if (pk) {
-      this.props.getData(
-        1,
-        `${this.props.postFilterUrl}${pk}`);
+      const filterUrl = `${this.props.postFilterUrl}${pk}`;
+      this.props.getData(1, filterUrl);
+      this.props.setFilterUrl(filterUrl);
     }
   };
 
@@ -55,6 +57,7 @@ class DoctorFilterForm extends React.Component {
       selectedValuePk: null,
     });
     this.props.getData(1, this.props.specialUrl);
+    this.props.setFilterUrl(null);
   };
 
   render() {
@@ -86,4 +89,10 @@ class DoctorFilterForm extends React.Component {
   }
 }
 
-export default DoctorFilterForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    setFilterUrl: (value) => dispatch(actions.setFilterUrl(value))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(DoctorFilterForm);
