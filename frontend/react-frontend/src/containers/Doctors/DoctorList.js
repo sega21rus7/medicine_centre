@@ -27,7 +27,7 @@ class DoctorList extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(1, this.props.specialUrl);
+    this.getData(1, this.props.doctorsByPostUrl);
   }
 
   getData = (page, initialUrl = `${BACKEND_URL}/rest-api/staff/doctors/`) => {
