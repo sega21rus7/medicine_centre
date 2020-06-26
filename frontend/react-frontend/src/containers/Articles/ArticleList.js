@@ -26,7 +26,7 @@ class ArticleList extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(1, this.props.specialUrl);
+    this.getData(1, this.props.articlesWithTagUrl);
   }
 
   getData = (page, initialUrl = `${BACKEND_URL}/rest-api/marketing/articles/`) => {
@@ -49,7 +49,7 @@ class ArticleList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated, specialUrl, isSearchable} = this.props;
+    const {isPaginated, articlesWithTagUrl, isSearchable} = this.props;
 
     if (isPaginated) {
       if (paginateCount > 1) {
@@ -58,7 +58,7 @@ class ArticleList extends React.Component {
                                               paginateCount={paginateCount}
                                               next={next}
                                               previous={previous}
-                                              specialUrl={specialUrl}/>;
+                                              specialUrl={articlesWithTagUrl}/>;
       }
     } else {
       var button = <ViewAllList button={this.button}/>;

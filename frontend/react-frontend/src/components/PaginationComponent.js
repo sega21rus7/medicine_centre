@@ -43,7 +43,8 @@ class PaginationComponent extends React.Component {
               const isActive = item === activePage;
               return (
                 <Pagination.Item onClick={this.paginate}
-                                 key={index} value={item}
+                                 key={index}
+                                 value={item}
                                  active={isActive}>
                   {item}
                 </Pagination.Item>

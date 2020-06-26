@@ -50,8 +50,8 @@ class DoctorList extends React.Component {
 
   render() {
     const {next, previous, items, paginateCount} = this.state;
-    const {isPaginated, isNotCaption, isSearchable, isFilterable, specialUrl, postPk} = this.props;
-    const specialSearchUrl = specialUrl ? `${BACKEND_URL}/rest-api/staff/doctors_by_post/${postPk}/search` : null;
+    const {isPaginated, isNotCaption, isSearchable, isFilterable, doctorsByPostUrl, postPk} = this.props;
+    const doctorsByPostSearchUrl = doctorsByPostUrl ? `${BACKEND_URL}/rest-api/staff/doctors_by_post/${postPk}/search` : null;
 
     if (isPaginated) {
       if (paginateCount > 1) {
@@ -59,7 +59,8 @@ class DoctorList extends React.Component {
                                               getData={this.getData}
                                               paginateCount={paginateCount}
                                               next={next}
-                                              previous={previous}/>;
+                                              previous={previous}
+                                              specialUrl={doctorsByPostUrl}/>;
       }
     } else {
       var button = <ViewAllList button={this.button}/>;
@@ -81,8 +82,8 @@ class DoctorList extends React.Component {
                       {
                         isSearchable ?
                           <DoctorSearchForm getData={this.getData}
-                                            specialUrl={specialUrl}
-                                            specialSearchUrl={specialSearchUrl}/>
+                                            doctorsByPostUrl={doctorsByPostUrl}
+                                            doctorsByPostSearchUrl={doctorsByPostSearchUrl}/>
                           : null
                       }
                       {

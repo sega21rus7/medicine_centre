@@ -6,8 +6,8 @@ class DoctorSearchForm extends React.Component {
   handleSearch = (event) => {
     event.preventDefault();
     const searchText = event.target.elements.text.value;
-    const {specialSearchUrl, getData} = this.props;
-    const url = specialSearchUrl || `${BACKEND_URL}/rest-api/staff/doctors/search`;
+    const {doctorsByPostSearchUrl, getData} = this.props;
+    const url = doctorsByPostSearchUrl || `${BACKEND_URL}/rest-api/staff/doctors/search`;
     getData(1, `${url}/${searchText}/`);
     // при наличии > 3 врачей пагинация отрабатывает неправильно
 
@@ -15,7 +15,7 @@ class DoctorSearchForm extends React.Component {
 
   handleReset = (event) => {
     event.preventDefault();
-    this.props.getData(1, this.props.specialUrl);
+    this.props.getData(1, this.props.doctorsByPostUrl);
   };
 
   render() {
