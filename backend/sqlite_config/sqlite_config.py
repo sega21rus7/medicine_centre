@@ -1,1 +1,1 @@
-USE_SQLITE = False
+USE_SQLITE = True
